@@ -1,0 +1,49 @@
+source : https://wiki.teamfortress.com/wiki/WebAPI#Dota_2
+key : D66F1513084C6633AC47944E35FF8203
+
+-------------------------------------------------------------------------------------------------------------------
+
+IDOTA2Match_570
+เกี่ยวกับ Match
+  GetLeagueListing
+  Information about DotaTV-supported leagues.
+  e.g. http://api.steampowered.com/IDOTA2Match_570/GetLeagueListing/v1/?key=D66F1513084C6633AC47944E35FF8203
+
+  GetLiveLeagueGames
+  A list of in-progress league matches, as well as details of that match as it unfolds.
+  e.g. http://api.steampowered.com/IDOTA2Match_570/GetLiveLeagueGames/v1?key=D66F1513084C6633AC47944E35FF8203
+
+  GetMatchDetails
+  ใช้ match_id ในการบอกรายละเอียดของ match นั้นๆ
+  e.g. http://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v1?key=D66F1513084C6633AC47944E35FF8203&match_id=2617377831
+
+  GetMatchHistory
+  Match ย้อนหลัง 100 match
+  e.g. http://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v1?key=D66F1513084C6633AC47944E35FF8203&hero_id=10&skill=3
+
+  GetMatchHistoryBySequenceNum
+  A list of matches ordered by their sequence num.
+  e.g. http://api.steampowered.com/IDOTA2Match_570/GetMatchHistoryBySequenceNum/v1?key=D66F1513084C6633AC47944E35FF8203
+
+  GetTeamInfoByTeamID
+  A list of all the teams set up in-game.
+  e.g. http://api.steampowered.com/IDOTA2Match_570/GetTeamInfoByTeamID/v1?key=D66F1513084C6633AC47944E35FF8203
+
+-------------------------------------------------------------------------------------------------------------------
+
+IEconDOTA2_570
+เกี่ยวกับข้อมูลพื้นฐานต่างๆ.
+
+  GetGameItems
+  ข้อมูลไอเทมในเกม
+  e.g. http://api.steampowered.com/IEconDOTA2_570/GetGameItems/v1?key=D66F1513084C6633AC47944E35FF8203
+
+  GetHeroes
+  รายชื่อฮีโร่ในเกม
+  e.g. http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key=D66F1513084C6633AC47944E35FF8203
+
+  GetRarities
+  ระดับความหายากของ item
+  e.g. http://api.steampowered.com/IEconDOTA2_570/GetRarities/v1?key=D66F1513084C6633AC47944E35FF8203
+
+-------------------------------------------------------------------------------------------------------------------

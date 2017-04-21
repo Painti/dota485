@@ -1,0 +1,30 @@
+source : https://docs.opendota.com/
+
+-------------------------------------------------------------------------------------------------------------------
+
+GET /benchmarks
+https://api.opendota.com/api/benchmarks?hero_id=1
+
+GET /rankings
+https://api.opendota.com/api/rankings?hero_id=1
+
+GET /distributions
+https://api.opendota.com/api/distributions
+
+GET /heroStats
+https://api.opendota.com/api/heroStats
+
+GET /publicMatches
+https://api.opendota.com/api/publicMatches?mmr_ascending=asc
+
+GET /proMatches
+https://api.opendota.com/api/proMatches
+
+GET /proPlayers
+https://api.opendota.com/api/proPlayers
+
+GET /players/{account_id}
+https://api.opendota.com/api/players/128102870
+
+GET /replays
+https://api.opendota.com/api/replays?match_id=2617377831

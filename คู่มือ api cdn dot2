@@ -1,0 +1,14 @@
+source : http://sharonkuo.me/dota2
+
+Hero Images
+http://cdn.dota2.com/apps/dota2/images/heroes/HERONAME_SUFFIX.png
+  SUFFIX => sb, lg, full, vert
+e.g. http://cdn.dota2.com/apps/dota2/images/heroes/bane_sb.png
+
+Item Images
+http://cdn.dota2.com/apps/dota2/images/items/ITEMNAME_lg.png
+e.g. http://cdn.dota2.com/apps/dota2/images/items/chainmail_lg.png
+
+Replay
+http://replayCLUSTER.valve.net/570/MATCHID_REPLAYSALT.dem.bz2
+e.g. http://replay184.valve.net/570/3052963609_1517488056.dem.bz2
