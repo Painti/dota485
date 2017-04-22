@@ -18,7 +18,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session({
+  secret: 'cs485',
+  name: 'authSteam',
+  resave: true,
+  saveUninitialized: true
+}));
 
 var index = require('./routes/index');
 app.use('/', index);
@@ -32,6 +37,8 @@ app.use('/items', items);
 // Group2
 var users = require('./routes/group2/users');
 app.use('/users', users);
+var auth = require('./routes/group2/auth');
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
