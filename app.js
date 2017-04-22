@@ -26,7 +26,6 @@ app.use('/', index);
 // Group1
 var heroes = require('./routes/group1/heroes');
 app.use('/heroes', heroes);
-
 var items = require('./routes/group1/items');
 app.use('/items', items);
 
