@@ -1,6 +1,18 @@
 group1 => B2 NUT WIN
 group2 => B1 B3 MIT
 
+เริ่มต้น ใช้คำสั่ง cmd
+  git clone https://github.com/Painti/dota485.git
+  เพื่อดาวน์โหลดโปรเจค
+  สมมุติ cmd ตอนนี้อยู่ที่ C:\Users\BoatZako
+  แล้วใช้คำสั่ง
+  C:\Users\BoatZako > cd Desktop
+  C:\Users\BoatZako\Desktop > git clone https://github.com/Painti/dota485.git
+  จะมี folder dota485 อยู่บนหน้า Desktop
+  ปล. ทำครั้งเดียวพอ
+
+--------------------------------------------------------------------------------------------
+การใช้ไฟล์อื่นๆ
 1. ใช่ไฟล์ run.bat ในการ start server
 2. ใช้ไฟล์ push.bat ในการอัพโหลดโค้ด
 3. ถ้า push.bat มีปัญหาเนื่องจากเกิด conflict ให้ใช้ไฟล์ pull.bat ดาวน์โหลดโค้ดมา แก้ไขให้เป็นปัจจุบัน แล้วใช้ push.bat

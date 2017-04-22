@@ -28,6 +28,7 @@ passport.use(new SteamStrategy({
       // to associate the Steam account with a user record in your database,
       // and return that user instead.
       profile.identifier = id;
+      console.log(profile);
       return done(null, profile);
     });
   }
@@ -41,7 +42,7 @@ router.get('/steam',
     failureRedirect: '/fail'
   }),
   function(req, res) {
-    res.redirect('/successs');
+    res.redirect('/successs1');
   });
 
 router.get('/steam/return',
@@ -54,7 +55,9 @@ router.get('/steam/return',
     failureRedirect: '/fail'
   }),
   function(req, res) {
-    res.redirect('/successs');
+    req.session.steamid = req.user.id
+    req.session.displayName = req.user.displayName;
+    res.redirect('/');
   });
 
 module.exports = router;
