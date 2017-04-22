@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var passport = require('./auth/passport.steam');
-var routerSteam = require('./auth/router.steam');
+var passport = require('./steam/passport');
+var routerSteam = require('./steam/router');
 
 router.use(passport.initialize());
 router.use(passport.session());

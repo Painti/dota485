@@ -1,4 +1,4 @@
-var config = require('../../../config');
+var config = require('../../../../config');
 var passport = require('passport');
 var SteamStrategy = require('passport-steam').Strategy;
 
