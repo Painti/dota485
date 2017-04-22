@@ -4,10 +4,10 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var t = 'Express'
-  if(req.session.displayName != undefined)
-    t = req.session.displayName
-  res.render('index', { title: t });
+  res.locals.steam = req.session.steam
+  res.render('index', {
+    title: 'Dota485'
+  });
 });
 
 module.exports = router;

@@ -9,13 +9,9 @@ router.get('/',
   }));
 
 router.get('/return',
-  // Issue #37 - Workaround for Express router module stripping the full url, causing assertion to fail
-  function(req, res, next) {
-    req.url = req.originalUrl;
-    next();
-  },
   passport.authenticate('steam', {
-    failureRedirect: '/fail'
+    failureRedirect: '/fail',
+    session: true
   }),
   function(req, res) {
     req.session.steam = req.user
