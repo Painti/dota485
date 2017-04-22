@@ -6,7 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var t = 'Express'
   if(req.session.displayName != undefined)
-    t = req.session.displayName + " " + req.session.steamid
+    t = req.session.displayName
   res.render('index', { title: t });
 });
 
