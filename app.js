@@ -36,10 +36,10 @@ var items = require('./routes/group1/items');
 app.use('/items', items);
 
 // Group2
-var users = require('./routes/group2/users');
-app.use('/users', users);
 var auth = require('./routes/group2/auth/auth');
 app.use('/auth', auth);
+var users = require('./routes/group2/users');
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

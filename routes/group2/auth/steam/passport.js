@@ -1,6 +1,7 @@
 var config = require('../../../../config');
 var passport = require('passport');
 var SteamStrategy = require('passport-steam').Strategy;
+var mongo = require('./mongo');
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -19,6 +20,7 @@ passport.use(new SteamStrategy({
     // asynchronous verification, for effect...
     process.nextTick(function() {
       profile.identifier = id;
+      mongo.saveUser(profile);
       return done(null, profile);
     });
   }
