@@ -1,3 +1,6 @@
+group1 => B2 NUT WIN
+group2 => B1 B3 MIT
+
 1. ใช่ไฟล์ run.bat ในการ start server
 2. ใช้ไฟล์ push.bat ในการอัพโหลดโค้ด
 3. ถ้า push.bat มีปัญหาเนื่องจากเกิด conflict ให้ใช้ไฟล์ pull.bat ดาวน์โหลดโค้ดมา แก้ไขให้เป็นปัจจุบัน แล้วใช้ push.bat
