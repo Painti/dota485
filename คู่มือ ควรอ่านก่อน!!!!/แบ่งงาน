@@ -71,51 +71,14 @@ group2
     e.g. https://www.opendota.com/matches
 
 >> profile <<
-  1 หน้า
+  1 หน้า overview ต่างๆ
+    - stat
+    - party
+    - friend
+    - ฮีโร่ที่เล่นแล้วชนะบ่อย
+    - ไอเทมที่ชอบใช้
+  2 หน้า setting
+    - ลิ้งกับ facebook
 
-
-เช่น http://www.dota2.com/heroes/?l=thai
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---------------------------------------------------
+>> share <<
+  1 หน้า share ลง facebook (อาจจะไม่ต้องมีหน้า ทำ back-end พอ)
