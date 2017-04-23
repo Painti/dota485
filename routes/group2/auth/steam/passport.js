@@ -20,6 +20,7 @@ passport.use(new SteamStrategy({
     // asynchronous verification, for effect...
     process.nextTick(function() {
       profile.identifier = id;
+      profile.account_id = config.convertSteam64to32(profile.id)
       mongo.saveUser(profile);
       return done(null, profile);
     });

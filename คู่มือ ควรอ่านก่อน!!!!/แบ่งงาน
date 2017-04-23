@@ -65,7 +65,14 @@ group2
     - การออกของ
     - ลิ้งโหลดรีเพลย์
     - ป้อมต่างๆที่ถูกทำลาย
-    - ข้อมูลการเล่น
+    - ข้อมูลการเล่นอื่นๆ
+    ตัวอย่าง https://www.opendota.com/matches/2102426920/overview
+  2 list match ล่าสุดที่ proplayer เล่น หรือ แมตซ์ทั่วไป หรือ เรียงตาม mmr
+    e.g. https://www.opendota.com/matches
+
+>> profile <<
+  1 หน้า
+
 
 เช่น http://www.dota2.com/heroes/?l=thai
 

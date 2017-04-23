@@ -1,10 +1,10 @@
 var mongoose = require('mongoose')
-
 var mongodb_url = 'mongodb://localhost/';
 mongoose.connect(mongodb_url + 'dota');
 
 var userSchema = mongoose.Schema({
   id: { type: String },
+  account_id: { type: String },
   displayName: { type: String },
   provider: { type: String },
   photos: [{ value : String }],
