@@ -12,7 +12,9 @@
   <h1>Welcome to <%= title %></h1>
   <%if (steam !== undefined) { %>
     <p>
-      <%= steam.displayName %>
+      <%= steam.displayName %><br>
+      <%= steam.id %><br>
+      <%= steam.id32 %>
     </p>
   <% } else { %>
     <form class="" action="/auth/steam" method="get">

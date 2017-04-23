@@ -26,6 +26,9 @@ https://api.opendota.com/api/proPlayers
 GET /players/{account_id}
 https://api.opendota.com/api/players/128102870
 
+GET /matches/{match_id}
+https://api.opendota.com/api/matches/2617377831
+
 GET /replays
 https://api.opendota.com/api/replays?match_id=2617377831
 
