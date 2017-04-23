@@ -30,9 +30,9 @@ var index = require('./routes/index');
 app.use('/', index);
 
 // Group1
-var heroes = require('./routes/group1/heroes');
+var heroes = require('./routes/group1/heroes/heroes');
 app.use('/heroes', heroes);
-var items = require('./routes/group1/items');
+var items = require('./routes/group1/items/items');
 app.use('/items', items);
 
 // Group2

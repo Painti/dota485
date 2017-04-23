@@ -1,0 +1,41 @@
+group1 => B2 NUT WIN
+group2 => B1 B3 MIT
+
+group1
+ใน routes\group1
+จะมีโฟลเดอร์ 4 โฟลเดอร์ แบ่งงานกัน 3 คน ลงชื่อจองโฟลเดอร์เลย!!
+้>> heroes << (ลงชื่อจองงานในวงเล็บนี้)
+  ข้อมูลคร่าวๆ
+  1 หน้า list hero
+    เช่น http://www.dota2.com/heroes/?l=thai
+  2 หน้าของแต่ละฮีโร่ อันนี้ไม่มี api (คงต้องเก็บข้อมูลลง db)
+    ประกอบด้วย stat, skill ประมาณนี้
+  3 หน้าที่ guide ทั้งการออกของ, การอัพสกิล
+  4 หน้าที่บอกว่าฮีโร่ตัวนี้ออกของชิ้นไหนมีโอกาสชนะสูง
+    เช่น https://www.dotabuff.com/heroes/luna/items
+    (เพื่มเติมหน้านี้ ถ้า login steam แล้ว อาจจะดูได้ว่า user ที่ login ส่วนใหญ่ออกของชิ้นไหน)
+  5 หน้าที่บอกว่าการอัพสกิลแบบไหนโอกาสชนะสูง (คล้ายๆกับ ไอเทม ข้อ4)
+  6 หน้าที่บอกว่าฮีโรตัวนี้ โปรเพล์เยอร์คนไหนเล่นดี
+    เช่น https://www.dotabuff.com/heroes/luna/players
+    (เพื่มเติมหน้านี้ ถ้า login steam แล้ว อาจจะดูได้ว่า user ที่ login เล่นฮีโร่ตัวนี้อยู่อันดับที่เท่าไหร่)
+  7 หน้า list hero คล้ายๆข้อ 1 แต่หน้านี้จะบอก stat การ pick ban winrate
+    เช่น https://www.opendota.com/heroes, https://www.dotabuff.com/heroes/meta
+  ข้อมูลส่วนใหญ่ดึงจาก api ได้
+
+>> items << (ลงชื่อจองงานในวงเล็บนี้)
+  ข้อมูลคร่าวๆ
+  1 หน้า list item
+    เช่น http://www.dota2.com/items/
+  2 หน้าบอกไอเทมที่ผู้เล่นส่วนใหญ่นิยมใช้
+    เช่น https://www.dotabuff.com/items
+  3 หน้าที่บอกว่าใช้ไอเทมไหนโอกาสชนะสูง
+    เช่น https://www.dotabuff.com/items/winning
+
+>> mmr << (ลงชื่อจองงานในวงเล็บนี้)
+  ข้อมูลคร่าวๆ
+  1 หน้าแสดงจำนวนผู้เล่นในช่วง mmr ต่างๆ
+    เช่น https://www.opendota.com/distributions
+  2 หน้าบอกไอเทมที่ผู้เล่นส่วนใหญ่นิยมใช้
+    เช่น https://www.dotabuff.com/items
+  3 หน้าที่บอกว่าใช้ไอเทมไหนโอกาสชนะสูง
+    เช่น https://www.dotabuff.com/items/winning
