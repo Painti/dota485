@@ -3,8 +3,8 @@ group2 => B1 B3 MIT
 
 group1
 ใน routes\group1
-จะมีโฟลเดอร์ 4 โฟลเดอร์ แบ่งงานกัน 3 คน ลงชื่อจองโฟลเดอร์เลย!!
-้>> heroes << (ลงชื่อจองงานในวงเล็บนี้)
+จะมีโฟลเดอร์ 4 โฟลเดอร์ แบ่งงานกัน 3 คน
+้>> heroes <<
   ข้อมูลคร่าวๆ
   1 หน้า list hero
     เช่น http://www.dota2.com/heroes/?l=thai
@@ -22,7 +22,7 @@ group1
     เช่น https://www.opendota.com/heroes, https://www.dotabuff.com/heroes/meta
   ข้อมูลส่วนใหญ่ดึงจาก api ได้
 
->> items << (ลงชื่อจองงานในวงเล็บนี้)
+>> items <<
   ข้อมูลคร่าวๆ
   1 หน้า list item
     เช่น http://www.dota2.com/items/
@@ -31,11 +31,17 @@ group1
   3 หน้าที่บอกว่าใช้ไอเทมไหนโอกาสชนะสูง
     เช่น https://www.dotabuff.com/items/winning
 
->> mmr << (ลงชื่อจองงานในวงเล็บนี้)
+>> mmr <<
   ข้อมูลคร่าวๆ
   1 หน้าแสดงจำนวนผู้เล่นในช่วง mmr ต่างๆ
     เช่น https://www.opendota.com/distributions
-  2 หน้าบอกไอเทมที่ผู้เล่นส่วนใหญ่นิยมใช้
-    เช่น https://www.dotabuff.com/items
-  3 หน้าที่บอกว่าใช้ไอเทมไหนโอกาสชนะสูง
-    เช่น https://www.dotabuff.com/items/winning
+  2 หน้าแสดง ผู้ที่ mmr เยอะที่สุดในแต่ละ server
+    เช่น http://www.dota2.com/leaderboards/#se_asia
+
+>> status <<
+  ข้อมูลคร่าวๆ
+  - หน้าแสดง status ต่างๆของเซิฟเวอร์
+    เช่น จำนวนผู้เล่นทั้งหมดใน dota
+        จำนวนผู้เล่นที่เล่นอยู่ในขณะนี้
+        match ล่าสุด
+        จำนวน match ของเมื่อวาน เป็นต้น

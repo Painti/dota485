@@ -38,8 +38,8 @@ app.use('/items', items);
 // Group2
 var auth = require('./routes/group2/auth/auth');
 app.use('/auth', auth);
-var users = require('./routes/group2/users');
-app.use('/users', users);
+// var users = require('./routes/group2/users');
+// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
