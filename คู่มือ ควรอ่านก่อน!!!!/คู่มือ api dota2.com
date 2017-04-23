@@ -5,12 +5,15 @@ http://www.dota2.com/jsfeed/heropediadata?feeds=itemdata,abilitydata,herodata&l=
 GET /heroes
 http://www.dota2.com/jsfeed/heropickerdata
 http://www.dota2.com/jsfeed/heropickerdata?l=thai -> ภาษาไทย
+http://www.dota2.com/jsfeed/heropediadata?feeds=herodata&l=english&callback=HeropediaDFReceive
 
 GET /items
 http://www.dota2.com/jsfeed/heropediadata?feeds=itemdata&l=english&callback=HeropediaDFReceive
 
 GET /skill
 http://www.dota2.com/jsfeed/heropediadata?feeds=abilitydata&l=english&callback=HeropediaDFReceive
+
+ปล. ทุกลิ้งด้านบนมีภาษาไทย เปลี่ยน english เป็น thai
 
 GET /ILeaderboard
 http://www.dota2.com/webapi/ILeaderboard/GetDivisionLeaderboard/v0001?division=europe
