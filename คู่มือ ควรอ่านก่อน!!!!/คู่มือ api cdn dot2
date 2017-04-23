@@ -9,6 +9,21 @@ Item Images
 http://cdn.dota2.com/apps/dota2/images/items/ITEMNAME_lg.png
 e.g. http://cdn.dota2.com/apps/dota2/images/items/chainmail_lg.png
 
+type items Images
+http://cdn.dota2.com/apps/dota2/images/heropedia/itemcat_TYPE.png
+  TYPE => consumables, attributes, common, support, weapons, artifacts, secret
+
+skill Images
+http://cdn.dota2.com/apps/dota2/images/abilities/SKILLNAME_lg.png
+e.g. http://cdn.dota2.com/apps/dota2/images/abilities/antimage_blink_lg.png
+
+tooltip
+http://cdn.dota2.com/apps/dota2/images/tooltips/gold.png
+http://cdn.dota2.com/apps/dota2/images/tooltips/mana.png
+http://cdn.dota2.com/apps/dota2/images/tooltips/cooldown.png
+http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_STAT.png
+  STAT => str, agi, int, attack, speed, defense
+
 Replay
 http://replayCLUSTER.valve.net/570/MATCHID_REPLAYSALT.dem.bz2
 e.g. http://replay184.valve.net/570/3052963609_1517488056.dem.bz2
