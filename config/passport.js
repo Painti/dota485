@@ -6,7 +6,6 @@ var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var config = require('./database');
 
-
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
     done(null, user);
@@ -21,7 +20,6 @@ module.exports = function(passport) {
   opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
   opts.secretOrKey = config.secret;
   passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-    console.log(jwt_payload)
     steamuser.getUserById(jwt_payload._doc.id, (err, user) => {
       if(err){
         return done(err, false);
@@ -33,7 +31,6 @@ module.exports = function(passport) {
       }
     });
   }));
-
 
   // Passport Steam
   passport.use(new SteamStrategy({
