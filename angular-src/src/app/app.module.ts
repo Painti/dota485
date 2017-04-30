@@ -6,9 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { MatchComponent } from './components/match/match.component';
-import { HeroComponent } from './components/hero/hero.component';
+
+// Components group1
+import { HomeComponent } from './components/group1/home/home.component';
+import { HeroComponent } from './components/group1/hero/hero.component';
+
+// Components group2
+import { MatchComponent } from './components/group2/match/match.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,8 +25,8 @@ const appRoutes: Routes = [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    MatchComponent,
-    HeroComponent
+    HeroComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,
