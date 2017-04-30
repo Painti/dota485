@@ -23,43 +23,33 @@ mongoose.connection.on('error', (err) => {
 
 var app = express();
 
-// var corsOptions = {
-//   origin: 'http://localhost:4200',
-//   credentials: true
-// }
-//
-// app.use(cors(corsOptions));
+// Middleware
 app.use(cors())
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.cookieParser());
-// app.use(express.session({ secret: 'keyboard cat' }));
-
 app.use(session({
   secret: config.secret,
   saveUninitialized: true,
   resave: true
 }));
 
+// Middleware Passport
 app.use(passport.initialize());
 app.use(passport.session());
-
 require('./config/passport')(passport);
 
 
 // Group1
-// var heroes = require('./routes/group1/heroes/heroes');
-// app.use('/heroes', heroes);
-// var items = require('./routes/group1/items/items');
-// app.use('/items', items);
+var heroes = require('./routes/group1/heroes');
+app.use('/heroes', heroes);
+var items = require('./routes/group1/items');
+app.use('/items', items);
 
 // Group2
 var auth = require('./routes/group2/auth/auth');
 app.use('/auth', auth);
-// var users = require('./routes/group2/users');
-// app.use('/users', users);
 
 app.use('/', function(req, res){
   res.send('End piont');

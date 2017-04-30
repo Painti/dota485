@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  name : String;
 
   constructor(
     private authService:AuthService,
@@ -15,11 +16,18 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.getProfile().subscribe(data => {
+      this.name = data.user.displayName;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
   }
 
   onLogout(){
     this.authService.logout();
-    this.router.navigate(['/']);
+    window.location.href = '/';
     return false;
   }
 }

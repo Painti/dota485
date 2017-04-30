@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  msg: String;
 
   constructor(
     private authService:AuthService,
@@ -16,10 +17,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.authenticateUser().subscribe(data => {
+      this.msg = '';
       if(data.success){
         this.authService.storeUserData(data.token, data.user);
-        this.router.navigate(['profile']);
+        window.location.href = '/profile';
       } else {
+        this.msg = 'Redirecting to steam';
         window.location.href = 'http://localhost:3000/auth/steam';
       }
     });

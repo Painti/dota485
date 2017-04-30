@@ -14,17 +14,23 @@ import { HeroComponent } from './components/group1/hero/hero.component';
 // Components group2
 import { LoginComponent } from './components/group2/login/login.component';
 import { MatchComponent } from './components/group2/match/match.component';
+import { MatchDetailComponent } from './components/group2/match/match-detail/match-detail.component';
 import { ProfileComponent } from './components/group2/profile/profile.component';
+import { ProfileSettingComponent } from './components/group2/profile/profile-setting/profile-setting.component';
 import { AuthService } from './services/group2/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
+import { MmrComponent } from './components/group1/mmr/mmr.component';
+import { ItemComponent } from './components/group1/item/item.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hero', component: HeroComponent },
   { path: 'login', component: LoginComponent , canActivate: [LoginGuard]},
   { path: 'match', component: MatchComponent },
-  { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]}
+  { path: 'match/:match_id', component: MatchDetailComponent },
+  { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
+  { path: 'profile/setting', component: ProfileSettingComponent , canActivate: [AuthGuard]}
 ]
 
 @NgModule({
@@ -34,8 +40,12 @@ const appRoutes: Routes = [
     HomeComponent,
     HeroComponent,
     MatchComponent,
+    MatchDetailComponent,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileSettingComponent,
+    MmrComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

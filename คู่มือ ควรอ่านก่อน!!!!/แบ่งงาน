@@ -2,8 +2,17 @@ group1 => B2 NUT WIN
 group2 => B1 B3 MIT
 
 group1
-ใน routes\group1
+ใน angular-src\src\app\components\group1
 จะมีโฟลเดอร์ 4 โฟลเดอร์ แบ่งงานกัน 3 คน
+
+>> home <<
+  ข้อมูลคร่าวๆ
+  - ช่อง search หา player match heroes item ต่างๆ
+  - หน้าแสดง status ต่างๆของเซิฟเวอร์
+  เช่น จำนวนผู้เล่นทั้งหมดใน dota
+  จำนวนผู้เล่นที่เล่นอยู่ในขณะนี้
+  จำนวน match ของเมื่อวาน เป็นต้น
+
 ้>> heroes <<
   ข้อมูลคร่าวๆ
   1 หน้า list hero
@@ -38,18 +47,11 @@ group1
   2 หน้าแสดง ผู้ที่ mmr เยอะที่สุดในแต่ละ server
     เช่น http://www.dota2.com/leaderboards/#se_asia
 
->> status <<
-  ข้อมูลคร่าวๆ
-  - หน้าแสดง status ต่างๆของเซิฟเวอร์
-    เช่น จำนวนผู้เล่นทั้งหมดใน dota
-        จำนวนผู้เล่นที่เล่นอยู่ในขณะนี้
-        match ล่าสุด 10 match
-        จำนวน match ของเมื่อวาน เป็นต้น
 
 group2
-ใน routes\group2
+ใน angular-src\src\app\components\group1
 จะมีโฟลเดอร์ 4 โฟลเดอร์ แบ่งงานกัน 3 คน
->> auth <<
+>> login <<
   ข้อมูลคร่าวๆ แบ่งเป็น 2 ส่วน คือ steam กับ facebook
   1 steam
     - หน้าล้อกอิน steam
