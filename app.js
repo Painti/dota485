@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var config = require('./config/database');
+var session = require('express-session');
 
 // Connect To Database
 mongoose.connect(config.url);
@@ -22,13 +23,26 @@ mongoose.connection.on('error', (err) => {
 
 var app = express();
 
-app.use(cors());
+// var corsOptions = {
+//   origin: 'http://localhost:4200',
+//   credentials: true
+// }
+//
+// app.use(cors(corsOptions));
+app.use(cors())
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.cookieParser());
 // app.use(express.session({ secret: 'keyboard cat' }));
+
+app.use(session({
+  secret: config.secret,
+  saveUninitialized: true,
+  resave: true
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
