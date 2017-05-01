@@ -8,9 +8,7 @@ var facebookUser = require('../../model/facebookuser')
 var request = require("request")
 var LocalStorage = require('node-localstorage')
 
-router.post('/', passport.authenticate('facebook'), function(req, res) {
-
-});
+router.get('/', passport.authenticate('facebook'));
 
 router.get('/callback',
   passport.authenticate('facebook', {
@@ -21,13 +19,17 @@ router.get('/callback',
     res.redirect('http://localhost:3000/auth/facebook/authenticate');
   });
 
-router.get('/authenticate',
+router.post('/authenticate',
   // cors({ origin: 'http://localhost:4200', credentials: true}),
-  isLoggedIn,
+  // isLoggedIn,
   function(req, res) {
-    res.json({
-      fb : req.user
-    });
+    if(req.user == undefined){
+      res.redirect('/auth/facebook')
+    } else {
+      res.json({
+        fb : req.user
+      });
+    }
   });
 
 function isLoggedIn(req, res, next) {
