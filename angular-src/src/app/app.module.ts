@@ -10,6 +10,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 // Components group1
 import { HomeComponent } from './components/group1/home/home.component';
 import { HeroComponent } from './components/group1/hero/hero.component';
+import { MmrComponent } from './components/group1/mmr/mmr.component';
+import { ItemComponent } from './components/group1/item/item.component';
 
 // Components group2
 import { LoginComponent } from './components/group2/login/login.component';
@@ -20,12 +22,12 @@ import { ProfileSettingComponent } from './components/group2/profile/profile-set
 import { AuthService } from './services/group2/auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
-import { MmrComponent } from './components/group1/mmr/mmr.component';
-import { ItemComponent } from './components/group1/item/item.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hero', component: HeroComponent },
+  { path: 'item', component: ItemComponent },
+  { path: 'ranking', component: MmrComponent },
   { path: 'login', component: LoginComponent , canActivate: [LoginGuard]},
   { path: 'match', component: MatchComponent },
   { path: 'match/:match_id', component: MatchDetailComponent },

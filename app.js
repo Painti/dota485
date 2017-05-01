@@ -27,7 +27,7 @@ var app = express();
 app.use(cors())
 app.use(logger('dev'));
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: config.secret,
@@ -48,7 +48,7 @@ var items = require('./routes/group1/items');
 app.use('/items', items);
 
 // Group2
-var auth = require('./routes/group2/auth/auth');
+var auth = require('./routes/group2/auth');
 app.use('/auth', auth);
 
 app.use('/', function(req, res){

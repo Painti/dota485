@@ -1,3 +1,7 @@
-<p>
-  profile-setting works!
-</p>
+<div *ngIf="user">
+  <h2>{{user.account_id}}</h2>
+  <form action="/" method="post" >
+    <input type="hidden" name="steam_id" value="{{user.account_id}}"/>
+    <input type="submit" class="btn btn-success" value="Link">
+  </form>
+</div>

@@ -1,7 +1,9 @@
 var server = require('./server');
 var steam = require('./steam');
+var facebook = require('./facebook');
 var SteamStrategy = require('passport-steam').Strategy;
 var steamuser = require('../model/steamuser');
+var FacebookStrategy = require('passport-facebook').Strategy;
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var config = require('./database');
@@ -45,6 +47,19 @@ module.exports = function(passport) {
         steamuser.saveUser(profile);
         return done(null, profile);
       });
+    }
+  ));
+
+  // Passport Facebook
+  passport.use(new FacebookStrategy({
+      clientID: facebook.appid,
+      clientSecret: facebook.secret,
+      callbackURL: 'http://' + server.hostname + ':' + server.port + '/auth/facebook/callback',
+      profileFields: ['id', 'displayName', 'photos'],
+      enableProof: true
+    },
+    function(accessToken, refreshToken, profile, done) {
+      return done(null, profile);
     }
   ));
 }
