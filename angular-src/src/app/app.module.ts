@@ -20,8 +20,10 @@ import { MatchDetailComponent } from './components/group2/match/match-detail/mat
 import { ProfileComponent } from './components/group2/profile/profile.component';
 import { ProfileSettingComponent } from './components/group2/profile/profile-setting/profile-setting.component';
 import { AuthService } from './services/group2/auth.service';
+import { LinkFacebookService } from './services/group2/link-facebook.service';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
+import { LinkFacebookComponent } from './components/group2/profile/profile-setting/link-facebook/link-facebook.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     LoginComponent,
     ProfileSettingComponent,
     MmrComponent,
-    ItemComponent
+    ItemComponent,
+    LinkFacebookComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, AuthGuard, LoginGuard],
+  providers: [AuthService, LinkFacebookService, AuthGuard, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -29,7 +29,7 @@ router.get('/authenticate',
         const token = jwt.sign(user, config.secret, {
           expiresIn: 86400 // 1 day
         });
-
+        req.session.usersteam = user;
         req.logout();
         res.json({
           success: true,

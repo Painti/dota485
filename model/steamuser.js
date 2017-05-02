@@ -21,7 +21,7 @@ var userSchema = mongoose.Schema({
     personastateflags: { type: Number }
   }},
   facebook: {type: {
-    facebookid: { type: String },
+    id: { type: String },
     username: { type: String },
     photo: { type: String }
   }, defaults: null}
@@ -46,5 +46,21 @@ module.exports.saveUser =  function(newUser) {
       } else {
         console.log(newUser.id + ' logging in!');
       }
+    });
+  }
+
+  module.exports.updateUser =  function(st_user, fb_user, callback) {
+    var fb = {};
+    fb.id = fb_user.id;
+    fb.username = fb_user.displayName;
+    fb.photo = fb_user.photos[0].value;
+
+    // Users.findOneAndUpdate({id: st_user.id}, { $set: fb },{upsert: true}, callback);
+
+    Users.findOne({
+      id: st_user.id
+    }, function (err, user) {
+      user.facebook = fb;
+      user.save(callback)
     });
   }

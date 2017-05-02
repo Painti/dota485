@@ -20,6 +20,7 @@ export class ProfileSettingComponent implements OnInit {
   ngOnInit() {
     this.authService.getProfile().subscribe(data => {
       this.user = data.user;
+      this.authService.linkFacebook().subscribe();
     },
     err => {
       console.log(err);
@@ -27,13 +28,8 @@ export class ProfileSettingComponent implements OnInit {
     });
   }
 
-  onSubmitFormLink(){
-    let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    this.http.post('http://localhost:3000/auth/facebook/authenticate', this.user, {headers: headers})
-      .map(res => res.json()).subscribe(data => {
-        console.log(data);
-      });
+  onClickLink(){
+    window.location.href = "http://localhost:3000/auth/facebook";
   }
 
 }
