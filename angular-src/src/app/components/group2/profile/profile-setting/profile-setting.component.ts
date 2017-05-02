@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import { AuthService } from '../../../../services/group2/auth.service';
 import { Router } from '@angular/router';
 
@@ -12,7 +11,6 @@ export class ProfileSettingComponent implements OnInit {
   user : Object;
 
   constructor(
-    private http: Http,
     private authService:AuthService,
     private router:Router
   ) { }
@@ -20,7 +18,6 @@ export class ProfileSettingComponent implements OnInit {
   ngOnInit() {
     this.authService.getProfile().subscribe(data => {
       this.user = data.user;
-      this.authService.linkFacebook().subscribe();
     },
     err => {
       console.log(err);

@@ -20,9 +20,9 @@ import { MatchDetailComponent } from './components/group2/match/match-detail/mat
 import { ProfileComponent } from './components/group2/profile/profile.component';
 import { ProfileSettingComponent } from './components/group2/profile/profile-setting/profile-setting.component';
 import { AuthService } from './services/group2/auth.service';
-import { LinkFacebookService } from './services/group2/link-facebook.service';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
+import { LinkFacebookGuard } from './guard/linkfacebook.guard';
 import { LinkFacebookComponent } from './components/group2/profile/profile-setting/link-facebook/link-facebook.component';
 
 const appRoutes: Routes = [
@@ -34,7 +34,8 @@ const appRoutes: Routes = [
   { path: 'match', component: MatchComponent },
   { path: 'match/:match_id', component: MatchDetailComponent },
   { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
-  { path: 'profile/setting', component: ProfileSettingComponent , canActivate: [AuthGuard]}
+  { path: 'profile/setting', component: ProfileSettingComponent , canActivate: [AuthGuard]},
+  { path: 'profile/setting/link-facebook', component: LinkFacebookComponent , canActivate: [AuthGuard, LinkFacebookGuard]}
 ]
 
 @NgModule({
@@ -58,7 +59,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthService, LinkFacebookService, AuthGuard, LoginGuard],
+  providers: [AuthService, AuthGuard, LoginGuard, LinkFacebookGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit {
       this.name = data.user.displayName;
     },
     err => {
-      console.log(err);
       return false;
     });
   }

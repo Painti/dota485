@@ -11,7 +11,7 @@ router.get('/callback',
   passport.authenticate('facebook', {
     failureRedirect : '/fail'
   }),function(req, res) {
-    res.redirect('http://localhost:4200/profile/setting');
+    res.redirect('http://localhost:4200/profile/setting/link-facebook');
   });
 
 router.get('/authenticate',

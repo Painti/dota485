@@ -31,6 +31,16 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  isLinkedFacebook(){
+    let x = true;
+    this.getProfile().subscribe(data => {
+      if(data.user.facebook !== undefined){
+        x = false;
+      }
+    });
+    return x;
+  }
+
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
