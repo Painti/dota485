@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 // Components group1
 import { HomeComponent } from './components/group1/home/home.component';
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FlashMessagesModule
   ],
   providers: [AuthService, AuthGuard, LoginGuard, LinkFacebookGuard],
   bootstrap: [AppComponent]

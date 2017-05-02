@@ -18,7 +18,7 @@ export class LinkFacebookComponent implements OnInit {
   ngOnInit() {
       this.authService.linkFacebook().subscribe(data => {
         if(data.success){
-          this.router.navigate(['profile/setting']);
+          this.router.navigate(['profile/setting', { linked: 'true' }]);
         }
       });
   }
