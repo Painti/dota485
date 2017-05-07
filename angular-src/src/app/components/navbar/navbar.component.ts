@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  isCollapsed : boolean = true;
   name : String;
 
   constructor(
@@ -28,5 +29,13 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     window.location.href = '/';
     return false;
+  }
+
+  collapsed(event:any):void {
+    console.log(event);
+  }
+
+  expanded(event:any):void {
+    console.log(event);
   }
 }
