@@ -13,8 +13,9 @@ group2 => B1 B3 MIT
   C:\Users\BoatZako\Desktop\dota485 > npm install
   C:\Users\BoatZako\Desktop\dota485 > cd angular-src
   C:\Users\BoatZako\Desktop\dota485\angular-src > npm install
-  
+
   ปล. ทำครั้งเดียวพอ
+  ปล. ถ้า ng serve ไม่ได้ ให้ npm start แทน
 
 --------------------------------------------------------------------------------------------
 

@@ -21,16 +21,16 @@
     </ul>
     <hr class="hidden-md-up" style="border-top: 1px solid #fff; width: 100%;">
     <ul class="navbar-nav navbar-right">
-      <li class="nav-item"  *ngIf="!authService.loggedIn()">
+      <li class="nav-item" *ngIf="!authService.loggedIn()">
         <a class="navbar-brand" [routerLink]="['/login']"><img src="assets/images/sits.png" alt="Steam LogIn" width="80px" height="30px"></a>
       </li>
-      <li class="nav-item"  *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="veiw profile" placement="bottom">
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="veiw profile" placement="bottom">
         <a class="nav-link text-center" [routerLink]="['/profile']"><i class="fa fa-user-circle fa-lg"></i><span *ngIf="name"> {{name}}</span></a>
       </li>
-      <li class="nav-item"  *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="setting" placement="bottom">
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="setting" placement="bottom">
         <a class="nav-link text-center" [routerLink]="['/profile/setting']"><i class="fa fa-cog fa-lg"></i><span class="hidden-md-up"> Setting</span></a>
       </li>
-      <li class="nav-item"  *ngIf="authService.loggedIn()" tooltip="Log out" placement="bottom">
+      <li class="nav-item" *ngIf="authService.loggedIn()" tooltip="Log out" placement="bottom">
         <a class="nav-link text-center" (click)="onLogout()" href="#"><i class="fa fa-sign-out fa-lg"></i><span class="hidden-md-up"> Log out</span></a>
       </li>
     </ul>

@@ -1,10 +1,10 @@
-body{
-  color: #fff;
-  background-color: #292b2c;
-}
-
 .tooltip{
   opacity:0.9;
+}
+
+body{
+  background-color: #292b2c;
+  color: #fff;
 }
 
 .tooltip-inner {
