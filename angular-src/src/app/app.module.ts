@@ -9,6 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
+import { GetApiService } from './services/get-api.service';
 
 
 // Components group1
@@ -64,9 +67,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
     CollapseModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    TabsModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, LoginGuard, LinkFacebookGuard],
+  providers: [AuthService, GetApiService, AuthGuard, LoginGuard, LinkFacebookGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

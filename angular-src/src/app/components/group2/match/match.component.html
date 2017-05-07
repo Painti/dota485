@@ -1,3 +1,32 @@
-<p>
-  match works!
-</p>
+<nav>
+  <ul>
+      <li [className]="tabs[0]" (click)="onTab(0)">Pro player</li>
+      <li [className]="tabs[1]" (click)="onTab(1)">High MMR</li>
+      <li [className]="tabs[2]" (click)="onTab(2)">Low MMR</li>
+  </ul>
+</nav>
+
+<div *ngIf="pro && tabs[0]=='active'">
+  <div class="list-card">
+    <div class="card card-gray" *ngFor="let item of pro; let i = index">
+      <div class="card-block">
+        <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
+      </div>
+    </div>
+    <!-- <ul>
+    <li *ngFor="let item of pro; let i = index">
+        {{i}} {{item.match_id}}
+      </li>
+    </ul> -->
+  </div>
+</div>
+
+<div *ngIf="tabs[1]=='active'">
+  <ul>
+  </ul>
+</div>
+
+<div *ngIf="tabs[2]=='active'">
+  <ul>
+  </ul>
+</div>
