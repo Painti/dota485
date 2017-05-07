@@ -6,7 +6,4 @@ router.get('/', function(req, res, next) {
   res.send('heroes');
 });
 
-var test = require('./test');
-router.use('/test', test);
-
 module.exports = router;

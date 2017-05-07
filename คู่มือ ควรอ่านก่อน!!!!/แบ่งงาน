@@ -1,0 +1,86 @@
+group1 => B2 NUT WIN
+group2 => B1 B3 MIT
+
+group1
+ใน angular-src\src\app\components\group1
+จะมีโฟลเดอร์ 4 โฟลเดอร์ แบ่งงานกัน 3 คน
+
+>> home <<
+  ข้อมูลคร่าวๆ
+  - ช่อง search หา player match heroes item ต่างๆ
+  - หน้าแสดง status ต่างๆของเซิฟเวอร์
+  เช่น จำนวนผู้เล่นทั้งหมดใน dota
+  จำนวนผู้เล่นที่เล่นอยู่ในขณะนี้
+  จำนวน match ของเมื่อวาน เป็นต้น
+
+้>> heroes <<
+  ข้อมูลคร่าวๆ
+  1 หน้า list hero
+    เช่น http://www.dota2.com/heroes/?l=thai
+  2 หน้าของแต่ละฮีโร่
+    ประกอบด้วย stat, skill ประมาณนี้
+  3 หน้าที่ guide ทั้งการออกของ, การอัพสกิล
+  4 หน้าที่บอกว่าฮีโร่ตัวนี้ออกของชิ้นไหนมีโอกาสชนะสูง
+    เช่น https://www.dotabuff.com/heroes/luna/items
+    (เพื่มเติมหน้านี้ ถ้า login steam แล้ว อาจจะดูได้ว่า user ที่ login ส่วนใหญ่ออกของชิ้นไหน)
+  5 หน้าที่บอกว่าการอัพสกิลแบบไหนโอกาสชนะสูง (คล้ายๆกับ ไอเทม ข้อ4)
+  6 หน้าที่บอกว่าฮีโรตัวนี้ โปรเพล์เยอร์คนไหนเล่นดี
+    เช่น https://www.dotabuff.com/heroes/luna/players
+    (เพื่มเติมหน้านี้ ถ้า login steam แล้ว อาจจะดูได้ว่า user ที่ login เล่นฮีโร่ตัวนี้อยู่อันดับที่เท่าไหร่)
+  7 หน้า list hero คล้ายๆข้อ 1 แต่หน้านี้จะบอก stat การ pick ban winrate
+    เช่น https://www.opendota.com/heroes, https://www.dotabuff.com/heroes/meta
+  ข้อมูลส่วนใหญ่ดึงจาก api ได้
+
+>> items <<
+  ข้อมูลคร่าวๆ
+  1 หน้า list item
+    เช่น http://www.dota2.com/items/
+  2 หน้าบอกไอเทมที่ผู้เล่นส่วนใหญ่นิยมใช้
+    เช่น https://www.dotabuff.com/items
+  3 หน้าที่บอกว่าใช้ไอเทมไหนโอกาสชนะสูง
+    เช่น https://www.dotabuff.com/items/winning
+
+>> mmr <<
+  ข้อมูลคร่าวๆ
+  1 หน้าแสดงจำนวนผู้เล่นในช่วง mmr ต่างๆ
+    เช่น https://www.opendota.com/distributions
+  2 หน้าแสดง ผู้ที่ mmr เยอะที่สุดในแต่ละ server
+    เช่น http://www.dota2.com/leaderboards/#se_asia
+
+
+group2
+ใน angular-src\src\app\components\group1
+จะมีโฟลเดอร์ 4 โฟลเดอร์ แบ่งงานกัน 3 คน
+>> login <<
+  ข้อมูลคร่าวๆ แบ่งเป็น 2 ส่วน คือ steam กับ facebook
+  1 steam
+    - หน้าล้อกอิน steam
+  2 facebook
+    - หน้าล้อกอิน facebook
+    - หน้าที่บอกว่า steam เชื่อมกับ facebook เรียบร้อยแล้ว
+
+>> match <<
+  ข้อมูลคร่าวๆ
+  1 หน้า match detail
+    - บอก stat ต่างๆในแมตซ์
+    - การอัพสกิล
+    - การออกของ
+    - ลิ้งโหลดรีเพลย์
+    - ป้อมต่างๆที่ถูกทำลาย
+    - ข้อมูลการเล่นอื่นๆ
+    ตัวอย่าง https://www.opendota.com/matches/2102426920/overview
+  2 list match ล่าสุดที่ proplayer เล่น หรือ แมตซ์ทั่วไป หรือ เรียงตาม mmr
+    e.g. https://www.opendota.com/matches
+
+>> profile <<
+  1 หน้า overview ต่างๆ
+    - stat
+    - party
+    - friend
+    - ฮีโร่ที่เล่นแล้วชนะบ่อย
+    - ไอเทมที่ชอบใช้
+  2 หน้า setting
+    - ลิ้งกับ facebook
+
+>> share <<
+  1 หน้า share ลง facebook (อาจจะไม่ต้องมีหน้า ทำ back-end พอ)

@@ -15,7 +15,8 @@ GET /heroStats
 https://api.opendota.com/api/heroStats
 
 GET /publicMatches
-https://api.opendota.com/api/publicMatches?mmr_ascending=asc
+https://api.opendota.com/api/publicMatches?mmr_ascending=   -> มากไปน้อย
+https://api.opendota.com/api/publicMatches?mmr_ascending=1  -> น้อยไปมาก
 
 GET /proMatches
 https://api.opendota.com/api/proMatches
@@ -26,5 +27,20 @@ https://api.opendota.com/api/proPlayers
 GET /players/{account_id}
 https://api.opendota.com/api/players/128102870
 
+GET /matches/{match_id}
+https://api.opendota.com/api/matches/2102426920
+
 GET /replays
 https://api.opendota.com/api/replays?match_id=2617377831
+
+GET /status
+https://api.opendota.com/api/status
+
+POST /request/{match_id}
+https://api.opendota.com/api/request/2102426920
+-> จะได้ job id สมมุติได้ 250161 นำไปใส่ด้านล่าง
+
+GET /request/{jobId}
+https://api.opendota.com/api/request/250161
+-> รอจน state : complete แสดงว่า เรียบร้อย สามารถเรียกข้อมูลได้
+   แต่ถ้า state : fail แสดงว่า ไม่สามารถเรียกข้อมูลได้
