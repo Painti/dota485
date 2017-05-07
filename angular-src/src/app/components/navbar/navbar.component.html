@@ -22,8 +22,8 @@
         <a class="nav-link text-center" [routerLink]="['/match']">Match</a>
       </li>
     </ul>
+    <hr class="hidden-md-up" style="border-top: 1px solid #fff; width: 100%;">
     <ul class="navbar-nav navbar-right">
-      <hr class="hidden-md-up" style="border-top: 1px solid #fff; width: 100%;">
       <li class="nav-item"  *ngIf="!authService.loggedIn()">
         <a class="navbar-brand" [routerLink]="['/login']"><img src="assets/images/sits.png" alt="Steam LogIn" width="80px" height="30px"></a>
       </li>
