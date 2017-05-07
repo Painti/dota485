@@ -24,3 +24,25 @@ Obj ที่ได้จากการ Login
      { value: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4e/4ec0c7b7037a4b46b43fde7b9788baff52bdd328_medium.jpg' },
      { value: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4e/4ec0c7b7037a4b46b43fde7b9788baff52bdd328_full.jpg' } ],
   identifier: 'http://steamcommunity.com/openid/id/76561198088368598' }
+
+  { provider: String,
+    _json:
+     { steamid: String,
+       communityvisibilitystate: Number,
+       profilestate: Number,
+       personaname: String,
+       lastlogoff: Number,
+       commentpermission: Number,
+       profileurl: String,
+       avatar: String,
+       avatarmedium: String,
+       avatarfull: String,
+       personastate: Number,
+       realname: String,
+       primaryclanid: String,
+       timecreated: 1365308995,
+       personastateflags: Number },
+    id: String,
+    displayName: String,
+    photos: Array,
+    identifier: String }

@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  color: #fff;
+  background-color: #292b2c;
+}
+
+.tooltip{
+  opacity:0.9;
+}
+
+.tooltip-inner {
+  color: #000;
+  background-color: #999;
+}
+
+.tooltip.tooltip-top .tooltip-inner::before, .tooltip.bs-tether-element-attached-bottom .tooltip-inner::before ,
+.tooltip.tooltip-bottom .tooltip-inner::before, .tooltip.bs-tether-element-attached-top .tooltip-inner::before ,
+.tooltip.tooltip-right .tooltip-inner::before, .tooltip.bs-tether-element-attached-left .tooltip-inner::before ,
+.tooltip.tooltip-left .tooltip-inner::before, .tooltip.bs-tether-element-attached-right .tooltip-inner::before {
+  border-bottom-color: #999;
+}
+
+.navbar {
+  border-bottom: 1px solid #000;
+}
+
+.bg-inverse {
+  background-color: #121212 !important;
+}

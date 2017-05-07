@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 
 // Components group1
 import { HomeComponent } from './components/group1/home/home.component';
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    TooltipModule.forRoot()
   ],
   providers: [AuthService, AuthGuard, LoginGuard, LinkFacebookGuard],
   bootstrap: [AppComponent]
