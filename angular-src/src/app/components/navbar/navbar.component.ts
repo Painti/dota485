@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isCollapsed : boolean = true;
   name : String;
+  isCollapsed : boolean = true;
 
   constructor(
     private authService:AuthService,
@@ -31,11 +31,4 @@ export class NavbarComponent implements OnInit {
     return false;
   }
 
-  collapsed(event:any):void {
-    console.log(event);
-  }
-
-  expanded(event:any):void {
-    console.log(event);
-  }
 }

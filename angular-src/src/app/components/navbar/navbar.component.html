@@ -4,10 +4,7 @@
   </button>
   <a class="navbar-brand" [routerLink]="['/']"><img src="assets/images/logo.png" alt="Dota2 Stat" width="80px" height="30px"></a>
 
-  <div (collapsed)="collapsed($event)"
-       (expanded)="expanded($event)"
-       [collapse]="isCollapsed"
-       class="collapse navbar-collapse">
+  <div [collapse]="isCollapsed" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto navbar-left">
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link text-center" [routerLink]="['/hero']">Hero</a>
