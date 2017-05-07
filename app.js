@@ -51,9 +51,6 @@ app.use('/mmr', mmr);
 
 // Group2
 
-var users = require('./routes/group2/users');
-app.use('/users', users);
-
 var auth = require('./routes/group2/auth');
 app.use('/auth', auth);
 
