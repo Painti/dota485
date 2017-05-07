@@ -34,12 +34,14 @@ var heroes = require('./routes/group1/heroes');
 app.use('/heroes', heroes);
 var items = require('./routes/group1/items');
 app.use('/items', items);
+var mmr = require('./routes/group1/mmr');
+app.use('/mmr', mmr);
 
 // Group2
 var users = require('./routes/group2/users');
 app.use('/users', users);
-var auth = require('./routes/group2/auth');
-app.use('/auth', auth);
+// var auth = require('./routes/group2/auth/auth');
+// app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
