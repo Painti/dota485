@@ -50,15 +50,13 @@ var mmr = require('./routes/group1/mmr');
 app.use('/mmr', mmr);
 
 // Group2
-<<<<<<< HEAD
+
 var users = require('./routes/group2/users');
 app.use('/users', users);
-// var auth = require('./routes/group2/auth/auth');
-// app.use('/auth', auth);
-=======
+
 var auth = require('./routes/group2/auth');
 app.use('/auth', auth);
->>>>>>> 48b06fe9f4a1bfcfaca5527f0bf20bfef67f0784
+
 
 app.use('/', function(req, res){
   res.send('End piont');
