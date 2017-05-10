@@ -11,7 +11,7 @@ export class HeroComponent implements OnInit {
   constructor(private api:GetApiService) { }
   hero:Array<Object>
   ngOnInit() {
-    this.api.getHero('heropickerdata').subscribe(data =>{
+    this.api.getHero().subscribe(data =>{
       this.hero = data
     }, err =>{
       console.log(err);

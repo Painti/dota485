@@ -18,8 +18,8 @@ export class GetApiService {
       .map(res => res.json());
   }
 
-  getHero(url){
-    return this.http.get('http://www.dota2.com/jsfeed/'+url)
+  getHero(){
+    return this.http.get('http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key=D66F1513084C6633AC47944E35FF8203')
       .map(res => res.json());
   }
 
