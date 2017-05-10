@@ -10,7 +10,7 @@
   <div class="list-card">
     <div class="card card-gray" *ngFor="let item of pro; let i = index">
       <div class="card-block">
-        <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
+        <a class="card-link" [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
       </div>
     </div>
     <!-- <ul>
