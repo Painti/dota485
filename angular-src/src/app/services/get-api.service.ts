@@ -12,4 +12,15 @@ export class GetApiService {
       .map(res => res.json());
   }
 
+  //API mmr ranking
+  getMMRData(){
+    return this.http.get('http://www.dota2.com/webapi/ILeaderboard/GetDivisionLeaderboard/v0001?division=europe')
+      .map(res => res.json());
+  }
+
+  getHero(url){
+    return this.http.get('http://www.dota2.com/jsfeed/'+url)
+      .map(res => res.json());
+  }
+
 }

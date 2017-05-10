@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetApiService } from '../../../services/get-api.service';
 
 @Component({
   selector: 'app-hero',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private api:GetApiService) { }
+  hero:Array<Object>
   ngOnInit() {
+    this.api.getHero('heropickerdata').subscribe(data =>{
+      this.hero = data
+    }, err =>{
+      console.log(err);
+      return false;
+    });
   }
 
 }
