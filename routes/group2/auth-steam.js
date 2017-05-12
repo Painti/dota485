@@ -3,20 +3,21 @@ var router = express.Router();
 var passport = require('passport');
 var cors = require('cors');
 var jwt = require('jsonwebtoken');
-var config = require('../../config/database')
-var steamUser = require('../../model/steamuser')
+var config = require('../../config/database');
+var steamUser = require('../../model/steamuser');
+var server = require('../../config/server');
 
 router.get('/', passport.authenticate('steam'));
 
 router.get('/callback',
   passport.authenticate('steam', {
-    // successRedirect : 'http://localhost:4200/login'
-    successRedirect : '/'
+    successRedirect : server.angular + '/login'
+    // successRedirect : '/'
     // successRedirect : 'http://localhost:3000/auth/steam/authenticate'
   }));
 
 router.get('/authenticate',
-  cors({ origin: 'http://localhost:4200', credentials: true}),
+  cors({ origin: server.angular , credentials: true}),
   isLoggedIn,
   function(req, res) {
     steamUser.getUserById(req.user.id, (err, user) => {
