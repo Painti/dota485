@@ -23,7 +23,7 @@
   <div class="content">
     <table class="table-content" cellpadding="0" cellspacing="0" border="0">
       <tbody>
-        <tr *ngFor="let item of pro; let i = index ">
+        <tr *ngFor="let item of pro | filter : ['-match_id']; let i = index ">
           <td>
             <div>
               <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
