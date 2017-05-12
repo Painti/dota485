@@ -5,6 +5,12 @@ a:hover {
 .header {
   background-color: rgba(18, 18, 18, 0.25);
   border-bottom: 1px solid #121212;
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 .content {
@@ -12,9 +18,15 @@ a:hover {
   margin-top: 0px;
 }
 
+.sort:HOVER{
+  font-weight: 600;
+  cursor: pointer;
+}
+
 table {
   width: 100%;
   table-layout: fixed;
+  overflow: hidden;
 }
 
 tbody tr {

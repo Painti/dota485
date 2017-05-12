@@ -14,6 +14,9 @@ export class MatchComponent implements OnInit {
   high: Array<Object>;
   low: Array<Object>;
   tabs: Array<String>;
+  order: Object = { id: String, league: String };
+  shift: Boolean;
+  arrfilter: Array<String>;
 
   ngOnInit() {
     this.api.getOpendata('proMatches').subscribe(data => {
@@ -41,6 +44,35 @@ export class MatchComponent implements OnInit {
       });
 
     this.tabs = ['active', '', ''];
+    this.order = {
+      'match_id': 'desc',
+      'league_name': ''
+    };
+    this.arrfilter = ['-match_id'];
+  } // end init
+
+  switchAsc(prop:string) {
+    let x = this.order[prop];
+    this.order['match_id'] = '';
+    this.order['league_name'] = '';
+    if(x == 'asc'){
+      this.order[prop] = 'desc';
+      this.arrfilter = ['-'+prop];
+    } else if(x == 'desc'){
+      this.order[prop] = 'asc';
+      this.arrfilter = ['+'+prop];
+    } else {
+      this.order[prop] = 'asc';
+      this.arrfilter = ['+'+prop];
+    }
+  }
+
+  onShiftDown(event: KeyboardEvent) {
+    this.shift = true;
+  }
+
+  onShiftUp(event: KeyboardEvent) {
+    this.shift = false;
   }
 
   onTab(num) {
@@ -59,8 +91,8 @@ export class MatchComponent implements OnInit {
   getTime(time: number) {
     let min = Math.floor(time / 60);
     let sec = time % 60;
-    let sec_str:String;
-    if(sec < 10){
+    let sec_str: String;
+    if (sec < 10) {
       sec_str = '0' + sec;
     } else {
       sec_str = '' + sec;
@@ -68,8 +100,8 @@ export class MatchComponent implements OnInit {
     return min + ':' + sec_str;
   }
 
-  getTeam(name){
-    if(name == null){
+  getTeam(name) {
+    if (name == null) {
       return '(annonymous)';
     }
     return name;
@@ -83,7 +115,7 @@ export class MatchComponent implements OnInit {
     let msPerYear = msPerDay * 365;
 
     let current = Date.now();
-    let elapsed = current - previous*1000;
+    let elapsed = current - previous * 1000;
 
     if (elapsed < msPerMinute) {
       return Math.round(elapsed / 1000) + ' seconds ago';
