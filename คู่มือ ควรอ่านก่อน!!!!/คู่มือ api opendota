@@ -15,6 +15,7 @@ GET /heroStats
 https://api.opendota.com/api/heroStats
 
 GET /publicMatches
+https://api.opendota.com/api/publicMatches                  -> มากไปน้อย
 https://api.opendota.com/api/publicMatches?mmr_ascending=   -> มากไปน้อย
 https://api.opendota.com/api/publicMatches?mmr_ascending=1  -> น้อยไปมาก
 

@@ -14,6 +14,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ConfigService } from './services/config.service';
 import { GetApiService } from './services/get-api.service';
 
+import { FilterPipe } from './pipes/filter.pipe';
 
 // Components group1
 import { HomeComponent } from './components/group1/home/home.component';
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     ProfileSettingComponent,
     MmrComponent,
     ItemComponent,
-    LinkFacebookComponent
+    LinkFacebookComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
