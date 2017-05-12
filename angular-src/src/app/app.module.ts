@@ -11,6 +11,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
+import { ConfigService } from './services/config.service';
 import { GetApiService } from './services/get-api.service';
 
 
@@ -70,7 +71,7 @@ const appRoutes: Routes = [
     TooltipModule.forRoot(),
     TabsModule.forRoot()
   ],
-  providers: [AuthService, GetApiService, AuthGuard, LoginGuard, LinkFacebookGuard],
+  providers: [AuthService, ConfigService, GetApiService, AuthGuard, LoginGuard, LinkFacebookGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

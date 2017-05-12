@@ -10,7 +10,8 @@ router.get('/', passport.authenticate('steam'));
 
 router.get('/callback',
   passport.authenticate('steam', {
-    successRedirect : 'http://localhost:4200/login'
+    // successRedirect : 'http://localhost:4200/login'
+    successRedirect : '/'
     // successRedirect : 'http://localhost:3000/auth/steam/authenticate'
   }));
 

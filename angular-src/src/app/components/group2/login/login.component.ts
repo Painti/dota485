@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/group2/auth.service';
 import { Router } from '@angular/router';
+import { ConfigService } from '../../../services/config.service'
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService:AuthService,
-    private router:Router
+    private router:Router,
+    private config:ConfigService
   ) { }
 
   ngOnInit() {
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
         window.location.href = '/profile';
       } else {
         this.msg = 'Redirecting to steam';
-        window.location.href = 'http://localhost:3000/auth/steam';
+        window.location.href = 'http://'+this.config.hostname+':'+this.config.port+'/auth/steam';
       }
     });
   }
