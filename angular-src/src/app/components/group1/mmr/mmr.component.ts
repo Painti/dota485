@@ -18,7 +18,6 @@ export class MmrComponent implements OnInit {
       this.ranking = data;
     },
     err => {
-      console.log(err);
       return false;
     });
   }

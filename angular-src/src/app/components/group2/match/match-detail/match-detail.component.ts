@@ -16,21 +16,37 @@ export class MatchDetailComponent implements OnInit {
 
   match:Object;
   id:string;
-  complete:number;
+  state:any;
 
   ngOnInit() {
+    this.state = {o: {state: ''}};
     this.route.params.subscribe(params => {
       this.id = params['match_id'];
-      
+      this.api.postRequestMatch(this.id).subscribe(data => {
+        let job_id = null;
+        if(data.err == null){
+          job_id = data.job.jobId;
+          this.api.getRequestMatch(job_id, this.state).subscribe(data1 => {
+            this.state.o = data1;
+          });
+        }
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
     });
+  }
 
-    // this.api.getOpendata('matches/'+this.id).subscribe(data => {
-    //   this.match = data;
-    // },
-    // err => {
-    //   console.log(err);
-    //   return false;
-    // });
+  getProgress(obj: Object){
+    if(obj['state'] == 'failed' || obj['state'] == 'completed'){
+      obj['progress'] = 100;
+      obj['state'] = '1';
+      this.api.getOpendata('/matches/'+this.id).subscribe(data => {
+        this.match = data;
+      });
+    }
+    return obj['progress'];
   }
 
 }

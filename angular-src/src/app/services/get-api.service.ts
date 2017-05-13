@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ConfigService } from './config.service';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class GetApiService {
@@ -14,9 +15,25 @@ export class GetApiService {
       .map(res => res.json());
   }
 
-  getRequestMatch(id){
+  getRequestMatch(id, obj){
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/opendota/getreq/'+id)
-      .map(res => res.json());
+      .map(res => res.json())
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
+      .flatMap(result => {
+          if(result.progress > 1){
+            let start = Date.now();
+            let now = start;
+            while (now - start < 3000) {
+              now = Date.now();
+            }
+          }
+          obj.o = result;
+          if(result.state == 'failed' || result.state == 'completed' )
+            return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/opendota/getreq/'+id)
+              .map(res => res.json());
+          else
+            return this.getRequestMatch(id, obj);
+      });
   }
 
   postRequestMatch(id){

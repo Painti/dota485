@@ -1,7 +1,7 @@
-<div *ngIf="!match" class="mt-5">
-  <h1 class="text-center">Progress</h1>
+<div *ngIf="state.o.state && !match" class="mt-5">
+  <h1 class="text-center">Loading...</h1>
   <div class="progress mt-5 custom-progress">
-    <div class="progress-bar bg-danger" role="progressbar" style="width: 25%; height: 20px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width': getProgress(state.o)+'%'}" style="height: 20px;" aria-valuemin="0" aria-valuemax="100">{{getProgress(state.o)}}%</div>
   </div>
 </div>
 <div *ngIf="match">
