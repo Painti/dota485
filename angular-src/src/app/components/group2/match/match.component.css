@@ -21,7 +21,7 @@ a:hover {
 }
 
 .table-match .sort:HOVER{
-  font-weight: 600;
+  color: #bebebe;
   cursor: pointer;
 }
 
@@ -126,6 +126,7 @@ nav li {
 
 nav li:HOVER {
   cursor: pointer;
+  color: #bebebe
 }
 
 
