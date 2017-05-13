@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
+
 @Component({
   selector: 'app-mmr',
   templateUrl: './mmr.component.html',
@@ -56,7 +57,8 @@ export class MmrComponent implements OnInit {
   }
 
   getImageFlag(flag) {
-    return 'http://community.edgecast.steamstatic.com/public/images/countryflags/' + flag + '.gif';
+    let msg = 'http://community.edgecast.steamstatic.com/public/images/countryflags/' + flag + '.gif';
+    return msg;
   }
 
 }

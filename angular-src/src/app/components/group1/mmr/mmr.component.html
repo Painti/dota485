@@ -18,7 +18,7 @@
           <span *ngIf="item.team_tag">{{item.team_tag}}.</span>
           <span style="font-weight:bold">{{item.name}}</span>
           <span *ngIf="item.sponsor">.{{item.sponsor}}</span>
-          <img src="{{getImageFlag(item.country)}}">
+          <span *ngIf="getImageFlag(item.country)"><img src="{{getImageFlag(item.country)}}"></span>
         </td>
         <td>{{item.solo_mmr}}</td>
       </tr>
