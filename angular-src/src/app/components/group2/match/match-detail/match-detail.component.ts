@@ -10,6 +10,7 @@ export class MatchDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

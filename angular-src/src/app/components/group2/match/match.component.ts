@@ -77,15 +77,11 @@ export class MatchComponent implements OnInit {
     this.initOrder();
   }
 
-  trackByFn(index, item) {
-    return item.id;
-  }
-
   canShow(arr, num) {
     return arr && this.tabs[num] == 'active';
   }
 
-  getImageHero(hero){
+  getImageHero(hero) {
     return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + hero + '_sb.png';
   }
 
