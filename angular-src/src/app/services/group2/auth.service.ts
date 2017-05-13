@@ -2,23 +2,24 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
+import { ConfigService } from '../config.service';
 
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
 
-  constructor(private http:Http) { }
+  constructor(private http:Http, private config:ConfigService) { }
 
   authenticateUser(){
-    return this.http.get('http://localhost:3000/auth/steam/authenticate', {withCredentials: true})
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/auth/steam/authenticate', {withCredentials: true})
       .map(res => res.json());
   }
 
   linkFacebook(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.get('http://localhost:3000/auth/facebook/authenticate', {withCredentials: true})
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/auth/facebook/authenticate', {withCredentials: true})
       .map(res => res.json());
   }
 
@@ -27,7 +28,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/auth/steam/profile', {headers: headers})
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/auth/steam/profile', {headers: headers})
       .map(res => res.json());
   }
 

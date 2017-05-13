@@ -4,6 +4,7 @@ var passport = require('passport');
 var cors = require('cors');
 var config = require('../../config/database')
 var steamuser = require('../../model/steamuser')
+var server = require('../../config/server');
 
 router.get('/', passport.authenticate('facebook'));
 
@@ -11,11 +12,11 @@ router.get('/callback',
   passport.authenticate('facebook', {
     failureRedirect : '/fail'
   }),function(req, res) {
-    res.redirect('http://localhost:4200/profile/setting/link-facebook');
+    res.redirect(server.angular + '/profile/setting/link-facebook');
   });
 
 router.get('/authenticate',
-  cors({ origin: 'http://localhost:4200', credentials: true}),
+  cors({ origin: server.angular , credentials: true}),
   isLoggedIn,
   function(req, res) {
     steamuser.updateUser(req.session.usersteam, req.user, function(err){
