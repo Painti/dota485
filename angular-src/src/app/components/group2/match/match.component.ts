@@ -50,7 +50,8 @@ export class MatchComponent implements OnInit {
   initOrder() {
     this.order = {
       'match_id': 'desc',
-      'league_name': ''
+      'league_name': '',
+      'avg_mmr': ''
     };
     this.arrfilter = ['-match_id'];
   }
@@ -59,6 +60,7 @@ export class MatchComponent implements OnInit {
     let x = this.order[prop];
     this.order['match_id'] = '';
     this.order['league_name'] = '';
+    this.order['avg_mmr'] = '';
     if (x == 'asc') {
       this.order[prop] = 'desc';
       this.arrfilter = ['-' + prop];
