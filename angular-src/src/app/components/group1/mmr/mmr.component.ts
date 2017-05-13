@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-mmr',
@@ -9,18 +10,23 @@ import { GetApiService } from '../../../services/get-api.service';
 export class MmrComponent implements OnInit {
 
   constructor(
-    private api: GetApiService
+    private api: GetApiService,
+    private route: ActivatedRoute
   ) { }
-  ranking:any;
+    ranking:Object
 
   ngOnInit() {
-    this.api.getMMRData().subscribe(data => {
+    this.api.getMMRData().subscribe( data => {
       this.ranking = data;
     },
-    err => {
-      console.log(err);
-      return false;
-    });
+     err => {
+       console.log(err);
+       return false;
+     });
+
+  }
+
+  initOrder() {
   }
 
 }
