@@ -14,6 +14,16 @@ export class GetApiService {
       .map(res => res.json());
   }
 
+  getRequestMatch(id){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/opendota/getreq/'+id)
+      .map(res => res.json());
+  }
+
+  postRequestMatch(id){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/opendota/postreq/'+id)
+      .map(res => res.json());
+  }
+
 
   //Group1
   //API mmr ranking

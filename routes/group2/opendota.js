@@ -4,6 +4,31 @@ var request = require('request');
 var sync_request = require('sync-request');
 var url = require('url');
 
+router.get('/getreq/:id', function(req, res, next) {
+  let url = 'https://api.opendota.com/api/request/' + req.params.id;
+  request(url, function(err, response, body) {
+    if (!err && response.statusCode < 400) {
+      res.json(JSON.parse(body));
+    }
+    else {
+      if (response) {
+        console.log(response.statusCode);
+      }
+      next(err);
+    }
+  });
+});
+
+router.get('/postreq/:id', function(req, res, next) {
+  let url = 'https://api.opendota.com/api/request/' + req.params.id;
+  request.post({url: url},
+    function optionalCallback(err, httpResponse, body) {
+      if (err) {
+        return err;
+      }
+      res.send(body);
+  });
+});
 
 router.get('/matches/:id', function(req, res, next) {
   let url = 'https://api.opendota.com/api/matches/' + req.params.id;
