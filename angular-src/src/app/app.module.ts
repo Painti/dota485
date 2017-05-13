@@ -33,6 +33,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
 import { LinkFacebookGuard } from './guard/linkfacebook.guard';
 import { LinkFacebookComponent } from './components/group2/profile/profile-setting/link-facebook/link-facebook.component';
+import { OverviewComponent } from './components/group2/match/match-detail/overview/overview.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     MmrComponent,
     ItemComponent,
     LinkFacebookComponent,
-    FilterPipe
+    FilterPipe,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,

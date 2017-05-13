@@ -24,5 +24,5 @@ export class ProfileComponent implements OnInit {
       return false;
     });
   }
-  
+
 }
