@@ -28,7 +28,7 @@ export class GetApiService {
   //Group1
   //API mmr ranking
   getMMRData(){
-    return this.http.get('http://www.dota2.com/webapi/ILeaderboard/GetDivisionLeaderboard/v0001?division=europe')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/mmr')
       .map(res => res.json());
   }
 

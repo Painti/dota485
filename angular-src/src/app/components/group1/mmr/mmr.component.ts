@@ -11,6 +11,13 @@ export class MmrComponent implements OnInit {
   constructor(private api:GetApiService) { }
   ranking:Array<Object>;
   ngOnInit() {
+    this.api.getMMRData().subscribe(data => {
+      this.ranking = data;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
   }
 
 }
