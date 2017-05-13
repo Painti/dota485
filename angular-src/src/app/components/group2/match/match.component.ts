@@ -35,7 +35,7 @@ export class MatchComponent implements OnInit {
         return false;
       });
 
-    this.api.getOpendata('publicMatches?mmr_ascending=1').subscribe(data => {
+    this.api.getOpendata('publicMatches?low=true').subscribe(data => {
       this.low = data;
     },
       err => {
@@ -44,40 +44,37 @@ export class MatchComponent implements OnInit {
       });
 
     this.tabs = ['active', '', ''];
+    this.initOrder();
+  } // end init
+
+  initOrder() {
     this.order = {
       'match_id': 'desc',
       'league_name': ''
     };
     this.arrfilter = ['-match_id'];
-  } // end init
+  }
 
-  switchAsc(prop:string) {
+  switchAsc(prop: string) {
     let x = this.order[prop];
     this.order['match_id'] = '';
     this.order['league_name'] = '';
-    if(x == 'asc'){
+    if (x == 'asc') {
       this.order[prop] = 'desc';
-      this.arrfilter = ['-'+prop];
-    } else if(x == 'desc'){
+      this.arrfilter = ['-' + prop];
+    } else if (x == 'desc') {
       this.order[prop] = 'asc';
-      this.arrfilter = ['+'+prop];
+      this.arrfilter = ['+' + prop];
     } else {
       this.order[prop] = 'asc';
-      this.arrfilter = ['+'+prop];
+      this.arrfilter = ['+' + prop];
     }
-  }
-
-  onShiftDown(event: KeyboardEvent) {
-    this.shift = true;
-  }
-
-  onShiftUp(event: KeyboardEvent) {
-    this.shift = false;
   }
 
   onTab(num) {
     this.tabs = ['', '', ''];
     this.tabs[num] = 'active';
+    this.initOrder();
   }
 
   trackByFn(index, item) {
@@ -86,6 +83,10 @@ export class MatchComponent implements OnInit {
 
   canShow(arr, num) {
     return arr && this.tabs[num] == 'active';
+  }
+
+  getImageHero(hero){
+    return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + hero + '_sb.png';
   }
 
   getTime(time: number) {
@@ -100,7 +101,7 @@ export class MatchComponent implements OnInit {
     return min + ':' + sec_str;
   }
 
-  getTeam(name) {
+  getTeamName(name) {
     if (name == null) {
       return '(annonymous)';
     }

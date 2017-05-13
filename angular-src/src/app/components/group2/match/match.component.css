@@ -2,57 +2,54 @@ a:hover {
   text-decoration: none;
 }
 
-.header {
+.table-match {
+  width: 100%;
+  /*table-layout: fixed;*/
+  overflow: hidden;
+  border-bottom: 3px double #121212;
+  margin-bottom: 2rem;
+}
+
+.table-match thead {
   background-color: rgba(18, 18, 18, 0.25);
-  border-bottom: 1px solid #121212;
   -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.content {
-  overflow-x: auto;
-  margin-top: 0px;
-}
-
-.sort:HOVER{
+.table-match .sort:HOVER{
   font-weight: 600;
   cursor: pointer;
 }
 
-table {
-  width: 100%;
-  table-layout: fixed;
-  overflow: hidden;
-}
-
-tbody tr {
+.table-match tbody tr {
   background-color: rgba(105, 105, 105, 0.1);
   border: 1px solid rgba(41, 40, 40, 0.8);
   margin-top: 2px;
 }
 
-tbody tr:nth-child(odd) {
+.table-match tbody tr:nth-child(odd) {
   background-color: rgba(170, 170, 170, 0.1);
 }
 
-th {
+.table-match th {
   padding: 20px 15px;
   text-align: center;
   font-weight: 500;
   font-size: 12px;
   color: #fff;
   text-transform: uppercase;
+  border-bottom: 1px solid #121212;
 }
 
-th:nth-child(1) {
+.table-match th:nth-child(1) {
   text-align: left;
 }
 
-td {
+.table-match td {
   padding: 15px;
   text-align: center;
   vertical-align: middle;
@@ -61,30 +58,34 @@ td {
   color: #fff;
 }
 
-td:nth-child(1) {
+.table-match td:nth-child(1) {
   text-align: left;
 }
 
-td:nth-child(1) div a {
+.table-match td:nth-child(1) div a {
   width: 100%;
   transition: all .45s cubic-bezier(.23, 1, .32, 1) 0ms
 }
 
-td:nth-child(1) div span {
+.table-match td:nth-child(1) div span {
   display: block;
   color: #aaa;
 }
 
-td:nth-child(4), th:nth-child(4) {
+.table-match td:nth-child(4), th:nth-child(4) {
   color: rgb(58, 187, 64)
 }
 
-td:nth-child(5), th:nth-child(5) {
+.table-match td:nth-child(5), th:nth-child(5) {
   color: rgb(255, 76, 76)
 }
 
-th img {
+.table-match th img {
   margin-right: 2px;
+}
+
+.set-heroes img{
+  width: 40px;
 }
 
 .brightness1 {
@@ -95,6 +96,10 @@ th img {
 .brightness2 {
   -webkit-filter: brightness(250%);
   filter: brightness(250%);
+}
+
+.hide{
+  opacity: 0.0;
 }
 
 nav ul {

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { ConfigService } from './config.service';
 
 @Injectable()
 export class GetApiService {
 
-  constructor(private http:Http) { }
+  constructor(private http:Http, private config:ConfigService) { }
 
   //Group2
   getOpendata(url){
-    return this.http.get('https://api.opendota.com/api/'+url)
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/opendota/'+url)
       .map(res => res.json());
   }
 

@@ -11,7 +11,8 @@ router.use('/mmr', mmr);
 
 
 //Gruop 2
-
+var opendota = require('./group2/opendota');
+router.use('/opendota', opendota);
 
 
 module.exports = router;
