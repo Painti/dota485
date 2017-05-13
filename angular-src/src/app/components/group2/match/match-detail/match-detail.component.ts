@@ -13,21 +13,24 @@ export class MatchDetailComponent implements OnInit {
     private api: GetApiService,
     private route: ActivatedRoute
   ) { }
-  
+
   match:Object;
-  id: string;
+  id:string;
+  complete:number;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['match_id'];
-      this.api.getOpendata('matches/'+this.id).subscribe(data => {
-        this.match = data;
-      },
-      err => {
-        console.log(err);
-        return false;
-      });
+      
     });
+
+    // this.api.getOpendata('matches/'+this.id).subscribe(data => {
+    //   this.match = data;
+    // },
+    // err => {
+    //   console.log(err);
+    //   return false;
+    // });
   }
 
 }
