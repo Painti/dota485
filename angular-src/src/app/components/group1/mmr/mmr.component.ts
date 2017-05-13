@@ -13,20 +13,46 @@ export class MmrComponent implements OnInit {
     private api: GetApiService,
     private route: ActivatedRoute
   ) { }
-    ranking:Object
+    rankingEU:Array<Object>
+    rankingA:Array<Object>
+    rankingSE:Array<Object>
+    rankingCH:Array<Object>
 
   ngOnInit() {
-    this.api.getMMRData().subscribe( data => {
-      this.ranking = data;
+    this.api.getMMRData('americas').subscribe( data => {
+      this.rankingA = data;
     },
      err => {
        console.log(err);
        return false;
      });
 
-  }
+     this.api.getMMRData('europe').subscribe( data => {
+       this.rankingEU = data;
+     },
+      err => {
+        console.log(err);
+        return false;
+      });
 
-  initOrder() {
+      this.api.getMMRData('se_asia').subscribe( data => {
+        this.rankingSE = data;
+      },
+       err => {
+         console.log(err);
+         return false;
+       });
+
+       this.api.getMMRData('china').subscribe( data => {
+         this.rankingCH = data;
+       },
+        err => {
+          console.log(err);
+          return false;
+        });
+
+
+
   }
 
 }

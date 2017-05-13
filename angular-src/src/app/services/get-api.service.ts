@@ -27,8 +27,8 @@ export class GetApiService {
 
   //Group1
   //API mmr ranking
-  getMMRData(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/mmr')
+  getMMRData(server){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/mmr/'+server)
       .map(res => res.json());
   }
 
