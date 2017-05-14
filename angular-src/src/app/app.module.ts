@@ -7,6 +7,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
+import { ConfigService } from './services/config.service';
+import { GetApiService } from './services/get-api.service';
+
+import { FilterPipe } from './pipes/filter.pipe';
 
 // Components group1
 import { HomeComponent } from './components/group1/home/home.component';
@@ -18,6 +26,8 @@ import { ItemComponent } from './components/group1/item/item.component';
 import { LoginComponent } from './components/group2/login/login.component';
 import { MatchComponent } from './components/group2/match/match.component';
 import { MatchDetailComponent } from './components/group2/match/match-detail/match-detail.component';
+import { CommunicateService } from './services/group2/communicate.service';
+import { OverviewComponent } from './components/group2/match/match-detail/overview/overview.component';
 import { ProfileComponent } from './components/group2/profile/profile.component';
 import { ProfileSettingComponent } from './components/group2/profile/profile-setting/profile-setting.component';
 import { AuthService } from './services/group2/auth.service';
@@ -33,7 +43,12 @@ const appRoutes: Routes = [
   { path: 'ranking', component: MmrComponent },
   { path: 'login', component: LoginComponent , canActivate: [LoginGuard]},
   { path: 'match', component: MatchComponent },
-  { path: 'match/:match_id', component: MatchDetailComponent },
+  { path: 'match/:match_id', component: MatchDetailComponent,
+    children: [
+        { path: '', component: OverviewComponent }
+    ]
+  },
+  { path: 'match/:match_id/overview', component: OverviewComponent },
   { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
   { path: 'profile/setting', component: ProfileSettingComponent , canActivate: [AuthGuard]},
   { path: 'profile/setting/link-facebook', component: LinkFacebookComponent , canActivate: [AuthGuard, LinkFacebookGuard]}
@@ -52,16 +67,29 @@ const appRoutes: Routes = [
     ProfileSettingComponent,
     MmrComponent,
     ItemComponent,
-    LinkFacebookComponent
+    LinkFacebookComponent,
+    FilterPipe,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    CollapseModule.forRoot(),
+    TooltipModule.forRoot(),
+    TabsModule.forRoot()
   ],
-  providers: [AuthService, AuthGuard, LoginGuard, LinkFacebookGuard],
+  providers: [
+    ConfigService,
+    GetApiService,
+    CommunicateService,
+    AuthService,
+    AuthGuard,
+    LoginGuard,
+    LinkFacebookGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
 module.exports = {
-  url : 'mongodb://localhost/dota',
+  url : 'mongodb://127.0.0.1/dota',
   secret : 'mitjung'
 };

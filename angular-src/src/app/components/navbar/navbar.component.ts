@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   name : String;
+  isCollapsed : boolean = true;
 
   constructor(
     private authService:AuthService,
@@ -29,4 +30,5 @@ export class NavbarComponent implements OnInit {
     window.location.href = '/';
     return false;
   }
+
 }

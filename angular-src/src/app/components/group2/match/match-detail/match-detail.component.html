@@ -1,3 +1,10 @@
-<p>
-  match-detail works!
-</p>
+<div *ngIf="state.o.state && !match" class="mt-5">
+  <h1 class="text-center">Loading...</h1>
+  <div class="progress mt-5 custom-progress">
+    <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width': getProgress(state.o)+'%'}" style="height: 20px;" aria-valuemin="0" aria-valuemax="100">{{getProgress(state.o)}}%</div>
+  </div>
+</div>
+<div *ngIf="match">
+  {{match.match_id}}
+</div>
+<router-outlet></router-outlet>

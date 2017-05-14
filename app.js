@@ -41,15 +41,13 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 
-// Group1
-var heroes = require('./routes/group1/heroes');
-app.use('/heroes', heroes);
-var items = require('./routes/group1/items');
-app.use('/items', items);
+var data = require('./routes/data');
+app.use('/data', data);
 
 // Group2
 var auth = require('./routes/group2/auth');
 app.use('/auth', auth);
+
 
 app.use('/', function(req, res){
   res.send('End piont');
