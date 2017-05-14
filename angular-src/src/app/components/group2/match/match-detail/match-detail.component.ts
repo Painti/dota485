@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../../services/get-api.service';
+import { CommunicateService } from '../../../../services/group2/communicate.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -7,12 +8,13 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   templateUrl: './match-detail.component.html',
   styleUrls: ['./match-detail.component.css']
 })
-export class MatchDetailComponent implements OnInit {
+export class MatchDetailComponent implements OnInit{
 
   constructor(
     private api: GetApiService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private communicate: CommunicateService
+  ) {}
 
   match:Object;
   id:string;
@@ -44,6 +46,7 @@ export class MatchDetailComponent implements OnInit {
       obj['state'] = '1';
       this.api.getOpendata('/matches/'+this.id).subscribe(data => {
         this.match = data;
+        this.communicate.emitMatch(this.match);
       });
     }
     return obj['progress'];
