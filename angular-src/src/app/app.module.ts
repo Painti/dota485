@@ -10,6 +10,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ChartModule } from 'angular2-chartjs';
 
 import { ConfigService } from './services/config.service';
 import { GetApiService } from './services/get-api.service';
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     CollapseModule.forRoot(),
     TooltipModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ChartModule
   ],
   providers: [
     ConfigService,
