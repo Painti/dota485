@@ -58,18 +58,16 @@
 
 .header .setheroes{
   position: absolute;
-  top : 5px;
+  top : 3px;
   width: 300px;
   z-index: 40;
 }
 
 .header .set-left{
-  top: 0px;
   left: calc(50% - 300px - 150px);
 }
 
 .header .set-right{
-  top: 0px;
   left: calc(50% + 150px);
 }
 
