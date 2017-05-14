@@ -55,12 +55,12 @@ export class GetApiService {
   }
 
   getItem(){
-    return this.http.get('http://api.steampowered.com/IEconDOTA2_570/GetGameItems/v1?key=D66F1513084C6633AC47944E35FF8203')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items/')
       .map(res => res.json())
   }
 
   getRareItem(){
-    return this.http.get('http://api.steampowered.com/IEconDOTA2_570/GetRarities/v1?key=D66F1513084C6633AC47944E35FF8203')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items/')
       .map(res => res.json())
   }
 

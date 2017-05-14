@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var config = require('./../../config/steam');
+var request = require('request');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,7 +11,7 @@ let  url = 'http://www.dota2.com/jsfeed/itemdata';
       res.send(body);
     }
     else {
-      if (response) { 
+      if (response) {
         console.log(response.statusCode);
       }
       next(err);
