@@ -20,19 +20,24 @@ export class OverviewComponent implements OnInit, OnDestroy {
   data: any;
   data1: any;
   options: Object;
+  options1: Object;
 
   ngOnInit() {
     this.subscription = this.communicate.getMatch$.subscribe(
       match => {
-        this.match = match;
         let kills:Array<Number> = [];
-        for (let key in this.match['players']) {
-          kills.push(this.match['players'][key]['kills']);
+        let players_name:Array<string> = [];
+        let sumKill:Array<Number> = [0,0];
+        let i:any;
+        for (i in match['players']) {
+          kills.push(match['players'][i]['kills']);
+          players_name.push(match['players'][i]['personaname']);
+          sumKill[Math.floor(i/5)] += match['players'][i]['kills'];
         }
         this.data['datasets'][0].data = kills;
-
-
-
+        this.data.labels = players_name;
+        this.data1['datasets'][0].data = sumKill;
+        this.match = match;
       });
 
       this.type = 'doughnut';
@@ -63,31 +68,26 @@ export class OverviewComponent implements OnInit, OnDestroy {
         maintainAspectRatio: false,
         title: {
           display: true,
-          text: 'Kill Score',
+          text: 'Player Kill Score',
           fontSize: 36,
-          fontColor: "rgb(175, 175, 175)"
-        },
-        legend: {
-          display: true,
-          fontColor: "rgb(187, 3, 255)",
-          text: "asdasd"
+          fontColor: "#afafaf"
         }
       };
 
       this.type1 = 'pie';
       this.data1 = {
-        labels: ["r", "d"],
+        labels: ["Radiant", "Dire"],
         datasets: [
           {
             label: "All Kill",
             data: [10, 50],
             backgroundColor: [
-              "#2e6ae6",
-              "#e67ab0"
+              "#40ff40",
+              "#ff4040"
             ],
             hoverBackgroundColor: [
-              "#173471",
-              "#cb6d9c"
+              "#40cc40",
+              "#cc4040"
             ],
             borderWidth: [1, 1],
             borderColor: [
@@ -96,6 +96,16 @@ export class OverviewComponent implements OnInit, OnDestroy {
             ]
           }
         ]
+      };
+      this.options1 = {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: 'Team Kill Score',
+          fontSize: 36,
+          fontColor: "#afafaf"
+        }
       };
   }
 
