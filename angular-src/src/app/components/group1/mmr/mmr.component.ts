@@ -56,9 +56,13 @@ export class MmrComponent implements OnInit {
 
   }
 
+
+
   getImageFlag(flag) {
     let msg = 'http://community.edgecast.steamstatic.com/public/images/countryflags/' + flag + '.gif';
-    return msg;
+    if(flag != null){
+      return msg;
+    }
   }
 
 }
