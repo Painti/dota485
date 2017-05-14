@@ -1,6 +1,6 @@
-.custom-progress{
+.custom-progress {
   background-color: #4f4f4f;
-  -moz-box-shadow:    inset 0 0 10px #4f4f4f;
+  -moz-box-shadow: inset 0 0 10px #4f4f4f;
   -webkit-box-shadow: inset 0 0 10px #4f4f4f;
-  box-shadow:         inset 0 0 10px #4f4f4f;
+  box-shadow: inset 0 0 10px #4f4f4f;
 }
