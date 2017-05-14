@@ -1,7 +1,3 @@
-.pie {
-  width: 200px;
-  height: 200px;
-  position: relative;
-  border-radius: 200px;
-  background-color: rgb(136, 143, 255);
+hr {
+  border: 1px solid #797979;
 }
