@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CommunicateService } from '../../../../../services/group2/communicate.service';
 import { Subscription }   from 'rxjs/Subscription';
+import { ChartComponent } from 'angular2-chartjs/';
 
 @Component({
   selector: 'app-overview',
@@ -8,6 +9,7 @@ import { Subscription }   from 'rxjs/Subscription';
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent implements OnInit, OnDestroy {
+  @ViewChild(ChartComponent) chartComponent: ChartComponent;
 
   constructor(private communicate: CommunicateService) { }
 
@@ -21,6 +23,13 @@ export class OverviewComponent implements OnInit, OnDestroy {
     this.subscription = this.communicate.getMatch$.subscribe(
       match => {
         this.match = match;
+        let arr:Array<Number> = [];
+        for (let key in this.match['players']) {
+          arr.push(this.match['players'][key]['kills']);
+          console.log(this.match['players'][key]['kills']);
+        }
+        this.data['datasets'][0]['data'] = arr;
+        this.chartComponent.chart.update();
       });
     this.type = 'doughnut';
     this.data = {
@@ -28,7 +37,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
       datasets: [
         {
           label: "Kill Score",
-          data: [65, 59, 80, 81, 56, 55, 40, 56, 55, 40],
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           backgroundColor: [
             "#2e6ae6", "#5de6ad", "#ad00ad", "#dcd90a", "#e66200",
             "#e67ab0", "#92a440", "#5cc5e0", "#00771e", "#835603"
@@ -42,6 +51,14 @@ export class OverviewComponent implements OnInit, OnDestroy {
             "#151515", "#151515", "#151515", "#151515", "#151515",
             "#151515", "#151515", "#151515", "#151515", "#151515"
           ]
+        },
+        {
+          label: "Kill Score2",
+          data: [4, 17],
+          backgroundColor: ["#45b449", "#df3c3c"],
+          hoverBackgroundColor: ["#308233", "#9f2727"],
+          borderWidth: [1, 1],
+          borderColor: ["#151515", "#151515"]
         }
       ]
     };
@@ -49,8 +66,15 @@ export class OverviewComponent implements OnInit, OnDestroy {
       responsive: true,
       maintainAspectRatio: false,
       title: {
-        text: 'Custom Chart Title',
-        display: true
+        display: true,
+        text: 'Kill Score',
+        fontSize: 36,
+        fontColor: "rgb(175, 175, 175)"
+      },
+      legend: {
+        display: true,
+        fontColor: "rgb(187, 3, 255)",
+        text: "asdasd"
       }
     };
   }
