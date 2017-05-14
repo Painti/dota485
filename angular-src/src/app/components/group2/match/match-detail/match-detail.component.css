@@ -4,3 +4,95 @@
   -webkit-box-shadow: inset 0 0 10px #4f4f4f;
   box-shadow: inset 0 0 10px #4f4f4f;
 }
+
+.match-body{
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.content{
+  background-color: #fff;
+  color: black;
+}
+
+.header{
+  width: 100%;
+  height: 12.5rem;
+  margin-top: -1.5rem;
+  background-color: black;
+}
+
+.header .half-circle {
+  display: block;
+  background: black;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  margin: 0;
+  background-color: #004691;
+  -moz-box-shadow:    inset 0 0 20px #5cabff;
+   -webkit-box-shadow: inset 0 0 20px #5cabff;
+   box-shadow:         inset 0 0 20px #5cabff;
+  position: absolute;
+  top: -60px;
+  left: calc(50% - 60px);
+  z-index: 50;
+}
+
+.header .half-circle .time{
+  color: #000;
+  position: absolute;
+  bottom: 25px;
+  left: 29px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  z-index: 51;
+}
+
+.header .bar{
+  width: 100%;
+  height: 40px;
+  z-index: 35;
+  background-color: rgb(59, 170, 111)
+}
+
+.header .setheroes{
+  position: absolute;
+  top : 5px;
+  width: 300px;
+  z-index: 40;
+}
+
+.header .set-left{
+  top: 0px;
+  left: calc(50% - 300px - 150px);
+}
+
+.header .set-right{
+  top: 0px;
+  left: calc(50% + 150px);
+}
+
+.score{
+  position: absolute;
+  top: 0px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(246, 15, 0);
+  font-weight: bolder;
+  font-size: 24px;
+  z-index: 41;
+}
+
+.score-left{
+  left: calc(50% - 120px);
+}
+
+.score-right{
+  left: calc(50% + 85px);
+}
+
+
+.header img{
+  width: 59px;
+  float:left;
+}
