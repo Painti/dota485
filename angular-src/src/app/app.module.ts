@@ -36,6 +36,8 @@ import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
 import { LinkFacebookGuard } from './guard/linkfacebook.guard';
 import { LinkFacebookComponent } from './components/group2/profile/profile-setting/link-facebook/link-facebook.component';
+import { OverviewChartKill1Component } from './components/group2/match/match-detail/overview-chart-kill1/overview-chart-kill1.component';
+import { OverviewChartKill2Component } from './components/group2/match/match-detail/overview-chart-kill2/overview-chart-kill2.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -70,7 +72,9 @@ const appRoutes: Routes = [
     ItemComponent,
     LinkFacebookComponent,
     FilterPipe,
-    OverviewComponent
+    OverviewComponent,
+    OverviewChartKill1Component,
+    OverviewChartKill2Component
   ],
   imports: [
     BrowserModule,

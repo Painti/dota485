@@ -2,6 +2,10 @@
   <!-- {{match.match_id}} {{match.duration}} -->
 </p>
 <div style="display: block">
-  <chart [type]="type" [data]="data" [options]="options"></chart>
+  <chart *ngIf="match" [type]="type" [data]="data" [options]="options"></chart>
 </div>
-<!-- {{data.datasets[0].data}} -->
+<div style="display: block">
+  <chart *ngIf="match" [type]="type1" [data]="data1" [options]="options"></chart>
+</div>
+<!-- <button (click)="change()" type="button" name="button">Click</button> -->
+{{kills}}
