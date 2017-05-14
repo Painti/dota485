@@ -9,7 +9,7 @@ let  url = 'http://www.dota2.com/jsfeed/itemdata';
       res.send(body);
     }
     else {
-      if (response) {
+      if (response) { 
         console.log(response.statusCode);
       }
       next(err);
