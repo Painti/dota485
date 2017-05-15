@@ -54,6 +54,31 @@ export class GetApiService {
       .map(res => res.json());
   }
 
+  getProfile(){
+    return this.http.get('https://api.opendota.com/api/players/193605174')
+      .map(res => res.json());
+  }
+
+  getRecentMatch(){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/group2/recentMatch')
+      .map(res => res.json());
+  }
+
+  getWinAndLose(){
+    return this.http.get('https://api.opendota.com/api/players/193605174/wl')
+      .map(res => res.json());
+  }
+
+  getHero(){
+    return this.http.get('https://api.opendota.com/api/players/193605174/heroes')
+      .map(res => res.json());
+  }
+
+  getPeer(){
+    return this.http.get('https://api.opendota.com/api/players/193605174/peers')
+      .map(res => res.json());
+  }
+
   getItem(){
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items/')
       .map(res => res.json())

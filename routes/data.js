@@ -15,4 +15,15 @@ var opendota = require('./group2/opendota');
 router.use('/opendota', opendota);
 
 
+var hero_player = require('./group2/hero_player');
+router.use('/hero_player', hero_player);
+var recentMatch = require('./group2/recentMatch');
+router.use('/recentMatch', recentMatch);
+var wl = require('./group2/winAndLose');
+router.use('/wl', wl);
+var profile = require('./group2/profile');
+router.use('/profile', profile);
+var peer = require('./group2/peer');
+router.use('/peer', peer);
+
 module.exports = router;
