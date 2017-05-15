@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
       return false;
     });
 
-    this.getApiService.getHeroes().subscribe(data => {
+    this.authService.getHeroes().subscribe(data => {
       this.hero = data ;
     },
     err => {
@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
       return false;
     });
 
-    this.getApiService.getRecentMatch().subscribe(data => {
+    this.authService.getRecentMatch().subscribe(data => {
       this.match = data ;
     },
     err => {
@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
       return false;
     });
 
-    this.getApiService.getWinAndLose().subscribe(data => {
+    this.authService.getWinAndLose().subscribe(data => {
       this.score = data ;
     },
     err => {
@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
       return false;
     });
 
-    this.getApiService.getPeer().subscribe(data => {
+    this.authService.getPeer().subscribe(data => {
       this.peer = data ;
     },
     err => {
