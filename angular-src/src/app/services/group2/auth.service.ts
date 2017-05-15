@@ -94,14 +94,4 @@ export class AuthService {
       .map(res => res.json());
   }
 
-  getItem(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items/')
-      .map(res => res.json())
-  }
-
-  getRareItem(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items/')
-      .map(res => res.json())
-  }
-
 }
