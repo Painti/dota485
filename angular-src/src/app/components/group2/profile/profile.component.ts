@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
       return false;
     });
 
-    this.getApiService.getHero().subscribe(data => {
+    this.getApiService.getHeroes().subscribe(data => {
       this.hero = data ;
     },
     err => {

@@ -60,7 +60,7 @@ export class GetApiService {
   }
 
   getRecentMatch(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/group2/recentMatch')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/group2/recentMatch/')
       .map(res => res.json());
   }
 
@@ -69,7 +69,7 @@ export class GetApiService {
       .map(res => res.json());
   }
 
-  getHero(){
+  getHeroes(){
     return this.http.get('https://api.opendota.com/api/players/193605174/heroes')
       .map(res => res.json());
   }
