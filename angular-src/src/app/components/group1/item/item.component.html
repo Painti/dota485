@@ -1,6 +1,8 @@
 <h1>  Item </h1>
 
-<div>
+<div *ngIf="item && itemdetail">
+  {{item.result.status}}
+  {{itemdetail.itemdata["blink"].dname}}
 <table class="table-match" cellpadding="0" cellspacing="0" border="0">
   <thead>
     <tr>
@@ -12,12 +14,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor = "let item of item.id ; let i = index">
-      <td>{{item.img}}></td>
-      <td>{{item.daname}}</td>
-      <td>{{item.cost}}</td>
-      <td>{{item.components}}</td>
-      <td>{{item.desc}}</td>
+    <tr *ngFor = "let entry of itemdetail.itemdata | keys">
+      <td>{{entry.key}}</td>
+      <td>
+        <img [src]="getImage(entry.key)" alt="">
+      </td>
+      <td>{{entry.value.dname}}</td>
+      <td>{{entry.value.lore}}</td>
     </tr>
   </tbody>
 </table>
