@@ -55,13 +55,18 @@ export class GetApiService {
   }
 
   getItem(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items/')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items')
+      .map(res => res.json())
+  }
+
+  getItemDetail(){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items/detail')
       .map(res => res.json())
   }
 
   getRareItem(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items/')
-      .map(res => res.json())
+    // return this.http.get('http://api.steampowered.com/IEconDOTA2_570/GetRarities/v1?key=D66F1513084C6633AC47944E35FF8203')
+    //   .map(res => res.json())
   }
 
 }
