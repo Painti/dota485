@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/group2/auth.service';
+import { GetApiService } from '../../../services/get-api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user : Object;
+  user : Object ;
+  hero : Array<Object> ;
+  match : Array<Object> ;
+  score :  Array<Object> ;
+  peer :  Array<Object> ;
 
   constructor(
     private authService:AuthService,
-    private router:Router
+    private router:Router,
+    private getApiService: GetApiService
   ) { }
 
   ngOnInit() {
@@ -23,6 +29,39 @@ export class ProfileComponent implements OnInit {
       console.log(err);
       return false;
     });
+
+    this.authService.getHeroes().subscribe(data => {
+      this.hero = data ;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+
+    this.authService.getRecentMatch().subscribe(data => {
+      this.match = data ;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+
+    this.authService.getWinAndLose().subscribe(data => {
+      this.score = data ;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+
+    this.authService.getPeer().subscribe(data => {
+      this.peer = data ;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+
   }
 
 }

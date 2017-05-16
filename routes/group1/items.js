@@ -3,7 +3,6 @@ var router = express.Router();
 var request = require('request');
 var config = require('./../../config/steam');
 
-
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 let  url = 'http://api.steampowered.com/IEconDOTA2_570/GetGameItems/v1?key='+config.secret;

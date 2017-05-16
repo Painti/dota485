@@ -64,4 +64,34 @@ export class AuthService {
     localStorage.clear();
   }
 
+  getHero(){
+    return this.http.get('http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key=D66F1513084C6633AC47944E35FF8203')
+      .map(res => res.json());
+  }
+
+  getProfile_Player(){
+    return this.http.get('https://api.opendota.com/api/players/193605174')
+      .map(res => res.json());
+  }
+
+  getRecentMatch(){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/group2/profile/recentMatch')
+      .map(res => res.json());
+  }
+
+  getWinAndLose(){
+    return this.http.get('https://api.opendota.com/api/players/193605174/wl')
+      .map(res => res.json());
+  }
+
+  getHeroes(){
+    return this.http.get('https://api.opendota.com/api/players/193605174/heroes')
+      .map(res => res.json());
+  }
+
+  getPeer(){
+    return this.http.get('https://api.opendota.com/api/players/193605174/peers')
+      .map(res => res.json());
+  }
+
 }
