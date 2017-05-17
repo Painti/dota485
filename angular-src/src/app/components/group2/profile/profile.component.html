@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="playerheader_container">
-      <div *ngIf="user">
+      <div *ngIf="user" >
         <img src="../assets/images/radiant.png" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
         <h2>{{user.displayName}}</h2>
           <table>
@@ -17,11 +17,11 @@
               <th>WIN RATE</th>
               <th>ESTIMATE MMR</th>
             </tr>
-            <tr>
-              <td>50</td>
-              <td>40</td>
-              <td>60%</td>
-              <td>1000</td>
+            <tr >
+              <td *ngIf="score">{{score.win}}</td>
+              <td *ngIf="score">{{score.lose}}</td>
+              <td *ngIf="win_rate">{{win_rate}} %</td>
+              <td *ngIf="player">{{player.mmr_estimate.estimate}}</td>
             </tr>
           </table>
 

@@ -14,6 +14,8 @@ export class ProfileComponent implements OnInit {
   match: Array<Object>;
   score: Object;
   peer: Array<Object>;
+  player: Array<Object>;
+  win_rate: Object;
 
   constructor(
     private authService: AuthService,
@@ -33,6 +35,15 @@ export class ProfileComponent implements OnInit {
           return false;
         });
 
+        this.authService.getProfile_Player(this.user['account_id']).subscribe(data => {
+          this.player = data ;
+
+        },
+        err => {
+          console.log(err);
+          return false;
+        });
+
       this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
         this.match = data ;
 
@@ -44,6 +55,7 @@ export class ProfileComponent implements OnInit {
 
       this.authService.getWinAndLose(this.user['account_id']).subscribe(data => {
         this.score = data ;
+        this.win_rate = (this.score['win'] / (this.score['win'] + this.score['lose'])) * 100 ;
       },
       err => {
         console.log(err);
