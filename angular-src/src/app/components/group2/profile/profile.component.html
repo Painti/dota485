@@ -17,11 +17,12 @@
               <th>WIN RATE</th>
               <th>ESTIMATE MMR</th>
             </tr>
-            <tr>
-              <th><font color="green">60</font></th>
-              <th><font color="red">40</font></th>
-              <th>60%</th>
-              <th>1000</th>
+
+            <tr >
+              <th *ngIf="score"><font color="green">{{score.win}}</font></th>
+              <th *ngIf="score"><font color="red">{{score.lose}}</font></th>
+              <th *ngIf="win_rate">{{win_rate}} %</th>
+              <th *ngIf="player">{{player.mmr_estimate.estimate}}</th>
             </tr>
           </table>
       </div>
