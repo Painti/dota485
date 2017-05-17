@@ -1,3 +1,43 @@
-<div *ngIf="user">
-  <h2>{{user.displayName}}</h2>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../app/components/group2/profile/profile.component.css">
+  </head>
+  <body>
+    <div class="playerheader_container">
+      <div *ngIf="user">
+        <table>
+          <img src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
+          <h2>{{user.displayName}}</h2>
+            <tr>
+              <td width = "400px"></td>
+              <th width = "70px">WINS</th>
+              <th width = "70px">LOSES</th>
+              <th width = "70px">WIN RATE</th>
+              <th width = "70px">ESTIMATE MMR</th>
+            </tr>
+
+            <tr >
+              <td width = "400px"></td>
+              <th *ngIf="score"><font color="green">{{score.win}}</font></th>
+              <th *ngIf="score"><font color="red">{{score.lose}}</font></th>
+              <th *ngIf="win_rate">{{win_rate}} %</th>
+              <th *ngIf="player">{{player.mmr_estimate.estimate}}</th>
+            </tr>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- <nav>
+      <ul>
+          <li [className]="tabs[0]" (click)="onTab(0)">Overview</li>
+          <li [className]="tabs[1]" (click)="onTab(1)">Match</li>
+          <li [className]="tabs[2]" (click)="onTab(2)">Hero</li>
+      </ul>
+    </nav> -->
+
+  </body>
+</html>

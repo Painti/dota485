@@ -64,34 +64,41 @@ export class AuthService {
     localStorage.clear();
   }
 
-  getHero(){
+  getHero(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/heroes')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/'+ id +'/heroes'  )
       .map(res => res.json());
   }
 
-  getProfile_Player(){
+  getProfile_Player(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/profile_player')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' + id +'/profile_player')
       .map(res => res.json());
   }
 
+<<<<<<< HEAD
   getRecentMatch(){
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/recentMatch')
-      .map(res => res.json());
-  }
-
-  getWinAndLose(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/wl')
-      .map(res => res.json());
-  }
-
-  getPeer(){
+=======
+  getRecentMatch(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/peers')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' + id +'/recentMatch')
+>>>>>>> c97727dd8b996fde635079be5e7280fa7caa6f6e
+      .map(res => res.json());
+  }
+
+  getWinAndLose(id){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/'+ id +'/wl')
+      .map(res => res.json());
+  }
+
+  getPeer(id){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' + id+'/peers')
       .map(res => res.json());
   }
 
