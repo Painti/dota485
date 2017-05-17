@@ -49,7 +49,6 @@ const appRoutes: Routes = [
         { path: '', component: OverviewComponent }
     ]
   },
-  { path: 'match/:match_id/overview', component: OverviewComponent },
   { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
   { path: 'profile/setting', component: ProfileSettingComponent , canActivate: [AuthGuard]},
   { path: 'profile/setting/link-facebook', component: LinkFacebookComponent , canActivate: [AuthGuard, LinkFacebookGuard]}

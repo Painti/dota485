@@ -14,7 +14,7 @@ export class MmrComponent implements OnInit {
     private api: GetApiService,
     private route: ActivatedRoute
   ) { }
-    rankingEU:Array<Object>
+    rankingEU:Object
     rankingA:Array<Object>
     rankingSE:Array<Object>
     rankingCH:Array<Object>

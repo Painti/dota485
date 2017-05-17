@@ -2,7 +2,7 @@
 
 
   <div *ngIf="rankingEU">
-<!-- <span>{{rankingEU.time_posted | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span> -->
+  <span>{{rankingEU.server_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
@@ -13,9 +13,9 @@
     </thead>
     <tbody>
       <tr *ngFor = "let item of rankingEU.leaderboard ; let i = index">
-        <td>{{item.rank}}</td>
+        <td>{{i+1}}</td>
         <td>
-          <span *ngIf="item.team_tag">{{item.team_tag}}.</span>
+          <span>{{item?.team_tag}}.</span>
           <span style="font-weight:bold">{{item.name}}</span>
           <span *ngIf="item.sponsor">.{{item.sponsor}}</span>
           <span *ngIf="getImageFlag(item.country)"><img src="{{getImageFlag(item.country)}}"></span>
