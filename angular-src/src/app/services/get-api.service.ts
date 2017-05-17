@@ -60,7 +60,7 @@ export class GetApiService {
   }
 
   getRecentMatch(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/group2/recentMatch/')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/recentMatch/')
       .map(res => res.json());
   }
 

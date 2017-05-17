@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
     });
 
     this.getApiService.getHeroes().subscribe(data => {
-      this.hero = data ;
+      this.hero = data.user ;
     },
     err => {
       console.log(err);
@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
     });
 
     this.getApiService.getRecentMatch().subscribe(data => {
-      this.match = data ;
+      this.match = data.user ;
     },
     err => {
       console.log(err);
