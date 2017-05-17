@@ -30,16 +30,26 @@ export class ProfileComponent implements OnInit {
       return false;
     });
 
+<<<<<<< HEAD
+    this.getApiService.getHeroes().subscribe(data => {
+      this.hero = data.user ;
+=======
     this.authService.getHero().subscribe(data => {
       this.hero = data ;
+>>>>>>> eb0d2e9f4ccf1d3ccdafa5727e614eac0448fb8c
     },
     err => {
       console.log(err);
       return false;
     });
 
-    this.authService.getRecentMatch().subscribe(data => {
+<<<<<<< HEAD
+    this.getApiService.getRecentMatch().subscribe(data => {
+      this.match = data.user ;
+=======
+    this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
       this.match = data ;
+>>>>>>> eb0d2e9f4ccf1d3ccdafa5727e614eac0448fb8c
     },
     err => {
       console.log(err);

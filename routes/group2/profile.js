@@ -1,6 +1,9 @@
 var express = require('express');
+var request = require('request');
 var router = express.Router();
 var request = require('request');
+
+
 
 /* GET users listing. */
 
@@ -23,6 +26,9 @@ router.get('/profile_player', function(req, res, next) {
   });
 });
 
+<<<<<<< HEAD
+
+=======
 router.get('/recentMatch', function(req, res, next) {
   let url = 'https://api.opendota.com/api/players/193605174/recentMatches';
 
@@ -86,6 +92,7 @@ let url = 'https://api.opendota.com/api/players/193605174/heroes';
     }
   });
 });
+>>>>>>> eb0d2e9f4ccf1d3ccdafa5727e614eac0448fb8c
 
 
 

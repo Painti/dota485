@@ -49,6 +49,29 @@ export class GetApiService {
       .map(res => res.json());
   }
 
+<<<<<<< HEAD
+  getHero(){
+    return this.http.get('http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key=D66F1513084C6633AC47944E35FF8203')
+      .map(res => res.json());
+  }
+
+  getProfile(){
+    return this.http.get('https://api.opendota.com/api/players/193605174')
+      .map(res => res.json());
+  }
+
+  getRecentMatch(){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/recentMatch/')
+      .map(res => res.json());
+  }
+
+  getWinAndLose(){
+    return this.http.get('https://api.opendota.com/api/players/193605174/wl')
+      .map(res => res.json());
+  }
+
+=======
+>>>>>>> eb0d2e9f4ccf1d3ccdafa5727e614eac0448fb8c
   getHeroes(){
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes')
       .map(res => res.json());

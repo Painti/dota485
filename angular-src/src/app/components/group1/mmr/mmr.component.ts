@@ -18,6 +18,7 @@ export class MmrComponent implements OnInit {
     rankingA:Array<Object>
     rankingSE:Array<Object>
     rankingCH:Array<Object>
+    tabs: Array<String>;
 
   ngOnInit() {
     this.api.getMMRData('americas').subscribe( data => {
@@ -51,12 +52,21 @@ export class MmrComponent implements OnInit {
           console.log(err);
           return false;
         });
+        this.tabs = ['active', '', '',''];
 
 
 
   }
 
+  canShow(arr, num) {
+    return arr && this.tabs[num] == 'active';
+  }
 
+  onTab(num) {
+    this.tabs = ['', '', ''];
+    this.tabs[num] = 'active';
+
+  }
 
   getImageFlag(flag) {
     let msg = 'http://community.edgecast.steamstatic.com/public/images/countryflags/' + flag + '.gif';
