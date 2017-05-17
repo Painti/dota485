@@ -1,23 +1,53 @@
 <h1>  Item </h1>
 
-<div>
+<div *ngIf="itemdetail">
+  {{item.result.status}}
+  {{itemdetail.itemdata["blink"].dname}}
 <table class="table-match" cellpadding="0" cellspacing="0" border="0">
   <thead>
     <tr>
-      <th> Image </th>
       <th> Name </th>
       <th> Cost </th>
-      <th> Components </th>
       <th> Description </th>
+      <th> Components </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor = "let item of item.id ; let i = index">
-      <td>{{item.id}}></td>
-      <td>{{item.daname}}</td>
-      <td>{{item.cost}}</td>
-      <td>{{item.components}}</td>
-      <td>{{item.desc}}</td>
+    <tr *ngFor = "let entry of itemdetail.itemdata | keys">
+
+      <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
+      && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
+        <table>
+          <tr>
+            <td>
+              <img [src]="getImage(entry.key)" alt="">
+              {{entry.value.dname}}
+            </td>
+          </tr>
+        </table>
+      </td>
+
+      <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
+      && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
+        {{entry.value.cost}}
+      </td>
+
+      <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
+      && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
+        {{getDescription(entry.value.notes)}}
+      </td>
+
+      <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
+      && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
+        <table>
+          <tr>
+            <td *ngFor="let cp of entry.value.components">
+              <img [src]="getImage(cp)" alt="">
+            </td>
+          </tr>
+        </table>
+      </td>
+      
     </tr>
   </tbody>
 </table>
