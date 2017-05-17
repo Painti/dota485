@@ -26,10 +26,7 @@ router.get('/profile_player', function(req, res, next) {
   });
 });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f67f8e512c16f9e0c1f00023833075145a9eb688
 router.get('/recentMatch', function(req, res, next) {
   let url = 'https://api.opendota.com/api/players/193605174/recentMatches';
 
@@ -93,10 +90,7 @@ let url = 'https://api.opendota.com/api/players/193605174/heroes';
     }
   });
 });
-<<<<<<< HEAD
 
-=======
->>>>>>> f67f8e512c16f9e0c1f00023833075145a9eb688
 
 
 
