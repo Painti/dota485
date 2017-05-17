@@ -1,0 +1,8 @@
+.playerheader_container{
+  width: 100%;
+  border: 1px solid yellow;
+}
+
+.table, th, td{
+  padding: 1em;
+}
