@@ -16,6 +16,7 @@ import { ConfigService } from './services/config.service';
 import { GetApiService } from './services/get-api.service';
 
 import { FilterPipe } from './pipes/filter.pipe';
+import { NgForObjectPipe } from './pipes/ng-for-object.pipe';
 
 // Components group1
 import { HomeComponent } from './components/group1/home/home.component';
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
     ItemComponent,
     LinkFacebookComponent,
     FilterPipe,
-    OverviewComponent
+    OverviewComponent,
+    NgForObjectPipe
   ],
   imports: [
     BrowserModule,

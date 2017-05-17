@@ -9,10 +9,11 @@ router.use('/items', items);
 var mmr = require('./group1/mmr');
 router.use('/mmr', mmr);
 
-
 //Gruop 2
 var opendota = require('./group2/opendota');
 router.use('/opendota', opendota);
 
+var profile = require('./group2/profile');
+router.use('/profile', profile);
 
 module.exports = router;
