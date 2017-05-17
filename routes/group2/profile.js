@@ -10,8 +10,8 @@ var request = require('request');
 
 
 
-router.get('/profile_player', function(req, res, next) {
-  let url = 'https://api.opendota.com/api/players/193605174';
+router.get('/:id/profile_player', function(req, res, next) {
+  let url = 'https://api.opendota.com/api/players/' + req.params.id;
 
   request(url, function(err, response, body) {
     if (!err && response.statusCode < 400) {
@@ -27,8 +27,8 @@ router.get('/profile_player', function(req, res, next) {
 });
 
 
-router.get('/recentMatch', function(req, res, next) {
-  let url = 'https://api.opendota.com/api/players/193605174/recentMatches';
+router.get('/:id/recentMatch', function(req, res, next) {
+  let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/recentMatches';
 
   request(url, function(err, response, body) {
     if (!err && response.statusCode < 400) {
@@ -43,8 +43,8 @@ router.get('/recentMatch', function(req, res, next) {
   });
 });
 
-router.get('/wl', function(req, res, next) {
-let url = 'https://api.opendota.com/api/players/193605174/wl';
+router.get('/:id/wl', function(req, res, next) {
+let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/wl';
 
   request(url, function(err, response, body) {
     if (!err && response.statusCode < 400) {
@@ -59,8 +59,8 @@ let url = 'https://api.opendota.com/api/players/193605174/wl';
   });
 });
 
-router.get('/peers', function(req, res, next) {
-  let url = 'https://api.opendota.com/api/players/193605174/peers';
+router.get('/:id/peers', function(req, res, next) {
+  let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/peers';
 
   request(url, function(err, response, body) {
     if (!err && response.statusCode < 400) {
@@ -75,8 +75,8 @@ router.get('/peers', function(req, res, next) {
   });
 });
 
-router.get('/heroes', function(req, res, next) {
-let url = 'https://api.opendota.com/api/players/193605174/heroes';
+router.get('/:id/heroes', function(req, res, next) {
+let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/heroes';
 
   request(url, function(err, response, body) {
     if (!err && response.statusCode < 400) {
