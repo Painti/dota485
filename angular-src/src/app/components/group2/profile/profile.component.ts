@@ -37,14 +37,14 @@ export class ProfileComponent implements OnInit {
       console.log(err);
       return false;
     });
-
+/*
     this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
       this.match = data ;
     },
     err => {
       console.log(err);
       return false;
-    });
+    });*/
 
     this.authService.getWinAndLose().subscribe(data => {
       this.score = data ;

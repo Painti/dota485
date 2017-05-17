@@ -54,4 +54,7 @@ export class ItemComponent implements OnInit {
     return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
   }
 
+  getDescription(desc){
+    return desc.replace(/<br [/]>/g, " ");
+  }
 }

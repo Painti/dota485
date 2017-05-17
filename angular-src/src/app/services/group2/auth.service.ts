@@ -79,11 +79,6 @@ export class AuthService {
   }
 
   getRecentMatch(){
-<<<<<<< HEAD
-=======
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
->>>>>>> ac4b4eef0d2b9a8ffeffb4e2208aa7033bc7a473
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/recentMatch')
       .map(res => res.json());
   }
