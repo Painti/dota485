@@ -1,7 +1,20 @@
 <h1>MMR Ranking</h1>
-
-
-
+<div *ngIf = "canShow(rankingEU,0)" >
+  <span style="color:#A4A4A4">Recent update {{rankingEU.time_posted*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+  <span style="color:#A4A4A4">|| Next update {{rankingEU.next_scheduled_post_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+</div>
+<div *ngIf = "canShow(rankingA,1)" >
+  <span style="color:#A4A4A4">Recent update {{rankingA.time_posted*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+  <span style="color:#A4A4A4">|| Next update {{rankingA.next_scheduled_post_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+</div>
+<div *ngIf = "canShow(rankingSE,2)" >
+  <span style="color:#A4A4A4">Recent update {{rankingSE.time_posted*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+  <span style="color:#A4A4A4">|| Next update {{rankingSE.next_scheduled_post_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+</div>
+<div *ngIf = "canShow(rankingCH,3)" >
+  <span style="color:#A4A4A4">Recent update {{rankingCH.time_posted*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+  <span style="color:#A4A4A4">|| Next update {{rankingCH.next_scheduled_post_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+</div>
 <nav>
   <ul>
       <li [className]="tabs[0]" (click)="onTab(0)">Europe</li>
@@ -12,8 +25,6 @@
 </nav>
 
 <div *ngIf = "canShow(rankingEU,0)">
-  <span>Recent update {{rankingEU.time_posted*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
-  <span>Next update {{rankingEU.next_scheduled_post_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
@@ -38,8 +49,7 @@
 </div>
 
 <div *ngIf = "canShow(rankingA,1)">
-  <span>Recent update {{rankingA.time_posted*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
-  <span>Next update {{rankingA.next_scheduled_post_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
@@ -64,8 +74,7 @@
 </div>
 
 <div *ngIf = "canShow(rankingSE,2)">
-  <span>Recent update {{rankingSE.time_posted*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
-  <span>Next update {{rankingSE.next_scheduled_post_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
+
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
@@ -89,8 +98,6 @@
   </table>
 </div>
 <div *ngIf = "canShow(rankingCH,3)">
-  <span>Recent update {{rankingCH.time_posted*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
-  <span>Next update {{rankingCH.next_scheduled_post_time*1000 | date:'d/MMMM/yyyy @ h:mma':'+7000' }}</span>
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
