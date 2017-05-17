@@ -8,25 +8,33 @@
   <body>
     <div class="playerheader_container">
       <div *ngIf="user">
-        <img src="../assets/images/radiant.png" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
+        <img src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
         <h2>{{user.displayName}}</h2>
           <table>
             <tr>
-              <th>WIN</th>
-              <th>LOSE</th>
+              <th>WINS</th>
+              <th>LOSES</th>
               <th>WIN RATE</th>
               <th>ESTIMATE MMR</th>
             </tr>
             <tr>
-              <td>50</td>
-              <td>40</td>
-              <td>60%</td>
-              <td>1000</td>
+              <th><font color="green">60</font></th>
+              <th><font color="red">40</font></th>
+              <th>60%</th>
+              <th>1000</th>
             </tr>
           </table>
-
       </div>
     </div>
+
+
+    <!-- <nav>
+      <ul>
+          <li [className]="tabs[0]" (click)="onTab(0)">Overview</li>
+          <li [className]="tabs[1]" (click)="onTab(1)">Match</li>
+          <li [className]="tabs[2]" (click)="onTab(2)">Hero</li>
+      </ul>
+    </nav> -->
 
   </body>
 </html>
