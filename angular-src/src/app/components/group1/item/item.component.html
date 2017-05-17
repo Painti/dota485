@@ -6,11 +6,10 @@
 <table class="table-match" cellpadding="0" cellspacing="0" border="0">
   <thead>
     <tr>
-      <th> Image </th>
       <th> Name </th>
       <th> Cost </th>
+      <th> Description </th>
       <th> Components </th>
-      <th> Dexcription </th>
     </tr>
   </thead>
   <tbody>
@@ -18,17 +17,24 @@
 
       <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
       && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
-        <img [src]="getImage(entry.key)" alt="">
-      </td>
-
-      <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
-      && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
-        {{entry.value.dname}}
+        <table>
+          <tr>
+            <td>
+              <img [src]="getImage(entry.key)" alt="">
+              {{entry.value.dname}}
+            </td>
+          </tr>
+        </table>
       </td>
 
       <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
       && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
         {{entry.value.cost}}
+      </td>
+
+      <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
+      && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
+        {{getDescription(entry.value.notes)}}
       </td>
 
       <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
@@ -40,11 +46,6 @@
             </td>
           </tr>
         </table>
-      </td>
-
-      <td *ngIf = "entry.key !== 'river_painter' && entry.key !== 'river_painter2' && entry.key !== 'river_painter3' && entry.key !== 'river_painter4'
-      && entry.key !== 'river_painter5' && entry.key !== 'river_painter6' && entry.key !== 'river_painter7'">
-        {{getDescription(entry.value.notes)}}
       </td>
 
     </tr>
