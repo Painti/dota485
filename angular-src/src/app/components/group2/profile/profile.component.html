@@ -8,23 +8,25 @@
   <body>
     <div class="playerheader_container">
       <div *ngIf="user">
-        <img src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
-        <h2>{{user.displayName}}</h2>
-          <table>
+        <table>
+          <img src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
+          <h2>{{user.displayName}}</h2>
             <tr>
-              <th>WINS</th>
-              <th>LOSES</th>
-              <th>WIN RATE</th>
-              <th>ESTIMATE MMR</th>
+              <td width = "400px"></td>
+              <th width = "70px">WINS</th>
+              <th width = "70px">LOSES</th>
+              <th width = "70px">WIN RATE</th>
+              <th width = "70px">ESTIMATE MMR</th>
             </tr>
 
             <tr >
+              <td width = "400px"></td>
               <th *ngIf="score"><font color="green">{{score.win}}</font></th>
               <th *ngIf="score"><font color="red">{{score.lose}}</font></th>
               <th *ngIf="win_rate">{{win_rate}} %</th>
               <th *ngIf="player">{{player.mmr_estimate.estimate}}</th>
             </tr>
-          </table>
+        </table>
       </div>
     </div>
 
