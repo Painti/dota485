@@ -18,8 +18,8 @@
               <th>ESTIMATE MMR</th>
             </tr>
             <tr >
-              <td *ngIf="score">{{score.win}}</td>
-              <td *ngIf="score">{{score.lose}}</td>
+              <td *ngIf="score"><font color="green">{{score.win}}</font></td>
+              <td *ngIf="score"><font color="red">{{score.lose}}</font></td>
               <td *ngIf="win_rate">{{win_rate}} %</td>
               <td *ngIf="player">{{player.mmr_estimate.estimate}}</td>
             </tr>
