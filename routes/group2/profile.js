@@ -10,7 +10,7 @@ var request = require('request');
 
 
 
-router.get('/profile_player/:id', function(req, res, next) {
+router.get('/:id/profile_player', function(req, res, next) {
   let url = 'https://api.opendota.com/api/players/' + req.params.id;
 
   request(url, function(err, response, body) {
@@ -27,7 +27,7 @@ router.get('/profile_player/:id', function(req, res, next) {
 });
 
 
-router.get('/recentMatch/:id', function(req, res, next) {
+router.get('/:id/recentMatch', function(req, res, next) {
   let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/recentMatches';
 
   request(url, function(err, response, body) {
@@ -43,7 +43,7 @@ router.get('/recentMatch/:id', function(req, res, next) {
   });
 });
 
-router.get('/wl/:id', function(req, res, next) {
+router.get('/:id/wl', function(req, res, next) {
 let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/wl';
 
   request(url, function(err, response, body) {
@@ -59,7 +59,7 @@ let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/wl';
   });
 });
 
-router.get('/peers/:id', function(req, res, next) {
+router.get('/:id/peers', function(req, res, next) {
   let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/peers';
 
   request(url, function(err, response, body) {
@@ -75,7 +75,7 @@ router.get('/peers/:id', function(req, res, next) {
   });
 });
 
-router.get('/heroes/:id', function(req, res, next) {
+router.get('/:id/heroes', function(req, res, next) {
 let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/heroes';
 
   request(url, function(err, response, body) {
