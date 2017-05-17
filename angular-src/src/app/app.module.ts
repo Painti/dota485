@@ -37,10 +37,12 @@ import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
 import { LinkFacebookGuard } from './guard/linkfacebook.guard';
 import { LinkFacebookComponent } from './components/group2/profile/profile-setting/link-facebook/link-facebook.component';
+import { HeroDetailComponent } from './components/group1/hero/hero-detail/hero-detail.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hero', component: HeroComponent },
+  { path: 'hero/:hero_name', component: HeroDetailComponent },
   { path: 'item', component: ItemComponent },
   { path: 'ranking', component: MmrComponent },
   { path: 'login', component: LoginComponent , canActivate: [LoginGuard]},
@@ -72,7 +74,9 @@ const appRoutes: Routes = [
     LinkFacebookComponent,
     FilterPipe,
     OverviewComponent,
-    NgForObjectPipe
+    NgForObjectPipe,
+    HeroDetailComponent,
+    HeroDetailComponent
   ],
   imports: [
     BrowserModule,

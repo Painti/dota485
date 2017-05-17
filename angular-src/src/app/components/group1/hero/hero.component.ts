@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-hero',
@@ -9,21 +10,26 @@ import { GetApiService } from '../../../services/get-api.service';
 export class HeroComponent implements OnInit {
 
   constructor(
-    private api:GetApiService) {  }
-    heros:Object
+    private api: GetApiService,
+    private route: ActivatedRoute,
+    private router:Router) { }
+  heros: Object
 
   ngOnInit() {
-    this.api.getHeroes().subscribe(data =>{
+    this.api.getHeroes().subscribe(data => {
       this.heros = data;
     },
-    err =>{
+      err => {
         console.log(err);
         return false;
 
-  });
+      });
 
-}
-  getImage(hName){
-    return "http://cdn.dota2.com/apps/dota2/images/heroes/"+hName+"_lg.png"
+  }
+  getImage(hName) {
+    return "http://cdn.dota2.com/apps/dota2/images/heroes/" + hName + "_lg.png"
+  }
+  gotodetial(name) {
+    this.router.navigate(['/hero', name]);
   }
 }

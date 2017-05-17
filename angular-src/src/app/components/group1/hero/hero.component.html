@@ -1,17 +1,19 @@
-<div>
+<!DOCTYPE html>
+<html>
 
-  <table>
-    <thead>
-  <tr>
-    <th> HERO </th>
-  </tr>
-</thead>
-    <tbody>
-      <tr *ngFor = "let item of heros ; let i = index">
-        <td>
-          <span *ngIf="item.name">{{item.name}}</span>
-        <td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<head>
+</head>
+
+<body>
+  <h1> HERO </h1>
+  <div class="bghero">
+    <div class="float-sm-left" *ngFor="let entry of heros| keys">
+      <div>
+          <span><img  (click)="gotodetial(entry.key)" style="width:80px" [src]="getImage(entry.key)" alt=""></span>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
