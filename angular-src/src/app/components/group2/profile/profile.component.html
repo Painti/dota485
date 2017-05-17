@@ -7,26 +7,35 @@
   </head>
   <body>
     <div class="playerheader_container">
-      <div *ngIf="user" >
-        <img src="../assets/images/radiant.png" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
+      <div *ngIf="user">
+        <img src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
         <h2>{{user.displayName}}</h2>
           <table>
             <tr>
-              <th>WIN</th>
-              <th>LOSE</th>
+              <th>WINS</th>
+              <th>LOSES</th>
               <th>WIN RATE</th>
               <th>ESTIMATE MMR</th>
             </tr>
+
             <tr >
-              <td *ngIf="score"><font color="green">{{score.win}}</font></td>
-              <td *ngIf="score"><font color="red">{{score.lose}}</font></td>
-              <td *ngIf="win_rate">{{win_rate}} %</td>
-              <td *ngIf="player">{{player.mmr_estimate.estimate}}</td>
+              <th *ngIf="score"><font color="green">{{score.win}}</font></th>
+              <th *ngIf="score"><font color="red">{{score.lose}}</font></th>
+              <th *ngIf="win_rate">{{win_rate}} %</th>
+              <th *ngIf="player">{{player.mmr_estimate.estimate}}</th>
             </tr>
           </table>
-
       </div>
     </div>
+
+
+    <!-- <nav>
+      <ul>
+          <li [className]="tabs[0]" (click)="onTab(0)">Overview</li>
+          <li [className]="tabs[1]" (click)="onTab(1)">Match</li>
+          <li [className]="tabs[2]" (click)="onTab(2)">Hero</li>
+      </ul>
+    </nav> -->
 
   </body>
 </html>

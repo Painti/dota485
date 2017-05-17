@@ -56,6 +56,8 @@ export class ProfileComponent implements OnInit {
       this.authService.getWinAndLose(this.user['account_id']).subscribe(data => {
         this.score = data ;
         this.win_rate = (this.score['win'] / (this.score['win'] + this.score['lose'])) * 100 ;
+        var st_win_rate = JSON.stringify(this.win_rate);
+        this.win_rate = parseFloat(st_win_rate).toFixed(1) ;
       },
       err => {
         console.log(err);
