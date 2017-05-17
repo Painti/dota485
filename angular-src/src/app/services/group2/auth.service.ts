@@ -64,36 +64,36 @@ export class AuthService {
     localStorage.clear();
   }
 
-  getHero(){
+  getHero(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/heroes')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/heroes/' + id )
       .map(res => res.json());
   }
 
-  getProfile_Player(){
+  getProfile_Player(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/profile_player')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/profile_player/' + id)
       .map(res => res.json());
   }
 
-  getRecentMatch(){
+  getRecentMatch(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/recentMatch')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/recentMatch/' + id)
       .map(res => res.json());
   }
 
-  getWinAndLose(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/wl')
+  getWinAndLose(id){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/wl/'+id)
       .map(res => res.json());
   }
 
-  getPeer(){
+  getPeer(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/peers')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/peers/' + id)
       .map(res => res.json());
   }
 

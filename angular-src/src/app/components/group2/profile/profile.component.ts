@@ -9,62 +9,61 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user : Object ;
-  hero : Array<Object> ;
-  match : Array<Object> ;
-  score :  Array<Object> ;
-  peer :  Array<Object> ;
+  user: Object;
+  hero: Array<Object>;
+  match: Array<Object>;
+  score: Object;
+  peer: Array<Object>;
 
   constructor(
-    private authService:AuthService,
-    private router:Router,
+    private authService: AuthService,
+    private router: Router,
     private getApiService: GetApiService
   ) { }
 
   ngOnInit() {
     this.authService.getProfile().subscribe(data => {
       this.user = data.user;
+      this.authService.getHero(this.user['account_id']).subscribe(data => {
+        this.hero = data;
+
+      },
+        err => {
+          console.log(err);
+          return false;
+        });
+
+      this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
+        this.match = data ;
+
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
+
+      this.authService.getWinAndLose(this.user['account_id']).subscribe(data => {
+        this.score = data ;
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
+
+      this.authService.getPeer(this.user['account_id']).subscribe(data => {
+        this.peer = data ;
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
+
+
     },
-    err => {
-      console.log(err);
-      return false;
-    });
-
-
-    this.authService.getHero().subscribe(data => {
-      this.hero = data ;
-
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
-
-
-    // this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
-    //   this.match = data ;
-    //
-    // },
-    // err => {
-    //   console.log(err);
-    //   return false;
-    // });
-
-    this.authService.getWinAndLose().subscribe(data => {
-      this.score = data ;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
-
-    this.authService.getPeer().subscribe(data => {
-      this.peer = data ;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
+      err => {
+        console.log(err);
+        return false;
+      });
 
   }
 
