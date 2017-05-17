@@ -75,7 +75,7 @@ export class AuthService {
   }
 
   getRecentMatch(){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/group2/profile/recentMatch')
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/recentMatch')
       .map(res => res.json());
   }
 

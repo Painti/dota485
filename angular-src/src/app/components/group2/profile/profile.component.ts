@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
       return false;
     });
 
-    this.authService.getRecentMatch().subscribe(data => {
+    this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
       this.match = data ;
     },
     err => {
