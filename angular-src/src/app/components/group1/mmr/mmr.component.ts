@@ -14,10 +14,10 @@ export class MmrComponent implements OnInit {
     private api: GetApiService,
     private route: ActivatedRoute
   ) { }
-    rankingEU:Array<Object>
-    rankingA:Array<Object>
-    rankingSE:Array<Object>
-    rankingCH:Array<Object>
+    rankingEU:Object
+    rankingA:Object
+    rankingSE:Object
+    rankingCH:Object
     tabs: Array<String>;
 
   ngOnInit() {
