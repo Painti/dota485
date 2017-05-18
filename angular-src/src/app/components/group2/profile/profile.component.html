@@ -9,14 +9,15 @@
     <div class="playerheader_container">
       <div *ngIf="user">
         <table>
-          <img src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
-          <h2>{{user.displayName}}</h2>
+
             <tr>
+              <img src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
+              <h2>{{user.displayName}}</h2>
               <td width = "400px"></td>
               <th width = "70px">WINS</th>
               <th width = "70px">LOSES</th>
-              <th width = "70px">WIN RATE</th>
-              <th width = "70px">ESTIMATE MMR</th>
+              <th width = "120px">WIN RATE</th>
+              <th width = "150px">ESTIMATE MMR</th>
             </tr>
 
             <tr >
