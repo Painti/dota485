@@ -89,6 +89,15 @@
   left: calc(50% + 85px);
 }
 
+.custom-nav{
+  display: block;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.nav li{
+  display: inline-block;
+}
 
 .header img{
   width: 59px;

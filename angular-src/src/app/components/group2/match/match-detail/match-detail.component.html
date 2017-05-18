@@ -30,10 +30,57 @@
       <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
     </div>
   </div>
-  <div class="content">
+  <div class="content mb-3">
     <div>
       {{match.match_id}}
     </div>
   </div>
+  <ul class="nav nav-pills custom-nav">
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id]" href="#">Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/benchmarks']" href="#">Benchmarks</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/performances']" href="#">Performances</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/combat']" href="#">Combat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/farm']" href="#">Farm</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/purchase']" href="#">Purchase</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/graph']" href="#">Graph</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/cast']" href="#">Cast</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/objectives']" href="#">Objectives</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/vision']" href="#">Vision</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/action']" href="#">Action</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/teamfights']" href="#">Teamfights</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/log']" href="#">Log</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/chat']" href="#">Chat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/story']" href="#">Story</a>
+    </li>
+  </ul>
 </div>
 <router-outlet></router-outlet>
