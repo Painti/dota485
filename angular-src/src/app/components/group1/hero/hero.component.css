@@ -1,0 +1,7 @@
+.bghero{
+  background-color: BLACK;
+}
+
+img:hover{
+  opacity: 0.5;
+}

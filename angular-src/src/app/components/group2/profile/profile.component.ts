@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
       this.authService.getHero(this.user['account_id']).subscribe(data => {
         this.hero = data;
 
+
       },
         err => {
           console.log(err);
@@ -71,7 +72,6 @@ export class ProfileComponent implements OnInit {
         console.log(err);
         return false;
       });
-
 
     },
       err => {
