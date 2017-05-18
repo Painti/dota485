@@ -1,35 +1,44 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
+  <!-- <head style="height: 300px ;">
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="../app/components/group2/profile/profile.component.css">
-  </head>
-  <body>
+  </head> -->
+  <!-- <body> -->
     <div class="header">
-      <div *ngIf="user">
+      <div *ngIf="user" >
 
-        <div>
-          <img src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
+        <div class = "profile_picture">
+          <img class = "pf_pc"src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
         </div>
+
+        <div class="score">
+          <div style="padding: 14px; position: absolute; width: 100px;">
+            <span style="font-size: 14px; color: rgba(245, 245, 245, 0.87); display: block; line-height: 36px;">WINS</span>
+            <span *ngIf="score" style="font-size: 25px; color: green; display: block;">{{score.win}}</span>
+          </div>
+
+          <div style="padding: 14px; position: absolute; width: 100px; left: 50px ;">
+            <span style="font-size: 14px; color: rgba(245, 245, 245, 0.87); display: block; line-height: 36px;">LOSES</span>
+            <span *ngIf="score" style="font-size: 25px; color: red; display: block;">{{score.lose}}</span>
+          </div>
+
+          <div style="padding: 14px; position: absolute; width: 150px;left: 115px ;">
+            <span style="font-size: 14px; color: rgba(245, 245, 245, 0.87); display: block; line-height: 36px;">WIN RATE</span>
+            <span *ngIf="win_rate" style="font-size: 25px; display: block;">{{win_rate}} %</span>
+          </div>
+
+          <div style="padding: 14px; position: absolute; width: 150px;left: 210px ;">
+          <span style="font-size: 14px; color: rgba(245, 245, 245, 0.87); display: block; line-height: 36px;" >ESTIMATE MMR</span>
+          <span *ngIf="player" style="font-size: 24px; display: block;left: 10px;">{{player.mmr_estimate.estimate}}</span>
+          </div>
+
+        </div>
+
         <div class="name">
           <h2>{{user.displayName}}</h2>
-        </div>
-        <div class="score">
-          <table>
-              <tr>
-                <th width = "70px">WINS</th>
-                <th width = "70px">LOSES</th>
-                <th width = "120px">WIN RATE</th>
-                <th width = "150px">ESTIMATE MMR</th>
-              </tr>
-              <tr>
-                <th *ngIf="score"><font color="green">{{score.win}}</font></th>
-                <th *ngIf="score"><font color="red">{{score.lose}}</font></th>
-                <th *ngIf="win_rate">{{win_rate}} %</th>
-                <th *ngIf="player">{{player.mmr_estimate.estimate}}</th>
-              </tr>
-          </table>
         </div>
 
       </div>
@@ -44,5 +53,5 @@
       </ul>
     </nav> -->
 
-  </body>
+  <!-- </body> -->
 </html>
