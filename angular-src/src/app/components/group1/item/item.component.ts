@@ -16,8 +16,6 @@ export class ItemComponent implements OnInit {
   ) { }
 
   item:Object;
-  itemdetail:Object;
-  rare:Array<Object>;
 
 
   ngOnInit() {
@@ -28,22 +26,6 @@ export class ItemComponent implements OnInit {
       console.log(err);
       return false;
     });
-
-    this.api.getItemDetail().subscribe(data =>{
-      this.itemdetail = data;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
-
-    // this.api.getRareItem().subscribe(data =>{
-    //   this.rare = data;
-    // },
-    // err => {
-    //   console.log(err);
-    //   return false;
-    // });
   }
 
   getName(name){
