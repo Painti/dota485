@@ -1,0 +1,47 @@
+<ul *ngIf="id" class="nav nav-pills custom-nav">
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id]" href="#">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/benchmarks']" href="#">Benchmarks</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/performances']" href="#">Performances</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/combat']" href="#">Combat</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/farm']" href="#">Farm</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/purchase']" href="#">Purchase</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/graph']" href="#">Graph</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/cast']" href="#">Cast</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/objectives']" href="#">Objectives</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/vision']" href="#">Vision</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/action']" href="#">Action</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/teamfights']" href="#">Teamfights</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/log']" href="#">Log</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/chat']" href="#">Chat</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/story']" href="#">Story</a>
+  </li>
+</ul>
