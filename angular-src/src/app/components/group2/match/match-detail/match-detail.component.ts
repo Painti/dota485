@@ -72,6 +72,13 @@ export class MatchDetailComponent implements OnInit{
     this.communicate.emitMatch(this.match);
   }
 
+  getTeamName(name:any){
+    if(!name){
+      return '(anonymous)';
+    }
+    return name;
+  }
+
   getImageHero(name){
     return 'http://cdn.dota2.com/apps/dota2/images/heroes/'+name+'_sb.png';
   }

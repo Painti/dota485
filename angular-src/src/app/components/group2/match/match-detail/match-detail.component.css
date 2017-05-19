@@ -90,10 +90,18 @@
   width: 100%;
   text-align: center;
   font-weight: 600;
-  font-size: 48px;
+  font-size: 36px;
   -webkit-text-stroke: 1px black;
+}
+
+.header .img-team .radiant{
   color: #68e036;
-  text-shadow: 0px 0px 10px #00ff00;
+  text-shadow: 0px 0px 20px #00ff00;
+}
+
+.header .img-team .dire{
+  color: #e03636;
+  text-shadow: 0px 0px 20px #ff0000;
 }
 
 .header .img-team .box{
@@ -106,16 +114,18 @@
 .header .img-team .left{
   left: 0px;
   color: rgb(33, 247, 94);
+  text-shadow: 0px 0px 20px #00ff00;
 }
 
 .header .img-team .right{
   left: 50%;
   color: rgb(223, 19, 57);
+  text-shadow: 0px 0px 20px #ff0000;
 }
 
 .header .img-team .box .team{
   text-align: center;
-  font-size: 28px;
+  font-size: 18px;
   font-weight: bold;
   -webkit-text-stroke: 1px black;
 }
@@ -211,6 +221,17 @@
   .score-right {
     left: calc(50% + 85px);
   }
+
+  .header .img-team .victory{
+    top: 35px;
+    font-weight: 600;
+    font-size: 48px;
+  }
+
+  .header .img-team .box .team{
+    font-size: 22px;
+  }
+
 }
 
 .set-left img:nth-child(1) {

@@ -20,21 +20,22 @@
     </div>
     <div class="img-team">
       <img src="assets/group2/images/background.JPG" alt="">
-      <div class="victory">Radiant Victory</div>
-      <div class="box left">
+      <div *ngIf="match.radiant_win" class="victory radiant">Radiant Victory</div>
+      <div *ngIf="!match.radiant_win" class="victory dire">Dire Victory</div>
+      <div *ngIf="match.radiant_team || match.dire_team" class="box left">
         <div class="team">
-          Team
+          {{getTeamName(match.radiant_team?.name)}} Team
         </div>
       </div>
-      <div class="box right">
+      <div *ngIf="match.radiant_team || match.dire_team" class="box right">
         <div class="team">
-          Team
+          {{getTeamName(match.dire_team?.name)}} Team
         </div>
       </div>
       <div class="shadow"></div>
     </div>
   </div>
-  <div class="content px-3 d-flex hidden-md-up">
+  <div *ngIf="match.radiant_team || match.dire_team" class="content px-3 d-flex hidden-md-up">
       <h3>TEAM VS TEAM</h3>
   </div>
   <div class="content px-3 py-2 d-flex justify-content-start">

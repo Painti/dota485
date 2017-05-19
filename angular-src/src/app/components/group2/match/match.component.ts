@@ -106,7 +106,7 @@ export class MatchComponent implements OnInit {
 
   getTeamName(name) {
     if (name == null) {
-      return '(annonymous)';
+      return '(anonymous)';
     }
     return name;
   }
