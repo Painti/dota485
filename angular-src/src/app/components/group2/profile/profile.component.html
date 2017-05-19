@@ -74,9 +74,11 @@
     </tr>
     <tbody>
       <tr *ngFor = "let m of match ; let i = index">
-        <td>{{m.hero_id}}</td>
+        <td><div>
+          <img class="pf_hero" style="width:10vw;" src="https://api.opendota.com/apps/dota2/images/heroes/legion_commander_full.png?" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
+        </div></td>
         <td>{{m.match_id}}</td>
-        <td>3</td>
+        <td *ngIf ="hero_stat">{{hero_stat[i+1].name}}</td>
         <td>{{m.kills}}</td>
         <td>{{m.deaths}}</td>
         <td>{{m.assists}}</td>

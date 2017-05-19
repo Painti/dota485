@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   score: Object;
   peer: Array<Object>;
   player: Array<Object>;
+  hero_stat:Array<Object> ;
   win_rate: Object;
   kills_avr: any;
   deaths_avr: any;
@@ -111,6 +112,15 @@ export class ProfileComponent implements OnInit {
 
       this.authService.getPeer(this.user['account_id']).subscribe(data => {
         this.peer = data ;
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
+
+      this.authService.getHero_Stats().subscribe(data => {
+        this.hero_stat = data ;
+
       },
       err => {
         console.log(err);

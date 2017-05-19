@@ -26,6 +26,22 @@ router.get('/:id/profile_player', function(req, res, next) {
   });
 });
 
+router.get('/hero_stats', function(req, res, next) {
+  let url = 'https://api.opendota.com/api/heroStats' ;
+
+  request(url, function(err, response, body) {
+    if (!err && response.statusCode < 400) {
+      res.json(JSON.parse(body));
+    }
+    else {
+      if (response) {
+        console.log(response.statusCode);
+      }
+      next(err);
+    }
+  });
+});
+
 
 router.get('/:id/recentMatch', function(req, res, next) {
   let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/recentMatches';
