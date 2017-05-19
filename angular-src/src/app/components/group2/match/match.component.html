@@ -1,6 +1,8 @@
+<h1>{{title[state]}} matches</h1>
+
 <nav>
   <ul>
-      <li [className]="tabs[0]" (click)="onTab(0)">Pro player</li>
+      <li [className]="tabs[0]" (click)="onTab(0)">Tournament</li>
       <li [className]="tabs[1]" (click)="onTab(1)">High MMR</li>
       <li [className]="tabs[2]" (click)="onTab(2)">Low MMR</li>
   </ul>
@@ -10,9 +12,9 @@
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <span *ngIf="order.match_id == 'asc'">▲</span><span *ngIf="order.match_id == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
         <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('league_name')">league <span *ngIf="order.league_name == 'asc'">▲</span><span *ngIf="order.league_name == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('league_name')">league <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.league_name == 'asc'"></i><i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.league_name == 'desc'"></i></span></th>
         <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
         <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
       </tr>
@@ -48,9 +50,9 @@
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <span *ngIf="order.match_id == 'asc'">▲</span><span *ngIf="order.match_id == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
         <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <span *ngIf="order.avg_mmr == 'asc'">▲</span><span *ngIf="order.avg_mmr == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.avg_mmr == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.avg_mmr == 'desc'"></i></span></th>
         <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
           <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
       </tr>
@@ -90,9 +92,9 @@
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <span *ngIf="order.match_id == 'asc'">▲</span><span *ngIf="order.match_id == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
         <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <span *ngIf="order.avg_mmr == 'asc'">▲</span><span *ngIf="order.avg_mmr == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.avg_mmr == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.avg_mmr == 'desc'"></i></span></th>
         <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
         <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
       </tr>
