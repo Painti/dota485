@@ -1,16 +1,16 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CommunicateService } from '../../../../../services/group2/communicate.service';
 import { Subscription }   from 'rxjs/Subscription';
-import { ChartComponent } from 'angular2-chartjs/';
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.css']
 })
-export class OverviewComponent implements OnInit, OnDestroy {
+export class OverviewComponent implements OnInit {
 
-  constructor(private communicate: CommunicateService) { }
+  constructor(private communicate: CommunicateService) {
+  }
 
   match: Object;
   subscription: Subscription;
@@ -27,16 +27,14 @@ export class OverviewComponent implements OnInit, OnDestroy {
       match => {
         let kills:Array<Number> = [];
         let players_name:Array<string> = [];
-        let sumKill:Array<Number> = [0,0];
         let i:any;
         for (i in match['players']) {
           kills.push(match['players'][i]['kills']);
           players_name.push(match['players'][i]['personaname']);
-          sumKill[Math.floor(i/5)] += match['players'][i]['kills'];
         }
         this.data['datasets'][0].data = kills;
         this.data.labels = players_name;
-        this.data1['datasets'][0].data = sumKill;
+        this.data1['datasets'][0].data = match['team_score_kills'];
         this.match = match;
       });
 
@@ -46,7 +44,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
         datasets: [
           {
             label: "Player",
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             backgroundColor: [
               "#2e6ae6", "#5de6ad", "#ad00ad", "#dcd90a", "#e66200",
               "#e67ab0", "#92a440", "#5cc5e0", "#00771e", "#835603"
@@ -80,14 +78,10 @@ export class OverviewComponent implements OnInit, OnDestroy {
         datasets: [
           {
             label: "All Kill",
-            data: [10, 50],
+            data: [1, 0],
             backgroundColor: [
-              "#40ff40",
-              "#ff4040"
-            ],
-            hoverBackgroundColor: [
-              "#40cc40",
-              "#cc4040"
+              "#71d04a",
+              "#c92626"
             ],
             borderWidth: [1, 1],
             borderColor: [
@@ -109,7 +103,4 @@ export class OverviewComponent implements OnInit, OnDestroy {
       };
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 }

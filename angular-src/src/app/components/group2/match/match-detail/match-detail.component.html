@@ -8,79 +8,95 @@
   <div class="header">
     <div class="bar"></div>
     <div class="setheroes set-left">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
+      <img *ngFor="let i of player_size;" [src]="getImageHero(match.players[i].hero_name)" alt="">
     </div>
-    <div>
-      <img src="" alt="">
-    </div>
-    <div class="score score-left">12</div>
+    <div class="score score-left">{{match['team_score_kills'][0]}}</div>
     <div class="half-circle">
-      <div class="time">13 : 28</div>
+      <div class="time">{{getTime(match.duration)}}</div>
     </div>
-    <div class="score score-right">25</div>
+    <div class="score score-right">{{match['team_score_kills'][1]}}</div>
     <div class="setheroes set-right">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
-      <img src="http://cdn.dota2.com/apps/dota2/images/heroes/monkey_king_sb.png" alt="">
+      <img *ngFor="let i of player_size;" [src]="getImageHero(match.players[i+5].hero_name)" alt="">
+    </div>
+    <div class="img-team">
+      <img src="assets/group2/images/background.JPG" alt="">
+      <div class="shadow"></div>
     </div>
   </div>
-  <div class="content mb-3">
+  <div class="content px-3 d-flex hidden-md-up">
+      <h3>TEAM VS TEAM</h3>
+  </div>
+  <div class="content px-3 py-2 d-flex justify-content-start">
     <div>
-      {{match.match_id}}
+      <div class="text-muted">
+        Macth ID
+      </div>
+      <div class="text-white">
+        {{match.match_id}}
+      </div>
+    </div>
+    <div class="pl-4 hidden-md-up">
+      <div class="text-muted">
+        Duration
+      </div>
+      <div class="text-white">
+        {{getTime(match.duration)}}
+      </div>
+    </div>
+    <div *ngIf="match.league != null" class="pl-4">
+      <div class="text-muted">
+        League
+      </div>
+      <div class="text-white">
+        {{match.league.name}}
+      </div>
+    </div>
+    <div class="ml-auto hidden-sm-down">
+      <div *ngIf="match.game_mode != null">
+        <div class="float-right text-white">
+          {{match.game_mode}}
+        </div>
+      </div>
+      <div>
+        <div class="float-right text-white">
+          Ended {{getTimeAgo(match.start_time)}}
+        </div>
+      </div>
+      <div>
+        <div class="float-right text-white">
+          AVG MMR {{match.avg_mmr}}
+        </div>
+      </div>
     </div>
   </div>
-  <ul class="nav nav-pills custom-nav">
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id]" href="#">Overview</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/benchmarks']" href="#">Benchmarks</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/performances']" href="#">Performances</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/combat']" href="#">Combat</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/farm']" href="#">Farm</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/purchase']" href="#">Purchase</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/graph']" href="#">Graph</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/cast']" href="#">Cast</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/objectives']" href="#">Objectives</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/vision']" href="#">Vision</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/action']" href="#">Action</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/teamfights']" href="#">Teamfights</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/log']" href="#">Log</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/chat']" href="#">Chat</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+match.match_id+'/story']" href="#">Story</a>
-    </li>
-  </ul>
+  <div class="content px-3 d-flex justify-content-start hidden-md-up">
+    <div>
+      <div class="text-muted">
+        Game Mode
+      </div>
+      <div class="text-white">
+        {{match.game_mode}}
+      </div>
+    </div>
+    <div class="pl-4">
+      <div class="text-muted">
+        Start time
+      </div>
+      <div class="text-white">
+        {{getTimeAgo(match.start_time)}}
+      </div>
+    </div>
+    <div class="pl-4">
+      <div class="text-muted">
+        AVG MMR
+      </div>
+      <div class="text-white">
+        {{match.avg_mmr}}
+      </div>
+    </div>
+  </div>
+  <hr class="nav-hr mb-1" />
+  <app-match-detail-nav [id]='id' (click)="emit()"></app-match-detail-nav>
+  <hr class="nav-hr mt-1" />
 </div>
 <router-outlet></router-outlet>

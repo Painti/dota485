@@ -52,6 +52,7 @@ import { TeamfightsComponent } from './components/group2/match/match-detail/team
 import { LogComponent } from './components/group2/match/match-detail/log/log.component';
 import { ChatComponent } from './components/group2/match/match-detail/chat/chat.component';
 import { StoryComponent } from './components/group2/match/match-detail/story/story.component';
+import { MatchDetailNavComponent } from './components/group2/match/match-detail/match-detail-nav/match-detail-nav.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -118,7 +119,8 @@ const appRoutes: Routes = [
     TeamfightsComponent,
     LogComponent,
     ChatComponent,
-    StoryComponent
+    StoryComponent,
+    MatchDetailNavComponent
   ],
   imports: [
     BrowserModule,
