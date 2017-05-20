@@ -103,4 +103,9 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  // getHero_Img(id){
+  //   return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' +id+'/heroes_img')
+  //     .map(res => res.json());
+  // }
+
 }

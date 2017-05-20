@@ -16,6 +16,9 @@ export class ProfileComponent implements OnInit {
   peer: Array<Object>;
   player: Array<Object>;
   hero_stat:Array<Object> ;
+  heroes_img: Array<Object> ;
+  name_hero: Array<Object> ;
+  wl_RecentMatch: Array<any> ;
   win_rate: Object;
   kills_avr: any;
   deaths_avr: any;
@@ -56,6 +59,15 @@ export class ProfileComponent implements OnInit {
           return false;
         });
 
+        this.authService.getHero_Stats().subscribe(data => {
+          this.hero_stat = data ;
+
+        },
+        err => {
+          console.log(err);
+          return false;
+        });
+
       this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
         this.match = data ;
         this.kills_avr = 0 ; this.deaths_avr = 0 ;this.assists_avr = 0 ;
@@ -72,6 +84,10 @@ export class ProfileComponent implements OnInit {
           this.damage_avr += this.match[i]['hero_damage'] ;
           this.heal_avr += this.match[i]['hero_healing'] ;
           this.tw_damage_avr += this.match[i]['tower_damage'] ;
+          if(this.match[i]['player_slot'] < 5 && this.match[i]['radiant_win'] == false ||
+            this.match[i]['player_slot'] > 5 && this.match[i]['radiant_win'] == true){
+            this.match[i]['radiant_win'] = "lose" ;
+          }else this.match[i]['radiant_win'] = "Win" ;
         }
         this.kills_avr /= data.length;
         this.deaths_avr /= data.length ;
@@ -118,14 +134,6 @@ export class ProfileComponent implements OnInit {
         return false;
       });
 
-      this.authService.getHero_Stats().subscribe(data => {
-        this.hero_stat = data ;
-
-      },
-      err => {
-        console.log(err);
-        return false;
-      });
 
     },
       err => {

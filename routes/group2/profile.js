@@ -108,6 +108,23 @@ let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/heroes';
 });
 
 
+// router.get('/:id/heroes_img', function(req, res, next) {
+// let url = 'https://api.opendota.com/apps/dota2/images/heroes/'+req.params.id'_full.png';
+//
+//   request(url, function(err, response, body) {
+//     if (!err && response.statusCode < 400) {
+//       res.json(JSON.parse(body));
+//     }
+//     else {
+//       if (response) {
+//         console.log(response.statusCode);
+//       }
+//       next(err);
+//     }
+//   });
+// });
+
+
 
 
 module.exports = router;
