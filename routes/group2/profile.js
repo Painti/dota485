@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 var request = require('request');
+var server = require('../../config/server');
 
 
 
@@ -48,7 +49,22 @@ router.get('/:id/recentMatch', function(req, res, next) {
 
   request(url, function(err, response, body) {
     if (!err && response.statusCode < 400) {
-      res.json(JSON.parse(body));
+      var data = JSON.parse(body) ;
+      let listheroes_url = 'http://' + server.hostname + ':' + server.port + '/data/opendota/heroes';
+      request(listheroes_url, function(err, response, listheroes) {
+        if (!err && response.statusCode < 400) {
+          listheroes = JSON.parse(listheroes);
+          for (let i = 0; i < data.length; i++) {
+            data[i].heroes_name = listheroes[data[i].hero_id].name.replace('npc_dota_hero_', '') ;
+          }
+          res.json(data);
+        } else {
+          if (response) {
+            console.log(response.statusCode);
+          }
+          next(err);
+        }
+      });
     }
     else {
       if (response) {
@@ -106,23 +122,6 @@ let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/heroes';
     }
   });
 });
-
-
-// router.get('/:id/heroes_img', function(req, res, next) {
-// let url = 'https://api.opendota.com/apps/dota2/images/heroes/'+req.params.id'_full.png';
-//
-//   request(url, function(err, response, body) {
-//     if (!err && response.statusCode < 400) {
-//       res.json(JSON.parse(body));
-//     }
-//     else {
-//       if (response) {
-//         console.log(response.statusCode);
-//       }
-//       next(err);
-//     }
-//   });
-// });
 
 
 

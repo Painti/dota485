@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   hero_stat:Array<any> ;
   heroes_img: Array<Object> ;
   name_hero: Array<Object> ;
+  wl_recentMatch: Array<String> ;
   win_rate: Object;
   kills_avr: any;
   deaths_avr: any;
@@ -73,6 +74,8 @@ export class ProfileComponent implements OnInit {
         this.gold_avr = 0;this.xp_avr = 0 ; this.lh_avr = 0;
         this.damage_avr = 0 ; this.heal_avr = 0;this.tw_damage_avr = 0 ;
 
+        this.wl_recentMatch = [] ;
+
         for(let i = 0 ; i < data.length  ;i++){
           this.kills_avr =  this.kills_avr + this.match[i]['kills'] ;
           this.deaths_avr += this.match[i]['deaths'] ;
@@ -85,9 +88,8 @@ export class ProfileComponent implements OnInit {
           this.tw_damage_avr += this.match[i]['tower_damage'] ;
           if(this.match[i]['player_slot'] < 5 && this.match[i]['radiant_win'] == false ||
             this.match[i]['player_slot'] > 5 && this.match[i]['radiant_win'] == true){
-            this.match[i]['radiant_win'] = "lose" ;
-          }else this.match[i]['radiant_win'] = "Win" ;
-          // this.match[i]['hero_id'] = this.hero_stat[i]['name'].replace('npc_dota_hero_', '') ;
+            this.wl_recentMatch.push("lose") ;
+          }else this.wl_recentMatch.push("Win")  ;
         }
         this.kills_avr /= data.length;
         this.deaths_avr /= data.length ;
@@ -139,8 +141,19 @@ export class ProfileComponent implements OnInit {
       err => {
         console.log(err);
         return false;
-      });
+    });
+  }
 
+  getColor(color){
+    if(color == "Win"){
+      return "green" ;
+    }else{
+      return "red" ;
+    }
+  }
+
+  getImage(name){
+    return "https://api.opendota.com/apps/dota2/images/heroes/"+name+"_full.png" ;
   }
 
 }
