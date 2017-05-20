@@ -15,10 +15,9 @@ export class ProfileComponent implements OnInit {
   score: Object;
   peer: Array<Object>;
   player: Array<Object>;
-  hero_stat:Array<Object> ;
+  hero_stat:Array<any> ;
   heroes_img: Array<Object> ;
   name_hero: Array<Object> ;
-  wl_RecentMatch: Array<any> ;
   win_rate: Object;
   kills_avr: any;
   deaths_avr: any;
@@ -88,6 +87,7 @@ export class ProfileComponent implements OnInit {
             this.match[i]['player_slot'] > 5 && this.match[i]['radiant_win'] == true){
             this.match[i]['radiant_win'] = "lose" ;
           }else this.match[i]['radiant_win'] = "Win" ;
+          // this.match[i]['hero_id'] = this.hero_stat[i]['name'].replace('npc_dota_hero_', '') ;
         }
         this.kills_avr /= data.length;
         this.deaths_avr /= data.length ;
