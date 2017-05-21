@@ -53,12 +53,14 @@ import { LogComponent } from './components/group2/match/match-detail/log/log.com
 import { ChatComponent } from './components/group2/match/match-detail/chat/chat.component';
 import { StoryComponent } from './components/group2/match/match-detail/story/story.component';
 import { MatchDetailNavComponent } from './components/group2/match/match-detail/match-detail-nav/match-detail-nav.component';
+import { ItemDetailComponent } from './components/group1/item/item-detail/item-detail.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hero', component: HeroComponent },
   { path: 'hero/:hero_name', component: HeroDetailComponent },
   { path: 'item', component: ItemComponent },
+  { path: 'item/:item_name', component: ItemDetailComponent },
   { path: 'ranking', component: MmrComponent },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'match', component: MatchComponent },
@@ -120,7 +122,8 @@ const appRoutes: Routes = [
     LogComponent,
     ChatComponent,
     StoryComponent,
-    MatchDetailNavComponent
+    MatchDetailNavComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
