@@ -1,0 +1,9 @@
+.custom-nav{
+  display: block;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.nav li{
+  display: inline-block;
+}

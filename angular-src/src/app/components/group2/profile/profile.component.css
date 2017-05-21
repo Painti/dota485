@@ -1,22 +1,17 @@
-.green{
-  color: green ;
+.stats{
+  font-size: 14px;
+  color: rgba(245, 245, 245, 0.87);
+   display: block;
+   line-height: 36px;
 }
 
-.red{
-  color: red ;
+.font25{
+  font-size: 25px ;
 }
 
-div.name{
-  padding: 14px;
-  width: 160px;
-  position: absolute ;
-  left: 175px ;
-}
-
-div.profile_picture{
-  width: 80px ;
-  height: 135px ;
-  position: absolute;
+.nav-hr {
+  border-bottom: 6px double #00429a;
+  margin: 0px;
 }
 
 img.pf_pc{
