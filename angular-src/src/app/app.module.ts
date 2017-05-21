@@ -53,6 +53,9 @@ import { LogComponent } from './components/group2/match/match-detail/log/log.com
 import { ChatComponent } from './components/group2/match/match-detail/chat/chat.component';
 import { StoryComponent } from './components/group2/match/match-detail/story/story.component';
 import { MatchDetailNavComponent } from './components/group2/match/match-detail/match-detail-nav/match-detail-nav.component';
+import { HeroesPlayerComponent } from './components/group2/profile/heroes-player/heroes-player.component';
+import { MatchesPlayerComponent } from './components/group2/profile/matches-player/matches-player.component';
+import { OverviewPlayerComponent } from './components/group2/profile/overview-player/overview-player.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -82,7 +85,11 @@ const appRoutes: Routes = [
       { path: 'story', component: StoryComponent }
     ]
   },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] ,
+    children:[
+
+    ]
+  },
   { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
   { path: 'profile/setting/link-facebook', component: LinkFacebookComponent, canActivate: [AuthGuard, LinkFacebookGuard] }
 ]
@@ -104,7 +111,6 @@ const appRoutes: Routes = [
     FilterPipe,
     OverviewComponent,
     NgForObjectPipe,
-    HeroDetailComponent,
     HeroDetailComponent,
     BenchmarksComponent,
     PerformancesComponent,
