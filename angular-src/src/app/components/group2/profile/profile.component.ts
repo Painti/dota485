@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
   player: Array<Object>;
   hero_stat:Array<any> ;
   heroes_img: Array<Object> ;
-  name_hero: Array<Object> ;
   wl_recentMatch: Array<String> ;
   win_rate: Object;
   kills_avr: any;
@@ -90,6 +89,10 @@ export class ProfileComponent implements OnInit {
             this.match[i]['player_slot'] > 5 && this.match[i]['radiant_win'] == true){
             this.wl_recentMatch.push("lose") ;
           }else this.wl_recentMatch.push("Win")  ;
+          this.match[i]['cut_name'] = this.match[i]['heroes_name'].replace('_',' ') ;
+          if(this.match[i]['player_slot'] <= 5){
+            this.match[i]['player_team'] = "Radiant" ;
+          }else this.match[i]['player_team'] = "Dire" ;
         }
         this.kills_avr /= data.length;
         this.deaths_avr /= data.length ;
@@ -110,6 +113,7 @@ export class ProfileComponent implements OnInit {
         this.damage_avr = this.damage_avr.toFixed(0) ;
         this.heal_avr = this.heal_avr.toFixed(0) ;
         this.tw_damage_avr = this.tw_damage_avr.toFixed(0) ;
+
 
       },
       err => {
@@ -155,5 +159,6 @@ export class ProfileComponent implements OnInit {
   getImage(name){
     return "https://api.opendota.com/apps/dota2/images/heroes/"+name+"_full.png" ;
   }
+
 
 }
