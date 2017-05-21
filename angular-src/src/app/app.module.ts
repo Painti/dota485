@@ -38,6 +38,9 @@ import { LoginGuard } from './guard/login.guard';
 import { LinkFacebookGuard } from './guard/linkfacebook.guard';
 import { LinkFacebookComponent } from './components/group2/profile/profile-setting/link-facebook/link-facebook.component';
 import { HeroDetailComponent } from './components/group1/hero/hero-detail/hero-detail.component';
+<<<<<<< HEAD
+import { QuizComponent } from './components/group1/quiz/quiz.component';
+=======
 import { BenchmarksComponent } from './components/group2/match/match-detail/benchmarks/benchmarks.component';
 import { PerformancesComponent } from './components/group2/match/match-detail/performances/performances.component';
 import { CombatComponent } from './components/group2/match/match-detail/combat/combat.component';
@@ -56,7 +59,11 @@ import { MatchDetailNavComponent } from './components/group2/match/match-detail/
 import { HeroesPlayerComponent } from './components/group2/profile/heroes-player/heroes-player.component';
 import { MatchesPlayerComponent } from './components/group2/profile/matches-player/matches-player.component';
 import { OverviewPlayerComponent } from './components/group2/profile/overview-player/overview-player.component';
+<<<<<<< HEAD
 import { NavbarPlayerComponent } from './components/group2/profile/navbar-player/navbar-player.component';
+=======
+>>>>>>> 34dd45ef66afe35ace2ec8408a3e335d8e9c6ab2
+>>>>>>> deef1badca6d7a73b3d13967dd38883b7ba29a64
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -64,7 +71,12 @@ const appRoutes: Routes = [
   { path: 'hero/:hero_name', component: HeroDetailComponent },
   { path: 'item', component: ItemComponent },
   { path: 'ranking', component: MmrComponent },
+<<<<<<< HEAD
+  { path: 'quiz', component: QuizComponent }  ,
+  { path: 'login', component: LoginComponent , canActivate: [LoginGuard]},
+=======
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+>>>>>>> 34dd45ef66afe35ace2ec8408a3e335d8e9c6ab2
   { path: 'match', component: MatchComponent },
   {
     path: 'match/:match_id', component: MatchDetailComponent,
@@ -115,6 +127,10 @@ const appRoutes: Routes = [
     OverviewComponent,
     NgForObjectPipe,
     HeroDetailComponent,
+<<<<<<< HEAD
+    HeroDetailComponent,
+    QuizComponent
+=======
     BenchmarksComponent,
     PerformancesComponent,
     CombatComponent,
@@ -129,11 +145,16 @@ const appRoutes: Routes = [
     LogComponent,
     ChatComponent,
     StoryComponent,
+<<<<<<< HEAD
     MatchDetailNavComponent,
     OverviewPlayerComponent,
     HeroesPlayerComponent,
     MatchesPlayerComponent,
     NavbarPlayerComponent
+=======
+    MatchDetailNavComponent
+>>>>>>> 34dd45ef66afe35ace2ec8408a3e335d8e9c6ab2
+>>>>>>> deef1badca6d7a73b3d13967dd38883b7ba29a64
   ],
   imports: [
     BrowserModule,

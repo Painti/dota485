@@ -8,6 +8,8 @@ var items = require('./group1/items');
 router.use('/items', items);
 var mmr = require('./group1/mmr');
 router.use('/mmr', mmr);
+var quiz = require('./group1/quiz');
+router.use('/quiz', quiz);
 
 //Gruop 2
 var opendota = require('./group2/opendota');
