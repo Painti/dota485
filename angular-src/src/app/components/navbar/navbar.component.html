@@ -30,8 +30,8 @@
       <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="veiw profile" placement="bottom">
         <a class="nav-link text-center" [routerLink]="['/profile']"><i class="fa fa-user-circle fa-lg"></i><span *ngIf="name"> {{name}}</span></a>
       </li>
-      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="setting" placement="bottom">
-        <a class="nav-link text-center" [routerLink]="['/profile/setting']"><i class="fa fa-cog fa-lg"></i><span class="hidden-md-up"> Setting</span></a>
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="setting" placement="bottom" (mouseenter)="mouseOvered=true" (mouseleave) ="mouseOvered=false">
+        <a class="nav-link text-center" [routerLink]="['/profile/setting']"><i [class.fa-spin]="mouseOvered" class="fa fa-cog fa-lg"></i><span class="hidden-md-up"> Setting</span></a>
       </li>
       <li class="nav-item" *ngIf="authService.loggedIn()" tooltip="Log out" placement="bottom">
         <a class="nav-link text-center" (click)="onLogout()" href="#"><i class="fa fa-sign-out fa-lg"></i><span class="hidden-md-up"> Log out</span></a>

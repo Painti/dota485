@@ -1,64 +1,106 @@
 <!DOCTYPE html>
 
 <html>
-<!-- <head style="height: 300px ;">
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="../app/components/group2/profile/profile.component.css">
-  </head> -->
-<!-- <body> -->
-<div *ngIf="user" class="header">
-  <div class="profile_picture">
-    <img class="pf_pc" src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:10vw;height:20vh;">
-  </div>
-
-  <div class="score">
-    <div style="padding: 14px; position: absolute; width: 100px;">
-      <span style="font-size: 14px; color: rgba(245, 245, 245, 0.87); display: block; line-height: 36px;">WINS</span>
-      <span *ngIf="score" style="font-size: 25px; color: green; display: block;">{{score.win}}</span>
+<div class="d-flex flex-row" *ngIf="user" >
+    <div class="profile_picture" style="width:150px;">
+      <img class="pf_pc" src="{{user._json.avatarfull}}" alt="{{user.displayName}}" style="width:100% ;">
     </div>
 
-    <div style="padding: 14px; position: absolute; width: 100px; left: 60px ;">
-      <span style="font-size: 14px; color: rgba(245, 245, 245, 0.87); display: block; line-height: 36px;">LOSES</span>
-      <span *ngIf="score" style="font-size: 25px; color: red; display: block;">{{score.lose}}</span>
+    <div class = "d-flex flex-column">
+      <div class = "pl-4 pt-4">
+          <h2>{{user.displayName}}</h2>
+      </div>
+
+      <div class = "d-flex flex-row">
+        <div class = "pl-4">
+          <span class = "stats">WINS</span>
+          <span *ngIf="score" class = "font25" style="color: green; ">{{score.win}}</span>
+        </div>
+
+        <div class = "pl-4">
+          <span class = "stats">LOSES</span>
+          <span *ngIf="score" class = "font25" style=" color: red; ">{{score.lose}}</span>
+        </div>
+
+        <div class = "pl-4">
+          <span class = "stats">WIN RATE</span>
+          <span *ngIf="win_rate" class = "font25">{{win_rate}} %</span>
+        </div>
+
+        <div class = "pl-4">
+          <span class = "stats" >ESTIMATE MMR</span>
+          <span *ngIf="player" class = "font25">{{player.mmr_estimate.estimate}}</span>
+        </div>
+      </div>
     </div>
-
-    <div style="padding: 14px; position: absolute; width: 150px;left: 125px ;">
-      <span style="font-size: 14px; color: rgba(245, 245, 245, 0.87); display: block; line-height: 36px;">WIN RATE</span>
-      <span *ngIf="win_rate" style="font-size: 25px; display: block;">{{win_rate}} %</span>
-    </div>
-
-    <div style="padding: 14px; position: absolute; width: 150px;left: 220px ;">
-      <span style="font-size: 14px; color: rgba(245, 245, 245, 0.87); display: block; line-height: 36px;">ESTIMATE MMR</span>
-      <span *ngIf="player" style="font-size: 24px; display: block;left: 10px;">{{player.mmr_estimate.estimate}}</span>
-    </div>
-
-  </div>
-
-  <div class="name">
-    <h2>{{user.displayName}}</h2>
-  </div>
 </div>
 
-<div style="position: absolute; top: 175px;">
+<div>
+  
+</div>
+
+<div class = "py-4">
   <span style="font-size: 24px;">Averages/Maximums</span>
   <span style="font-size: 12px  ;color: rgba(245, 245, 245, 0.87);">in last 20 matches</span>
 </div>
 
-<div style="position: absolute; top: 235px;">
-  <table style="width:100%">
+  <div class="d-flex flex-wrap pb-3">
+    <div *ngIf = "win_rate" ><span>Winrate</span><p>{{win_rate}} %</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "kills_avr"><span>KILLS</span><p>{{kills_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "deaths_avr"><span>DEATHS</span><p>{{deaths_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "assists_avr"><span>ASSISTS</span><p>{{assists_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "gold_avr"><span>GOLD PER MIN</span><p>{{gold_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "xp_avr"><span>XP PER MIN</span><p>{{xp_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "lh_avr"><span>LAST HITS</span><p>{{lh_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "damage_avr"><span>HERO DAMAGE</span><p>{{damage_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "heal_avr"><span>HERO HEALING</span><p>{{heal_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <div *ngIf = "tw_damage_avr"><span>TOWER DAMAGE</span><p>{{tw_damage_avr}}</p></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+
+<div style="width:100%" >
+  <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <tr>
-      <th *ngIf = "win_rate" ><span>Winrate</span><p>{{win_rate}} %</p></th>
-      <th *ngIf = "kills_avr"><span>KILLS</span><p>{{kills_avr}}</p></th>
-      <th *ngIf = "deaths_avr"><span>DEATHS</span><p>{{deaths_avr}}</p></th>
-      <th *ngIf = "assists_avr"><span>ASSISTS</span><p>{{assists_avr}}</p></th>
-      <th *ngIf = "gold_avr"><span>GOLD PER MIN</span><p>{{gold_avr}}</p></th>
-      <th *ngIf = "xp_avr"><span>XP PER MIN</span><p>{{xp_avr}}</p></th>
-      <th *ngIf = "lh_avr"><span>LAST HITS</span><p>{{lh_avr}}</p></th>
-      <th *ngIf = "damage_avr"><span>HERO DAMAGE</span><p>{{damage_avr}}</p></th>
-      <th *ngIf = "heal_avr"><span>HERO HEALING</span><p>{{heal_avr}}</p></th>
-      <th *ngIf = "tw_damage_avr"><span>TOWER DAMAGE</span><p>{{tw_damage_avr}}</p></th>
+      <th> HERO </th>
+      <th> GAME MODE</th>
+      <th> ID </th>
+      <th> RESULT  </th>
+      <th> K  </th>
+      <th> D  </th>
+      <th> A  </th>
     </tr>
+    <tbody>
+      <tr *ngFor = "let m of match ; let i = index">
+        <td class="d-flex flex-nowrap">
+          <div>
+          <img class="pf_hero" [src] = "getImage(m.heroes_name)" alt="{{user.displayName}}" >
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="d-flex flex-column">
+        <span style="color: rgb(102, 187, 255);"> &nbsp;{{m.cut_name}}</span>
+        <span class = "p-1">{{m.player_team}}</span>
+      </div></td>
+      <td>{{m.game_mode}}</td>
+        <td>
+          <div style="color: rgb(102, 187, 255);">
+          {{m.match_id}}
+        </div>
+      </td>
+        <td *ngIf = "wl_recentMatch" [className] = "getColor(wl_recentMatch[i])" >{{wl_recentMatch[i]}}</td>
+        <td>{{m.kills}}</td>
+        <td>{{m.deaths}}</td>
+        <td>{{m.assists}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>
 

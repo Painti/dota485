@@ -71,6 +71,11 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  getHero_Stats(){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/hero_stats'  )
+      .map(res => res.json());
+  }
+
   getProfile_Player(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -97,5 +102,10 @@ export class AuthService {
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' + id+'/peers')
       .map(res => res.json());
   }
+
+  // getHero_Img(id){
+  //   return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' +id+'/heroes_img')
+  //     .map(res => res.json());
+  // }
 
 }

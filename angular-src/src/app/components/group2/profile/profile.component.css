@@ -1,14 +1,20 @@
-div.name{
-  padding: 14px;
-  width: 160px;
-  position: absolute ;
-  left: 175px ;
+.green{
+  color: Lime ;
 }
 
-div.profile_picture{
-  width: 80px ;
-  height: 135px ;
-  position: absolute;
+.red{
+  color: OrangeRed ;
+}
+
+.stats{
+  font-size: 14px;
+  color: rgba(245, 245, 245, 0.87);
+   display: block;
+   line-height: 36px;
+}
+
+.font25{
+  font-size: 25px ;
 }
 
 img.pf_pc{
@@ -18,12 +24,12 @@ border-bottom-right-radius: 50%;
 border-bottom-left-radius: 50%;
 }
 
-div.score{
-  width: 450px ;
-  height: 100px ;
-  top: 50px ;
-  position: absolute; left : 175px ;
+img.pf_hero{
+   width: 52px !important;
+   height: 29px !important;
+    box-shadow: 0px 0px 5px #888888;
 }
+
 
 nav ul {
   position: relative;
@@ -65,27 +71,4 @@ nav li:last-child::before {
   content: '';
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
-}
-
-
-/* Move the line */
-
-nav li:first-child.active~li:last-child::before {
-  -webkit-transform: translate3d(-300%, 0, 0);
-  transform: translate3d(-300%, 0, 0);
-}
-
-nav li:nth-child(2).active~li:last-child::before {
-  -webkit-transform: translate3d(-200%, 0, 0);
-  transform: translate3d(-200%, 0, 0);
-}
-
-nav li:nth-child(3).active~li:last-child::before {
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-}
-
-nav li:last-child.active::before {
-  -webkit-transform: translate3d(0%, 0, 0);
-  transform: translate3d(0%, 0, 0);
 }

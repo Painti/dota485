@@ -17,6 +17,8 @@ export class MatchComponent implements OnInit {
   order: Object = { id: String, league: String };
   shift: Boolean;
   arrfilter: Array<String>;
+  title:Array<String>;
+  state:number;
 
   ngOnInit() {
     this.api.getOpendata('proMatches').subscribe(data => {
@@ -43,6 +45,8 @@ export class MatchComponent implements OnInit {
         return false;
       });
 
+    this.title = ['Tournament', 'Professional player', 'Noob player'];
+    this.state = 0;
     this.tabs = ['active', '', ''];
     this.initOrder();
   } // end init
@@ -73,10 +77,11 @@ export class MatchComponent implements OnInit {
     }
   }
 
-  onTab(num) {
+  onTab(num:number) {
     this.tabs = ['', '', ''];
     this.tabs[num] = 'active';
     this.initOrder();
+    this.state = num;
   }
 
   canShow(arr, num) {
@@ -101,7 +106,7 @@ export class MatchComponent implements OnInit {
 
   getTeamName(name) {
     if (name == null) {
-      return '(annonymous)';
+      return '(anonymous)';
     }
     return name;
   }
