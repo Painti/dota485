@@ -56,6 +56,7 @@ import { MatchDetailNavComponent } from './components/group2/match/match-detail/
 import { HeroesPlayerComponent } from './components/group2/profile/heroes-player/heroes-player.component';
 import { MatchesPlayerComponent } from './components/group2/profile/matches-player/matches-player.component';
 import { OverviewPlayerComponent } from './components/group2/profile/overview-player/overview-player.component';
+import { NavbarPlayerComponent } from './components/group2/profile/navbar-player/navbar-player.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -87,7 +88,9 @@ const appRoutes: Routes = [
   },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] ,
     children:[
-
+      { path: '', component: OverviewPlayerComponent },
+      { path: 'heroes', component: HeroesPlayerComponent },
+      { path: 'matches', component: MatchesPlayerComponent }
     ]
   },
   { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
@@ -126,7 +129,11 @@ const appRoutes: Routes = [
     LogComponent,
     ChatComponent,
     StoryComponent,
-    MatchDetailNavComponent
+    MatchDetailNavComponent,
+    OverviewPlayerComponent,
+    HeroesPlayerComponent,
+    MatchesPlayerComponent,
+    NavbarPlayerComponent
   ],
   imports: [
     BrowserModule,
