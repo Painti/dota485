@@ -13,26 +13,15 @@ export class HeroDetailComponent implements OnInit {
     private api: GetApiService,
     private route: ActivatedRoute,
   ) { }
-  match:Object;
+  hero:Object;
   id:string;
   state:any;
-
   ngOnInit() {
-    this.state = {o: {state: 'failed'}};
     this.route.params.subscribe(params => {
-    this.id = params[':hero_name'];
-
+        this.id = params['hero_name'];
+        console.log(params);
     });
-  }
-  getProgress(obj: Object){
-    if(obj['state'] == 'failed' || obj['state'] == 'completed'){
-      obj['progress'] = 100;
-      obj['state'] = '1';
-      this.api.getOpendata('/hero/'+this.id).subscribe(data => {
-        this.match = data;
-      });
-    }
-    return obj['progress'];
-  }
 
+  }
+  
 }

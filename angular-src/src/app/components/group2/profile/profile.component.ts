@@ -29,23 +29,15 @@ export class ProfileComponent implements OnInit {
       this.authService.getHero(this.user['account_id']).subscribe(data => {
         this.hero = data;
 
-<<<<<<< HEAD
-    this.authService.getHero().subscribe(data => {
-      this.hero = data ;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
-/*
-    this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
+
+  //  this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
       this.match = data ;
     },
     err => {
       console.log(err);
       return false;
-    });*/
-=======
+    });
+
       },
         err => {
           console.log(err);
@@ -61,14 +53,6 @@ export class ProfileComponent implements OnInit {
           return false;
         });
 
-      this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
-        this.match = data ;
-
-      },
-      err => {
-        console.log(err);
-        return false;
-      });
 
       this.authService.getWinAndLose(this.user['account_id']).subscribe(data => {
         this.score = data ;
@@ -88,15 +72,6 @@ export class ProfileComponent implements OnInit {
         console.log(err);
         return false;
       });
->>>>>>> c97727dd8b996fde635079be5e7280fa7caa6f6e
-
-
-    },
-      err => {
-        console.log(err);
-        return false;
-      });
-
-  }
+    }
 
 }
