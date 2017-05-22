@@ -83,12 +83,12 @@ export class AuthService {
       .map(res => res.json());
   }
 
-
   getRecentMatch(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' + id +'/recentMatch')
       .map(res => res.json());
+
   }
 
   getWinAndLose(id){
@@ -102,5 +102,10 @@ export class AuthService {
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' + id+'/peers')
       .map(res => res.json());
   }
+
+  // getHero_Img(id){
+  //   return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' +id+'/heroes_img')
+  //     .map(res => res.json());
+  // }
 
 }

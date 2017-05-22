@@ -12,7 +12,8 @@ export class ItemComponent implements OnInit {
 
   constructor(
     private api: GetApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) { }
 
   item:Object;
@@ -38,5 +39,9 @@ export class ItemComponent implements OnInit {
 
   getDescription(desc){
     return desc.replace(/<br [/]>/g, " ");
+  }
+
+  itemDetail(name){
+    this.router.navigate(['/item', name]);
   }
 }

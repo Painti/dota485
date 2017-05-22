@@ -13,26 +13,38 @@ export class HeroDetailComponent implements OnInit {
     private api: GetApiService,
     private route: ActivatedRoute,
   ) { }
-  match:Object;
+  heros:Object;
+  herosDetail:Array<Object>;
   id:string;
   state:any;
-
   ngOnInit() {
-    this.state = {o: {state: 'failed'}};
     this.route.params.subscribe(params => {
-    this.id = params[':hero_name'];
+        this.id = params['hero_name'];
+        console.log(params);
+        this.api.getHeroes().subscribe(data => {
+          this.heros = data[this.id];
+        },
+          err => {
+            console.log(err);
+            return false;
 
+          });
     });
+
+    // this.api.getHeroesDetail().subscribe(data => {
+    //   this.herosDetail = data;
+    // },
+    //   err => {
+    //     console.log(err);
+    //     return false;
+    //
+    //   });
   }
-  getProgress(obj: Object){
-    if(obj['state'] == 'failed' || obj['state'] == 'completed'){
-      obj['progress'] = 100;
-      obj['state'] = '1';
-      this.api.getOpendata('/hero/'+this.id).subscribe(data => {
-        this.match = data;
-      });
-    }
-    return obj['progress'];
+
+  getImage(hName) {
+    return "http://cdn.dota2.com/apps/dota2/images/heroes/" + hName + "_lg.png"
   }
+
+
 
 }

@@ -1,3 +1,9 @@
-<p>
-  hero-detail works!
-</p>
+<div *ngIf="heros">
+  <h1> {{id}} </h1>
+  <img style="width:80px" [src]="getImage(id)" alt="">
+  <h2> {{heros.bio}}</h2>
+  <div *ngFor = "let role of heros.roles ;">
+      {{role}}
+  </div>
+
+</div>
