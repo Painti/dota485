@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForObjectPipe } from '../../../pipes/ng-for-object.pipe';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-quiz',
@@ -23,11 +24,11 @@ export class QuizComponent implements OnInit {
        console.log(err);
        return false;
      });
+
   }
 
-  getName(name){
-    return name.replace("item_", "");
-  }
+
+
 
 
 

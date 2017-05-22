@@ -23,6 +23,8 @@ import { HomeComponent } from './components/group1/home/home.component';
 import { HeroComponent } from './components/group1/hero/hero.component';
 import { MmrComponent } from './components/group1/mmr/mmr.component';
 import { ItemComponent } from './components/group1/item/item.component';
+import { QuizComponent } from './components/group1/quiz/quiz.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 // Components group2
 import { LoginComponent } from './components/group2/login/login.component';
@@ -38,9 +40,6 @@ import { LoginGuard } from './guard/login.guard';
 import { LinkFacebookGuard } from './guard/linkfacebook.guard';
 import { LinkFacebookComponent } from './components/group2/profile/profile-setting/link-facebook/link-facebook.component';
 import { HeroDetailComponent } from './components/group1/hero/hero-detail/hero-detail.component';
-<<<<<<< HEAD
-import { QuizComponent } from './components/group1/quiz/quiz.component';
-=======
 import { BenchmarksComponent } from './components/group2/match/match-detail/benchmarks/benchmarks.component';
 import { PerformancesComponent } from './components/group2/match/match-detail/performances/performances.component';
 import { CombatComponent } from './components/group2/match/match-detail/combat/combat.component';
@@ -59,7 +58,7 @@ import { MatchDetailNavComponent } from './components/group2/match/match-detail/
 import { HeroesPlayerComponent } from './components/group2/profile/heroes-player/heroes-player.component';
 import { MatchesPlayerComponent } from './components/group2/profile/matches-player/matches-player.component';
 import { OverviewPlayerComponent } from './components/group2/profile/overview-player/overview-player.component';
->>>>>>> 34dd45ef66afe35ace2ec8408a3e335d8e9c6ab2
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -67,12 +66,10 @@ const appRoutes: Routes = [
   { path: 'hero/:hero_name', component: HeroDetailComponent },
   { path: 'item', component: ItemComponent },
   { path: 'ranking', component: MmrComponent },
-<<<<<<< HEAD
   { path: 'quiz', component: QuizComponent }  ,
   { path: 'login', component: LoginComponent , canActivate: [LoginGuard]},
-=======
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
->>>>>>> 34dd45ef66afe35ace2ec8408a3e335d8e9c6ab2
+
   { path: 'match', component: MatchComponent },
   {
     path: 'match/:match_id', component: MatchDetailComponent,
@@ -121,10 +118,7 @@ const appRoutes: Routes = [
     OverviewComponent,
     NgForObjectPipe,
     HeroDetailComponent,
-<<<<<<< HEAD
-    HeroDetailComponent,
-    QuizComponent
-=======
+    QuizComponent,
     BenchmarksComponent,
     PerformancesComponent,
     CombatComponent,
@@ -140,7 +134,7 @@ const appRoutes: Routes = [
     ChatComponent,
     StoryComponent,
     MatchDetailNavComponent
->>>>>>> 34dd45ef66afe35ace2ec8408a3e335d8e9c6ab2
+
   ],
   imports: [
     BrowserModule,
@@ -151,7 +145,8 @@ const appRoutes: Routes = [
     CollapseModule.forRoot(),
     TooltipModule.forRoot(),
     TabsModule.forRoot(),
-    ChartModule
+    ChartModule,
+    ModalModule.forRoot()
   ],
   providers: [
     ConfigService,
