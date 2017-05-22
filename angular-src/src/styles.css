@@ -92,6 +92,10 @@ body {
   border-right-color: #999;
 }
 
+.fade.in {
+  opacity: 1;
+}
+
 .navbar {
   border-bottom: 1px solid #000;
 }
