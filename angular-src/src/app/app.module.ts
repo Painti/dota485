@@ -11,6 +11,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartModule } from 'angular2-chartjs';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 import { ConfigService } from './services/config.service';
 import { GetApiService } from './services/get-api.service';
@@ -38,6 +39,21 @@ import { LoginGuard } from './guard/login.guard';
 import { LinkFacebookGuard } from './guard/linkfacebook.guard';
 import { LinkFacebookComponent } from './components/group2/profile/profile-setting/link-facebook/link-facebook.component';
 import { HeroDetailComponent } from './components/group1/hero/hero-detail/hero-detail.component';
+import { BenchmarksComponent } from './components/group2/match/match-detail/benchmarks/benchmarks.component';
+import { PerformancesComponent } from './components/group2/match/match-detail/performances/performances.component';
+import { CombatComponent } from './components/group2/match/match-detail/combat/combat.component';
+import { FarmComponent } from './components/group2/match/match-detail/farm/farm.component';
+import { PurchaseComponent } from './components/group2/match/match-detail/purchase/purchase.component';
+import { GraphComponent } from './components/group2/match/match-detail/graph/graph.component';
+import { CastComponent } from './components/group2/match/match-detail/cast/cast.component';
+import { ObjectivesComponent } from './components/group2/match/match-detail/objectives/objectives.component';
+import { VisionComponent } from './components/group2/match/match-detail/vision/vision.component';
+import { ActionComponent } from './components/group2/match/match-detail/action/action.component';
+import { TeamfightsComponent } from './components/group2/match/match-detail/teamfights/teamfights.component';
+import { LogComponent } from './components/group2/match/match-detail/log/log.component';
+import { ChatComponent } from './components/group2/match/match-detail/chat/chat.component';
+import { StoryComponent } from './components/group2/match/match-detail/story/story.component';
+import { MatchDetailNavComponent } from './components/group2/match/match-detail/match-detail-nav/match-detail-nav.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,17 +61,31 @@ const appRoutes: Routes = [
   { path: 'hero/:hero_name', component: HeroDetailComponent },
   { path: 'item', component: ItemComponent },
   { path: 'ranking', component: MmrComponent },
-  { path: 'login', component: LoginComponent , canActivate: [LoginGuard]},
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'match', component: MatchComponent },
-  { path: 'match/:match_id', component: MatchDetailComponent,
+  {
+    path: 'match/:match_id', component: MatchDetailComponent,
     children: [
-        { path: '', component: OverviewComponent }
+      { path: '', component: OverviewComponent },
+      { path: 'benchmarks', component: BenchmarksComponent },
+      { path: 'performances', component: PerformancesComponent },
+      { path: 'combat', component: CombatComponent },
+      { path: 'farm', component: FarmComponent },
+      { path: 'purchase', component: PurchaseComponent },
+      { path: 'graph', component: GraphComponent },
+      { path: 'cast', component: CastComponent },
+      { path: 'objectives', component: ObjectivesComponent },
+      { path: 'vision', component: VisionComponent },
+      { path: 'action', component: ActionComponent },
+      { path: 'teamfights', component: TeamfightsComponent },
+      { path: 'log', component: LogComponent },
+      { path: 'chat', component: ChatComponent },
+      { path: 'story', component: StoryComponent }
     ]
   },
-  { path: 'match/:match_id/overview', component: OverviewComponent },
-  { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
-  { path: 'profile/setting', component: ProfileSettingComponent , canActivate: [AuthGuard]},
-  { path: 'profile/setting/link-facebook', component: LinkFacebookComponent , canActivate: [AuthGuard, LinkFacebookGuard]}
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
+  { path: 'profile/setting/link-facebook', component: LinkFacebookComponent, canActivate: [AuthGuard, LinkFacebookGuard] }
 ]
 
 @NgModule({
@@ -76,7 +106,22 @@ const appRoutes: Routes = [
     OverviewComponent,
     NgForObjectPipe,
     HeroDetailComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
+    BenchmarksComponent,
+    PerformancesComponent,
+    CombatComponent,
+    FarmComponent,
+    PurchaseComponent,
+    GraphComponent,
+    CastComponent,
+    ObjectivesComponent,
+    VisionComponent,
+    ActionComponent,
+    TeamfightsComponent,
+    LogComponent,
+    ChatComponent,
+    StoryComponent,
+    MatchDetailNavComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +132,8 @@ const appRoutes: Routes = [
     CollapseModule.forRoot(),
     TooltipModule.forRoot(),
     TabsModule.forRoot(),
-    ChartModule
+    ChartModule,
+    PopoverModule.forRoot()
   ],
   providers: [
     ConfigService,

@@ -35,9 +35,9 @@
     </thead>
     <tbody>
       <tr *ngFor = "let item of rankingEU.leaderboard ; let i = index">
-        <td>{{item.rank}}</td>
+        <td>{{i+1}}</td>
         <td>
-          <span *ngIf="item.team_tag">{{item.team_tag}}.</span>
+          <span>{{item?.team_tag}}.</span>
           <span style="font-weight:bold">{{item.name}}</span>
           <span *ngIf="item.sponsor">.{{item.sponsor}}</span>
           <span *ngIf="getImageFlag(item.country)"><img src="{{getImageFlag(item.country)}}"></span>

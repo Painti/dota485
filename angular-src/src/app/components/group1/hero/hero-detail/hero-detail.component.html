@@ -1,11 +1,9 @@
-<head>
-</head>
- 
-<body>
+<div *ngIf="heros">
   <h1> {{id}} </h1>
-  <div class="d-flex flex-wrap">
-    <div [tooltip]="getName(entry.key)" *ngFor="let entry of heros| keys">
-        <img style="width:80px" [src]="getImage({{id}})" alt="">
-    </div>
+  <img style="width:80px" [src]="getImage(id)" alt="">
+  <h2> {{heros.bio}}</h2>
+  <div *ngFor = "let role of heros.roles ;">
+      {{role}}
   </div>
-</body>
+
+</div>

@@ -1,15 +1,6 @@
-<html>
-
-<head>
-</head>
-
-<body>
   <h1> HERO </h1>
-  <div class="d-flex flex-wrap">
+  <div class="d-flex flex-wrap ">
     <div [tooltip]="getName(entry.key)" *ngFor="let entry of heros| keys">
         <img placement="top" (click)="gotodetial(entry.key)" style="width:80px" [src]="getImage(entry.key)" alt="">
     </div>
   </div>
-</body>
-
-</html>

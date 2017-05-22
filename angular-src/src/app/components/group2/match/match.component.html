@@ -1,17 +1,20 @@
+<h1>{{title[state]}} matches</h1>
+
 <nav>
   <ul>
-      <li [className]="tabs[0]" (click)="onTab(0)">Pro player</li>
+      <li [className]="tabs[0]" (click)="onTab(0)">Tournament</li>
       <li [className]="tabs[1]" (click)="onTab(1)">High MMR</li>
       <li [className]="tabs[2]" (click)="onTab(2)">Low MMR</li>
   </ul>
 </nav>
+
 <div *ngIf="canShow(pro, 0)">
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <span *ngIf="order.match_id == 'asc'">▲</span><span *ngIf="order.match_id == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
         <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('league_name')">league <span *ngIf="order.league_name == 'asc'">▲</span><span *ngIf="order.league_name == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('league_name')">league <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.league_name == 'asc'"></i><i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.league_name == 'desc'"></i></span></th>
         <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
         <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
       </tr>
@@ -28,13 +31,13 @@
         <td>{{item?.league_name}}</td>
         <td>
           <div>
-            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
             <div>{{getTeamName(item?.radiant_name)}}</div>
           </div>
         </td>
         <td>
           <div>
-            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
             <div>{{getTeamName(item?.dire_name)}}</div>
           </div>
         </td>
@@ -47,9 +50,9 @@
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <span *ngIf="order.match_id == 'asc'">▲</span><span *ngIf="order.match_id == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
         <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <span *ngIf="order.avg_mmr == 'asc'">▲</span><span *ngIf="order.avg_mmr == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.avg_mmr == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.avg_mmr == 'desc'"></i></span></th>
         <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
           <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
       </tr>
@@ -66,7 +69,7 @@
         <td>{{item?.avg_mmr}}</td>
         <td>
           <div>
-            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
             <div class="set-heroes">
               <img *ngFor="let hero of item?.radiant_team" [src]="getImageHero(hero)" alt="">
             </div>
@@ -74,7 +77,7 @@
         </td>
         <td>
           <div>
-            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
             <div class="set-heroes">
               <img *ngFor="let hero of item?.dire_team" [src]="getImageHero(hero)" alt="">
             </div>
@@ -89,9 +92,9 @@
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <thead>
       <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <span *ngIf="order.match_id == 'asc'">▲</span><span *ngIf="order.match_id == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
         <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <span *ngIf="order.avg_mmr == 'asc'">▲</span><span *ngIf="order.avg_mmr == 'desc'">▼</span></span></th>
+        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.avg_mmr == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.avg_mmr == 'desc'"></i></span></th>
         <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
         <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
       </tr>
@@ -108,7 +111,7 @@
         <td>{{item?.avg_mmr}}</td>
         <td>
           <div>
-            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
             <div class="set-heroes">
               <img *ngFor="let hero of item?.radiant_team" [src]="getImageHero(hero)" alt="">
             </div>
@@ -116,7 +119,7 @@
         </td>
         <td>
           <div>
-            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
             <div class="set-heroes">
               <img *ngFor="let hero of item?.dire_team" [src]="getImageHero(hero)" alt="">
             </div>

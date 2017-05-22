@@ -2,7 +2,7 @@ a:hover {
   text-decoration: none;
 }
 
-.set-heroes img{
+.set-heroes img {
   width: 40px;
 }
 
@@ -16,8 +16,26 @@ a:hover {
   filter: brightness(250%);
 }
 
-.hide{
+.hide {
   opacity: 0.0;
+}
+
+.table-match td:nth-child(1) div a {
+  width: 100%;
+  transition: all .45s cubic-bezier(.23, 1, .32, 1) 0ms
+}
+
+.table-match td:nth-child(1) div span {
+  display: block;
+  color: #aaa;
+}
+
+.table-match td:nth-child(4), th:nth-child(4) {
+  color: rgb(58, 187, 64)
+}
+
+.table-match td:nth-child(5), th:nth-child(5) {
+  color: rgb(255, 76, 76)
 }
 
 nav ul {
