@@ -16,9 +16,19 @@ export class QuizComponent implements OnInit {
   private route: ActivatedRoute
   ) { }
   itemlist:Object
+  itemComponent:any
+  x:number;
   ngOnInit() {
+    this.x=0;
+    this.itemComponent = []
     this.api.getItem().subscribe( data => {
-      this.itemlist = data;
+      for (let key in data.itemdata) {
+          if(data.itemdata[key].components!=null){
+            this.itemComponent.push(data.itemdata[key])
+          }
+      }
+      this.itemlist = data.itemdata;
+      this.x = Math.floor((Math.random() * this.itemComponent.length) )
     },
      err => {
        console.log(err);
@@ -32,17 +42,15 @@ export class QuizComponent implements OnInit {
     return name.charAt(0).toUpperCase()+name.slice(1);
   }
 
-  getImage(name){
-    return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
+
+  getImage(hName) {
+    return "http://cdn.dota2.com/apps/dota2/images/heroes/" + hName + "_lg.png"
   }
 
-  combination(name){
-    if(name.components){
-      return "true"
-    }
+  randomItem(){
+    console.log(JSON.stringify(this.itemComponent[this.x]))
+    return this.itemComponent[this.x]
   }
-
-
 
 
 

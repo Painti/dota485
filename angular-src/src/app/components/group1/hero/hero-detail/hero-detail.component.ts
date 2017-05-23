@@ -31,14 +31,6 @@ export class HeroDetailComponent implements OnInit {
           });
     });
 
-    // this.api.getHeroesDetail().subscribe(data => {
-    //   this.herosDetail = data;
-    // },
-    //   err => {
-    //     console.log(err);
-    //     return false;
-    //
-    //   });
   }
 
   getImage(hName) {
