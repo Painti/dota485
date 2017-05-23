@@ -1,9 +1,13 @@
 <div *ngIf="heros">
-  <h1> {{id}} </h1>
-  <img style="width:80px" [src]="getImage(id)" alt="">
-  <h2> {{heros.bio}}</h2>
-  <div *ngFor = "let role of heros.roles ;">
-      {{role}}
+  <h1 class="text-center"> {{id}} </h1>
+  <div class="d-flex justify-content-center"><img [src]="getImage(id)" alt=""></div>
+
+  <div class="d-flex flex-rows justify-content-center mt-2">
+    <div *ngFor="let role of heros.roles ;">
+      {{role}} &nbsp;
+    </div>
   </div>
+  <!-- <h4> {{heros.bio}}</h4> -->
+
 
 </div>
