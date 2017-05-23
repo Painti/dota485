@@ -24,19 +24,19 @@
       <div *ngIf="!match.radiant_win" class="victory dire">Dire Victory</div>
       <div *ngIf="match.radiant_team || match.dire_team" class="box left">
         <div class="team">
-          {{getTeamName(match.radiant_team?.name)}} Team
+          {{getTeamName(match.radiant_team?.name)}}
         </div>
       </div>
       <div *ngIf="match.radiant_team || match.dire_team" class="box right">
         <div class="team">
-          {{getTeamName(match.dire_team?.name)}} Team
+          {{getTeamName(match.dire_team?.name)}}
         </div>
       </div>
       <div class="shadow"></div>
     </div>
   </div>
   <div *ngIf="match.radiant_team || match.dire_team" class="content px-3 d-flex hidden-md-up">
-      <h3>TEAM VS TEAM</h3>
+      <h3>{{getTeamName(match.radiant_team?.name)}} Team VS {{getTeamName(match.dire_team?.name)}} Team</h3>
   </div>
   <div class="content px-3 py-2 d-flex justify-content-start">
     <div>

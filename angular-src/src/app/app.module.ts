@@ -12,6 +12,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartModule } from 'angular2-chartjs';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ConfigService } from './services/config.service';
 import { GetApiService } from './services/get-api.service';
@@ -158,6 +159,7 @@ const appRoutes: Routes = [
     CollapseModule.forRoot(),
     TooltipModule.forRoot(),
     TabsModule.forRoot(),
+    ModalModule.forRoot(),
     ChartModule,
     PopoverModule.forRoot()
   ],
