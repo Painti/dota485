@@ -83,12 +83,12 @@ export class AuthService {
       .map(res => res.json());
   }
 
-
   getRecentMatch(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/profile/' + id +'/recentMatch')
       .map(res => res.json());
+
   }
 
   getWinAndLose(id){

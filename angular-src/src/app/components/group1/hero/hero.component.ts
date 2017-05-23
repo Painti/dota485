@@ -32,4 +32,8 @@ export class HeroComponent implements OnInit {
   gotodetial(name) {
     this.router.navigate(['/hero', name]);
   }
+  getName(name){
+    name = name.replace("_"," ");
+    return name.charAt(0).toUpperCase()+name.slice(1);
+  }
 }

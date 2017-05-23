@@ -68,7 +68,7 @@ body {
 }
 
 .tooltip {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .tooltip-inner {
@@ -90,6 +90,10 @@ body {
 
 .tooltip.bs-tether-element-attached-left .tooltip-inner::before, .tooltip.tooltip-right .tooltip-inner::before {
   border-right-color: #999;
+}
+
+.fade.in{
+  opacity: 1;
 }
 
 .navbar {

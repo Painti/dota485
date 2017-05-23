@@ -1,11 +1,3 @@
-.green{
-  color: Lime ;
-}
-
-.red{
-  color: OrangeRed ;
-}
-
 .stats{
   font-size: 14px;
   color: rgba(245, 245, 245, 0.87);
@@ -15,6 +7,11 @@
 
 .font25{
   font-size: 25px ;
+}
+
+.nav-hr {
+  border-bottom: 6px double #00429a;
+  margin: 0px;
 }
 
 img.pf_pc{

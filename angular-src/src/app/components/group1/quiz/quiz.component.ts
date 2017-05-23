@@ -27,6 +27,20 @@ export class QuizComponent implements OnInit {
 
   }
 
+  getName(name){
+    name = name.replace("_"," ");
+    return name.charAt(0).toUpperCase()+name.slice(1);
+  }
+
+  getImage(name){
+    return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
+  }
+
+  combination(name){
+    if(name.components){
+      return "true"
+    }
+  }
 
 
 
