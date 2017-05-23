@@ -60,6 +60,7 @@ import { HeroesPlayerComponent } from './components/group2/profile/heroes-player
 import { MatchesPlayerComponent } from './components/group2/profile/matches-player/matches-player.component';
 import { OverviewPlayerComponent } from './components/group2/profile/overview-player/overview-player.component';
 import { NavbarPlayerComponent } from './components/group2/profile/navbar-player/navbar-player.component';
+import { PeersPlayerComponent } from './components/group2/profile/peers-player/peers-player.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -97,7 +98,8 @@ const appRoutes: Routes = [
     children:[
       { path: '', component: OverviewPlayerComponent },
       { path: 'heroes', component: HeroesPlayerComponent },
-      { path: 'matches', component: MatchesPlayerComponent }
+      { path: 'matches', component: MatchesPlayerComponent },
+      { path: 'peers', component: PeersPlayerComponent }
     ]
   },
   { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
@@ -144,7 +146,8 @@ const appRoutes: Routes = [
     OverviewPlayerComponent,
     HeroesPlayerComponent,
     MatchesPlayerComponent,
-    NavbarPlayerComponent
+    NavbarPlayerComponent,
+    PeersPlayerComponent
   ],
   imports: [
     BrowserModule,
