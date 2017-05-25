@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GetApiService } from '../../../../services/get-api.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { NgForObjectPipe } from '../../../../pipes/ng-for-object.pipe';
 
 @Component({
   selector: 'app-item-detail',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private api: GetApiService,
+    private route: ActivatedRoute,
+  ) { }
 
-  ngOnInit() {
+detail:Object;
+name:string;
+
+    ngOnInit() {
+      this.route.params.subscribe(params => {
+        this.name = params['item_name'];
+        console.log(this.name)
+        this.api.getItem().subscribe(data =>{
+            this.detail = data.itemdata[this.name];
+      },
+        err => {
+          console.log(err);
+          return false;
+        });
+      });
+
+    }
+
+  getComponents(name){
+    return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
   }
 
+  getImage(){
+    return "http://cdn.dota2.com/apps/dota2/images/items/"+this.name+"_lg.png"
+  }
+
+  getDesc(desc){
+    return desc.replace(/<br [/]>/g, "\n");
+  }
 }

@@ -55,11 +55,6 @@ export class GetApiService {
       .map(res => res.json());
   }
 
-  // getHeroesDetail(){
-  //   return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes/detail')
-  //     .map(res => res.json());
-  // }
-
   getItem(){
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/items')
       .map(res => res.json())

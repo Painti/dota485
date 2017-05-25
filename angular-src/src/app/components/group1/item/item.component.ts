@@ -18,7 +18,6 @@ export class ItemComponent implements OnInit {
 
   item:Object;
 
-
   ngOnInit() {
     this.api.getItem().subscribe(data =>{
       this.item = data;
@@ -29,16 +28,8 @@ export class ItemComponent implements OnInit {
     });
   }
 
-  getName(name){
-    return name.replace("item_", "");
-  }
-
   getImage(name){
     return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
-  }
-
-  getDescription(desc){
-    return desc.replace(/<br [/]>/g, " ");
   }
 
   itemDetail(name){

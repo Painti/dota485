@@ -1,3 +1,16 @@
-<p>
-  item-detail works!
-</p>
+
+<div *ngIf="detail">
+  <div>{{detail.dname}}</div>
+  <img [src]= "getImage()" alt="">
+  <div>{{getDesc(detail.desc)}}</div>
+  <div>{{detail.cost}}</div>
+  <div *ngFor = "let cmp of detail.components">
+      <img [src]= "getComponents(cmp)" alt="">
+  </div>
+  <div>
+    mana use : {{detail.mc}}
+  </div>
+  <div>
+    cool down : {{detail.cd}}
+  </div>
+</div>
