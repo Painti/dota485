@@ -12,8 +12,9 @@
       <th> XPM WITH  </th>
     </tr>
     <tbody>
-      <tr *ngFor = "let m of match ; let i = index">
-
+      <tr *ngFor = "let p of peer ; let i = index">
+        <td class = "d-flex row-column"><img [src] = "p.avatar"/>
+          <span style = "font-size:15px ;color: rgb(102, 187, 255);" class = "pl-2">{{p.personaname}}</span></td>
       </tr>
     </tbody>
   </table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../../services/group2/auth.service';
 
 @Component({
   selector: 'app-peers-player',
@@ -7,17 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PeersPlayerComponent implements OnInit {
 
-  constructor() { }
+  user: Object;
+  peer:Array<Object>;
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
-    // this.authService.getProfile_Player(this.user['account_id']).subscribe(data => {
-    //   this.player = data ;
-    //
-    // },
-    // err => {
-    //   console.log(err);
-    //   return false;
-    // });
+    this.authService.getProfile().subscribe(data => {
+      this.user = data.user ;
+
+      this.authService.getPeer(this.user['account_id']).subscribe(data => {
+        this.peer = data ;
+
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
+
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
   }
 
 }

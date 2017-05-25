@@ -60,8 +60,7 @@ router.get('/:id/recentMatch', function(req, res, next) {
         if (!err && response.statusCode < 400) {
           listheroes = JSON.parse(listheroes);
           for (let i = 0; i < data.length; i++) {
-            data[i].heroes_name = listheroes[data[i].hero_id].name.replace('npc_dota_hero_', '') ;
-
+            data[i].heroes_name = listheroes[data[i].hero_id].name.replace('npc_dota_hero_', '');
             data[i].game_mode = mods_obj.mods[data[i].game_mode].name;
           }
 

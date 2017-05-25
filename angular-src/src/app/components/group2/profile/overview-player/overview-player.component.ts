@@ -14,6 +14,7 @@ export class OverviewPlayerComponent implements OnInit {
   score: Object;
   peer: Array<Object>;
   player: Array<Object>;
+  hero_name:Array<Object>;
   hero_stat:Array<any> ;
   heroes_img: Array<Object> ;
   wl_recentMatch: Array<String> ;
@@ -71,6 +72,7 @@ export class OverviewPlayerComponent implements OnInit {
         this.damage_avr = 0 ; this.heal_avr = 0;this.tw_damage_avr = 0 ;
 
         this.wl_recentMatch = [] ;
+        this.hero_name = [] ;
 
         for(let i = 0 ; i < data.length  ;i++){
           this.kills_avr =  this.kills_avr + this.match[i]['kills'] ;
@@ -90,6 +92,8 @@ export class OverviewPlayerComponent implements OnInit {
           if(this.match[i]['player_slot'] <= 5){
             this.match[i]['player_team'] = "Radiant" ;
           }else this.match[i]['player_team'] = "Dire" ;
+
+          this.hero_name[i] = this.match[i]['heroes_name'].charAt(0).toUpperCase() + this.match[i]['heroes_name'].slice(1).replace('_',' ') ;
         }
         this.kills_avr /= data.length;
         this.deaths_avr /= data.length ;
@@ -155,6 +159,11 @@ export class OverviewPlayerComponent implements OnInit {
 
   getImage(name){
     return "https://api.opendota.com/apps/dota2/images/heroes/"+name+"_sb.png" ;
+  }
+
+  getName(name){
+    name = name.replace('_',' ') ;
+    return name.charAt(0).toUpperCase()+name.slice(1);
   }
 
 }
