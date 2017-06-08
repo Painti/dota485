@@ -1,16 +1,45 @@
 
-<div *ngIf="detail">
-  <div>{{detail.dname}}</div>
-  <img [src]= "getImage()" alt="">
-  <div>{{getDesc(detail.desc)}}</div>
-  <div>{{detail.cost}}</div>
-  <div *ngFor = "let cmp of detail.components">
-      <img [src]= "getComponents(cmp)" alt="">
-  </div>
-  <div>
-    mana use : {{detail.mc}}
-  </div>
-  <div>
-    cool down : {{detail.cd}}
+<div *ngIf="detail || items">
+  <h1><div>{{detail.dname}}</div></h1>
+  <img class="margin" [src]= "getImage()" alt="" width="155" height="130">
+  <div class="d-flex justify-content-center">
+    <table width="70%" text-align="center">
+      <tr>
+        <th>Price</th>
+        <td>{{detail.cost}}</td>
+      </tr>
+
+      <tr>
+        <th>Mana</th>
+        <td *ngIf="detail.mc==false"> - </td>
+        <td *ngIf="detail.mc!=false"> {{detail.mc}} </td>
+      </tr>
+
+      <tr>
+        <th>Cooldown</th>
+        <td *ngIf="detail.cd==false"> - </td>
+        <td *ngIf="detail.cd!=false"> {{detail.cd}} </td>
+      </tr>
+
+      <tr>
+        <th>Description</th>
+        <td *ngIf="detail.desc==''"> - </td>
+        <td *ngIf="detail.desc!=''"> {{getDesc(detail.desc)}} </td>
+      </tr>
+
+      <tr>
+        <th>Components</th>
+        <td>
+          <div class="d-flex flex-row">
+            <div *ngFor = "let cmp of detail.components">
+              <span data-toggle="tooltip" data-placement="right" title="{{getNameComponent(cmp)}}">
+                <img class="p-1" [src]= "getComponents(cmp)" alt="">
+              </span>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+    </table>
   </div>
 </div>

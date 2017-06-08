@@ -16,6 +16,7 @@ export class ItemDetailComponent implements OnInit {
   ) { }
 
 detail:Object;
+items:Object;
 name:string;
 
     ngOnInit() {
@@ -31,6 +32,13 @@ name:string;
         });
       });
 
+      this.api.getItem().subscribe(data =>{
+        this.items = data;
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
     }
 
   getComponents(name){
@@ -42,6 +50,10 @@ name:string;
   }
 
   getDesc(desc){
-    return desc.replace(/<br [/]>/g, "\n");
+    return desc.replace(/<br [/]>/g, " ");
+  }
+
+  getNameComponent(name){
+    return name.replace(/_/g, " ");
   }
 }

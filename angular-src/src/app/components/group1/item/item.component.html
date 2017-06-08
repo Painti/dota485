@@ -23,7 +23,9 @@
             <span *ngIf ="entry.key != 'river_painter' && entry.key != 'river_painter2' && entry.key != 'river_painter3'
               &&entry.key != 'river_painter4' && entry.key != 'river_painter5' && entry.key != 'river_painter6' && entry.key != 'river_painter7'">
                 <span *ngIf="entry.value.qual == 'component' || entry.value.qual == 'consumable'">
-                  <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+                  <span data-toggle="tooltip" data-placement="right" title="{{entry.value.dname}}">
+                    <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+                  </span>
                 </span>
             </span>
         </div>
@@ -32,7 +34,9 @@
     <div class="d-flex flex-wrap">
         <div *ngFor = "let entry of item.itemdata | keys">
             <span  *ngIf="entry.value.qual !== 'component' && entry.value.qual !== 'secret_shop' && entry.value.qual !== 'consumable'">
-              <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+              <span data-toggle="tooltip" data-placement="right" title="{{entry.value.dname}}">
+                <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+              </span>
             </span>
         </div>
     </div>
@@ -41,7 +45,9 @@
       <div class="float-sm-left">
         <div *ngFor = "let entry of item.itemdata | keys">
             <span *ngIf="entry.value.qual == 'secret_shop'">
-              <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+              <span data-toggle="tooltip" data-placement="right" title="{{entry.value.dname}}">
+                <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+              </span>
             </span>
         </div>
       </div>
