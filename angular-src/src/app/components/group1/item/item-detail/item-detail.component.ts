@@ -13,11 +13,13 @@ export class ItemDetailComponent implements OnInit {
   constructor(
     private api: GetApiService,
     private route: ActivatedRoute,
+    private router:Router
   ) { }
 
 detail:Object;
 items:Object;
 name:string;
+price:number
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -25,23 +27,20 @@ name:string;
         console.log(this.name)
         this.api.getItem().subscribe(data =>{
             this.detail = data.itemdata[this.name];
+            this.items = data;
       },
         err => {
           console.log(err);
           return false;
         });
       });
-
-      this.api.getItem().subscribe(data =>{
-        this.items = data;
-      },
-      err => {
-        console.log(err);
-        return false;
-      });
     }
 
-  getComponents(name){
+  itemDetail(name){
+    this.router.navigate(['/item', name]);
+  }
+
+  getComponents(name){//recipe
     return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
   }
 
@@ -55,5 +54,17 @@ name:string;
 
   getNameComponent(name){
     return name.replace(/_/g, " ");
+  }
+
+  setPrice(cost:number){
+    this.price = this.price + cost;
+  }
+
+  getPrice(){
+    return this.price;
+  }
+
+  resetPrice(){
+    this.price = 0;
   }
 }
