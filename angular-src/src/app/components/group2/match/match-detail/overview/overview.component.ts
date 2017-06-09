@@ -21,6 +21,7 @@ export class OverviewComponent implements OnInit {
   data1: any;
   options: Object;
   options1: Object;
+  advance: boolean;
 
   ngOnInit() {
     this.subscription = this.communicate.getMatch$.subscribe(
@@ -30,13 +31,15 @@ export class OverviewComponent implements OnInit {
         let i:any;
         for (i in match['players']) {
           kills.push(match['players'][i]['kills']);
-          players_name.push(match['players'][i]['personaname']);
+          players_name.push(match['players'][i]['name'] || match['players'][i]['personaname'] || '(anonymous)');
         }
         this.data['datasets'][0].data = kills;
         this.data.labels = players_name;
         this.data1['datasets'][0].data = match['team_score_kills'];
         this.match = match;
       });
+
+      let fontsize = 24;
 
       this.type = 'doughnut';
       this.data = {
@@ -67,8 +70,9 @@ export class OverviewComponent implements OnInit {
         title: {
           display: true,
           text: 'Player Kill Score',
-          fontSize: 36,
-          fontColor: "#afafaf"
+          fontSize: fontsize,
+          fontColor: "#afafaf",
+          fontStyle: "normal"
         }
       };
 
@@ -97,8 +101,9 @@ export class OverviewComponent implements OnInit {
         title: {
           display: true,
           text: 'Team Kill Score',
-          fontSize: 36,
-          fontColor: "#afafaf"
+          fontSize: fontsize,
+          fontColor: "#afafaf",
+          fontStyle: "normal"
         }
       };
   }

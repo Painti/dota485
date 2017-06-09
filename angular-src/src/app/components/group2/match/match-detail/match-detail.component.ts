@@ -86,11 +86,7 @@ export class MatchDetailComponent implements OnInit{
   getBackgroundImage(bool){
     return "assets/group2/images/background"+bool+".JPG";
   }
-
-  getClass(num){
-    return "player"+num;
-  }
-
+  
   getTime(time: number) {
     let min = Math.floor(time / 60);
     let sec = time % 60;

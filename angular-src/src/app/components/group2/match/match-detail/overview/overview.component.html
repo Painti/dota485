@@ -1,10 +1,14 @@
-<p *ngIf="match">
-  <!-- {{match.match_id}} {{match.duration}} -->
-</p>
-<div class="mb-5">
-  <chart *ngIf="match" [type]="type1" [data]="data1" [options]="options1"></chart>
-<hr>
+<div *ngIf="match" class="mt-4">
+  <app-overview-table [match]="match" name="Radiant" [size]="[0,1,2,3,4]"></app-overview-table>
+  <app-overview-table [match]="match" name="Dire" [size]="[5,6,7,8,9]"></app-overview-table>
 </div>
-<div>
+<div class="mt-5 mb-5">
+  <h1 *ngIf="match" class="text-center header py-2"><font color="#DCDCDC">Score Kills</font></h1>
+  <chart *ngIf="match" [type]="type1" [data]="data1" [options]="options1"></chart>
+  <chart *ngIf="match" [type]="type" [data]="data" [options]="options"></chart>
+</div>
+<div class="mt-5 mb-5">
+  <h1 *ngIf="match" class="text-center header py-2"><font color="#DCDCDC">Score Kills</font></h1>
+  <chart *ngIf="match" [type]="type1" [data]="data1" [options]="options1"></chart>
   <chart *ngIf="match" [type]="type" [data]="data" [options]="options"></chart>
 </div>

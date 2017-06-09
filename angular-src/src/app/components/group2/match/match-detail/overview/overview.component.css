@@ -1,3 +1,8 @@
 hr {
   border: 1px solid #797979;
 }
+
+.header {
+  font-weight: 600;
+  background-color: rgba(18, 18, 18, 0.30);
+}
