@@ -14,6 +14,8 @@ export class OverviewComponent implements OnInit {
 
   match: Object;
   subscription: Subscription;
+  obj_name:string;
+  obj_status:string;
 
   pie: string;
   doughnut: string;
@@ -281,6 +283,33 @@ export class OverviewComponent implements OnInit {
       ],
       xAxes: xAxis
     };
+  }
+
+  getMainOpacity(bool){
+    if(bool)
+      return '1.0';
+    return '0.3';
+  }
+
+  getOpacity(dec, num){
+    let bin = (dec >>> 0).toString(2);
+    bin = bin.split("").reverse().join("");
+    if(num > bin.length){
+      return '0.3';
+    }
+    if(bin[num-1] == '0'){
+      return '0.3';
+    }
+    return '1.0';
+  }
+
+  setObject(name, status){
+    this.obj_name = name;
+    if(status == '0.3'){
+      this.obj_status = 'Destroyed';
+    } else {
+      this.obj_status = 'Not destroyed';
+    }
   }
 
 }
