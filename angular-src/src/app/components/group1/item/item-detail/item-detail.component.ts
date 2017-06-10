@@ -19,21 +19,34 @@ export class ItemDetailComponent implements OnInit {
 detail:Object;
 items:Object;
 name:string;
-price:number
+
+p:number;
+cost:number;
+temp:number;
+
+upgrade:Array<any>
 
     ngOnInit() {
       this.route.params.subscribe(params => {
         this.name = params['item_name'];
-        console.log(this.name)
+        //console.log(this.name)
         this.api.getItem().subscribe(data =>{
             this.detail = data.itemdata[this.name];
+            this.cost = data.itemdata[this.name].cost;
             this.items = data;
+
+            this.p = 0;
+            if(data.itemdata[this.name].components !== null){
+              for(let key of data.itemdata[this.name].components)
+                this.p = this.p + data.itemdata[key].cost;
+            }
       },
         err => {
           console.log(err);
           return false;
         });
       });
+
     }
 
   itemDetail(name){
@@ -56,15 +69,19 @@ price:number
     return name.replace(/_/g, " ");
   }
 
-  setPrice(cost:number){
-    this.price = this.price + cost;
-  }
-
   getPrice(){
-    return this.price;
-  }
+    let r = 0;
+    r= this.cost;
+    let sum = 0;
 
-  resetPrice(){
-    this.price = 0;
+    sum = this.cost - this.p;
+    r = r - sum;
+
+    if(r == 0 || sum==0){
+      return 'YES';
+    }
+    else if(r > 0 && sum>0){
+      return 'NO';
+    }
   }
 }

@@ -34,7 +34,7 @@
     <div class="d-flex flex-wrap">
         <div *ngFor = "let entry of item.itemdata | keys">
             <span  *ngIf="entry.value.qual !== 'component' && entry.value.qual !== 'secret_shop' && entry.value.qual !== 'consumable'">
-              <span *ngIf="entry.key !== 'dagon_2' && entry.key !== 'dagon_3' && entry.key !== 'dagon_4' && entry.key !== 'dagon_5'">
+              <span *ngIf="entry.key!=='dagon_2' && entry.key!=='dagon_3' && entry.key!=='dagon_4' && entry.key!=='dagon_5' && entry.key!=='necronomicon_2' && entry.key!=='necronomicon_3' && entry.key!=='diffusal_blade_2'">
               <span [tooltip]="entry.value.dname" placement="right">
                 <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
               </span>
