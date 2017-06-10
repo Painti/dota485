@@ -10,11 +10,11 @@
     <div class="setheroes set-left">
       <img *ngFor="let i of player_size;" [class]="'player'+(i+1)" [src]="getImageHero(match.players[i].hero_name)" [tooltip]="match['players'][i]['name'] || match['players'][i]['personaname'] || '(anonymous)'" placement="bottom" alt="">
     </div>
-    <div class="score score-left">{{match['team_score_kills'][0]}}</div>
+    <div class="score score-left">{{match['radiant_score']}}</div>
     <div class="half-circle">
       <div class="time" tooltip="Duration" placement="bottom">{{getTime(match.duration)}}</div>
     </div>
-    <div class="score score-right">{{match['team_score_kills'][1]}}</div>
+    <div class="score score-right">{{match['dire_score']}}</div>
     <div class="setheroes set-right">
       <img *ngFor="let i of player_size;" [class]="'player'+(i+6)" [src]="getImageHero(match.players[i+5].hero_name)" [tooltip]="match['players'][i+5]['name'] || match['players'][i+5]['personaname'] || '(anonymous)'" placement="bottom" alt="">
     </div>
