@@ -62,19 +62,47 @@ export class PerformanceTableComponent implements OnInit {
         this.max_multi = this.match['players'][i].multi;
       if (this.match['players'][i].streaks > this.max_streak)
         this.max_streak = this.match['players'][i].streaks;
-      if (this.match['players'].stuns > this.max_stun)
-        this.max_stun = this.match['player'].stuns;
-      if (this.match['players'].creeps_stacked > this.max_stacked)
-        this.max_stacked = this.match['player'].creeps_stacked;
-      if (this.match['players'].life_state_dead > this.max_dead)
-        this.max_dead = this.match['player'].life_state_dead;
-      if (this.match['players'].buyback_count > this.max_buyback)
-        this.max_buyback = this.match['player'].buyback_count;
+      if (this.match['players'][i].stuns > this.max_stun)
+        this.max_stun = this.match['players'][i].stuns;
+      if (this.match['players'][i].creeps_stacked > this.max_stacked)
+        this.max_stacked = this.match['players'][i].creeps_stacked;
+      if (this.match['players'][i].life_state_dead > this.max_dead)
+        this.max_dead = this.match['players'][i].life_state_dead;
+      if (this.match['players'][i].buyback_count > this.max_buyback)
+        this.max_buyback = this.match['players'][i].buyback_count;
+
     }
   }
 
   getImageHero(name) {
     return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + name + '_sb.png';
+  }
+
+  getNameMultiKills(num){
+    switch(num){
+      case 2: return 'Double kill';
+      case 3: return 'Triple kill';
+      case 4: return 'Ultra kill';
+      case 5: return 'Rampage';
+      default: return '-';
+    }
+  }
+
+  getNameStreakKills(num){
+    switch(num){
+      case 3: return 'Killing Spree ('+num+'kills)';
+      case 4: return 'Dominating ('+num+'kills)';
+      case 5: return 'Mega Kill ('+num+'kills)';
+      case 6: return 'Unstoppable ('+num+'kills)';
+      case 7: return 'Wicked Sick ('+num+'kills)';
+      case 8: return 'Monster kill ('+num+'kills)';
+      case 9: return 'Godlike ('+num+'kills)';
+    }
+    if(num >= 10){
+      return 'Beyond Godlike ( '+num+'kills )';
+    } else {
+      return '-';
+    }
   }
 
   getTime(time: number) {
@@ -95,6 +123,16 @@ export class PerformanceTableComponent implements OnInit {
       case 2: return 'Mid';
       case 3: return 'Off';
       default: return '(Unknown)';
+    }
+  }
+
+  getClass(num){
+    if(num >= 70){
+      return 'bg-success';
+    } else if(num >= 40){
+      return 'bg-warning';
+    } else {
+      return 'bg-danger';
     }
   }
 

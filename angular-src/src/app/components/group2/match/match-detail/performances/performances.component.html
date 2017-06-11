@@ -2,3 +2,21 @@
   <app-performance-table [match]="match" name="Radiant" [size]="[0,1,2,3,4]"></app-performance-table>
   <app-performance-table [match]="match" name="Dire" [size]="[5,6,7,8,9]"></app-performance-table>
 </div>
+<div class="mt-5 mb-5">
+  <h1 *ngIf="match" class="text-center header py-2">Timeline Last Hits</h1>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="lh_data1" [options]="lh_options1"></chart>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="lh_data2" [options]="lh_options2"></chart>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="lh_data3" [options]="lh_options3"></chart>
+</div>
+<div class="mt-5 mb-5">
+  <h1 *ngIf="match" class="text-center header py-2">Timeline Gold</h1>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="gold_data1" [options]="gold_options1"></chart>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="gold_data2" [options]="gold_options2"></chart>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="gold_data3" [options]="gold_options3"></chart>
+</div>
+<div class="mt-5 mb-5">
+  <h1 *ngIf="match" class="text-center header py-2">Timeline Experience</h1>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="exp_data1" [options]="exp_options1"></chart>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="exp_data2" [options]="exp_options2"></chart>
+  <chart *ngIf="match" class="line-chart" [type]="'line'" [data]="exp_data3" [options]="exp_options3"></chart>
+</div>

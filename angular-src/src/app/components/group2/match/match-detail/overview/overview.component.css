@@ -38,15 +38,6 @@ hr {
   border-right-color: #000;
 }
 
-chart {
-  padding- -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .map {
   background-image: url(assets/group2/images/map.png);
   background-repeat: no-repeat;

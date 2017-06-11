@@ -30,24 +30,58 @@
         </td>
         <td nowrap>
           {{match.players[i].lane_efficiency*100 | number : '1.2-2'}}%
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].lane_efficiency*100)"
+              [style.width]="match.players[i].lane_efficiency*100+'%'"></div>
+          </div>
         </td>
         <td nowrap>
-          {{match.players[i].multi}}
+          {{getNameMultiKills(match.players[i].multi)}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].multi*100/max_multi)"
+              [style.width]="match.players[i].multi*100/max_multi+'%'"></div>
+          </div>
         </td>
         <td nowrap>
-          {{match.players[i].streaks}}
+          {{getNameStreakKills(match.players[i].streaks)}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].streaks*100/max_streak)"
+              [style.width]="match.players[i].streaks*100/max_streak+'%'"></div>
+          </div>
         </td>
         <td nowrap>
-          {{match.players[i].stuns | number : '1.2-2'}}
+          {{match.players[i].stuns | number : '1.2-2'}}s
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].stuns*100/max_stun)"
+              [style.width]="match.players[i].stuns*100/max_stun+'%'"></div>
+          </div>
         </td>
         <td nowrap>
           {{match.players[i].creeps_stacked}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].creeps_stacked*100/max_stacked)"
+              [style.width]="match.players[i].creeps_stacked*100/max_stacked+'%'"></div>
+            </div>
         </td>
         <td nowrap>
           {{getTime(match.players[i].life_state_dead)}}
+          <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar"
+              [style.width]="match.players[i].life_state_dead*100/max_dead+'%'"></div>
+          </div>
         </td>
         <td nowrap>
           {{match.players[i].buyback_count}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].buyback_count*100/max_buyback)"
+              [style.width]="match.players[i].buyback_count*100/max_buyback+'%'"></div>
+          </div>
         </td>
       </tr>
     </tbody>
