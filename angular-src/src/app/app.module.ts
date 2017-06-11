@@ -62,6 +62,7 @@ import { MatchesPlayerComponent } from './components/group2/profile/matches-play
 import { OverviewPlayerComponent } from './components/group2/profile/overview-player/overview-player.component';
 import { NavbarPlayerComponent } from './components/group2/profile/navbar-player/navbar-player.component';
 import { PeersPlayerComponent } from './components/group2/profile/peers-player/peers-player.component';
+import { OverviewTableComponent } from './components/group2/match/match-detail/overview/overview-table/overview-table.component';
 
 
 const appRoutes: Routes = [
@@ -149,7 +150,8 @@ const appRoutes: Routes = [
     HeroesPlayerComponent,
     MatchesPlayerComponent,
     NavbarPlayerComponent,
-    PeersPlayerComponent
+    PeersPlayerComponent,
+    OverviewTableComponent
 
   ],
   imports: [

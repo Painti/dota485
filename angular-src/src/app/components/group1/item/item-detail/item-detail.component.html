@@ -1,16 +1,75 @@
+<div *ngIf="detail && items">
+  <h1><div>{{detail.dname}}</div></h1>
+  <img class="margin" [src]="getImage()" alt="" width="155" height="130">
+  <div class="d-flex justify-content-center">
+    <table width="70%" text-align="center">
+      <tr>
+        <th style="color:rgb(255, 184, 0)">PRICE</th>
+        <td style="color:rgb(255, 184, 0)">{{detail.cost}}</td>
+      </tr>
 
-<div *ngIf="detail">
-  <div>{{detail.dname}}</div>
-  <img [src]= "getImage()" alt="">
-  <div>{{getDesc(detail.desc)}}</div>
-  <div>{{detail.cost}}</div>
-  <div *ngFor = "let cmp of detail.components">
-      <img [src]= "getComponents(cmp)" alt="">
-  </div>
-  <div>
-    mana use : {{detail.mc}}
-  </div>
-  <div>
-    cool down : {{detail.cd}}
+      <tr>
+        <th style="color:rgb(0, 118, 203)">MANA</th>
+        <td *ngIf="detail.mc==false" style="color:rgb(0, 118, 203)"> - </td>
+        <td *ngIf="detail.mc!=false" style="color:rgb(0, 118, 203)"> {{detail.mc}} </td>
+      </tr>
+
+      <tr>
+        <th style="color:rgb(185, 180, 180)">COOLDOWN</th>
+        <td *ngIf="detail.cd==false" style="color:rgb(185, 180, 180))"> - </td>
+        <td *ngIf="detail.cd!=false" style="color:rgb(185, 180, 180)"> {{detail.cd}}  seconds</td>
+      </tr>
+
+      <tr>
+        <th style="color:rgb(15, 204, 29)">DESCRIPTION</th>
+        <td *ngIf="detail.desc==''" style="color:rgb(15, 204, 29)"> - </td>
+        <td *ngIf="detail.desc!=''" style="color:rgb(15, 204, 29)"> {{getDesc(detail.desc)}} </td>
+      </tr>
+
+      <tr>
+        <th style="color:rgb(236, 127, 0)">COMPONENTS</th>
+        <td>
+          <div class="d-flex flex-row">
+            <div *ngFor = "let cmp of detail.components">
+              <span [tooltip]="getNameComponent(cmp)" placement="bottom">
+                <img class="p-1" (click)="itemDetail(cmp)" [src]= "getComponents(cmp)" alt="">
+              </span>
+            </div>
+
+              <div *ngIf="getPrice()=='NO'">
+                <span [tooltip]="getNameComponent('recipe')" placement="bottom">
+                  <img class="p-1" [src]= "getComponents('recipe')" alt="">
+                </span>
+             </div>
+
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th style="color:rgba(245, 80, 153, 1)">UPGRADE</th>
+        <td>
+          <div class="d-flex flex-row">
+            <div *ngFor="let entry of items.itemdata | keys">
+              <div *ngFor="let upgrade of entry.value.components">
+                <div *ngIf="upgrade == name && entry.key!=='dagon_2' && entry.key!=='necronomicon_2' && entry.key!=='diffusal_blade_2'">
+                  <span [tooltip]="entry.value.dname" placement="bottom">
+                    <img class="p-1" (click)="itemDetail(entry.key)" [src]="getComponents(entry.key)" alt="">
+                  </span>
+                </div>
+
+                <div *ngIf="upgrade == name && (entry.key=='dagon_2' || entry.key=='necronomicon_2' || entry.key=='diffusal_blade_2')">
+                  <span [tooltip]="entry.value.dname" placement="bottom">
+                    <img class="p-1" [src]="getComponents(entry.key)" alt="">
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+    </table>
   </div>
 </div>

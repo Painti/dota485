@@ -1,10 +1,217 @@
-<p *ngIf="match">
-  <!-- {{match.match_id}} {{match.duration}} -->
-</p>
-<div class="mb-5">
-  <chart *ngIf="match" [type]="type1" [data]="data1" [options]="options1"></chart>
-<hr>
+<div *ngIf="match" class="mt-4">
+  <app-overview-table [match]="match" name="Radiant" [size]="[0,1,2,3,4]"></app-overview-table>
+  <app-overview-table [match]="match" name="Dire" [size]="[5,6,7,8,9]"></app-overview-table>
+  <chart *ngIf="match" class="line-chart" [type]="line" [data]="gold_exp_data" [options]="gold_exp_options1"></chart>
 </div>
-<div>
-  <chart *ngIf="match" [type]="type" [data]="data" [options]="options"></chart>
+<div *ngIf="match" class="mt-5 mb-5">
+  <h1 class="text-center header py-2"><font color="#DCDCDC">Building Map</font></h1>
+  <div class="map">
+    <template #popTemplate><div>{{obj_name}}</div><div>status: {{obj_status}}</div></template>
+    <!-- Radiant -->
+    <img class="r_main"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Radiant',getMainOpacity(match.radiant_win))"
+      [style.opacity]="getMainOpacity(match.radiant_win)"
+      src="assets/group2/images/radiant_main.png" alt="">
+    <img class="r_t4t"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Tower4',getOpacity(match.tower_status_radiant,10))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,10)"
+      src="assets/group2/images/radiant_tower.png" alt="">
+    <img class="r_t4b"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower4',getOpacity(match.tower_status_radiant,11))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,11)"
+      src="assets/group2/images/radiant_tower.png" alt="">
+
+    <img class="r_bmt barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Melee Barrack',getOpacity(match.barracks_status_radiant,1))"
+      [style.opacity]="getOpacity(match.barracks_status_radiant,1)"
+      src="assets/group2/images/radiant_barrack.png" alt="">
+    <img class="r_brt barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Ranged Barrack',getOpacity(match.barracks_status_radiant,2))"
+      [style.opacity]="getOpacity(match.barracks_status_radiant,2)"
+      src="assets/group2/images/radiant_barrack.png" alt="">
+    <img class="r_t3t"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Tower3',getOpacity(match.tower_status_radiant,3))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,3)"
+      src="assets/group2/images/radiant_tower.png" alt="">
+    <img class="r_t2t"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Tower2',getOpacity(match.tower_status_radiant,2))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,2)"
+      src="assets/group2/images/radiant_tower.png" alt="">
+    <img class="r_t1t"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Tower1',getOpacity(match.tower_status_radiant,1))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,1)"
+      src="assets/group2/images/radiant_tower.png" alt="">
+
+    <img class="r_bmm barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Melee Barrack',getOpacity(match.barracks_status_radiant,3))"
+      [style.opacity]="getOpacity(match.barracks_status_radiant,3)"
+      src="assets/group2/images/radiant_barrack_mid.png" alt="">
+    <img class="r_brm barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Ranged Barrack',getOpacity(match.barracks_status_radiant,4))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,6)"
+      src="assets/group2/images/radiant_tower_mid.png" alt="">
+    <img class="r_t3m"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Tower3',getOpacity(match.tower_status_radiant,6))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,6)"
+      src="assets/group2/images/radiant_tower_mid.png" alt="">
+    <img class="r_t2m"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Tower2',getOpacity(match.tower_status_radiant,5))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,5)"
+      src="assets/group2/images/radiant_tower_mid.png" alt="">
+    <img class="r_t1m"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Tower1',getOpacity(match.tower_status_radiant,4))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,4)"
+      src="assets/group2/images/radiant_tower_mid.png" alt="">
+
+    <img class="r_bmb barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Melee Barrack',getOpacity(match.barracks_status_radiant,5))"
+      [style.opacity]="getOpacity(match.barracks_status_radiant,5)"
+      src="assets/group2/images/radiant_barrack.png" alt="">
+    <img class="r_brb barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Ranged Barrack',getOpacity(match.barracks_status_radiant,6))"
+      [style.opacity]="getOpacity(match.barracks_status_radiant,6)"
+      src="assets/group2/images/radiant_barrack.png" alt="">
+    <img class="r_t3b"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower3',getOpacity(match.tower_status_radiant,9))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,9)"
+      src="assets/group2/images/radiant_tower.png" alt="">
+    <img class="r_t2b"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower2',getOpacity(match.tower_status_radiant,8))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,8)"
+      src="assets/group2/images/radiant_tower.png" alt="">
+    <img class="r_t1b"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower1',getOpacity(match.tower_status_radiant,7))"
+      [style.opacity]="getOpacity(match.tower_status_radiant,7)"
+      src="assets/group2/images/radiant_tower.png" alt="">
+
+    <!-- Dire -->
+    <img class="d_main"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Dire',getMainOpacity(!match.radiant_win))"
+      [style.opacity]="getMainOpacity(!match.radiant_win)"
+      src="assets/group2/images/dire_main.png" alt="">
+    <img class="d_t4t"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Tower4',getOpacity(match.tower_status_dire,10))"
+      [style.opacity]="getOpacity(match.tower_status_dire,10)"
+      src="assets/group2/images/dire_tower.png" alt="">
+    <img class="d_t4b"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower4',getOpacity(match.tower_status_dire,11))"
+      [style.opacity]="getOpacity(match.tower_status_dire,11)"
+      src="assets/group2/images/dire_tower.png" alt="">
+
+    <img class="d_bmt barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Melee Barrack',getOpacity(match.barracks_status_dire,1))"
+      [style.opacity]="getOpacity(match.barracks_status_dire,1)"
+      src="assets/group2/images/dire_barrack.png" alt="">
+    <img class="d_brt barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Ranged Barrack',getOpacity(match.barracks_status_dire,2))"
+      [style.opacity]="getOpacity(match.barracks_status_dire,2)"
+      src="assets/group2/images/dire_barrack.png" alt="">
+    <img class="d_t3t"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Tower3',getOpacity(match.tower_status_dire,3))"
+      [style.opacity]="getOpacity(match.tower_status_dire,3)"
+      src="assets/group2/images/dire_tower.png" alt="">
+    <img class="d_t2t"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Tower2',getOpacity(match.tower_status_dire,2))"
+      [style.opacity]="getOpacity(match.tower_status_dire,2)"
+      src="assets/group2/images/dire_tower.png" alt="">
+    <img class="d_t1t"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Top Tower1',getOpacity(match.tower_status_dire,1))"
+      [style.opacity]="getOpacity(match.tower_status_dire,1)"
+      src="assets/group2/images/dire_tower.png" alt="">
+
+    <img class="d_bmm barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Melee Barrack',getOpacity(match.barracks_status_dire,3))"
+      [style.opacity]="getOpacity(match.barracks_status_dire,3)"
+      src="assets/group2/images/dire_barrack_mid.png" alt="">
+    <img class="d_brm barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Ranged Barrack',getOpacity(match.barracks_status_dire,4))"
+      [style.opacity]="getOpacity(match.barracks_status_dire,4)"
+      src="assets/group2/images/dire_barrack_mid.png" alt="">
+    <img class="d_t3m"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Tower1',getOpacity(match.tower_status_dire,6))"
+      [style.opacity]="getOpacity(match.tower_status_dire,6)"
+      src="assets/group2/images/dire_tower_mid.png" alt="">
+    <img class="d_t2m"
+    [tooltip]="popTemplate"
+    (mouseover)="setObject('Mid Tower1',getOpacity(match.tower_status_dire,5))"
+      [style.opacity]="getOpacity(match.tower_status_dire,5)"
+      src="assets/group2/images/dire_tower_mid.png" alt="">
+    <img class="d_t1m"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Mid Tower1',getOpacity(match.tower_status_dire,4))"
+      [style.opacity]="getOpacity(match.tower_status_dire,4)"
+      src="assets/group2/images/dire_tower_mid.png" alt="">
+
+    <img class="d_bmb barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower1',getOpacity(match.barracks_status_dire,5))"
+      [style.opacity]="getOpacity(match.barracks_status_dire,5)"
+      src="assets/group2/images/dire_barrack.png" alt="">
+    <img class="d_brb barrack"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower1',getOpacity(match.barracks_status_dire,6))"
+      [style.opacity]="getOpacity(match.barracks_status_dire,6)"
+      src="assets/group2/images/dire_barrack.png" alt="">
+    <img class="d_t3b"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower1',getOpacity(match.tower_status_dire,9))"
+      [style.opacity]="getOpacity(match.tower_status_dire,9)"
+      src="assets/group2/images/dire_tower.png" alt="">
+    <img class="d_t2b"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower1',getOpacity(match.tower_status_dire,8))"
+      [style.opacity]="getOpacity(match.tower_status_dire,8)"
+      src="assets/group2/images/dire_tower.png" alt="">
+    <img class="d_t1b"
+      [tooltip]="popTemplate"
+      (mouseover)="setObject('Bot Tower1',getOpacity(match.tower_status_dire,7))"
+      [style.opacity]="getOpacity(match.tower_status_dire,7)"
+      src="assets/group2/images/dire_tower.png" alt="">
+  </div>
+</div>
+<div class="mt-5 mb-5">
+  <h1 *ngIf="match" class="text-center header py-2"><font color="#DCDCDC">Kills</font></h1>
+  <chart *ngIf="match" [type]="pie" [data]="kill_data1" [options]="kill_options1"></chart>
+  <chart *ngIf="match" [type]="doughnut" [data]="kill_data2" [options]="kill_options2"></chart>
+</div>
+<div class="mt-5 mb-5">
+  <h1 *ngIf="match" class="text-center header py-2"><font color="#DCDCDC">Gold</font></h1>
+  <chart *ngIf="match && match.radiant_gold_adv" class="line-chart" [type]="line" [data]="gold_data1" [options]="gold_options1"></chart>
+  <chart *ngIf="match" [type]="pie" [data]="gold_data2" [options]="gold_options2"></chart>
+  <chart *ngIf="match" [type]="doughnut" [data]="gold_data3" [options]="gold_options3"></chart>
+</div>
+<div class="mt-5 mb-5">
+  <h1 *ngIf="match" class="text-center header py-2"><font color="#DCDCDC">Experience</font></h1>
+  <chart *ngIf="match && match.radiant_xp_adv" class="line-chart" [type]="line" [data]="exp_data1" [options]="gold_options1"></chart>
+  <chart *ngIf="match" [type]="pie" [data]="exp_data2" [options]="exp_options2"></chart>
+  <chart *ngIf="match" [type]="doughnut" [data]="exp_data3" [options]="exp_options3"></chart>
 </div>

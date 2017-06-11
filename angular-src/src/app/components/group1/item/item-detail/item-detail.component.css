@@ -1,0 +1,24 @@
+div{
+  text-align: center;
+}
+
+th{
+  width:22%;
+}
+
+td,.left{
+  text-align: left;
+}
+
+td, th {
+    padding: 7px;
+    border: 5px solid rgb(0, 0, 0);
+}
+
+.margin{
+  margin-bottom: 10px;
+}
+
+.p-1{
+  cursor:pointer;
+}

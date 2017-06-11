@@ -49,12 +49,13 @@ export class MatchDetailComponent implements OnInit{
       this.api.getOpendata('/matches/'+this.id).subscribe(data => {
         this.match = data;
         let i:any;
-        this.match['team_score_kills'] = [0,0];
-        let sumKill = [0,0];
+        this.match['team_gpm'] = [0,0];
+        this.match['team_exp'] = [0,0];
         let x:number = 0;
         let sumMMR:number = 0;
         for (i in this.match['players']) {
-          this.match['team_score_kills'][Math.floor(i/5)] += this.match['players'][i]['kills'];
+          this.match['team_gpm'][Math.floor(i/5)] += this.match['players'][i]['gold_per_min'];
+          this.match['team_exp'][Math.floor(i/5)] += this.match['players'][i]['xp_per_min'];
           if(this.match['players'][i]['solo_competitive_rank'] != null){
             sumMMR += parseInt(this.match['players'][i]['solo_competitive_rank']);
             x += 1;
@@ -81,6 +82,10 @@ export class MatchDetailComponent implements OnInit{
 
   getImageHero(name){
     return 'http://cdn.dota2.com/apps/dota2/images/heroes/'+name+'_sb.png';
+  }
+
+  getBackgroundImage(bool){
+    return "assets/group2/images/background"+bool+".JPG";
   }
 
   getTime(time: number) {

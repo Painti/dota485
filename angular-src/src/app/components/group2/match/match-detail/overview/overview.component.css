@@ -1,3 +1,261 @@
 hr {
   border: 1px solid #797979;
 }
+
+.header {
+  font-weight: 600;
+  background-color: rgba(18, 18, 18, 0.30);
+}
+
+.line-chart {
+  height: 500px;
+  width: 100%;
+}
+
+:host >>> .tooltip-inner {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+:host >>> .tooltip.bs-tether-element-attached-bottom .tooltip-inner::before,
+:host >>> .tooltip.tooltip-top .tooltip-inner::before {
+  border-top-color: #000;
+}
+
+:host >>> .tooltip.bs-tether-element-attached-top .tooltip-inner::before,
+:host >>> .tooltip.tooltip-bottom .tooltip-inner::before {
+  border-bottom-color: #000;
+}
+
+:host >>> .tooltip.bs-tether-element-attached-right .tooltip-inner::before,
+:host >>> .tooltip.tooltip-left .tooltip-inner::before {
+  border-left-color: #000;
+}
+
+:host >>> .tooltip.bs-tether-element-attached-left .tooltip-inner::before,
+:host >>> .tooltip.tooltip-right .tooltip-inner::before {
+  border-right-color: #000;
+}
+
+chart {
+  padding- -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.map {
+  background-image: url(assets/group2/images/map.png);
+  background-repeat: no-repeat;
+  background-size: 480px 480px;
+  height: 480px;
+  width: 480px;
+  margin: 0 auto;
+  position: relative;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.map img {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  cursor: help;
+}
+
+.barrack{
+  height: 20px !important;;
+  width: 20px !important;;
+  z-index: 99;
+}
+
+.r_main {
+  top: 83%;
+  left: 5%;
+  height: 40px !important;
+  width: 40px !important;
+  z-index: 999;
+}
+
+.r_t4t {
+  top: 79%;
+  left: 8%;
+}
+
+.r_t4b {
+  top: 82%;
+  left: 12%;
+}
+
+.r_bmt {
+  top: 71%;
+  left: 9.5%;
+}
+
+.r_brt {
+  top: 71%;
+  left: 5.5%;
+}
+
+.r_t3t {
+  top: 68%;
+  left: 7%;
+}
+
+.r_t2t {
+  top: 51%;
+  left: 8%;
+}
+
+.r_t1t {
+  top: 35%;
+  left: 8%;
+}
+
+.r_bmm {
+  top: 74.5%;
+  left: 17%;
+}
+
+.r_brm {
+  top: 72.5%;
+  left: 14.5%;
+}
+
+.r_t3m {
+  top: 71%;
+  left: 18%;
+}
+
+.r_t2m {
+  top: 63%;
+  left: 27%;
+}
+
+.r_t1m {
+  top: 54%;
+  left: 38%;
+}
+
+.r_bmb {
+  top: 86%;
+  left: 19.5%;
+}
+
+.r_brb {
+  top: 82%;
+  left: 19.5%;
+}
+
+.r_t3b {
+  top: 83.5%;
+  left: 23%;
+}
+
+.r_t2b {
+  top: 85%;
+  left: 46%;
+}
+
+.r_t1b {
+  top: 83%;
+  left: 78%;
+}
+
+.d_main {
+  top: 9%;
+  left: 84%;
+  height: 40px !important;
+  width: 40px !important;
+  z-index: 999;
+}
+
+.d_t4t {
+  top: 13%;
+  left: 81%;
+}
+
+.d_t4b {
+  top: 16%;
+  left: 84%;
+}
+
+.d_bmt {
+  top: 13%;
+  left: 74%;
+}
+
+.d_brt {
+  top: 9.5%;
+  left: 74%;
+}
+
+.d_t3t {
+  top: 11%;
+  left: 70%;
+}
+
+.d_t2t {
+  top: 10%;
+  left: 44%;
+}
+
+.d_t1t {
+  top: 10%;
+  left: 15%;
+}
+
+.d_bmm {
+  top: 22%;
+  left: 77.5%;
+}
+
+.d_brm {
+  top: 19.5%;
+  left: 74.5%;
+}
+
+.d_t3m {
+  top: 24%;
+  left: 73%;
+}
+
+.d_t2m {
+  top: 34%;
+  left: 63%;
+}
+
+.d_t1m {
+  top: 44%;
+  left: 53%;
+}
+
+.d_bmb {
+  top: 24%;
+  left: 88.5%;
+}
+
+.d_brb {
+  top: 24%;
+  left: 84.5%;
+}
+
+.d_t3b {
+  top: 28%;
+  left: 86%;
+}
+
+.d_t2b {
+  top: 45%;
+  left: 86%;
+}
+
+.d_t1b {
+  top: 60%;
+  left: 86%;
+}
