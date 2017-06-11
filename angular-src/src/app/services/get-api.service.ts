@@ -54,10 +54,23 @@ export class GetApiService {
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/mmr/'+server)
       .map(res => res.json());
   }
-
+  getHeroStat(hName){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes/stat/'+hName)
+      .map(res => res.json());
+  }
 
   getHeroes(){
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes/')
+      .map(res => res.json());
+  }
+
+  getHeroesList(){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes/detail')
+      .map(res => res.json());
+  }
+
+  getHeroesSkills(name){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes/skills/'+name)
       .map(res => res.json());
   }
 

@@ -1,13 +1,43 @@
 <div *ngIf="heros">
   <h1 class="text-center"> {{id}} </h1>
-  <div class="d-flex justify-content-center"><img [src]="getImage(id)" alt=""></div>
-
+  <div class="d-flex justify-content-center"><img [src]="getImage(id,false)" alt=""></div>
   <div class="d-flex flex-rows justify-content-center mt-2">
     <div *ngFor="let role of heros.roles ;">
       {{role}} &nbsp;
     </div>
   </div>
-  <!-- <h4> {{heros.bio}}</h4> -->
+  <hr class="line">
+  <div>
+    <blockquote>
+      <p> {{heros.bio}}</p>
+    </blockquote>
+  </div>
 
+  <div *ngFor="let item of herosstat" class="d-flex flex-row">
+      <div class="d-flex flex-column">
+        <div class="p-2"><img [src]="getImage(id,true)" alt=""></div>
+        <div class="p-2"> <img src="http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_attack.png" width="30" alt="">
+          <span>{{item.attribs.dmg.min}} - {{item.attribs.dmg.max}}</span>
+        </div>
+        <div class="p-2"> <img  src="http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_defense.png" width="30" alt=""> <span>{{item.attribs.armor}}</span></div>
 
+        <div class="p-2"> <img  src="http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_str.png" width="30" alt=""> <span>{{item.attribs.str.b}}</span></div>
+        <div class="p-2"> <img  src="http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_agi.png" width="30" alt=""> <span>{{item.attribs.agi.b}}</span></div>
+        <div class="p-2"> <img  src="http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_int.png" width="30" alt=""> <span>{{item.attribs.int.b}}</span></div>
+
+      </div>
+  <div>
+  <div *ngFor="let skill of skills">
+    <div class="d-flex flex-row">
+      <img [src]="getSkilImg(id , skill.dname)" alt="">
+      <div>
+        <h5>{{skill.dname}}</h5>
+        <div class="d-flex align-items-center">
+          <h6>{{skill.desc}}</h6></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
 </div>

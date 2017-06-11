@@ -1,6 +1,59 @@
-  <h1> HERO </h1>
-  <div class="d-flex flex-wrap ">
-    <div [tooltip]="getName(entry.key)" *ngFor="let entry of heros| keys">
-        <img placement="top" (click)="gotodetial(entry.key)" style="width:80px" [src]="getImage(entry.key)" alt="">
-    </div>
-  </div>
+<h1> HERO </h1>
+<table class="table-list">
+  <tr>
+    <td>
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-wrap py-4">
+          <div class="img_type str"></div>
+          <div class="pad align-self-center"><h3 [tooltip]="'Strength'">STR</h3></div>
+        </div>
+        <div class="mx-auto d-flex flex-wrap">
+          <div *ngFor="let entry of heros| keys">
+            <div [tooltip]="getName(entry.key)" *ngIf="heros[entry.key].pa == 'str'">
+              <div class="d-flex justify-content-around">
+                <img placement="top" (click)="gotodetial(entry.key)" style="width:80px; height:50px;" [src]="getImage(entry.key)" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+    <td>
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-wrap py-4">
+          <div class="img_type agi"></div>
+          <div class="pad align-self-center"><h3 [tooltip]="'Agility'">AGI</h3></div>
+        </div>
+        <div class="mx-auto d-flex flex-wrap">
+          <div *ngFor="let entry of heros| keys">
+            <div [tooltip]="getName(entry.key)" *ngIf="heros[entry.key].pa == 'agi'">
+              <div class="d-flex justify-content-around">
+                <img placement="top" (click)="gotodetial(entry.key)" style="width:80px; height:50px;" [src]="getImage(entry.key)" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+    <td>
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-wrap py-4">
+          <div class="img_type int"></div>
+          <div class="pad align-self-center"><h3 [tooltip]="'Intelligent'">INT</h3></div>
+        </div>
+        <div class="mx-auto d-flex flex-wrap">
+          <div *ngFor="let entry of heros| keys">
+            <div [tooltip]="getName(entry.key)" *ngIf="heros[entry.key].pa == 'int'">
+              <div class="d-flex justify-content-around">
+                <img placement="top" (click)="gotodetial(entry.key)" style="width:80px; height:50px;" [src]="getImage(entry.key)" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+
+  </tr>
+</table>

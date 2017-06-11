@@ -27,29 +27,43 @@
       </tr>
 
       <tr>
-        <th style="color:rgb(236, 127, 0)">COMPONENTS ARE</th>
+        <th style="color:rgb(236, 127, 0)">COMPONENTS</th>
         <td>
           <div class="d-flex flex-row">
             <div *ngFor = "let cmp of detail.components">
-                <span [tooltip]="getNameComponent(cmp)" placement="bottom">
+              <span [tooltip]="getNameComponent(cmp)" placement="bottom">
                 <img class="p-1" (click)="itemDetail(cmp)" [src]= "getComponents(cmp)" alt="">
               </span>
             </div>
+
+              <div *ngIf="getPrice()=='NO'">
+                <span [tooltip]="getNameComponent('recipe')" placement="bottom">
+                  <img class="p-1" [src]= "getComponents('recipe')" alt="">
+                </span>
+             </div>
+
           </div>
         </td>
       </tr>
 
       <tr>
-        <th style="color:rgba(240, 90, 157, 1)">COMPONENTS OF</th>
+        <th style="color:rgba(245, 80, 153, 1)">UPGRADE</th>
         <td>
           <div class="d-flex flex-row">
             <div *ngFor="let entry of items.itemdata | keys">
-              <div *ngFor="let cmf of entry.value.components">
-                <div *ngIf="cmf == name">
+              <div *ngFor="let upgrade of entry.value.components">
+                <div *ngIf="upgrade == name && entry.key!=='dagon_2' && entry.key!=='necronomicon_2' && entry.key!=='diffusal_blade_2'">
                   <span [tooltip]="entry.value.dname" placement="bottom">
                     <img class="p-1" (click)="itemDetail(entry.key)" [src]="getComponents(entry.key)" alt="">
                   </span>
                 </div>
+
+                <div *ngIf="upgrade == name && (entry.key=='dagon_2' || entry.key=='necronomicon_2' || entry.key=='diffusal_blade_2')">
+                  <span [tooltip]="entry.value.dname" placement="bottom">
+                    <img class="p-1" [src]="getComponents(entry.key)" alt="">
+                  </span>
+                </div>
+
               </div>
             </div>
           </div>

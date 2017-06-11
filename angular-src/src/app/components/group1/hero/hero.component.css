@@ -6,3 +6,39 @@ img:hover{
   opacity: 0.5;
 
 }
+
+.img_type{
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.str{
+  background-image: url('http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_str.png');
+}
+
+.agi{
+  background-image: url('http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_agi.png');
+}
+
+.int{
+  background-image: url('http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_int.png');
+}
+
+.table-list td{
+  width: 30%;
+  padding: 20px;
+  vertical-align: top;
+}
+
+.pad{
+  padding-left: 0px;
+}
+
+@media (min-width: 768px){
+  .pad{
+    padding-left: 1.5rem;
+  }
+}
