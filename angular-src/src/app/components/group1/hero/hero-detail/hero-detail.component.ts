@@ -15,12 +15,13 @@ export class HeroDetailComponent implements OnInit {
   ) { }
   heros:Object;
   herosDetail:Array<Object>;
+  skills:Array<Object>;
+  herosstat:Array<Object>;
   id:string;
   state:any;
   ngOnInit() {
     this.route.params.subscribe(params => {
         this.id = params['hero_name'];
-        console.log(params);
         this.api.getHeroes().subscribe(data => {
           this.heros = data[this.id];
         },
@@ -29,14 +30,42 @@ export class HeroDetailComponent implements OnInit {
             return false;
 
           });
+        this.api.getHeroesSkills(this.id).subscribe(data => {
+          this.skills = data;
+        },
+          err => {
+            console.log(err);
+            return false;
+
+          });
+          this.api.getHeroStat(this.id).subscribe(data => {
+            this.herosstat = data;
+          },
+            err => {
+              console.log(err);
+              return false;
+
+            });
     });
 
   }
 
-  getImage(hName) {
-    return "http://cdn.dota2.com/apps/dota2/images/heroes/" + hName + "_lg.png"
+  getImage(hName,vert) {
+    if(vert==true){
+      return "http://cdn.dota2.com/apps/dota2/images/heroes/"+hName +"_vert.jpg"
+    }
+    else if(vert == false){
+      return "http://cdn.dota2.com/apps/dota2/images/heroes/" + hName + "_lg.png"
+    }
   }
 
+  getSkilImg(hName , sName) {
+    var find = ' ';
+    var re = new RegExp(find, 'g');
+    let s = sName.replace(re, '_');
+    s = s.replace("'",'');
+    return  "http://cdn.dota2.com/apps/dota2/images/abilities/"+hName+"_"+s.toLowerCase()+"_lg.png";
+  }
 
 
 }
