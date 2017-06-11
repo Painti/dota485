@@ -63,6 +63,8 @@ import { OverviewPlayerComponent } from './components/group2/profile/overview-pl
 import { NavbarPlayerComponent } from './components/group2/profile/navbar-player/navbar-player.component';
 import { PeersPlayerComponent } from './components/group2/profile/peers-player/peers-player.component';
 import { OverviewTableComponent } from './components/group2/match/match-detail/overview/overview-table/overview-table.component';
+import { BenchmarksTableComponent } from './components/group2/match/match-detail/benchmarks/benchmarks-table/benchmarks-table.component';
+import { PerformanceTableComponent } from './components/group2/match/match-detail/performances/performance-table/performance-table.component';
 
 
 const appRoutes: Routes = [
@@ -151,7 +153,9 @@ const appRoutes: Routes = [
     MatchesPlayerComponent,
     NavbarPlayerComponent,
     PeersPlayerComponent,
-    OverviewTableComponent
+    OverviewTableComponent,
+    BenchmarksTableComponent,
+    PerformanceTableComponent
 
   ],
   imports: [
@@ -165,9 +169,7 @@ const appRoutes: Routes = [
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     ChartModule,
-    ModalModule.forRoot(),
     PopoverModule.forRoot()
-
   ],
   providers: [
     ConfigService,

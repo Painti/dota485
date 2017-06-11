@@ -1,0 +1,110 @@
+<h3>
+  <img src="assets/images/coin-{{name.toLowerCase()}}.png" alt="" width="40">
+  <span class="ml-1 {{name.toLowerCase()}}-team">{{name}} Team</span>
+</h3>
+<div class="table-outlet mb-3">
+  <table class="table-match">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th><span tooltip="Gold farmed per minute">GPM</span></th>
+        <th><span tooltip="Experience gained per minute">XPM</span></th>
+        <th><span tooltip="Kills per minute">KPM</span></th>
+        <th><span tooltip="Last hits per minute">LHM</span></th>
+        <th><span tooltip="Hero damage per minute">HDM</span></th>
+        <th><span tooltip="Hero healing per minute">HHM</span></th>
+        <th><span tooltip="Amount of damage dealt to tower">TD</span></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="checkPercentile(percentile)" >
+      <tr *ngFor="let i of size; let x = index;">
+        <td nowrap>
+          <img [class]="'player'+(i+1)"[src]="getImageHero(match.players[i].hero_name)" alt="" height="25">
+          <span class="ml-1">
+            {{match.players[i].name || match.players[i].personaname || "(anonymous)"}}
+          </span>
+        </td>
+        <td nowrap>
+          {{match.players[i].gold_per_min}}
+          <span class="percent">
+            ({{percentile[x].gold_per_min}}%)
+          </span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(percentile[x].gold_per_min)"
+              [style.width]="percentile[x].gold_per_min+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].xp_per_min}}
+          <span class="percent">
+            ({{percentile[x].xp_per_min}}%)
+          </span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(percentile[x].xp_per_min)"
+              [style.width]="percentile[x].xp_per_min+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].kills_per_min | number : '1.2-2'}}
+          <span class="percent">
+            ({{percentile[x].kills_per_min}}%)
+          </span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(percentile[x].kills_per_min)"
+              [style.width]="percentile[x].kills_per_min+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].last_hits_per_min | number : '1.2-2'}}
+          <span class="percent">
+            ({{percentile[x].last_hits_per_min}}%)
+          </span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(percentile[x].last_hits_per_min)"
+              [style.width]="percentile[x].last_hits_per_min+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].hero_damage_per_min | number : '1.2-2'}}
+          <span class="percent">
+            ({{percentile[x].hero_damage_per_min}}%)
+          </span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(percentile[x].hero_damage_per_min)"
+              [style.width]="percentile[x].hero_damage_per_min+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].hero_healing_per_min | number : '1.2-2'}}
+          <span class="percent">
+            ({{percentile[x].hero_healing_per_min}}%)
+          </span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(percentile[x].hero_healing_per_min)"
+              [style.width]="percentile[x].hero_healing_per_min+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].tower_damage}}
+          <span class="percent">
+            ({{percentile[x].tower_damage}}%)
+          </span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(percentile[x].tower_damage)"
+              [style.width]="percentile[x].tower_damage+'%'"></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div [hidden]="checkPercentile(percentile)" style="padding-top: 5px; padding-bottom: 30px;">
+  <i style="text-align: center; display: block; margin: 0 auto;" class="fa fa-spinner fa-spin fa-4x fa-fw"></i>
+</div>

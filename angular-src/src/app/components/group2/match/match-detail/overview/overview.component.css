@@ -5,6 +5,7 @@ hr {
 .header {
   font-weight: 600;
   background-color: rgba(18, 18, 18, 0.30);
+  color: #DCDCDC;
 }
 
 .line-chart {
@@ -35,15 +36,6 @@ hr {
 :host >>> .tooltip.bs-tether-element-attached-left .tooltip-inner::before,
 :host >>> .tooltip.tooltip-right .tooltip-inner::before {
   border-right-color: #000;
-}
-
-chart {
-  padding- -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .map {

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommunicateService } from '../../../../../services/group2/communicate.service';
 import { Subscription }   from 'rxjs/Subscription';
 

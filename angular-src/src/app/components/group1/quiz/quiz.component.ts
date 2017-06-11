@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForObjectPipe } from '../../../pipes/ng-for-object.pipe';
@@ -18,7 +18,27 @@ export class QuizComponent implements OnInit {
   itemlist:Object
   itemComponent:any
   x:number;
+  ans:Array<String>
+  listChoice:Array<String>
+
+  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  public isModalShown:boolean = false;
+
+  public showModal():void {
+    this.isModalShown = true;
+  }
+
+  public hideModal():void {
+    this.autoShownModal.hide();
+  }
+
+  public onHidden():void {
+    this.isModalShown = false;
+  }
+
   ngOnInit() {
+    this.ans = []
+    this.listChoice = []
     this.x=0;
     this.itemComponent = []
     this.api.getItem().subscribe( data => {
@@ -34,23 +54,43 @@ export class QuizComponent implements OnInit {
        console.log(err);
        return false;
      });
+     this.showModal();
 
   }
+
+
 
   getName(name){
-    name = name.replace("_"," ");
-    return name.charAt(0).toUpperCase()+name.slice(1);
+    name = name.replace("?3"," ");
+    return name
   }
 
+  getNamelg(name){
+    return name + "_lg.png"
+  }
 
-  getImage(hName) {
-    return "http://cdn.dota2.com/apps/dota2/images/heroes/" + hName + "_lg.png"
+  getImage(name) {
+    return "http://cdn.dota2.com/apps/dota2/images/items/" + name
   }
 
   randomItem(){
     console.log(JSON.stringify(this.itemComponent[this.x]))
     return this.itemComponent[this.x]
   }
+
+  ansIn(name){
+
+  }
+
+  chenkAns(){
+
+  }
+
+  makeChoice(){
+    
+
+  }
+
 
 
 

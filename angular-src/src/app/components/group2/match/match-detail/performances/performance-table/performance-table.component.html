@@ -1,0 +1,89 @@
+<h3>
+  <img src="assets/images/coin-{{name.toLowerCase()}}.png" alt="" width="40">
+  <span class="ml-1 {{name.toLowerCase()}}-team">{{name}} Team</span>
+</h3>
+<div class="table-outlet mb-3">
+  <table class="table-match">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th><span tooltip="Lane based on early game position">LANE</span></th>
+        <th><span tooltip="Efficiency Lane">EFF</span></th>
+        <th><span tooltip="Longest muti-kill">MULTI</span></th>
+        <th><span tooltip="Longest killstreak">STREAK</span></th>
+        <th><span tooltip="Seconds of disable on heroes">STUNS</span></th>
+        <th><span tooltip="Camps stacked">STACKED</span></th>
+        <th><span tooltip="Time dead">DEAD</span></th>
+        <th><span tooltip="Number of buybacks">BUYBACKS</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of size; let x = index;">
+        <td nowrap>
+          <img [class]="'player'+(i+1)"[src]="getImageHero(match.players[i].hero_name)" alt="" height="25">
+          <span class="ml-1">
+            {{match.players[i].name || match.players[i].personaname || "(anonymous)"}}
+          </span>
+        </td>
+        <td nowrap>
+          {{getLane(match.players[i].lane_role)}}
+        </td>
+        <td nowrap>
+          {{match.players[i].lane_efficiency*100 | number : '1.2-2'}}%
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].lane_efficiency*100)"
+              [style.width]="match.players[i].lane_efficiency*100+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{getNameMultiKills(match.players[i].multi)}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].multi*100/max_multi)"
+              [style.width]="match.players[i].multi*100/max_multi+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{getNameStreakKills(match.players[i].streaks)}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].streaks*100/max_streak)"
+              [style.width]="match.players[i].streaks*100/max_streak+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].stuns | number : '1.2-2'}}s
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].stuns*100/max_stun)"
+              [style.width]="match.players[i].stuns*100/max_stun+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].creeps_stacked}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].creeps_stacked*100/max_stacked)"
+              [style.width]="match.players[i].creeps_stacked*100/max_stacked+'%'"></div>
+            </div>
+        </td>
+        <td nowrap>
+          {{getTime(match.players[i].life_state_dead)}}
+          <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar"
+              [style.width]="match.players[i].life_state_dead*100/max_dead+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>
+          {{match.players[i].buyback_count}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].buyback_count*100/max_buyback)"
+              [style.width]="match.players[i].buyback_count*100/max_buyback+'%'"></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -6,8 +6,20 @@
   text-shadow: 0px 0px 7px #ff0000;
 }
 
+.table-outlet {
+  overflow-x: scroll;
+}
+
+.table-match {
+  margin-bottom: 0px;
+}
+
 [tooltip] {
   cursor: help;
+}
+
+.percent {
+  color: #969696;
 }
 
 .progress {
@@ -16,14 +28,6 @@
   background-color: #444;
   transition: 5s linear;
   transition-property: width;
-}
-
-.table-outlet {
-  overflow-x: scroll;
-}
-
-.table-match {
-  margin-bottom: 0px;
 }
 
 @media (max-width: 767px) {
