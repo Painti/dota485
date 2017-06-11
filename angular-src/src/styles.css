@@ -12,6 +12,11 @@ chart {
   user-select: none;
 }
 
+.very-bold{
+  font-weight: 500;
+  text-decoration: underline;
+}
+
 .table-match {
   width: 100%;
   /*table-layout: fixed;*/
@@ -76,6 +81,29 @@ chart {
   margin-right: 2px;
 }
 
+@media (max-width: 767px) {
+  .table-match {
+    table-layout: fixed;
+    width: auto;
+    border-collapse: collapse;
+  }
+  .table-match th, .table-match td {
+    border-collapse: collapse;
+  }
+}
+
+.radiant-team {
+  text-shadow: 0px 0px 7px #00ff00;
+}
+
+.dire-team {
+  text-shadow: 0px 0px 7px #ff0000;
+}
+
+.table-outlet {
+  overflow-x: scroll;
+}
+
 .tooltip {
   opacity: 1;
 }
@@ -112,6 +140,46 @@ chart {
 
 .bg-inverse {
   background-color: #121212 !important;
+}
+
+.player1 {
+  border-left: 3.5px solid #2e6ae6;
+}
+
+.player2 {
+  border-left: 3.5px solid #5de6ad;
+}
+
+.player3 {
+  border-left: 3.5px solid #ad00ad;
+}
+
+.player4 {
+  border-left: 3.5px solid #dcd90a;
+}
+
+.player5 {
+  border-left: 3.5px solid #e66200;
+}
+
+.player6 {
+  border-left: 3.5px solid #e67ab0;
+}
+
+.player7 {
+  border-left: 3.5px solid #92a440;
+}
+
+.player8 {
+  border-left: 3.5px solid #5cc5e0;
+}
+
+.player9 {
+  border-left: 3.5px solid #00771e;
+}
+
+.player10 {
+  border-left: 3.5px solid #835603;
 }
 
 ::-webkit-scrollbar {

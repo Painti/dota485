@@ -1,0 +1,44 @@
+.content{
+  font-size: 16px;
+}
+
+.progress {
+  height: 3px;
+  margin-top: 7px;
+  background-color: #444;
+  transition: 5s linear;
+  transition-property: width;
+}
+
+.table-match {
+  margin-bottom: 0px;
+  border-bottom: 1px solid #121212;
+  border-right: 1px solid #121212;
+}
+
+.table-match th {
+  border-top: 1px solid #121212;
+}
+
+.table-match th:first-child{
+  border-top: 0px;
+  background-color:#292b2c;
+  border-right: 1px solid #121212;
+  font-size: 28px;
+  text-align: center;
+}
+
+.table-match th:last-child{
+  border-right: 1px solid #121212;
+}
+
+
+.table-match td:first-child{
+  background-color: #222;
+  border-left: 1px solid #121212;
+  border-right: 1px solid #121212;
+}
+
+.table-match tbody tr{
+  border: none;
+}

@@ -65,6 +65,7 @@ import { PeersPlayerComponent } from './components/group2/profile/peers-player/p
 import { OverviewTableComponent } from './components/group2/match/match-detail/overview/overview-table/overview-table.component';
 import { BenchmarksTableComponent } from './components/group2/match/match-detail/benchmarks/benchmarks-table/benchmarks-table.component';
 import { PerformanceTableComponent } from './components/group2/match/match-detail/performances/performance-table/performance-table.component';
+import { FarmTableComponent } from './components/group2/match/match-detail/farm/farm-table/farm-table.component';
 
 
 const appRoutes: Routes = [
@@ -155,7 +156,8 @@ const appRoutes: Routes = [
     PeersPlayerComponent,
     OverviewTableComponent,
     BenchmarksTableComponent,
-    PerformanceTableComponent
+    PerformanceTableComponent,
+    FarmTableComponent
 
   ],
   imports: [

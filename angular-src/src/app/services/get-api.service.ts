@@ -15,12 +15,6 @@ export class GetApiService {
       .map(res => res.json());
   }
 
-  getOpendataBenchmarks(id){
-    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/opendota/benchmarks/'+id)
-      .map(res => res.json());
-  }
-
-
   getRequestMatch(id, obj){
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/opendota/getreq/'+id)
       .map(res => res.json())

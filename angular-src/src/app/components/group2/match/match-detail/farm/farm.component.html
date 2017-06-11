@@ -1,3 +1,4 @@
-<p>
-  farm works!
-</p>
+<div *ngIf="match" class="mt-4">
+  <app-farm-table [match]="match" name="Radiant" [size]="[0,1,2,3,4]"></app-farm-table>
+  <app-farm-table [match]="match" name="Dire" [size]="[5,6,7,8,9]"></app-farm-table>
+</div>
