@@ -7,19 +7,17 @@
     <thead>
       <tr>
         <th>Player</th>
-        <th><span class="tip" tooltip="Level achieved by hero">LV</span></th>
-        <th><span class="tip" tooltip="Number of kills by hero">K</span></th>
-        <th><span class="tip" tooltip="Number of deaths by hero">D</span></th>
-        <th><span class="tip" tooltip="Number of assists by hero">A</span></th>
-        <th><span class="tip" tooltip="Gold farmed per minute">GPM</span></th>
-        <th><span class="tip" tooltip="Experience gained per minute">XPM</span></th>
-        <th><span class="tip" tooltip="Number of last hits by hero">LH</span></th>
-        <th><span class="tip" tooltip="Number of denied by hero">DN</span></th>
-        <th><span class="tip" tooltip="Amount of damage dealt to hero">HD</span></th>
-        <th><span class="tip" tooltip="Amount of health restored to hero">HH</span></th>
-        <th><span class="tip" tooltip="Amount of damage dealt to tower">TD</span></th>
+        <th><span tooltip="Level achieved by hero">LV</span></th>
+        <th><span tooltip="Kills/Deaths/Assists">K / D / A</span></th>
+        <th><span tooltip="Gold farmed per minute">GPM</span></th>
+        <th><span tooltip="Experience gained per minute">XPM</span></th>
+        <th><span tooltip="Number of last hits by hero">LH</span></th>
+        <th><span tooltip="Number of denied by hero">DN</span></th>
+        <th><span tooltip="Amount of damage dealt to hero">HD</span></th>
+        <th><span tooltip="Amount of health restored to hero">HH</span></th>
+        <th><span tooltip="Amount of damage dealt to tower">TD</span></th>
         <th>
-          <span class="tip" tooltip="Total gold farmed">
+          <span tooltip="Total gold farmed">
             <img src="https://api.opendota.com/apps/dota2/images/tooltips/gold.png" height="10">
             <span>G</span>
           </span>
@@ -28,22 +26,30 @@
     </thead>
     <tbody>
       <tr *ngFor="let i of size">
-        <td>
+        <td nowrap>
           <img [class]="'player'+(i+1)"[src]="getImageHero(match.players[i].hero_name)" alt="" height="25">
           <span class="ml-1">{{match.players[i].name || match.players[i].personaname || "(anonymous)"}}</span>
         </td>
-        <td>{{match.players[i].level}}</td>
-        <td>{{match.players[i].kills}}</td>
-        <td>{{match.players[i].deaths}}</td>
-        <td>{{match.players[i].assists}}</td>
-        <td>{{match.players[i].gold_per_min}}</td>
-        <td>{{match.players[i].xp_per_min}}</td>
-        <td>{{match.players[i].last_hits}}</td>
-        <td>{{match.players[i].denies}}</td>
-        <td>{{match.players[i].hero_damage}}</td>
-        <td>{{match.players[i].hero_healing}}</td>
-        <td>{{match.players[i].tower_damage}}</td>
-        <td>{{match.players[i].total_gold}}</td>
+        <td nowrap>{{match.players[i].level}}</td>
+        <td nowrap>
+          {{match.players[i].kills}} / {{match.players[i].deaths}} / {{match.players[i].assists}}
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar"
+              [style.width]="getWidthByKDA('K',match.players[i].kills,match.players[i].deaths,match.players[i].assists)"></div>
+            <div class="progress-bar bg-danger" role="progressbar"
+              [style.width]="getWidthByKDA('D',match.players[i].kills,match.players[i].deaths,match.players[i].assists)"></div>
+            <div class="progress-bar" role="progressbar"
+              [style.width]="getWidthByKDA('A',match.players[i].kills,match.players[i].deaths,match.players[i].assists)"></div>
+          </div>
+        </td>
+        <td nowrap>{{match.players[i].gold_per_min}}</td>
+        <td nowrap>{{match.players[i].xp_per_min}}</td>
+        <td nowrap>{{match.players[i].last_hits}}</td>
+        <td nowrap>{{match.players[i].denies}}</td>
+        <td nowrap>{{match.players[i].hero_damage}}</td>
+        <td nowrap>{{match.players[i].hero_healing}}</td>
+        <td nowrap>{{match.players[i].tower_damage}}</td>
+        <td nowrap>{{match.players[i].total_gold}}</td>
       </tr>
     </tbody>
   </table>

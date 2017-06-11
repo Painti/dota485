@@ -130,6 +130,19 @@ router.get('/publicMatches', function(req, res, next) {
   });
 });
 
+router.get('/benchmarks/:id', function(req, res, next) {
+  let url = 'https://api.opendota.com/api/benchmarks?hero_id=' + req.params.id;
+  request(url, function(err, response, body) {
+    if (!err && response.statusCode < 400) {
+      res.json(JSON.parse(body));
+    } else {
+      res.json({
+        state: 'failed'
+      });
+    }
+  });
+});
+
 router.get('/:field', function(req, res, next) {
   let url = 'https://api.opendota.com/api/' + req.params.field;
   request(url, function(err, response, body) {

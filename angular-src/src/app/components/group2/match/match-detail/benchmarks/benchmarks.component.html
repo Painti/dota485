@@ -1,3 +1,8 @@
-<p>
-  benchmarks works!
-</p>
+<div *ngIf="match" class="mt-4">
+  <div class="pb-4 tip">
+    <i class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i>
+    <span> Tip: Percentile is performance on that heroes</span>
+  </div>
+  <app-benchmarks-table [match]="match" name="Radiant" [size]="[0,1,2,3,4]"></app-benchmarks-table>
+  <app-benchmarks-table [match]="match" name="Dire" [size]="[5,6,7,8,9]"></app-benchmarks-table>
+</div>

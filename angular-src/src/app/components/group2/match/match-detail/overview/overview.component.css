@@ -5,6 +5,7 @@ hr {
 .header {
   font-weight: 600;
   background-color: rgba(18, 18, 18, 0.30);
+  color: #DCDCDC;
 }
 
 .line-chart {

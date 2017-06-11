@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicateService } from '../../../../../services/group2/communicate.service';
+import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-benchmarks',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BenchmarksComponent implements OnInit {
 
-  constructor() { }
+  constructor(private communicate: CommunicateService) { }
+
+  match: Object;
+  subscription: Subscription;
 
   ngOnInit() {
+    this.subscription = this.communicate.getMatch$.subscribe(match => {
+      this.match = match;
+    });
   }
 
 }
