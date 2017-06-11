@@ -5,15 +5,27 @@ img.pf_hero{
 }
 
 .green{
-  color: Lime ;
+  color: rgb(102, 187, 106) ;
 }
 
 .red{
-  color: OrangeRed ;
+  color: rgb(255, 76, 76) ;
+}
+
+.yellow{
+  color: rgb(229, 193, 0) ;
+}
+
+.gray{
+  color: rgba(245, 245, 245, 0.87) ;
 }
 
 .font25{
   font-size: 25px ;
+}
+
+.font12{
+  font-size: 12px ;
 }
 
 .hoverClickImg:hover{
@@ -24,4 +36,9 @@ img.pf_hero{
 .hoverClick:hover{
   opacity: 0.8;
   cursor: pointer;
+}
+
+.icon{
+  width: auto !important;
+  height: 20px !important;
 }
