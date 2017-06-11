@@ -22,9 +22,10 @@ name:string;
 
 p:number;
 cost:number;
-temp:number;
 
-upgrade:Array<any>
+s:any;
+c:string;
+n:number;
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -36,6 +37,8 @@ upgrade:Array<any>
             this.items = data;
 
             this.p = 0;
+            this.c = 'NO';
+            this.n=0;
             if(data.itemdata[this.name].components !== null){
               for(let key of data.itemdata[this.name].components)
                 this.p = this.p + data.itemdata[key].cost;
@@ -82,6 +85,34 @@ upgrade:Array<any>
     }
     else if(r > 0 && sum>0){
       return 'NO';
+    }
+  }
+
+  getUpgrade(compo){
+    if((this.c=='NO') || this.s!=undefined){
+      if(compo == this.s){
+        this.c = 'YES';
+      }
+      if(compo != this.s){
+        this.c = 'NO';
+        this.s = compo;
+      }
+    }
+
+    if(this.c=='YES'){
+      if(compo != this.s){
+        this.c = 'NO';
+        this.s = compo;
+      }
+    }
+    return this.c;
+  }
+
+  equals(name){
+    if(name=='ring_of_aquila' || name=='ward_dispenser' || name=='urn_of_shadows' || name=='null_talisman' || name=='magic_wand' ||
+    name=='ethereal_blade' || name=='soul_ring'|| name=='bloodstone' || name=='guardian_greaves' || name=='bloodthorn' ||
+    name=='hurricane_pike'|| name=='pipe' || name=='abyssal_blade' || name=='silver_edge' || name=='mjollnir' || name=='solar_crest'){
+      return 'YES';
     }
   }
 }
