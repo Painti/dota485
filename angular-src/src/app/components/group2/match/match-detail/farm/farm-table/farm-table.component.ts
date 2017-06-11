@@ -28,17 +28,8 @@ export class FarmTableComponent implements OnInit {
     this.max_roshan = 0;
     this.max_necro = 0;
     for (let i of this.size) {
-      this.match['players'][i]['creep_kills'] = 0;
-      for (let key in this.match['players'][i].killed) {
-        if(key.search('creep')){
-          this.match['players'][i]['creep_kills'] += this.match['players'][i].killed[key];
-        }
-      }
       if(this.max_creeps < this.match['players'][i].creep_kills){
         this.max_creeps = this.match['players'][i].creep_kills;
-      }
-      if(this.max_neutrals < this.match['players'][i].neutral_kills){
-        this.max_neutrals = this.match['players'][i].neutral_kills;
       }
       if(this.max_neutrals < this.match['players'][i].neutral_kills){
         this.max_neutrals = this.match['players'][i].neutral_kills;
