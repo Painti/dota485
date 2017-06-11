@@ -46,11 +46,8 @@ import { PerformancesComponent } from './components/group2/match/match-detail/pe
 import { CombatComponent } from './components/group2/match/match-detail/combat/combat.component';
 import { FarmComponent } from './components/group2/match/match-detail/farm/farm.component';
 import { PurchaseComponent } from './components/group2/match/match-detail/purchase/purchase.component';
-import { GraphComponent } from './components/group2/match/match-detail/graph/graph.component';
-import { CastComponent } from './components/group2/match/match-detail/cast/cast.component';
 import { ObjectivesComponent } from './components/group2/match/match-detail/objectives/objectives.component';
 import { VisionComponent } from './components/group2/match/match-detail/vision/vision.component';
-import { ActionComponent } from './components/group2/match/match-detail/action/action.component';
 import { TeamfightsComponent } from './components/group2/match/match-detail/teamfights/teamfights.component';
 import { LogComponent } from './components/group2/match/match-detail/log/log.component';
 import { ChatComponent } from './components/group2/match/match-detail/chat/chat.component';
@@ -89,11 +86,8 @@ const appRoutes: Routes = [
       { path: 'combat', component: CombatComponent },
       { path: 'farm', component: FarmComponent },
       { path: 'purchase', component: PurchaseComponent },
-      { path: 'graph', component: GraphComponent },
-      { path: 'cast', component: CastComponent },
       { path: 'objectives', component: ObjectivesComponent },
       { path: 'vision', component: VisionComponent },
-      { path: 'action', component: ActionComponent },
       { path: 'teamfights', component: TeamfightsComponent },
       { path: 'log', component: LogComponent },
       { path: 'chat', component: ChatComponent },
