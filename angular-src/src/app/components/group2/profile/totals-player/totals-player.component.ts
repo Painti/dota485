@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/group2/auth.service';
+import { PassJsonService } from '../../../../services/group2/pass-json.service' ;
+import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-totals-player',
@@ -9,7 +11,8 @@ import { AuthService } from '../../../../services/group2/auth.service';
 export class TotalsPlayerComponent implements OnInit {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private passJsonService:PassJsonService
   ) { }
 
   user:Object ;
@@ -34,11 +37,18 @@ export class TotalsPlayerComponent implements OnInit {
   total_gemPus:any ;
   total_rapiersPus:any ;
   total_mapPings:any ;
+  subscription: Subscription ;
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(data => {
-      this.user = data.user;
-        this.authService.getTotals(this.user['account_id']).subscribe(data => {
+    this.subscription = this.passJsonService.getPlayer$.subscribe(player => {
+      this.user = player
+    },
+      err => {
+        console.log(err);
+        return false;
+    });
+    
+        this.subscription = this.passJsonService.getTotal$.subscribe(data => {
           this.total_kill = data[0]['sum'] ;
           this.total_death = data[1]['sum'] ;
           this.total_assists = data[2]['sum'] ;
@@ -65,11 +75,7 @@ export class TotalsPlayerComponent implements OnInit {
           console.log(err);
           return false;
       });
-    },
-      err => {
-        console.log(err);
-        return false;
-    });
+
   }
 
   toLocalNum(num){

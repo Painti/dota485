@@ -86,6 +86,12 @@ c:string;
     }
   }
 
+  watchUpgrade(name){
+    if(name=='dagon_2' || name=='necronomicon_2' || name=='diffusal_blade_2' || name=='travel_boots_2'){
+      return 'YES'
+    }
+  }
+/*
   getUpgrade(compo){
     if(this.c=='NO' && this.s!=undefined){
       if(compo == this.s){
@@ -111,26 +117,22 @@ c:string;
       this.s= compo;
         return this.c;
     }
-  }
-
+  }*/
+/*
   equals(name){
     if(name=='ring_of_aquila' || name=='ward_dispenser' || name=='urn_of_shadows' || name=='null_talisman' || name=='magic_wand' ||
     name=='ethereal_blade' || name=='soul_ring'|| name=='bloodstone' || name=='guardian_greaves' || name=='bloodthorn' ||
     name=='hurricane_pike'|| name=='pipe' || name=='abyssal_blade' || name=='silver_edge' || name=='mjollnir' || name=='solar_crest'){
       return 'YES';
     }
-  }
-
-  getUpandName(upgrade,name){
+  }*/
+/*
+  getUpadeName(upgrade,name){
     if((upgrade == 'orb_of_venom' && name =='orb_of_venom') ||(upgrade=='sange_and_yasha' && name=='sange_and_yasha') || (upgrade=='sange' && name=='sange' ) ||
      (upgrade=='yasha' && name=='yasha')){
       return 'YES';
     }
-  }
+  }*/
 
-  watchUpgrade(name){
-    if(name=='dagon_2' || name=='necronomicon_2' || name=='diffusal_blade_2' || name=='travel_boots_2'){
-      return 'YES'
-    }
-  }
+
 }

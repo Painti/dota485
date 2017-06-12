@@ -14,6 +14,7 @@ import { ChartModule } from 'angular2-chartjs';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ConfigService } from './services/config.service';
 import { GetApiService } from './services/get-api.service';
+import { PassJsonService } from './services/group2/pass-json.service'
 
 import { FilterPipe } from './pipes/filter.pipe';
 import { NgForObjectPipe } from './pipes/ng-for-object.pipe';
@@ -85,7 +86,7 @@ const appRoutes: Routes = [
       { path: 'chat', component: ChatComponent }
     ]
   },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] ,
+  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] ,
     children:[
       { path: '', component: OverviewPlayerComponent },
       { path: 'heroes', component: HeroesPlayerComponent },
@@ -158,7 +159,8 @@ const appRoutes: Routes = [
     AuthService,
     AuthGuard,
     LoginGuard,
-    LinkFacebookGuard
+    LinkFacebookGuard,
+    PassJsonService
   ],
   bootstrap: [AppComponent]
 })

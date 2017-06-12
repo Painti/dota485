@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar-player',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar-player.component.css']
 })
 export class NavbarPlayerComponent implements OnInit {
-
+@Input() id:string;
   constructor() { }
 
   ngOnInit() {

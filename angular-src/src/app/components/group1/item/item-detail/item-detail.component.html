@@ -53,29 +53,15 @@
             <div *ngFor="let entry of items.itemdata | keys">
               <div *ngFor="let upgrade of entry.value.components">
 
-                <div *ngIf="upgrade == name && entry.key!=='dagon_2' && watchUpgrade(entry.key)!=='YES' && getUpandName(upgrade,name)!=='YES'" >
-                  <div *ngIf="getUpgrade(entry.key)=='NO' && equals(entry.key)!=='YES'">
+                <div *ngIf="upgrade==name && watchUpgrade(entry.key)!=='YES'" >
                     <span [tooltip]="entry.value.dname" placement="bottom">
                       <img class="p-1" (click)="itemDetail(entry.key)" [src]="getComponents(entry.key)" alt="">
                     </span>
-                  </div>
-
-                  <div *ngIf="equals(entry.key)=='YES'">
-                    <span [tooltip]="entry.value.dname" placement="bottom">
-                      <img class="p-1" (click)="itemDetail(entry.key)" [src]="getComponents(entry.key)" alt="">
-                    </span>
-                  </div>
                 </div>
 
                 <div *ngIf="upgrade == name && watchUpgrade(entry.key)=='YES'">
                   <span [tooltip]="entry.value.dname + ' 2'" placement="bottom">
                     <img class="p-1" [src]="getComponents(entry.key)" alt="">
-                  </span>
-                </div>
-
-                <div *ngIf="getUpandName(upgrade,name)=='YES'">
-                  <span [tooltip]="entry.value.dname" placement="bottom">
-                    <img class="p-1" (click)="itemDetail(entry.key)" [src]="getComponents(entry.key)" alt="">
                   </span>
                 </div>
 

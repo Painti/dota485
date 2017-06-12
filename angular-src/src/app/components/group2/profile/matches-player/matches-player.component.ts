@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/group2/auth.service';
+import { PassJsonService } from '../../../../services/group2/pass-json.service' ;
+import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-matches-player',
@@ -28,43 +30,23 @@ export class MatchesPlayerComponent implements OnInit {
   heal_avr: any;
   tw_damage_avr: any;
   duration_avr: any;
+  subscription: Subscription ;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private passJsonService:PassJsonService
   ) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(data => {
-      this.user = data.user;
-      this.authService.getHero(this.user['account_id']).subscribe(data => {
-        this.hero = data;
+    this.subscription = this.passJsonService.getPlayer$.subscribe(player => {
+      this.user = player;
+    },
+      err => {
+        console.log(err);
+        return false;
+    });
 
-
-      },
-        err => {
-          console.log(err);
-          return false;
-        });
-
-        this.authService.getProfile_Player(this.user['account_id']).subscribe(data => {
-          this.player = data ;
-
-        },
-        err => {
-          console.log(err);
-          return false;
-        });
-
-        this.authService.getHero_Stats().subscribe(data => {
-          this.hero_stat = data ;
-
-        },
-        err => {
-          console.log(err);
-          return false;
-        });
-
-      this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
+      this.subscription = this.passJsonService.getRecentMatch$.subscribe(data => {
         this.match = data ;
         this.kills_avr = 0 ; this.deaths_avr = 0 ;this.assists_avr = 0 ;
         this.gold_avr = 0;this.xp_avr = 0 ; this.lh_avr = 0;
@@ -121,8 +103,8 @@ export class MatchesPlayerComponent implements OnInit {
         return false;
       });
 
-      this.authService.getWinAndLose(this.user['account_id']).subscribe(data => {
-        this.score = data ;
+      this.subscription = this.passJsonService.getWl$.subscribe(wl => {
+        this.score = wl ;
         this.win_rate = (this.score['win'] / (this.score['win'] + this.score['lose'])) * 100 ;
         var st_win_rate = JSON.stringify(this.win_rate);
         this.win_rate = parseFloat(st_win_rate).toFixed(1) ;
@@ -132,20 +114,6 @@ export class MatchesPlayerComponent implements OnInit {
         return false;
       });
 
-      this.authService.getPeer(this.user['account_id']).subscribe(data => {
-        this.peer = data ;
-      },
-      err => {
-        console.log(err);
-        return false;
-      });
-
-
-    },
-      err => {
-        console.log(err);
-        return false;
-    });
   }
 
   getColor(color){
