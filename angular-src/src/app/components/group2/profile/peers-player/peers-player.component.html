@@ -30,7 +30,7 @@
             <img class = "Image" [src] = "p.avatar"/>
           </div>
           <div class = "d-flex flex-column">
-            <span style = "font-size:15px ;color: rgb(102, 187, 255);" class = "pl-3 hoverClick">{{p.personaname}}</span>
+            <a [routerLink]="['/profile/'+ p.account_id]"><span style = "font-size:15px ;color: rgb(102, 187, 255);" class = "pl-3 hoverClick">{{p.personaname}}</span></a>
             <span class = "pl-3">{{getTimeAgo(p.last_played)}}</span>
           </div>
           </td>
