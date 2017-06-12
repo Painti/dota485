@@ -23,8 +23,8 @@ name:string;
 p:number;
 cost:number;
 
-s:any;
-c:string;
+s:string;
+a:Array<string>;
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -36,10 +36,24 @@ c:string;
             this.items = data;
 
             this.p = 0;
-            this.c = 'NO';
             if(data.itemdata[this.name].components !== null){
               for(let key of data.itemdata[this.name].components)
                 this.p = this.p + data.itemdata[key].cost;
+            }
+
+            this.s='';
+              this.a=[];
+              for(let key in data.itemdata){
+                if(data.itemdata[key].components !== null){
+                  for(let key1 of data.itemdata[key].components){
+                    if(this.name==key1){
+                      if(this.s!=key){
+                        this.a.push(key);
+                        this.s=key;
+                      }
+                  }
+                }
+              }
             }
       },
         err => {
@@ -55,11 +69,11 @@ c:string;
   }
 
   getComponents(name){//recipe
-    return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
+    return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png";
   }
 
   getImage(){
-    return "http://cdn.dota2.com/apps/dota2/images/items/"+this.name+"_lg.png"
+    return "http://cdn.dota2.com/apps/dota2/images/items/"+this.name+"_lg.png";
   }
 
   getDesc(desc){
@@ -88,51 +102,10 @@ c:string;
 
   watchUpgrade(name){
     if(name=='dagon_2' || name=='necronomicon_2' || name=='diffusal_blade_2' || name=='travel_boots_2'){
-      return 'YES'
+      return 'YES';
+    }
+    else{
+      return 'NO';
     }
   }
-/*
-  getUpgrade(compo){
-    if(this.c=='NO' && this.s!=undefined){
-      if(compo == this.s){
-        this.c = 'YES';
-          return this.c;
-      }
-      if(compo != this.s){
-        this.c = 'NO';
-        this.s = compo;
-          return this.c;
-      }
-    }
-    else if(this.c=='YES'){
-
-      if(compo !== this.s){
-        this.c = 'NO';
-        this.s = compo;
-          return this.c;
-      }
-    }
-
-    if(this.s==undefined){
-      this.s= compo;
-        return this.c;
-    }
-  }*/
-/*
-  equals(name){
-    if(name=='ring_of_aquila' || name=='ward_dispenser' || name=='urn_of_shadows' || name=='null_talisman' || name=='magic_wand' ||
-    name=='ethereal_blade' || name=='soul_ring'|| name=='bloodstone' || name=='guardian_greaves' || name=='bloodthorn' ||
-    name=='hurricane_pike'|| name=='pipe' || name=='abyssal_blade' || name=='silver_edge' || name=='mjollnir' || name=='solar_crest'){
-      return 'YES';
-    }
-  }*/
-/*
-  getUpadeName(upgrade,name){
-    if((upgrade == 'orb_of_venom' && name =='orb_of_venom') ||(upgrade=='sange_and_yasha' && name=='sange_and_yasha') || (upgrade=='sange' && name=='sange' ) ||
-     (upgrade=='yasha' && name=='yasha')){
-      return 'YES';
-    }
-  }*/
-
-
 }
