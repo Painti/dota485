@@ -7,7 +7,7 @@ export class CommunicateService {
   constructor() { }
 
   private match = new Subject<Object>();
-  
+
   getMatch$ = this.match.asObservable();
 
   emitMatch(match: Object) {

@@ -1,48 +1,19 @@
-<ul class="chat-thread">
-  <li class="dire">
-    <img [src]="getImageHero('lina')" alt="">
+<h2 *ngIf="match" class="mt-4 text-center">
+  <span class="radiant-team">Radiant Team</span>
+  <span>&</span>
+  <span class="dire-team">Dire Team</span>
+</h2>
+<ul class="chat-thread mt-4 pb-5" *ngIf="match">
+  <li class="admin">
     <div class="msg">
-      yes, what time suits you?
-      <div>20.30</div>
+      <div>Start chat</div>
     </div>
   </li>
-  <li class="dire">
-    <img [src]="getImageHero('lina')" alt="">
+  <li *ngFor="let item of match.chat" [hidden]="item.type != 'chat'" [ngClass]="getClass(item.slot)">
+    <img *ngIf="item.slot < 10" [class]="'chat'+(item.slot+1)" [src]="getImageHero(match.players[item.slot].hero_name)" alt="" [tooltip]="item?.unit || '(anonymous)'">
     <div class="msg">
-      Are we meeting today?
-      <div>20.30</div>
-    </div>
-  </li>
-  <li class="radiant">
-    <img [src]="getImageHero('lina')" alt="">
-    <div class="msg">
-      I was thinking after lunch, I have a meeting in the morning
-      <div>20.30</div>
+      <div>{{getMsg(item.slot,item?.unit || '(anonymous)',item.key)}}</div>
+      <div class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> {{getTime(item.time)}}</div>
     </div>
   </li>
 </ul>
-<div *ngIf="match" class="mt-4 pb-5">
-  <div class="table-outlet">
-    <table class="table-match">
-      <thead>
-        <tr>
-          <th>player</th>
-          <th>time</th>
-          <th>message</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of match.chat" [hidden]="item.type != 'chat'" [ngClass]="getClass(item.slot)">
-          <td nowrap>
-            <img *ngIf="item.slot < 10" [class]="'chat'+(item.slot+1)" [src]="getImageHero(match.players[item.slot].hero_name)" alt="" height="25">
-            <span class="ml-1">
-              {{item?.unit || "(anonymous)"}}
-            </span>
-          </td>
-          <td nowrap>{{getTime(item.time)}}</td>
-          <td nowrap>{{item.key}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>

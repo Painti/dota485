@@ -42,8 +42,17 @@ export class ChatComponent implements OnInit {
   getClass(slot){
     if(slot < 5){
       return 'radiant';
+    } else if(slot < 10){
+      return 'dire';
     }
-    return 'dire';
+    return 'admin'
+  }
+
+  getMsg(slot,name,msg){
+    if(slot >= 10){
+      return name + ' says " '+msg+' "';
+    }
+    return msg
   }
 
 }

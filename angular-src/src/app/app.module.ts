@@ -45,13 +45,8 @@ import { BenchmarksComponent } from './components/group2/match/match-detail/benc
 import { PerformancesComponent } from './components/group2/match/match-detail/performances/performances.component';
 import { CombatComponent } from './components/group2/match/match-detail/combat/combat.component';
 import { FarmComponent } from './components/group2/match/match-detail/farm/farm.component';
-import { PurchaseComponent } from './components/group2/match/match-detail/purchase/purchase.component';
-import { ObjectivesComponent } from './components/group2/match/match-detail/objectives/objectives.component';
-import { VisionComponent } from './components/group2/match/match-detail/vision/vision.component';
-import { TeamfightsComponent } from './components/group2/match/match-detail/teamfights/teamfights.component';
 import { LogComponent } from './components/group2/match/match-detail/log/log.component';
 import { ChatComponent } from './components/group2/match/match-detail/chat/chat.component';
-import { StoryComponent } from './components/group2/match/match-detail/story/story.component';
 import { MatchDetailNavComponent } from './components/group2/match/match-detail/match-detail-nav/match-detail-nav.component';
 import { ItemDetailComponent } from './components/group1/item/item-detail/item-detail.component';
 import { HeroesPlayerComponent } from './components/group2/profile/heroes-player/heroes-player.component';
@@ -86,13 +81,8 @@ const appRoutes: Routes = [
       { path: 'performances', component: PerformancesComponent },
       { path: 'combat', component: CombatComponent },
       { path: 'farm', component: FarmComponent },
-      { path: 'purchase', component: PurchaseComponent },
-      { path: 'objectives', component: ObjectivesComponent },
-      { path: 'vision', component: VisionComponent },
-      { path: 'teamfights', component: TeamfightsComponent },
       { path: 'log', component: LogComponent },
-      { path: 'chat', component: ChatComponent },
-      { path: 'story', component: StoryComponent }
+      { path: 'chat', component: ChatComponent }
     ]
   },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] ,
@@ -132,13 +122,8 @@ const appRoutes: Routes = [
     PerformancesComponent,
     CombatComponent,
     FarmComponent,
-    PurchaseComponent,
-    ObjectivesComponent,
-    VisionComponent,
-    TeamfightsComponent,
     LogComponent,
     ChatComponent,
-    StoryComponent,
     MatchDetailNavComponent,
     ItemDetailComponent,
     MatchDetailNavComponent,
