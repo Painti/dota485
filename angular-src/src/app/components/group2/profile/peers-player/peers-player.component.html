@@ -23,7 +23,7 @@
         XPM WITH
       </div></th>
     </tr>
-    <tbody>
+    <tbody *ngIf = "peer" >
       <tr *ngFor = "let p of peer ; let i = index">
         <td class = "d-flex row-column">
           <div class = "pt-1">

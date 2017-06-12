@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/group2/auth.service';
+import { PassJsonService } from '../../../../services/group2/pass-json.service' ;
+import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-peers-player',
@@ -10,16 +12,15 @@ export class PeersPlayerComponent implements OnInit {
 
   user: Object;
   peer:Array<Object>;
+  subscription: Subscription ;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private passJsonService:PassJsonService
   ) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(data => {
-      this.user = data.user ;
-
-      this.authService.getPeer(this.user['account_id']).subscribe(data => {
+        this.subscription = this.passJsonService.getPeer$.subscribe(data => {
         this.peer = data ;
         for(let i = 0 ; i < data.length  ;i++){
           var percent = data[i]['win'] / data[i]['with_games'] *100 ;
@@ -32,18 +33,11 @@ export class PeersPlayerComponent implements OnInit {
           this.peer[i]['avr_gpm'] = avr_gpm.toFixed(0) ;
           this.peer[i]['avr_xpm'] = avr_xpm.toFixed(0) ;
         }
-
       },
       err => {
         console.log(err);
         return false;
       });
-
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
   }
 
   getTimeAgo(previous: number) {

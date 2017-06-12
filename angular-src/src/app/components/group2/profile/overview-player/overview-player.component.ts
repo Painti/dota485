@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/group2/auth.service';
+import { PassJsonService } from '../../../../services/group2/pass-json.service' ;
+import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-overview-player',
@@ -8,12 +10,10 @@ import { AuthService } from '../../../../services/group2/auth.service';
 })
 export class OverviewPlayerComponent implements OnInit {
 
-  user: Object;
-  hero: Array<Object>;
+  user:Object ;
   match: Array<Object>;
   score: Object;
   peer: Array<Object>;
-  player: Array<Object>;
   hero_name:Array<Object>;
   heroes_img: Array<Object> ;
   wl_recentMatch: Array<String> ;
@@ -46,34 +46,24 @@ export class OverviewPlayerComponent implements OnInit {
   best_heal_id:any ;
   best_tw_damage:any ;
   best_tw_damage_id:any ;
+  subscription: Subscription ;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private passJsonService:PassJsonService
   ) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(data => {
-      this.user = data.user;
-      this.authService.getHero(this.user['account_id']).subscribe(data => {
-        this.hero = data;
+    this.subscription = this.passJsonService.getPlayer$.subscribe(player => {
+      this.user = player;
+    },
+      err => {
+        console.log(err);
+        return false;
+    });
 
 
-      },
-        err => {
-          console.log(err);
-          return false;
-        });
-
-        this.authService.getProfile_Player(this.user['account_id']).subscribe(data => {
-          this.player = data ;
-
-        },
-        err => {
-          console.log(err);
-          return false;
-        });
-
-      this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
+      this.subscription = this.passJsonService.getRecentMatch$.subscribe(data => {
         this.match = data ;
         this.kills_avr = 0 ; this.deaths_avr = 0 ;this.assists_avr = 0 ;
         this.gold_avr = 0;this.xp_avr = 0 ; this.lh_avr = 0;
@@ -207,9 +197,6 @@ export class OverviewPlayerComponent implements OnInit {
           this.lh_avr = this.lh_avr.toFixed(0) ;
           this.heal_avr = this.heal_avr.toFixed(0) ;
           this.win_rate = win.toFixed(0) ;
-
-
-
         }
       },
       err => {
@@ -217,20 +204,6 @@ export class OverviewPlayerComponent implements OnInit {
         return false;
       });
 
-      this.authService.getPeer(this.user['account_id']).subscribe(data => {
-        this.peer = data ;
-      },
-      err => {
-        console.log(err);
-        return false;
-      });
-
-
-    },
-      err => {
-        console.log(err);
-        return false;
-    });
   }
 
   getColor(color){
