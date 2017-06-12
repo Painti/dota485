@@ -1,0 +1,77 @@
+<h3>
+  <img src="assets/images/coin-{{name.toLowerCase()}}.png" alt="" width="40">
+  <span class="ml-1 {{name.toLowerCase()}}-team">{{name}} Team</span>
+</h3>
+<div class="table-outlet mb-3">
+  <table class="table-match">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th><span tooltip="Lane creeps killed">CREEPS</span></th>
+        <th><span tooltip="Neuteral creeps killed">NEURALS</span></th>
+        <th><span tooltip="Ancient creep killed">ANCIENTS</span></th>
+        <th><span tooltip="Towers killed">TOWERS</span></th>
+        <th><span tooltip="Couriers killed">COURIERS</span></th>
+        <th><span tooltip="Roshan killed">ROSHAN</span></th>
+        <th><span tooltip="Necronomicon killed">NECRONOMICON</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of size">
+        <td nowrap>
+          <img [class]="'player'+(i+1)"[src]="getImageHero(match.players[i].hero_name)" alt="" height="25">
+          <span class="ml-1">{{match.players[i].name || match.players[i].personaname || "(anonymous)"}}</span>
+        </td>
+        <td nowrap>{{match.players[i].creep_kills}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].creep_kills*100/max_creeps)"
+              [style.width]="match.players[i].creep_kills*100/max_creeps+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>{{match.players[i].neutral_kills}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].neutral_kills*100/max_neutrals)"
+              [style.width]="match.players[i].neutral_kills*100/max_neutrals+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>{{match.players[i].ancient_kills}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].ancient_kills*100/max_ancients)"
+              [style.width]="match.players[i].ancient_kills*100/max_ancients+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>{{match.players[i].tower_kills}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].tower_kills*100/max_towers)"
+              [style.width]="match.players[i].tower_kills*100/max_towers+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>{{match.players[i].courier_kills}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].courier_kills*100/max_couriers)"
+              [style.width]="match.players[i].courier_kills*100/max_couriers+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>{{match.players[i].roshan_kills}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].roshan_kills*100/max_roshan)"
+              [style.width]="match.players[i].roshan_kills*100/max_roshan+'%'"></div>
+          </div>
+        </td>
+        <td nowrap>{{match.players[i].necronomicon_kills}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+              [ngClass]="getClass(match.players[i].necronomicon_kills*100/max_necro)"
+              [style.width]="match.players[i].necronomicon_kills*100/max_necro+'%'"></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

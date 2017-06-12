@@ -1,3 +1,25 @@
-<p>
-  chat works!
-</p>
+<div *ngIf="match" class="mt-4 pb-5">
+  <div class="table-outlet">
+    <table class="table-match">
+      <thead>
+        <tr>
+          <th>player</th>
+          <th>time</th>
+          <th>message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of match.chat" [hidden]="item.type != 'chat'" [ngClass]="getClass(item.slot)">
+          <td nowrap>
+            <img [class]="'player'+(item.slot+1)" [src]="getImageHero(match.players[item.slot].hero_name)" alt="" height="25">
+            <span class="ml-1">
+              {{item?.unit || "(anonymous)"}}
+            </span>
+          </td>
+          <td nowrap>{{getTime(item.time)}}</td>
+          <td nowrap>{{item.key}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

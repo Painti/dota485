@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommunicateService } from '../../../../../services/group2/communicate.service';
+import { Subscription }   from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-chat',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  constructor() { }
+  constructor(private communicate: CommunicateService) { }
+
+  match: Object;
+  subscription: Subscription;
 
   ngOnInit() {
+    this.subscription = this.communicate.getMatch$.subscribe(match => {
+      this.match = match;
+    });
+  }
+
+  getImageHero(name) {
+    return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + name + '_sb.png';
+  }
+
+  getTime(time: number) {
+    let min = Math.floor(time / 60);
+    let sec = time % 60;
+    let sec_str: String;
+    if (sec < 10) {
+      sec_str = '0' + sec;
+    } else {
+      sec_str = '' + sec;
+    }
+    return min + ':' + sec_str;
+  }
+
+  getClass(slot){
+    if(slot < 5){
+      return 'radiant';
+    }
+    return 'dire';
   }
 
 }
