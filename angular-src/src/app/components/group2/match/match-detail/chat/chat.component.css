@@ -20,7 +20,7 @@
   background-color: transparent ;
 }
 
-.dire{
+/*.dire{
   background: rgba(255, 0, 0, 0.05) !important;
 }
 
@@ -52,4 +52,150 @@
 
 .radiant td:last-child{
   border-right: 2px solid rgba(0, 255, 0, 0.15) !important;
+}*/
+
+.chat1 {
+  outline: 3.5px solid #2e6ae6;
+}
+
+.chat2 {
+  outline: 3.5px solid #5de6ad;
+}
+
+.chat3 {
+  outline: 3.5px solid #ad00ad;
+}
+
+.chat4 {
+  outline: 3.5px solid #dcd90a;
+}
+
+.chat5 {
+  outline: 3.5px solid #e66200;
+}
+
+.chat6 {
+  outline: 3.5px solid #e67ab0;
+}
+
+.chat7 {
+  outline: 3.5px solid #92a440;
+}
+
+.chat8 {
+  outline: 3.5px solid #5cc5e0;
+}
+
+.chat9 {
+  outline: 3.5px solid #00771e;
+}
+
+.chat10 {
+  outline: 3.5px solid #835603;
+}
+
+.chat-thread {
+  margin: 24px auto 0 auto;
+  padding: 0 20px 0 0;
+  list-style: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.chat-thread li {
+  position: relative;
+  clear: both;
+  display: inline-block;
+}
+
+.chat-thread .msg {
+  position: relative;
+  display: inline-block;
+  padding: 16px 40px 16px 20px;
+  margin: 0 0 20px 0;
+  font: 16px/20px 'Noto Sans', sans-serif;
+  border-radius: 10px;
+  background-color: rgba(25, 147, 147, 0.2);
+}
+
+/* Chat - Speech Bubble Arrow */
+.chat-thread .msg:after {
+  position: absolute;
+  top: 15px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 15px solid rgba(25, 147, 147, 0.2);
+}
+
+.chat-thread img {
+  width: 60px;
+}
+
+.chat-thread .dire {
+  float: right;
+  color: #0AD5C1;
+}
+.chat-thread .dire img{
+  float: right;
+}
+
+.chat-thread .dire .msg{
+  margin-right: 15px;
+}
+
+.chat-thread .dire .msg:after {
+  border-right: 15px solid transparent;
+  right: -15px;
+}
+
+.chat-thread .dire .msg div{
+  margin-right: 15px;
+}
+
+.chat-thread .radiant {
+  float: left;
+  color: #0EC879;
+}
+
+.chat-thread .radiant img{
+  float: left;
+}
+
+.chat-thread .radiant .msg{
+  margin-left: 15px;
+}
+
+.chat-thread .radiant .msg:after {
+  border-left: 15px solid transparent;
+  left: -15px;
+}
+
+.chat-window {
+  position: fixed;
+  bottom: 18px;
+}
+
+.chat-window-message {
+  width: 100%;
+  height: 48px;
+  font: 32px/48px 'Noto Sans', sans-serif;
+  background: none;
+  color: #0AD5C1;
+  border: 0;
+  border-bottom: 1px solid rgba(25, 147, 147, 0.2);
+  outline: none;
+}
+
+/* Small screens */
+@media all and (max-width: 767px) {
+  .chat-thread {
+    width: 90%;
+    height: 260px;
+  }
+
+  .chat-window {
+    left: 5%;
+    width: 90%;
+  }
 }

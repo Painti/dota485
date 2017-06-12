@@ -1,3 +1,26 @@
+<ul class="chat-thread">
+  <li class="dire">
+    <img [src]="getImageHero('lina')" alt="">
+    <div class="msg">
+      yes, what time suits you?
+      <div>20.30</div>
+    </div>
+  </li>
+  <li class="dire">
+    <img [src]="getImageHero('lina')" alt="">
+    <div class="msg">
+      Are we meeting today?
+      <div>20.30</div>
+    </div>
+  </li>
+  <li class="radiant">
+    <img [src]="getImageHero('lina')" alt="">
+    <div class="msg">
+      I was thinking after lunch, I have a meeting in the morning
+      <div>20.30</div>
+    </div>
+  </li>
+</ul>
 <div *ngIf="match" class="mt-4 pb-5">
   <div class="table-outlet">
     <table class="table-match">
@@ -11,7 +34,7 @@
       <tbody>
         <tr *ngFor="let item of match.chat" [hidden]="item.type != 'chat'" [ngClass]="getClass(item.slot)">
           <td nowrap>
-            <img [class]="'player'+(item.slot+1)" [src]="getImageHero(match.players[item.slot].hero_name)" alt="" height="25">
+            <img *ngIf="item.slot < 10" [class]="'chat'+(item.slot+1)" [src]="getImageHero(match.players[item.slot].hero_name)" alt="" height="25">
             <span class="ml-1">
               {{item?.unit || "(anonymous)"}}
             </span>
