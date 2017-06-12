@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  name : String;
+  name : string;
+  id : string;
   isCollapsed : boolean = true;
 
   constructor(
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.authService.getProfile().subscribe(data => {
       this.name = data.user.displayName;
+      this.id = data.user.account_id;
     },
     err => {
       return false;

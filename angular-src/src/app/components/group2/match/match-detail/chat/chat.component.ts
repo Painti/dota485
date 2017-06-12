@@ -25,6 +25,9 @@ export class ChatComponent implements OnInit {
   }
 
   getTime(time: number) {
+    if(time < 0){
+      return 'Pre-start';
+    }
     let min = Math.floor(time / 60);
     let sec = time % 60;
     let sec_str: String;
