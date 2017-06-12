@@ -25,7 +25,6 @@ cost:number;
 
 s:any;
 c:string;
-n:number;
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -38,7 +37,6 @@ n:number;
 
             this.p = 0;
             this.c = 'NO';
-            this.n=0;
             if(data.itemdata[this.name].components !== null){
               for(let key of data.itemdata[this.name].components)
                 this.p = this.p + data.itemdata[key].cost;
@@ -89,23 +87,30 @@ n:number;
   }
 
   getUpgrade(compo){
-    if((this.c=='NO') || this.s!=undefined){
+    if(this.c=='NO' && this.s!=undefined){
       if(compo == this.s){
         this.c = 'YES';
+          return this.c;
       }
       if(compo != this.s){
         this.c = 'NO';
         this.s = compo;
+          return this.c;
+      }
+    }
+    else if(this.c=='YES'){
+
+      if(compo !== this.s){
+        this.c = 'NO';
+        this.s = compo;
+          return this.c;
       }
     }
 
-    if(this.c=='YES'){
-      if(compo != this.s){
-        this.c = 'NO';
-        this.s = compo;
-      }
+    if(this.s==undefined){
+      this.s= compo;
+        return this.c;
     }
-    return this.c;
   }
 
   equals(name){
