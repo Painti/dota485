@@ -53,10 +53,8 @@
             <div *ngFor="let entry of items.itemdata | keys">
               <div *ngFor="let upgrade of entry.value.components">
 
-                <div *ngIf="upgrade == name && entry.key!=='dagon_2' && entry.key!=='necronomicon_2' && entry.key!=='diffusal_blade_2' && entry.key!=='travel_boots_2'&& upgrade!=='orb_of_venom' && upgrade!=='sange_and_yasha' && upgrade!=='sange' &&upgrade!=='yasha'" >
-                  <div *ngIf="getUpgrade(entry.key)=='NO' && entry.key!=='ring_of_aquila' && entry.key!=='ward_dispenser' && entry.key!=='urn_of_shadows' && entry.key!=='null_talisman' && entry.key!=='magic_wand'
-                  && entry.key!=='ethereal_blade' && entry.key!=='soul_ring' && entry.key!=='bloodstone' && entry.key!=='guardian_greaves' && entry.key!=='bloodthorn' &&
-                  entry.key!=='hurricane_pike' && entry.key!=='pipe' && entry.key!=='abyssal_blade' && entry.key!=='silver_edge' && entry.key!=='mjollnir' && entry.key!=='solar_crest'">
+                <div *ngIf="upgrade == name && entry.key!=='dagon_2' && watchUpgrade(entry.key)!=='YES' && getUpandName(upgrade,name)!=='YES'" >
+                  <div *ngIf="getUpgrade(entry.key)=='NO' && equals(entry.key)!=='YES'">
                     <span [tooltip]="entry.value.dname" placement="bottom">
                       <img class="p-1" (click)="itemDetail(entry.key)" [src]="getComponents(entry.key)" alt="">
                     </span>
@@ -69,13 +67,13 @@
                   </div>
                 </div>
 
-                <div *ngIf="upgrade == name && (entry.key=='dagon_2' || entry.key=='necronomicon_2' || entry.key=='diffusal_blade_2' || entry.key=='travel_boots_2')">
-                  <span [tooltip]="entry.value.dname" placement="bottom">
+                <div *ngIf="upgrade == name && watchUpgrade(entry.key)=='YES'">
+                  <span [tooltip]="entry.value.dname + ' 2'" placement="bottom">
                     <img class="p-1" [src]="getComponents(entry.key)" alt="">
                   </span>
                 </div>
 
-                <div *ngIf="(upgrade == 'orb_of_venom' && name =='orb_of_venom') ||(upgrade=='sange_and_yasha' && name=='sange_and_yasha') || (upgrade=='sange' && name=='sange' ) || (upgrade=='yasha' && name=='yasha')">
+                <div *ngIf="getUpandName(upgrade,name)=='YES'">
                   <span [tooltip]="entry.value.dname" placement="bottom">
                     <img class="p-1" (click)="itemDetail(entry.key)" [src]="getComponents(entry.key)" alt="">
                   </span>

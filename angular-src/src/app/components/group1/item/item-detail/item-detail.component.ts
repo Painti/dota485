@@ -120,4 +120,17 @@ c:string;
       return 'YES';
     }
   }
+
+  getUpandName(upgrade,name){
+    if((upgrade == 'orb_of_venom' && name =='orb_of_venom') ||(upgrade=='sange_and_yasha' && name=='sange_and_yasha') || (upgrade=='sange' && name=='sange' ) ||
+     (upgrade=='yasha' && name=='yasha')){
+      return 'YES';
+    }
+  }
+
+  watchUpgrade(name){
+    if(name=='dagon_2' || name=='necronomicon_2' || name=='diffusal_blade_2' || name=='travel_boots_2'){
+      return 'YES'
+    }
+  }
 }
