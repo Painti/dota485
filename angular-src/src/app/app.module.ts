@@ -25,6 +25,7 @@ import { MmrComponent } from './components/group1/mmr/mmr.component';
 import { ItemComponent } from './components/group1/item/item.component';
 import { QuizComponent } from './components/group1/quiz/quiz.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 // Components group2
 import { LoginComponent } from './components/group2/login/login.component';
@@ -169,7 +170,8 @@ const appRoutes: Routes = [
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     ChartModule,
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   providers: [
     ConfigService,
