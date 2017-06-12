@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   hero: Array<Object>;
   match: Array<Object>;
   score: Object;
+  total: Array<Object>;
   peer: Array<Object>;
   player: Array<Object>;
   wl_recentMatch: Array<String> ;
@@ -92,7 +93,17 @@ export class ProfileComponent implements OnInit {
         console.log(err);
         return false;
       });
+      this.authService.getTotals(params['id']).subscribe(data =>{
+        this.total = data ;
+        this.passJsonService.emitTotal(this.total) ;
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
     });
+
+
   }
 
   emit(){
@@ -101,6 +112,7 @@ export class ProfileComponent implements OnInit {
     this.passJsonService.emitRecentMatch(this.match) ;
     this.passJsonService.emitPlayer(this.player) ;
     this.passJsonService.emitHeroes(this.hero) ;
+    this.passJsonService.emitTotal(this.total) ;
   }
 
 }

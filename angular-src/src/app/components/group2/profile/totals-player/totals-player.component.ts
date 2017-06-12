@@ -40,13 +40,14 @@ export class TotalsPlayerComponent implements OnInit {
   subscription: Subscription ;
 
   ngOnInit() {
-    this.subscription = this.passJsonService.getPlayer$.subscribe(data => {
-      this.user = data;
+    this.subscription = this.passJsonService.getPlayer$.subscribe(player => {
+      this.user = player
     },
       err => {
         console.log(err);
         return false;
     });
+    
         this.subscription = this.passJsonService.getTotal$.subscribe(data => {
           this.total_kill = data[0]['sum'] ;
           this.total_death = data[1]['sum'] ;
