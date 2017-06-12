@@ -1,4 +1,4 @@
-img.pf_hero{
+.pf_hero{
    width: 52px !important;
    height: 29px !important;
     box-shadow: 0px 0px 5px #888888;
@@ -17,7 +17,11 @@ img.pf_hero{
 }
 
 .gray{
-  color: rgba(245, 245, 245, 0.87) ;
+  color:rgba(255, 255, 255, .54) !important ;
+}
+
+.white{
+  color:#F5F5F5 !important;
 }
 
 .font25{

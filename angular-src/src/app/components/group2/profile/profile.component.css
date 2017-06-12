@@ -1,6 +1,6 @@
 .stats{
   font-size: 14px;
-  color: rgba(245, 245, 245, 0.87);
+  color:rgba(255, 255, 255, .54)!important;
    display: block;
    line-height: 36px;
 }

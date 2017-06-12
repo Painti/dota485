@@ -65,6 +65,7 @@ import { PeersPlayerComponent } from './components/group2/profile/peers-player/p
 import { OverviewTableComponent } from './components/group2/match/match-detail/overview/overview-table/overview-table.component';
 import { BenchmarksTableComponent } from './components/group2/match/match-detail/benchmarks/benchmarks-table/benchmarks-table.component';
 import { PerformanceTableComponent } from './components/group2/match/match-detail/performances/performance-table/performance-table.component';
+import { TotalsPlayerComponent } from './components/group2/profile/totals-player/totals-player.component';
 
 
 const appRoutes: Routes = [
@@ -104,7 +105,8 @@ const appRoutes: Routes = [
       { path: '', component: OverviewPlayerComponent },
       { path: 'heroes', component: HeroesPlayerComponent },
       { path: 'matches', component: MatchesPlayerComponent },
-      { path: 'peers', component: PeersPlayerComponent }
+      { path: 'peers', component: PeersPlayerComponent },
+      { path: 'totals', component: TotalsPlayerComponent }
     ]
   },
   { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
@@ -155,7 +157,8 @@ const appRoutes: Routes = [
     PeersPlayerComponent,
     OverviewTableComponent,
     BenchmarksTableComponent,
-    PerformanceTableComponent
+    PerformanceTableComponent,
+    TotalsPlayerComponent
 
   ],
   imports: [

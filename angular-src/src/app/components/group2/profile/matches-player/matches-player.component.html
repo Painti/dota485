@@ -16,8 +16,8 @@
   <tbody>
     <tr *ngFor = "let m of match ; let i = index">
       <td class="d-flex flex-nowrap">
-        <div>
-        <img class = "hoverClickImg" [src] = "getImage(m.heroes_name)" alt="{{user.displayName}}" [tooltip] = "getName(m.heroes_name)">
+        <div class = "pt-2">
+        <img class = "hoverClickImg pf_hero" [src] = "getImage(m.heroes_name)" alt="{{user.displayName}}" [tooltip] = "getName(m.heroes_name)">
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
     <div class="d-flex flex-column">
