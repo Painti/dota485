@@ -2,7 +2,7 @@ b
 {
     text-align: center;
     text-transform: uppercase;
-    padding-left: 155px;
+    padding-left: 145px;
 }
 
 div.pad{
@@ -15,4 +15,8 @@ h1{
 
 img{
   cursor:pointer;
+}
+
+.bottom{
+    padding-bottom: 20px;
 }

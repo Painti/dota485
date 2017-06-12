@@ -25,7 +25,6 @@ cost:number;
 
 s:any;
 c:string;
-n:number;
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -38,7 +37,6 @@ n:number;
 
             this.p = 0;
             this.c = 'NO';
-            this.n=0;
             if(data.itemdata[this.name].components !== null){
               for(let key of data.itemdata[this.name].components)
                 this.p = this.p + data.itemdata[key].cost;
@@ -89,23 +87,30 @@ n:number;
   }
 
   getUpgrade(compo){
-    if((this.c=='NO') || this.s!=undefined){
+    if(this.c=='NO' && this.s!=undefined){
       if(compo == this.s){
         this.c = 'YES';
+          return this.c;
       }
       if(compo != this.s){
         this.c = 'NO';
         this.s = compo;
+          return this.c;
+      }
+    }
+    else if(this.c=='YES'){
+
+      if(compo !== this.s){
+        this.c = 'NO';
+        this.s = compo;
+          return this.c;
       }
     }
 
-    if(this.c=='YES'){
-      if(compo != this.s){
-        this.c = 'NO';
-        this.s = compo;
-      }
+    if(this.s==undefined){
+      this.s= compo;
+        return this.c;
     }
-    return this.c;
   }
 
   equals(name){
@@ -113,6 +118,19 @@ n:number;
     name=='ethereal_blade' || name=='soul_ring'|| name=='bloodstone' || name=='guardian_greaves' || name=='bloodthorn' ||
     name=='hurricane_pike'|| name=='pipe' || name=='abyssal_blade' || name=='silver_edge' || name=='mjollnir' || name=='solar_crest'){
       return 'YES';
+    }
+  }
+
+  getUpandName(upgrade,name){
+    if((upgrade == 'orb_of_venom' && name =='orb_of_venom') ||(upgrade=='sange_and_yasha' && name=='sange_and_yasha') || (upgrade=='sange' && name=='sange' ) ||
+     (upgrade=='yasha' && name=='yasha')){
+      return 'YES';
+    }
+  }
+
+  watchUpgrade(name){
+    if(name=='dagon_2' || name=='necronomicon_2' || name=='diffusal_blade_2' || name=='travel_boots_2'){
+      return 'YES'
     }
   }
 }
