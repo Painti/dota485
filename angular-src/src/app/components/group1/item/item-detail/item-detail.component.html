@@ -50,16 +50,16 @@
         <th style="color:rgba(245, 80, 153, 1)">UPGRADE</th>
         <td>
           <div class="d-flex flex-row">
-            <div *ngFor="let u of a">
-              <div *ngIf="watchUpgrade(u)=='NO'">
-                <span [tooltip]="getNameComponent(u)" placement="bottom">
-                  <img class="p-1" (click)="itemDetail(u)" [src]="getComponents(u)" alt="">
+            <div *ngFor="let upgrade of itemup">
+              <div *ngIf="watchUpgrade(upgrade)=='NO'">
+                <span [tooltip]="getNameComponent(upgrade)" placement="bottom">
+                  <img class="p-1" (click)="itemDetail(upgrade)" [src]="getComponents(upgrade)" alt="">
                 </span>
               </div>
 
-              <div *ngIf="watchUpgrade(u)=='YES'">
-                <span [tooltip]="getNameComponent(u)" placement="bottom">
-                  <img class="p-1" [src]="getComponents(u)" alt="">
+              <div *ngIf="watchUpgrade(upgrade)=='YES'">
+                <span [tooltip]="getNameComponent(upgrade)" placement="bottom">
+                  <img class="p-1" [src]="getComponents(upgrade)" alt="">
                 </span>
               </div>
             </div>

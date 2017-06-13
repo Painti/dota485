@@ -12,13 +12,21 @@
           </button>
         </div>
         <div class="modal-body">
-          <img src="{{getImage(getName(randomItem().img))}}" alt="">
+          <img src="{{getComponents(randomItem().img)}}" alt="">
           <div>
             Choice
           </div>
-          <span *ngFor = "let item of randomItem().components ; let i = index">
-                <img src="{{getImage(getNamelg(item))}}" alt="">
+          <span *ngFor = "let item of makeChoice() ; let i = index">
+                  <img [ngClass]="{'enabled': binaryCheck[i]}" (click)="check(i)" src="{{getComponents(item)}}" style="width:80px; height:50px;">
           </span>
+
+          <div>
+            <button type="button" class="btn btn-primary" (click) = "onSubmit()">
+                    Submit
+            </button>
+            <h1 [hidden] = "show">{{result}}</h1>
+          </div>
+
         </div>
       </div>
     </div>
