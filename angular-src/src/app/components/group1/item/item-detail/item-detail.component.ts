@@ -24,7 +24,7 @@ p:number;
 cost:number;
 
 s:string;
-a:Array<string>;
+itemup:Array<string>;
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -42,13 +42,13 @@ a:Array<string>;
             }
 
             this.s='';
-              this.a=[];
+              this.itemup=[];
               for(let key in data.itemdata){
                 if(data.itemdata[key].components !== null){
                   for(let key1 of data.itemdata[key].components){
                     if(this.name==key1){
                       if(this.s!=key){
-                        this.a.push(key);
+                        this.itemup.push(key);
                         this.s=key;
                       }
                   }
