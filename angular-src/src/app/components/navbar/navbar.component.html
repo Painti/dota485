@@ -6,9 +6,19 @@
 
   <div [collapse]="isCollapsed" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto navbar-left">
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link text-center" [routerLink]="['/hero']">Hero</a>
+
+      <span  dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+        <a class = "nav-link text-center" dropdownToggle (click)="false">Hero</a>
+    <ul *dropdownMenu class="dropdown-menu">
+      <li>
+        <a class="dropdown-item">Hero wiki</a>
+        <a class="dropdown-item">Hero stat</a>
       </li>
+    </ul>
+    </span>
+
+
+
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link text-center" [routerLink]="['/item']">Item</a>
       </li>

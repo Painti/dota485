@@ -27,6 +27,7 @@ import { ItemComponent } from './components/group1/item/item.component';
 import { QuizComponent } from './components/group1/quiz/quiz.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // Components group2
 import { LoginComponent } from './components/group2/login/login.component';
@@ -152,7 +153,8 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     ChartModule,
     PopoverModule.forRoot(),
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [
     ConfigService,

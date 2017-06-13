@@ -28,7 +28,7 @@ export class QuizComponent implements OnInit {
   show:boolean
   result:String
 
-  ans:Array<String>
+
 
 
   @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
