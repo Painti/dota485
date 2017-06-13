@@ -29,4 +29,10 @@ export class BenchmarksTableComponent implements OnInit {
       return 'bg-danger';
     }
   }
+
+  getHeroName(name){
+    name = name.replace("_"," ");
+    return name.charAt(0).toUpperCase()+name.slice(1);
+  }
+
 }

@@ -18,11 +18,11 @@
   transition-property: width;
 }
 
-img:hover{
+.table-match img:hover{
   cursor: pointer;
 }
 
-span:hover{
+.table-match span:hover{
   cursor: pointer;
   color: #9d9d9d;
 }

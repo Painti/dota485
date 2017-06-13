@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 //Group 1
+var home = require('./group1/home');
+router.use('/', home);
 var heroes = require('./group1/heroes');
 router.use('/heroes', heroes);
 var items = require('./group1/items');

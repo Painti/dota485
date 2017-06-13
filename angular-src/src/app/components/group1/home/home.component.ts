@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router) { }
 
+  unique:any;
+  status: any;
   item:Object;
   hero:Object;
   key: string;
@@ -32,7 +34,23 @@ export class HomeComponent implements OnInit {
     this.searching = false;
     this.show1 = false;
     this.show2 = false;
-    
+
+    this.api.getUnique().subscribe(data => {
+      this.unique = data["users_last_month"];
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+
+    this.api.getStatus().subscribe(data => {
+      this.status = data["user_players"];
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+
     this.api.getHeroesList().subscribe(data => {
       this.hero = data["herodata"];
     },

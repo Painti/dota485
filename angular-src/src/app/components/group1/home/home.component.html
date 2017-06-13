@@ -1,7 +1,7 @@
 <div class="d-flex flex-column mb-5">
-  <div class="m-3 d-flex justify-content-start">
-    <div>Flex item</div>
-    <div class="ml-auto">Flex item</div>
+  <div class="m-3 d-flex justify-content-start" *ngIf="unique && status">
+    <div class="text-success">Online player : {{status}}</div>
+    <div class="ml-auto">Unique players in last month : {{unique}}</div>
   </div>
   <div class="pad">
     <img src="assets/images/logo.png" alt="Dota2 Stat">
