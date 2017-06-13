@@ -5,8 +5,8 @@
         <tr>
           <th>kills</th>
           <th *ngFor="let item of match.players; let x = index" [hidden]="x < 5">
-            <img [class]="'player'+(x+1)"[src]="getImageHero(item.hero_name)" alt="" height="25">
-            <span class="ml-1">
+            <img [class]="'player'+(x+1)" [src]="getImageHero(item.hero_name)" alt="" height="25" [tooltip]="getHeroName(item.hero_name)" [routerLink]="'/hero/'+item.hero_name">
+            <span class="ml-1" [routerLink]="'/profile/'+item.account_id" [class.disabled]="item.account_id == null">
               {{item.name || item.personaname || "(anonymous)"}}
             </span>
           </th>
@@ -15,54 +15,44 @@
       <tbody>
         <tr *ngFor="let item of match.players; let x = index" [hidden]="x >= 5">
           <td nowrap>
-            <img [class]="'player'+(x+1)"[src]="getImageHero(item.hero_name)" alt="" height="25">
-            <span class="ml-1">
+            <img [class]="'player'+(x+1)" [src]="getImageHero(item.hero_name)" alt="" height="25" [tooltip]="getHeroName(item.hero_name)" [routerLink]="'/hero/'+item.hero_name">
+            <span class="ml-1" [routerLink]="'/profile/'+item.account_id" [class.disabled]="item.account_id == null">
               {{item.name || item.personaname || "(anonymous)"}}
             </span>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.killed['npc_dota_hero_'+match.players[5].hero_name] || 0,match.players[5].killed['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[5].hero_name] || 0,match.players[5].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[5].hero_name] || 0,match.players[5].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[5].hero_name] || 0,match.players[5].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[5].hero_name] || 0,match.players[5].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.killed['npc_dota_hero_'+match.players[6].hero_name] || 0,match.players[6].killed['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[6].hero_name] || 0,match.players[6].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[6].hero_name] || 0,match.players[6].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[6].hero_name] || 0,match.players[6].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[6].hero_name] || 0,match.players[6].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.killed['npc_dota_hero_'+match.players[7].hero_name] || 0,match.players[7].killed['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[7].hero_name] || 0,match.players[7].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[7].hero_name] || 0,match.players[7].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[7].hero_name] || 0,match.players[7].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[7].hero_name] || 0,match.players[7].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.killed['npc_dota_hero_'+match.players[8].hero_name] || 0,match.players[8].killed['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[8].hero_name] || 0,match.players[8].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[8].hero_name] || 0,match.players[8].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[8].hero_name] || 0,match.players[8].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[8].hero_name] || 0,match.players[8].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.killed['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].killed['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.killed['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.killed['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].killed['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
         </tr>
@@ -76,8 +66,8 @@
         <tr>
           <th>damage</th>
           <th *ngFor="let item of match.players; let x = index" [hidden]="x < 5">
-            <img [class]="'player'+(x+1)"[src]="getImageHero(item.hero_name)" alt="" height="25">
-            <span class="ml-1">
+            <img [class]="'player'+(x+1)" [src]="getImageHero(item.hero_name)" alt="" height="25" [tooltip]="getHeroName(item.hero_name)" [routerLink]="'/hero/'+item.hero_name">
+            <span class="ml-1" [routerLink]="'/profile/'+item.account_id" [class.disabled]="item.account_id == null">
               {{item.name || item.personaname || "(anonymous)"}}
             </span>
           </th>
@@ -86,54 +76,44 @@
       <tbody>
         <tr *ngFor="let item of match.players; let x = index" [hidden]="x >= 5">
           <td nowrap>
-            <img [class]="'player'+(x+1)"[src]="getImageHero(item.hero_name)" alt="" height="25">
-            <span class="ml-1">
+            <img [class]="'player'+(x+1)" [src]="getImageHero(item.hero_name)" alt="" height="25" [tooltip]="getHeroName(item.hero_name)" [routerLink]="'/hero/'+item.hero_name">
+            <span class="ml-1" [routerLink]="'/profile/'+item.account_id" [class.disabled]="item.account_id == null">
               {{item.name || item.personaname || "(anonymous)"}}
             </span>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.damage['npc_dota_hero_'+match.players[5].hero_name] || 0,match.players[5].damage['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.damage['npc_dota_hero_'+match.players[6].hero_name] || 0,match.players[6].damage['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.damage['npc_dota_hero_'+match.players[7].hero_name] || 0,match.players[7].damage['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.damage['npc_dota_hero_'+match.players[8].hero_name] || 0,match.players[8].damage['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
           <td class="content" nowrap>
             <span [innerHTML]="getCombat(item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></span>
             <div class="progress">
-              <div class="progress-bar bg-success" role="progressbar"
-                [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
-              <div class="progress-bar bg-danger" role="progressbar"
-                [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-success" role="progressbar" [style.width]="getBar('radiant',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
+              <div class="progress-bar bg-danger" role="progressbar" [style.width]="getBar('dire',item.damage['npc_dota_hero_'+match.players[9].hero_name] || 0,match.players[9].damage['npc_dota_hero_'+item.hero_name] || 0)"></div>
             </div>
           </td>
         </tr>

@@ -51,4 +51,9 @@ export class CombatComponent implements OnInit {
     return tag+num1+tag2+' - '+tag1+num2+tag2;
   }
 
+  getHeroName(name){
+    name = name.replace("_"," ");
+    return name.charAt(0).toUpperCase()+name.slice(1);
+  }
+
 }

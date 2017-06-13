@@ -18,22 +18,28 @@ export class OverviewTableComponent implements OnInit {
     return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + name + '_sb.png';
   }
 
-  getWidthByKDA(type, k:number, d:number, a:number){
-    let total:number = k+d+a;
-    if(total == 0){
+  getWidthByKDA(type, k: number, d: number, a: number) {
+    let total: number = k + d + a;
+    if (total == 0) {
       return '0%';
     }
-    k = Math.round(k*100/total);
-    d = Math.round(d*100/total);
-    a = 100-k-d;
-    if(type == 'K'){
-      return k+'%';
-    } else if(type == 'D'){
-      return d+'%';
-    } else if(type == 'A'){
-      return a+'%';
+    k = Math.round(k * 100 / total);
+    d = Math.round(d * 100 / total);
+    a = 100 - k - d;
+    if (type == 'K') {
+      return k + '%';
+    } else if (type == 'D') {
+      return d + '%';
+    } else if (type == 'A') {
+      return a + '%';
     }
     return '0%';
   }
+
+  getHeroName(name) {
+    name = name.replace("_", " ");
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
+
 
 }

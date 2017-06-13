@@ -1,20 +1,60 @@
-<ul *ngIf="id" class="nav nav-pills custom-nav">
+<ul *ngIf="user" class="nav nav-pills custom-nav">
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id]" href="#">Overview</a>
+    <a class="nav-link"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/match/'+id]">
+      Overview
+    </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/benchmarks']" href="#">Benchmarks</a>
+    <a class="nav-link"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/match/'+id+'/benchmarks']">
+      Benchmarks
+    </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/performances']" href="#">Performances</a>
+    <a class="nav-link"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/match/'+id+'/performances']"
+      [class.disabled]="match.players[0].lh_t == null || match.players[0].gold_t == null || match.players[0].xp_t == null">
+      Performances
+    </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/combat']" href="#">Combat</a>
+    <a class="nav-link"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/match/'+id+'/combat']"
+      [class.disabled]="match.players[0].lh_t == killed || match.players[1].killed == null || match.players[2].killed == null">
+      Combat
+    </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/farm']" href="#">Farm</a>
+    <a class="nav-link"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/match/'+id+'/farm']"
+      [class.disabled]="match.players[0].neutral_kills == null && match.players[0].tower_kills == null">
+      Farm
+    </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/match/'+id+'/chat']" href="#">Chat</a>
+    <a class="nav-link"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{exact:true}"
+      [routerLink]="['/match/'+id+'/chat']"
+      [class.disabled]="!match.chat">
+      Chat
+    </a>
+  </li>
+  <li class="nav-item">
+    <button *ngIf="user.facebook" ceiboShare [facebook]="{u: url}" class="btn btn-secondary btn-sm ml-2" [hidden]="hide">
+      <i class="fa fa-facebook-square fa-2x text-primary"></i>
+      Share
+    </button>
   </li>
 </ul>

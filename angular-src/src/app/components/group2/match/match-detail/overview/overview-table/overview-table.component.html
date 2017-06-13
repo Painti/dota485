@@ -27,8 +27,10 @@
     <tbody>
       <tr *ngFor="let i of size">
         <td nowrap>
-          <img [class]="'player'+(i+1)"[src]="getImageHero(match.players[i].hero_name)" alt="" height="25">
-          <span class="ml-1">{{match.players[i].name || match.players[i].personaname || "(anonymous)"}}</span>
+          <img [class]="'player'+(i+1)"[src]="getImageHero(match.players[i].hero_name)" alt="" height="25" [tooltip]="getHeroName(match.players[i].hero_name)" [routerLink]="'/hero/'+match.players[i].hero_name">
+          <span class="ml-1" [routerLink]="'/profile/'+match.players[i].account_id" [class.disabled]="match.players[i].account_id == null">
+            {{match.players[i].name || match.players[i].personaname || "(anonymous)"}}
+          </span>
         </td>
         <td nowrap>{{match.players[i].level}}</td>
         <td nowrap>

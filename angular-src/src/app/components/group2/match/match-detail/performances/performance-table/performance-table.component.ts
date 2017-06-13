@@ -78,8 +78,13 @@ export class PerformanceTableComponent implements OnInit {
     return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + name + '_sb.png';
   }
 
-  getNameMultiKills(num){
-    switch(num){
+  getHeroName(name) {
+    name = name.replace("_", " ");
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
+
+  getNameMultiKills(num) {
+    switch (num) {
       case 2: return 'Double kill';
       case 3: return 'Triple kill';
       case 4: return 'Ultra kill';
@@ -88,18 +93,18 @@ export class PerformanceTableComponent implements OnInit {
     }
   }
 
-  getNameStreakKills(num){
-    switch(num){
-      case 3: return 'Killing Spree ('+num+'kills)';
-      case 4: return 'Dominating ('+num+'kills)';
-      case 5: return 'Mega Kill ('+num+'kills)';
-      case 6: return 'Unstoppable ('+num+'kills)';
-      case 7: return 'Wicked Sick ('+num+'kills)';
-      case 8: return 'Monster kill ('+num+'kills)';
-      case 9: return 'Godlike ('+num+'kills)';
+  getNameStreakKills(num) {
+    switch (num) {
+      case 3: return 'Killing Spree (' + num + 'kills)';
+      case 4: return 'Dominating (' + num + 'kills)';
+      case 5: return 'Mega Kill (' + num + 'kills)';
+      case 6: return 'Unstoppable (' + num + 'kills)';
+      case 7: return 'Wicked Sick (' + num + 'kills)';
+      case 8: return 'Monster kill (' + num + 'kills)';
+      case 9: return 'Godlike (' + num + 'kills)';
     }
-    if(num >= 10){
-      return 'Beyond Godlike ( '+num+'kills )';
+    if (num >= 10) {
+      return 'Beyond Godlike ( ' + num + 'kills )';
     } else {
       return '-';
     }
@@ -126,10 +131,10 @@ export class PerformanceTableComponent implements OnInit {
     }
   }
 
-  getClass(num){
-    if(num >= 70){
+  getClass(num) {
+    if (num >= 70) {
       return 'bg-success';
-    } else if(num >= 40){
+    } else if (num >= 40) {
       return 'bg-warning';
     } else {
       return 'bg-danger';

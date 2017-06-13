@@ -8,7 +8,11 @@
   <div class="header">
     <div class="bar"></div>
     <div class="setheroes set-left">
-      <img *ngFor="let i of player_size;" [class]="'player'+(i+1)" [src]="getImageHero(match.players[i].hero_name)" [tooltip]="match['players'][i]['name'] || match['players'][i]['personaname'] || '(anonymous)'" placement="bottom" alt="">
+      <img *ngFor="let i of player_size;"
+        [class]="'player'+(i+1)" [src]="getImageHero(match.players[i].hero_name)"
+        [tooltip]="match['players'][i]['name'] || match['players'][i]['personaname'] || '(anonymous)'"
+        [routerLink]="'/profile/'+match['players'][i].account_id" [class.disabled]="match['players'][i].account_id == null"
+        placement="bottom" alt="">
     </div>
     <div class="score score-left">{{match['radiant_score']}}</div>
     <div class="half-circle">
@@ -16,7 +20,11 @@
     </div>
     <div class="score score-right">{{match['dire_score']}}</div>
     <div class="setheroes set-right">
-      <img *ngFor="let i of player_size;" [class]="'player'+(i+6)" [src]="getImageHero(match.players[i+5].hero_name)" [tooltip]="match['players'][i+5]['name'] || match['players'][i+5]['personaname'] || '(anonymous)'" placement="bottom" alt="">
+      <img *ngFor="let i of player_size;"
+        [class]="'player'+(i+6)" [src]="getImageHero(match.players[i+5].hero_name)"
+        [tooltip]="match['players'][i+5]['name'] || match['players'][i+5]['personaname'] || '(anonymous)'"
+        [routerLink]="'/profile/'+match['players'][i+5].account_id" [class.disabled]="match['players'][i+5].account_id == null"
+        placement="bottom" alt="">
     </div>
     <div class="img-team">
       <img [src]="getBackgroundImage(match.radiant_win)" alt="">
@@ -108,7 +116,7 @@
     </div>
   </div>
   <hr class="nav-hr mb-1" />
-  <app-match-detail-nav [id]='id' (click)="emit()"></app-match-detail-nav>
+  <app-match-detail-nav [id]='id' [match]="match" (click)="emit()"></app-match-detail-nav>
   <hr class="nav-hr mt-1" />
 </div>
 <router-outlet></router-outlet>

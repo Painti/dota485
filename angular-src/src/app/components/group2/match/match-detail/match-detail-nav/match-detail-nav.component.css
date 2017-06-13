@@ -7,3 +7,12 @@
 .nav li{
   display: inline-block;
 }
+
+.nav li:last-child{
+  float: right;
+}
+
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}

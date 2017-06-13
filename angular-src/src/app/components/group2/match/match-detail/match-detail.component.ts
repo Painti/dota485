@@ -22,23 +22,23 @@ export class MatchDetailComponent implements OnInit{
   player_size:Array<Number>;
 
   ngOnInit() {
-    this.state = {o: {state: 'failed'}};
+    this.state = {o: {state: 0}};
     this.player_size = [0,1,2,3,4];
     this.route.params.subscribe(params => {
       this.id = params['match_id'];
-      // this.api.postRequestMatch(this.id).subscribe(data => {
-      //   let job_id = null;
-      //   if(data.err == null){
-      //     job_id = data.job.jobId;
-      //     this.api.getRequestMatch(job_id, this.state).subscribe(data1 => {
-      //       this.state.o = data1;
-      //     });
-      //   }
-      // },
-      // err => {
-      //   console.log(err);
-      //   return false;
-      // });
+      this.api.postRequestMatch(this.id).subscribe(data => {
+        let job_id = null;
+        if(data.err == null){
+          job_id = data.job.jobId;
+          this.api.getRequestMatch(job_id, this.state).subscribe(data1 => {
+            this.state.o = data1;
+          });
+        }
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
     });
   }
 

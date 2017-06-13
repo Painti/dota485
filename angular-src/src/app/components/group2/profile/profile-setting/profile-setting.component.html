@@ -5,6 +5,9 @@
   <div class="row">
     <span class="mr-2"><i class="fa fa-facebook-square fa-2x"></i></span>
     <button *ngIf="!user.facebook" class="btn btn-sm btn-primary" (click)="onClickLink()">Link Facebook</button>
-    <button *ngIf="user.facebook" class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">Linked</button>
+    <button *ngIf="user.facebook" class="btn btn-success btn-sm disabled">Linked</button>
+    <button *ngIf="user.facebook" ceiboShare [facebook]="{u: url}" class="btn btn-primary btn-sm ml-2">
+      Share Your Profile on Facebook
+    </button>
   </div>
 </div>
