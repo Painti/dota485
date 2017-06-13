@@ -136,7 +136,22 @@ let url = 'https://api.opendota.com/api/players/'+ req.params.id +'/heroes';
 
   request(url, function(err, response, body) {
     if (!err && response.statusCode < 400) {
-      res.json(JSON.parse(body));
+      var data = JSON.parse(body) ;
+      let listheroes_url = 'http://' + server.hostname + ':' + server.port + '/data/opendota/heroes';
+      request(listheroes_url, function(err, response, listheroes) {
+        if (!err && response.statusCode < 400) {
+          listheroes = JSON.parse(listheroes);
+          for (let i = 0; i < data.length; i++) {
+            data[i].heroes_name = listheroes[data[i].hero_id].name.replace('npc_dota_hero_', '');
+          }
+          res.json(data);
+        } else {
+          if (response) {
+            console.log(response.statusCode);
+          }
+          next(err);
+        }
+      });
     }
     else {
       if (response) {
