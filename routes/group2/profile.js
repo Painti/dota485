@@ -21,10 +21,7 @@ router.get('/:id/profile_player', function(req, res, next) {
       res.json(JSON.parse(body));
     }
     else {
-      if (response) {
-        console.log(response.statusCode);
-      }
-      next(err);
+      res.json({tracked_until: null});
     }
   });
 });

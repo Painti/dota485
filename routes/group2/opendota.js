@@ -42,10 +42,18 @@ router.get('/matches/:id', function(req, res, next) {
       request(listheroes_url, function(err, response, listheroes) {
         if (!err && response.statusCode < 400) {
           listheroes = JSON.parse(listheroes);
+          match['status'] = true;
           for (let i = 0; i < match.players.length; i++) {
-            match.players[i].hero_name = listheroes[match.players[i].hero_id].name.replace('npc_dota_hero_', '');
+            if(match.players[i].hero_id != null){
+              match.players[i].hero_name = listheroes[match.players[i].hero_id].name.replace('npc_dota_hero_', '');
+            } else {
+              match['status'] = false;
+            }
           }
-          if(match.game_mode == 0){
+
+          if(match.game_mode == null){
+            
+          }else if(match.game_mode == 0){
             match.game_mode = null;
           } else {
             let filePath = path.resolve('./data/mods.json');
@@ -62,10 +70,9 @@ router.get('/matches/:id', function(req, res, next) {
         }
       });
     } else {
-      if (response) {
-        console.log(response.statusCode);
-      }
-      next(err);
+      res.json({
+        status: false
+      });
     }
   });
 });

@@ -1,13 +1,58 @@
-<div class="d-flex flex-column">
+<div class="d-flex flex-column mb-5">
+  <div class="m-3 d-flex justify-content-start">
+    <div>Flex item</div>
+    <div class="ml-auto">Flex item</div>
+  </div>
   <div class="pad">
     <img src="assets/images/logo.png" alt="Dota2 Stat">
   </div>
-
-  <div class="p-3">
-    <input type="text" class="form-control" id="search" placeholder="Search  for Heroes, Item, Match, Teams...">
+  <div *ngIf="item && hero">
+    <input type="text" class="form-control"
+      placeholder="Search  for Heroes, Item, Match ID, Player ID"
+      [(ngModel)]="key"
+      (keyup.enter)="onSearch()">
+  </div>
+  <div class="p-3" *ngIf="item && hero">
+    <button type="button" class="btn btn-success btn-lg" (click)="onSearch()">SEARCH</button>
   </div>
 
-  <div class="p-1">
-    <button type="button" class="btn btn-success btn-lg">SEARCH</button>
+  <div class="mt-5" [hidden]="!searching || (show2 && match && player)">
+    <h2 class="text-center"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Searching</h2>
+  </div>
+
+  <div class="mt-5" *ngIf="item && hero" [hidden]="!show1">
+    <h2 class="mb-1 header">Item<span class="badge badge-default ml-2">{{s_item?.length || 0}} founds.</span></h2>
+    <div class="d-flex flex-wrap item">
+      <div class="card mb-3 mr-3" *ngFor="let item of s_item">
+        <img class="card-img" [src]="getImageItemLg(item.prop)" alt="Card image cap">
+        <div class="card-img-overlay">
+          <h6 class="card-title">{{item.dname}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5" *ngIf="item && hero" [hidden]="!show1">
+    <h2 class="mb-1 header">Hero<span class="badge badge-default ml-2">{{s_hero?.length || 0}} founds.</span></h2>
+    <div class="d-flex flex-wrap item">
+      <div class="card mb-3 mr-3" *ngFor="let item of s_hero">
+        <img class="card-img" [src]="getImageHero(item.prop)" alt="Card image cap">
+        <div class="card-img-overlay">
+          <h6 class="card-title">{{item.dname}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5" *ngIf="show2 && match && player">
+    <h2 class="mb-1 header">Player</h2>
+    <h3 [hidden]="player.profile.account_id == null"><a [routerLink]="'/profile/'+player.profile.account_id">{{player.profile.account_id}}</a></h3>
+    <h3 [hidden]="player.profile.account_id != null">Player not found.</h3>
+  </div>
+
+  <div class="mt-5" *ngIf="show2 && match && player">
+    <h2 class="mb-><a hr1 header">Match</h2>
+    <h3 [hidden]="match['match_id'] == null"><a [routerLink]="'/match/'+match.match_id">{{match.match_id}}</a></h3>
+    <h3 [hidden]="match['match_id'] != null">Match not found.</h3>
   </div>
 </div>

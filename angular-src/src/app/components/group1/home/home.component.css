@@ -3,5 +3,31 @@ div{
 }
 
 .pad{
-  padding-top: 100px;
+  padding-top: 80px;
+}
+
+.pad img{
+  width: 300px;
+}
+
+.item img{
+  width: 150px;
+}
+
+.card-img-overlay{
+  padding: 0px;
+}
+
+.card-title{
+  background-color: rgba(0, 0, 0, 0.75);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.header {
+  font-weight: 600;
+  background-color: rgba(18, 18, 18, 0.30);
+  color: #DCDCDC;
+  padding: 10px;
+  margin-bottom: 10px;
 }
