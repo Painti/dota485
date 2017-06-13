@@ -1,3 +1,19 @@
-<p>
-  chat works!
-</p>
+<h2 *ngIf="match" class="mt-4 text-center">
+  <span class="radiant-team">Radiant Team</span>
+  <span>&</span>
+  <span class="dire-team">Dire Team</span>
+</h2>
+<ul class="chat-thread mt-4 pb-5" *ngIf="match">
+  <li class="admin">
+    <div class="msg">
+      <div>Start chat</div>
+    </div>
+  </li>
+  <li *ngFor="let item of match.chat" [hidden]="item.type != 'chat'" [ngClass]="getClass(item.slot)">
+    <img *ngIf="item.slot < 10" [class]="'chat'+(item.slot+1)" [src]="getImageHero(match.players[item.slot].hero_name)" alt="" [tooltip]="item?.unit || '(anonymous)'">
+    <div class="msg">
+      <div>{{getMsg(item.slot,item?.unit || '(anonymous)',item.key)}}</div>
+      <div class="time"><i class="fa fa-clock-o" aria-hidden="true"></i> {{getTime(item.time)}}</div>
+    </div>
+  </li>
+</ul>

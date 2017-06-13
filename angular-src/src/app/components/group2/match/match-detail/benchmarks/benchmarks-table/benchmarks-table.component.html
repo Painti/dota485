@@ -16,8 +16,8 @@
         <th><span tooltip="Amount of damage dealt to tower">TD</span></th>
       </tr>
     </thead>
-    <tbody *ngIf="checkPercentile(percentile)" >
-      <tr *ngFor="let i of size; let x = index;">
+    <tbody>
+      <tr *ngFor="let i of size">
         <td nowrap>
           <img [class]="'player'+(i+1)"[src]="getImageHero(match.players[i].hero_name)" alt="" height="25">
           <span class="ml-1">
@@ -25,86 +25,83 @@
           </span>
         </td>
         <td nowrap>
-          {{match.players[i].gold_per_min}}
+          {{match.players[i].benchmarks.gold_per_min.raw}}
           <span class="percent">
-            ({{percentile[x].gold_per_min}}%)
+            ({{match.players[i].benchmarks.gold_per_min.pct*100 | number : '1.2-2'}}%)
           </span>
           <div class="progress">
             <div class="progress-bar" role="progressbar"
-              [ngClass]="getClass(percentile[x].gold_per_min)"
-              [style.width]="percentile[x].gold_per_min+'%'"></div>
+              [ngClass]="getClass(match.players[i].benchmarks.gold_per_min.pct)"
+              [style.width]="match.players[i].benchmarks.gold_per_min.pct*100+'%'"></div>
           </div>
         </td>
         <td nowrap>
-          {{match.players[i].xp_per_min}}
+          {{match.players[i].benchmarks.xp_per_min.raw}}
           <span class="percent">
-            ({{percentile[x].xp_per_min}}%)
+            ({{match.players[i].benchmarks.xp_per_min.pct*100 | number : '1.2-2'}}%)
           </span>
           <div class="progress">
             <div class="progress-bar" role="progressbar"
-              [ngClass]="getClass(percentile[x].xp_per_min)"
-              [style.width]="percentile[x].xp_per_min+'%'"></div>
+              [ngClass]="getClass(match.players[i].benchmarks.xp_per_min.pct)"
+              [style.width]="match.players[i].benchmarks.xp_per_min.pct*100+'%'"></div>
           </div>
         </td>
         <td nowrap>
-          {{match.players[i].kills_per_min | number : '1.2-2'}}
+          {{match.players[i].benchmarks.kills_per_min.raw | number : '1.2-2'}}
           <span class="percent">
-            ({{percentile[x].kills_per_min}}%)
+            ({{match.players[i].benchmarks.kills_per_min.pct*100 | number : '1.2-2'}}%)
           </span>
           <div class="progress">
             <div class="progress-bar" role="progressbar"
-              [ngClass]="getClass(percentile[x].kills_per_min)"
-              [style.width]="percentile[x].kills_per_min+'%'"></div>
+              [ngClass]="getClass(match.players[i].benchmarks.kills_per_min.pct)"
+              [style.width]="match.players[i].benchmarks.kills_per_min.pct*100+'%'"></div>
           </div>
         </td>
         <td nowrap>
-          {{match.players[i].last_hits_per_min | number : '1.2-2'}}
+          {{match.players[i].benchmarks.last_hits_per_min.raw | number : '1.2-2'}}
           <span class="percent">
-            ({{percentile[x].last_hits_per_min}}%)
+            ({{match.players[i].benchmarks.last_hits_per_min.pct*100 | number : '1.2-2'}}%)
           </span>
           <div class="progress">
             <div class="progress-bar" role="progressbar"
-              [ngClass]="getClass(percentile[x].last_hits_per_min)"
-              [style.width]="percentile[x].last_hits_per_min+'%'"></div>
+              [ngClass]="getClass(match.players[i].benchmarks.last_hits_per_min.pct)"
+              [style.width]="match.players[i].benchmarks.last_hits_per_min.pct*100+'%'"></div>
           </div>
         </td>
         <td nowrap>
-          {{match.players[i].hero_damage_per_min | number : '1.2-2'}}
+          {{match.players[i].benchmarks.hero_damage_per_min.raw | number : '1.2-2'}}
           <span class="percent">
-            ({{percentile[x].hero_damage_per_min}}%)
+            ({{match.players[i].benchmarks.hero_damage_per_min.pct*100 | number : '1.2-2'}}%)
           </span>
           <div class="progress">
             <div class="progress-bar" role="progressbar"
-              [ngClass]="getClass(percentile[x].hero_damage_per_min)"
-              [style.width]="percentile[x].hero_damage_per_min+'%'"></div>
+              [ngClass]="getClass(match.players[i].benchmarks.hero_damage_per_min.pct)"
+              [style.width]="match.players[i].benchmarks.hero_damage_per_min.pct*100+'%'"></div>
           </div>
         </td>
         <td nowrap>
-          {{match.players[i].hero_healing_per_min | number : '1.2-2'}}
+          {{match.players[i].benchmarks.hero_healing_per_min.raw | number : '1.2-2'}}
           <span class="percent">
-            ({{percentile[x].hero_healing_per_min}}%)
+            ({{match.players[i].benchmarks.hero_healing_per_min.pct*100 | number : '1.2-2'}}%)
           </span>
           <div class="progress">
             <div class="progress-bar" role="progressbar"
-              [ngClass]="getClass(percentile[x].hero_healing_per_min)"
-              [style.width]="percentile[x].hero_healing_per_min+'%'"></div>
+              [ngClass]="getClass(match.players[i].benchmarks.hero_healing_per_min.pct)"
+              [style.width]="match.players[i].benchmarks.hero_healing_per_min.pct*100+'%'"></div>
           </div>
         </td>
         <td nowrap>
-          {{match.players[i].tower_damage}}
+          {{match.players[i].benchmarks.tower_damage.raw}}
           <span class="percent">
-            ({{percentile[x].tower_damage}}%)
+            ({{match.players[i].benchmarks.tower_damage.pct*100 | number : '1.2-2'}}%)
           </span>
           <div class="progress">
             <div class="progress-bar" role="progressbar"
-              [ngClass]="getClass(percentile[x].tower_damage)"
-              [style.width]="percentile[x].tower_damage+'%'"></div>
+              [ngClass]="getClass(match.players[i].benchmarks.tower_damage.pct)"
+              [style.width]="match.players[i].benchmarks.tower_damage.pct*100+'%'"></div>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
-</div>
-<div [hidden]="checkPercentile(percentile)" style="padding-top: 5px; padding-bottom: 30px;">
-  <i style="text-align: center; display: block; margin: 0 auto;" class="fa fa-spinner fa-spin fa-4x fa-fw"></i>
 </div>

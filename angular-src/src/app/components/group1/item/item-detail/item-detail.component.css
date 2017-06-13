@@ -22,3 +22,7 @@ td, th {
 .p-1{
   cursor:pointer;
 }
+
+.bottom{
+    padding-bottom: 30px;
+}

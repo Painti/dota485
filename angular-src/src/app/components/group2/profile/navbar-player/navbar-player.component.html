@@ -1,14 +1,17 @@
-<ul class="nav nav-pills custom-nav">
+<ul class="nav nav-pills custom-nav" *ngIf="id">
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile']" href="#">Overview</a>
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile/'+id]" href="#">Overview</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile/heroes']" href="#">heroes</a>
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile/'+id+'/heroes']" href="#">heroes</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile/matches']" href="#">matches</a>
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile/'+id+'/matches']" href="#">matches</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile/peers']" href="#">peers</a>
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile/'+id+'/peers']" href="#">peers</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/profile/'+id+'/totals']" href="#">Totals</a>
   </li>
 </ul>

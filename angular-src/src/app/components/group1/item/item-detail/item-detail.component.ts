@@ -22,9 +22,9 @@ name:string;
 
 p:number;
 cost:number;
-temp:number;
 
-upgrade:Array<any>
+s:string;
+a:Array<string>;
 
     ngOnInit() {
       this.route.params.subscribe(params => {
@@ -40,6 +40,21 @@ upgrade:Array<any>
               for(let key of data.itemdata[this.name].components)
                 this.p = this.p + data.itemdata[key].cost;
             }
+
+            this.s='';
+              this.a=[];
+              for(let key in data.itemdata){
+                if(data.itemdata[key].components !== null){
+                  for(let key1 of data.itemdata[key].components){
+                    if(this.name==key1){
+                      if(this.s!=key){
+                        this.a.push(key);
+                        this.s=key;
+                      }
+                  }
+                }
+              }
+            }
       },
         err => {
           console.log(err);
@@ -54,11 +69,11 @@ upgrade:Array<any>
   }
 
   getComponents(name){//recipe
-    return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
+    return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png";
   }
 
   getImage(){
-    return "http://cdn.dota2.com/apps/dota2/images/items/"+this.name+"_lg.png"
+    return "http://cdn.dota2.com/apps/dota2/images/items/"+this.name+"_lg.png";
   }
 
   getDesc(desc){
@@ -81,6 +96,15 @@ upgrade:Array<any>
       return 'YES';
     }
     else if(r > 0 && sum>0){
+      return 'NO';
+    }
+  }
+
+  watchUpgrade(name){
+    if(name=='dagon_2' || name=='necronomicon_2' || name=='diffusal_blade_2' || name=='travel_boots_2'){
+      return 'YES';
+    }
+    else{
       return 'NO';
     }
   }

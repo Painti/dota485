@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/group2/auth.service';
+import { PassJsonService } from '../../../services/group2/pass-json.service' ;
 import { GetApiService } from '../../../services/get-api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,35 +10,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: Object;
   hero: Array<Object>;
   match: Array<Object>;
   score: Object;
+  total: Array<Object>;
   peer: Array<Object>;
   player: Array<Object>;
   wl_recentMatch: Array<String> ;
   win_rate: Object;
+  id:any ;
+
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private getApiService: GetApiService
+    private getApiService: GetApiService,
+    private route: ActivatedRoute,
+    private passJsonService:PassJsonService
   ) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(data => {
-      this.user = data.user;
-      this.authService.getHero(this.user['account_id']).subscribe(data => {
+    this.route.params.subscribe(params => {
+      this.id = params['id'] ;
+      this.authService.getHero(params['id']).subscribe(data => {
         this.hero = data;
+        this.passJsonService.emitHeroes(this.hero) ;
       },
         err => {
           console.log(err);
           return false;
         });
 
-        this.authService.getProfile_Player(this.user['account_id']).subscribe(data => {
+        this.authService.getProfile_Player(params['id']).subscribe(data => {
           this.player = data ;
-
+          this.passJsonService.emitPlayer(this.player) ;
         },
         err => {
           console.log(err);
@@ -45,10 +51,10 @@ export class ProfileComponent implements OnInit {
         });
 
 
-      this.authService.getRecentMatch(this.user['account_id']).subscribe(data => {
+      this.authService.getRecentMatch(params['id']).subscribe(data => {
         this.match = data ;
         this.wl_recentMatch = [] ;
-
+        this.passJsonService.emitRecentMatch(this.match) ;
         for(let i = 0 ; i < data.length  ;i++){
 
           if(this.match[i]['player_slot'] < 5 && this.match[i]['radiant_win'] == false ||
@@ -67,8 +73,9 @@ export class ProfileComponent implements OnInit {
         return false;
       });
 
-      this.authService.getWinAndLose(this.user['account_id']).subscribe(data => {
+      this.authService.getWinAndLose(params['id']).subscribe(data => {
         this.score = data ;
+        this.passJsonService.emitWl(this.score) ;
         this.win_rate = (this.score['win'] / (this.score['win'] + this.score['lose'])) * 100 ;
         var st_win_rate = JSON.stringify(this.win_rate);
         this.win_rate = parseFloat(st_win_rate).toFixed(1) ;
@@ -78,21 +85,34 @@ export class ProfileComponent implements OnInit {
         return false;
       });
 
-      this.authService.getPeer(this.user['account_id']).subscribe(data => {
+      this.authService.getPeer(params['id']).subscribe(data => {
         this.peer = data ;
+        this.passJsonService.emitPeer(this.peer) ;
       },
       err => {
         console.log(err);
         return false;
       });
-    },
+      this.authService.getTotals(params['id']).subscribe(data =>{
+        this.total = data ;
+        this.passJsonService.emitTotal(this.total) ;
+      },
       err => {
         console.log(err);
         return false;
+      });
     });
+
+
   }
 
-
-
+  emit(){
+    this.passJsonService.emitWl(this.score) ;
+    this.passJsonService.emitPeer(this.peer) ;
+    this.passJsonService.emitRecentMatch(this.match) ;
+    this.passJsonService.emitPlayer(this.player) ;
+    this.passJsonService.emitHeroes(this.hero) ;
+    this.passJsonService.emitTotal(this.total) ;
+  }
 
 }

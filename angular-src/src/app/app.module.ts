@@ -14,6 +14,7 @@ import { ChartModule } from 'angular2-chartjs';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ConfigService } from './services/config.service';
 import { GetApiService } from './services/get-api.service';
+import { PassJsonService } from './services/group2/pass-json.service'
 
 import { FilterPipe } from './pipes/filter.pipe';
 import { NgForObjectPipe } from './pipes/ng-for-object.pipe';
@@ -46,16 +47,8 @@ import { BenchmarksComponent } from './components/group2/match/match-detail/benc
 import { PerformancesComponent } from './components/group2/match/match-detail/performances/performances.component';
 import { CombatComponent } from './components/group2/match/match-detail/combat/combat.component';
 import { FarmComponent } from './components/group2/match/match-detail/farm/farm.component';
-import { PurchaseComponent } from './components/group2/match/match-detail/purchase/purchase.component';
-import { GraphComponent } from './components/group2/match/match-detail/graph/graph.component';
-import { CastComponent } from './components/group2/match/match-detail/cast/cast.component';
-import { ObjectivesComponent } from './components/group2/match/match-detail/objectives/objectives.component';
-import { VisionComponent } from './components/group2/match/match-detail/vision/vision.component';
-import { ActionComponent } from './components/group2/match/match-detail/action/action.component';
-import { TeamfightsComponent } from './components/group2/match/match-detail/teamfights/teamfights.component';
 import { LogComponent } from './components/group2/match/match-detail/log/log.component';
 import { ChatComponent } from './components/group2/match/match-detail/chat/chat.component';
-import { StoryComponent } from './components/group2/match/match-detail/story/story.component';
 import { MatchDetailNavComponent } from './components/group2/match/match-detail/match-detail-nav/match-detail-nav.component';
 import { ItemDetailComponent } from './components/group1/item/item-detail/item-detail.component';
 import { HeroesPlayerComponent } from './components/group2/profile/heroes-player/heroes-player.component';
@@ -66,6 +59,8 @@ import { PeersPlayerComponent } from './components/group2/profile/peers-player/p
 import { OverviewTableComponent } from './components/group2/match/match-detail/overview/overview-table/overview-table.component';
 import { BenchmarksTableComponent } from './components/group2/match/match-detail/benchmarks/benchmarks-table/benchmarks-table.component';
 import { PerformanceTableComponent } from './components/group2/match/match-detail/performances/performance-table/performance-table.component';
+import { TotalsPlayerComponent } from './components/group2/profile/totals-player/totals-player.component';
+import { FarmTableComponent } from './components/group2/match/match-detail/farm/farm-table/farm-table.component';
 
 
 const appRoutes: Routes = [
@@ -88,24 +83,17 @@ const appRoutes: Routes = [
       { path: 'performances', component: PerformancesComponent },
       { path: 'combat', component: CombatComponent },
       { path: 'farm', component: FarmComponent },
-      { path: 'purchase', component: PurchaseComponent },
-      { path: 'graph', component: GraphComponent },
-      { path: 'cast', component: CastComponent },
-      { path: 'objectives', component: ObjectivesComponent },
-      { path: 'vision', component: VisionComponent },
-      { path: 'action', component: ActionComponent },
-      { path: 'teamfights', component: TeamfightsComponent },
       { path: 'log', component: LogComponent },
-      { path: 'chat', component: ChatComponent },
-      { path: 'story', component: StoryComponent }
+      { path: 'chat', component: ChatComponent }
     ]
   },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] ,
+  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] ,
     children:[
       { path: '', component: OverviewPlayerComponent },
       { path: 'heroes', component: HeroesPlayerComponent },
       { path: 'matches', component: MatchesPlayerComponent },
-      { path: 'peers', component: PeersPlayerComponent }
+      { path: 'peers', component: PeersPlayerComponent },
+      { path: 'totals', component: TotalsPlayerComponent }
     ]
   },
   { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
@@ -136,16 +124,8 @@ const appRoutes: Routes = [
     PerformancesComponent,
     CombatComponent,
     FarmComponent,
-    PurchaseComponent,
-    GraphComponent,
-    CastComponent,
-    ObjectivesComponent,
-    VisionComponent,
-    ActionComponent,
-    TeamfightsComponent,
     LogComponent,
     ChatComponent,
-    StoryComponent,
     MatchDetailNavComponent,
     ItemDetailComponent,
     MatchDetailNavComponent,
@@ -156,8 +136,9 @@ const appRoutes: Routes = [
     PeersPlayerComponent,
     OverviewTableComponent,
     BenchmarksTableComponent,
-    PerformanceTableComponent
-
+    PerformanceTableComponent,
+    TotalsPlayerComponent,
+    FarmTableComponent
   ],
   imports: [
     BrowserModule,
@@ -180,7 +161,8 @@ const appRoutes: Routes = [
     AuthService,
     AuthGuard,
     LoginGuard,
-    LinkFacebookGuard
+    LinkFacebookGuard,
+    PassJsonService
   ],
   bootstrap: [AppComponent]
 })

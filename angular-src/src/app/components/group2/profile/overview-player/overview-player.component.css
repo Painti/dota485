@@ -1,19 +1,35 @@
-img.pf_hero{
+.pf_hero{
    width: 52px !important;
    height: 29px !important;
     box-shadow: 0px 0px 5px #888888;
 }
 
 .green{
-  color: Lime ;
+  color: rgb(102, 187, 106) ;
 }
 
 .red{
-  color: OrangeRed ;
+  color: rgb(255, 76, 76) ;
+}
+
+.yellow{
+  color: rgb(229, 193, 0) ;
+}
+
+.gray{
+  color:rgba(255, 255, 255, .54) !important ;
+}
+
+.white{
+  color:#F5F5F5 !important;
 }
 
 .font25{
   font-size: 25px ;
+}
+
+.font12{
+  font-size: 12px ;
 }
 
 .hoverClickImg:hover{
@@ -24,4 +40,9 @@ img.pf_hero{
 .hoverClick:hover{
   opacity: 0.8;
   cursor: pointer;
+}
+
+.icon{
+  width: auto !important;
+  height: 20px !important;
 }

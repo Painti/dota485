@@ -4,15 +4,15 @@
 
   <div class="d-flex justify-content-between">
     <div class="align-self-stretch" class="pad">
-      <b>Basic</b>
+      <b class="text-info">BASICS</b>
     </div>
 
     <div class="align-self-stretch" class="pad">
-      <b>Upgrade</b>
+      <b class="text-success">UPGRADES</b>
     </div>
 
     <div class="align-self-stretch" class="pad">
-      <b>Secret Shop</b>
+      <b class="text-warning">SECRET SHOP</b>
     </div>
 
   </div>
@@ -20,9 +20,8 @@
   <div class="d-flex justify-content-between">
     <div class="d-flex flex-wrap">
         <div *ngFor = "let entry of item.itemdata | keys">
-            <span *ngIf ="entry.key != 'river_painter' && entry.key != 'river_painter2' && entry.key != 'river_painter3'
-              &&entry.key != 'river_painter4' && entry.key != 'river_painter5' && entry.key != 'river_painter6' && entry.key != 'river_painter7'">
-                <span *ngIf="entry.value.qual == 'component' || entry.value.qual == 'consumable'">
+            <span *ngIf ="basicNotUse(entry.key)=='YES'">
+                <span *ngIf="entry.value.qual == 'component' || entry.value.qual == 'consumable' || entry.key=='cheese' || entry.key=='aegis'">
                   <span [tooltip]="entry.value.dname" placement="right">
                     <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
                   </span>
@@ -33,11 +32,11 @@
 
     <div class="d-flex flex-wrap">
         <div *ngFor = "let entry of item.itemdata | keys">
-            <span  *ngIf="entry.value.qual !== 'component' && entry.value.qual !== 'secret_shop' && entry.value.qual !== 'consumable'">
-              <span *ngIf="entry.key!=='dagon_2' && entry.key!=='dagon_3' && entry.key!=='dagon_4' && entry.key!=='dagon_5' && entry.key!=='necronomicon_2' && entry.key!=='necronomicon_3' && entry.key!=='diffusal_blade_2'">
-              <span [tooltip]="entry.value.dname" placement="right">
-                <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
-              </span>
+            <span  *ngIf="entry.value.qual !== 'component' && entry.value.qual !== 'secret_shop' && entry.value.qual !== 'consumable' && entry.key!=='cheese' && entry.key!=='aegis'">
+              <span *ngIf="upgradeNotUse(entry.key)=='YES'">
+                <span [tooltip]="entry.value.dname" placement="right">
+                  <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+                </span>
               </span>
             </span>
         </div>
@@ -56,5 +55,7 @@
     </div>
 
   </div>
+  <div  class="bottom">
 
+  </div>
 </div>
