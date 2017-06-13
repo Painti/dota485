@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ProfileSettingComponent implements OnInit {
   user : Object;
+  url : string;
 
   constructor(
     private authService:AuthService,
@@ -22,6 +23,7 @@ export class ProfileSettingComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getProfile().subscribe(data => {
+      this.url = 'https://www.opendota.com/'+data.user.account_id;
       this.user = data.user;
       this.route.params.subscribe((params: Params) => {
         if(params['linked'] == 'true'){

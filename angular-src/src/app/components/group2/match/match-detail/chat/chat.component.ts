@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommunicateService } from '../../../../../services/group2/communicate.service';
 import { Subscription }   from 'rxjs/Subscription';
+import { Router }  from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -9,7 +10,7 @@ import { Subscription }   from 'rxjs/Subscription';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private communicate: CommunicateService) { }
+  constructor(private communicate: CommunicateService,private router: Router) { }
 
   match: Object;
   subscription: Subscription;

@@ -2,6 +2,24 @@
   font-size: 16px;
 }
 
+img:hover{
+  cursor: pointer;
+}
+
+span:hover{
+  cursor: pointer;
+  color: #9d9d9d;
+}
+
+.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
+.disabled:hover {
+  color: white;
+}
+
 .progress {
   height: 3px;
   margin-top: 7px;

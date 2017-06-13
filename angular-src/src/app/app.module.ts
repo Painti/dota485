@@ -46,7 +46,6 @@ import { BenchmarksComponent } from './components/group2/match/match-detail/benc
 import { PerformancesComponent } from './components/group2/match/match-detail/performances/performances.component';
 import { CombatComponent } from './components/group2/match/match-detail/combat/combat.component';
 import { FarmComponent } from './components/group2/match/match-detail/farm/farm.component';
-import { LogComponent } from './components/group2/match/match-detail/log/log.component';
 import { ChatComponent } from './components/group2/match/match-detail/chat/chat.component';
 import { MatchDetailNavComponent } from './components/group2/match/match-detail/match-detail-nav/match-detail-nav.component';
 import { ItemDetailComponent } from './components/group1/item/item-detail/item-detail.component';
@@ -61,6 +60,7 @@ import { PerformanceTableComponent } from './components/group2/match/match-detai
 import { TotalsPlayerComponent } from './components/group2/profile/totals-player/totals-player.component';
 import { FarmTableComponent } from './components/group2/match/match-detail/farm/farm-table/farm-table.component';
 
+import { CeiboShare } from 'ng2-social-share';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -82,10 +82,11 @@ const appRoutes: Routes = [
       { path: 'performances', component: PerformancesComponent },
       { path: 'combat', component: CombatComponent },
       { path: 'farm', component: FarmComponent },
-      { path: 'log', component: LogComponent },
       { path: 'chat', component: ChatComponent }
     ]
   },
+  { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
+  { path: 'profile/setting/link-facebook', component: LinkFacebookComponent, canActivate: [AuthGuard, LinkFacebookGuard] },
   { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] ,
     children:[
       { path: '', component: OverviewPlayerComponent },
@@ -94,9 +95,7 @@ const appRoutes: Routes = [
       { path: 'peers', component: PeersPlayerComponent },
       { path: 'totals', component: TotalsPlayerComponent }
     ]
-  },
-  { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
-  { path: 'profile/setting/link-facebook', component: LinkFacebookComponent, canActivate: [AuthGuard, LinkFacebookGuard] }
+  }
 ]
 
 @NgModule({
@@ -123,7 +122,6 @@ const appRoutes: Routes = [
     PerformancesComponent,
     CombatComponent,
     FarmComponent,
-    LogComponent,
     ChatComponent,
     MatchDetailNavComponent,
     ItemDetailComponent,
@@ -137,7 +135,8 @@ const appRoutes: Routes = [
     BenchmarksTableComponent,
     PerformanceTableComponent,
     TotalsPlayerComponent,
-    FarmTableComponent
+    FarmTableComponent,
+    CeiboShare
   ],
   imports: [
     BrowserModule,
