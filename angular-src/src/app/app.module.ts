@@ -63,6 +63,7 @@ import { TotalsPlayerComponent } from './components/group2/profile/totals-player
 import { FarmTableComponent } from './components/group2/match/match-detail/farm/farm-table/farm-table.component';
 
 import { CeiboShare } from 'ng2-social-share';
+import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -153,7 +154,8 @@ const appRoutes: Routes = [
     ChartModule,
     PopoverModule.forRoot(),
     ButtonsModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    SlimLoadingBarModule.forRoot()
   ],
   providers: [
     ConfigService,
