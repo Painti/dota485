@@ -1,3 +1,16 @@
 .navbar{
   z-index: 100;
 }
+
+.open > .dropdown-menu{
+  display: block;
+  left: auto;
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0px;
+}
+
+.dropdown-menu li{
+  padding-left: 15px;
+  padding-right: 15px;
+}
