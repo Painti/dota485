@@ -64,11 +64,13 @@ import { FarmTableComponent } from './components/group2/match/match-detail/farm/
 
 import { CeiboShare } from 'ng2-social-share';
 import { HerostatComponent } from './components/group1/hero/herostat/herostat.component';
+import { HerostatdetailComponent } from './components/group1/hero/herostat/herostatdetail/herostatdetail.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hero', component: HeroComponent },
   { path: 'herostat', component: HerostatComponent },
+  { path: 'herostat/:hero_name', component: HeroDetailComponent },
   { path: 'hero/:hero_name', component: HeroDetailComponent },
   { path: 'item', component: ItemComponent },
   { path: 'item/:item_name', component: ItemDetailComponent },
@@ -142,7 +144,8 @@ const appRoutes: Routes = [
     FarmTableComponent,
     CeiboShare,
     HerostatComponent,
-    HerostatComponent
+    HerostatComponent,
+    HerostatdetailComponent
   ],
   imports: [
     BrowserModule,

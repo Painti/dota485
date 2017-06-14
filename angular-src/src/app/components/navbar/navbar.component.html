@@ -9,13 +9,10 @@
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
         <a class="nav-link text-center" href dropdownToggle (click)="false">Heroes <span class="caret"></span></a>
         <ul *dropdownMenu class="dropdown-menu">
-<<<<<<< HEAD
+
           <li class="nav-item" ><a class="nav-link" [routerLink]="['/hero']">Hero Wiki</a></li>
           <li class="nav-item" ><a class="nav-link" [routerLink]="['/herostat']">Hero Stat</a></li>
-=======
-          <li class="nav-item" ><a class="nav-link" [routerLink]="['/hero']">Heroes Wiki</a></li>
-          <li class="nav-item" ><a class="nav-link" [routerLink]="['/hero']">Heroes Stat</a></li>
->>>>>>> 1e5b115a87038408738919bd559a34d8a2d9a12e
+
         </ul>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
