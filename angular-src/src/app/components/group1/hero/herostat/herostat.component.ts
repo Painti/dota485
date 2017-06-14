@@ -16,14 +16,17 @@ export class HerostatComponent implements OnInit {
     private router:Router
   ) { }
   stat:Array<Object>;
+  stat2:Array<number>;
   order: Object = { name:String, pb: String };
   arrfilter: Array<String>;
 
   sum:number;
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.api.getHeroesStat().subscribe(data => {
         this.stat = data;
+        this.stat2 = [];
         this.sum = 0;
         for (let i = 0; i < this.stat.length; i++) {
           if (this.stat[i]['pro_win']===undefined) {
@@ -46,9 +49,17 @@ export class HerostatComponent implements OnInit {
           else if(this.stat[i]['pro_pick']!==undefined){
             this.sum += this.stat[i]['pro_pick'];
           }
+          if (this.stat[i]['pro_pick']+this.stat[i]['pro_ban']===undefined) {
+            this.stat[i]['pro_pick']+this.stat[i]['pro_ban']==0;
+            this.stat2.push(this.stat[i]['pro_pick']+this.stat[i]['pro_ban'])
+          }
+          else if(this.stat[i]['pro_pick']+this.stat[i]['pro_ban']!==undefined){
+            this.sum += this.stat[i]['pro_pick']+this.stat[i]['pro_ban'];
+            this.stat2.push(this.stat[i]['pro_pick']+this.stat[i]['pro_ban'])
+          }
+          //console.log(this.stat2[i]);
         }
         this.sum = this.sum/10;
-
       },
         err => {
           console.log(err);
