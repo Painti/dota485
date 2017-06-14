@@ -50,6 +50,7 @@ export class OverviewPlayerComponent implements OnInit {
   player_size:Array<Object> ;
   percentage_win:Array<Object> ;
   progress_MP:Array<Object> ;
+  progress_MP_BG:Array<Object> ;
   subscription: Subscription ;
 
   constructor(
@@ -89,6 +90,7 @@ export class OverviewPlayerComponent implements OnInit {
         this.player_size = [] ;
         this.percentage_win = [] ;
         this.progress_MP = [] ;
+        this.progress_MP_BG = [] ;
         var win = 0 ;var tw_damage = 0;var heal = 0;var damage = 0 ;
 
         for(let i = 0 ; i < this.match.length  ;i++){
@@ -228,6 +230,7 @@ export class OverviewPlayerComponent implements OnInit {
         for(let i = 0 ; i < this.peer.length ; i++){
           if(i < 5){
           this.progress_MP[i] = this.peer[i]['with_games'] * 100 / total ;
+          this.progress_MP_BG[i] = this.peer[i]['with_games'] * 100 / total ;
           this.progress_MP[i] = this.progress_MP[i] + '%' ;
           }else break ;
         }
@@ -326,4 +329,24 @@ export class OverviewPlayerComponent implements OnInit {
     return '0%';
   }
 
+  getPercentageWinForBg(type, win: number, total: number) {
+    if (total == 0) {
+      return 0;
+    }
+    win = Math.round(win * 100 / total);
+    if (type == 'Win') {
+      return win ;
+    }
+    return 0;
+  }
+
+  getBgColor(value){
+    if(value < 35){
+      return "bg-danger" ;
+    }else if(value >= 35 && value <= 70){
+      return "bg-warning" ;
+    }else{
+      return "bg-success" ;
+    }
+  }
 }
