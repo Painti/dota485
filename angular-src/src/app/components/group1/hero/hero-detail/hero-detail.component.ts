@@ -59,6 +59,13 @@ export class HeroDetailComponent implements OnInit {
     }
   }
 
+  getName(name){
+    var find = '_';
+    var re = new RegExp(find, 'g');
+    let s = name.replace(re, ' ');
+
+    return s.charAt(0).toUpperCase()+s.slice(1);
+  }
   getSkilImg(hName , sName) {
     var find = ' ';
     var re = new RegExp(find, 'g');

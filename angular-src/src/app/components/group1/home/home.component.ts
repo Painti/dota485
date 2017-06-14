@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
     if(!reg.test(word)){
       this.s_item = [];
       for (let key in this.item) {
-        if(this.item[key].dname.search(word) >= 0){
+        if(this.item[key].dname.search(word) >= 0 && this.basicNotUse(key)=='YES' && this.upgradeNotUse(key)=='YES'){
           let tmp = this.item[key];
           tmp['prop'] = key;
           this.s_item.push(tmp);
@@ -132,5 +132,27 @@ export class HomeComponent implements OnInit {
 
   getImageHero(name){
     return 'http://cdn.dota2.com/apps/dota2/images/heroes/'+name+'_lg.png';
+  }
+
+  gotodetial(name) {
+    this.router.navigate(['/hero', name]);
+  }
+
+  itemDetail(name){
+    this.router.navigate(['/item', name]);
+  }
+
+  upgradeNotUse(name){
+    if(name!=='dagon_2' && name!=='dagon_3' && name!=='dagon_4' && name!=='dagon_5' && name!=='necronomicon_2' && name!=='necronomicon_3' && name!=='diffusal_blade_2' && name!=='travel_boots_2')
+    {
+      return 'YES';
+    }
+  }
+
+  basicNotUse(name){
+    if(name!=='river_painter' && name!=='river_painter2' && name!=='river_painter3' && name!=='river_painter4' && name!=='river_painter5' && name!=='river_painter6' && name!=='river_painter7')
+    {
+      return 'YES';
+    }
   }
 }

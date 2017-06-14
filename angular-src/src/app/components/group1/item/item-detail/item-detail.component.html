@@ -31,13 +31,13 @@
         <td>
           <div class="d-flex flex-row">
             <div *ngFor = "let cmp of detail.components">
-              <span [tooltip]="getNameComponent(cmp)" placement="bottom">
+              <span [tooltip]="getNameComponent(cmp)">
                 <img class="p-1" (click)="itemDetail(cmp)" [src]= "getComponents(cmp)" alt="">
               </span>
             </div>
 
               <div *ngIf="getPrice()=='NO'">
-                <span [tooltip]="getNameComponent('recipe')" placement="bottom">
+                <span [tooltip]="getNameComponent('recipe')">
                   <img class="p-1" [src]= "getComponents('recipe')" alt="">
                 </span>
              </div>
@@ -52,13 +52,13 @@
           <div class="d-flex flex-row">
             <div *ngFor="let upgrade of itemup">
               <div *ngIf="watchUpgrade(upgrade)=='NO'">
-                <span [tooltip]="getNameComponent(upgrade)" placement="bottom">
+                <span [tooltip]="getNameComponent(upgrade)">
                   <img class="p-1" (click)="itemDetail(upgrade)" [src]="getComponents(upgrade)" alt="">
                 </span>
               </div>
 
               <div *ngIf="watchUpgrade(upgrade)=='YES'">
-                <span [tooltip]="getNameComponent(upgrade)" placement="bottom">
+                <span [tooltip]="getNameComponent(upgrade)">
                   <img class="p-1" [src]="getComponents(upgrade)" alt="">
                 </span>
               </div>

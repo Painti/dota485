@@ -63,10 +63,13 @@ import { TotalsPlayerComponent } from './components/group2/profile/totals-player
 import { FarmTableComponent } from './components/group2/match/match-detail/farm/farm-table/farm-table.component';
 
 import { CeiboShare } from 'ng2-social-share';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
+import { HerostatComponent } from './components/group1/hero/herostat/herostat.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hero', component: HeroComponent },
+  { path: 'herostat', component: HerostatComponent },
   { path: 'hero/:hero_name', component: HeroDetailComponent },
   { path: 'item', component: ItemComponent },
   { path: 'item/:item_name', component: ItemDetailComponent },
@@ -138,7 +141,9 @@ const appRoutes: Routes = [
     PerformanceTableComponent,
     TotalsPlayerComponent,
     FarmTableComponent,
-    CeiboShare
+    CeiboShare,
+    HerostatComponent,
+    HerostatComponent
   ],
   imports: [
     BrowserModule,

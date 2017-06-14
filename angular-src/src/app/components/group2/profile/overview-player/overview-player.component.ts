@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/group2/auth.service';
 import { PassJsonService } from '../../../../services/group2/pass-json.service' ;
 import { Subscription }   from 'rxjs/Subscription';
-// import { SlimLoadingBarService} from 'ng2-slim-loading-bar';
+import { SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-overview-player',
