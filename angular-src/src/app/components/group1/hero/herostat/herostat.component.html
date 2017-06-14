@@ -1,0 +1,25 @@
+<table style="width:100%">
+  <tr>
+    <th>HERO</th>
+    <th>PRO P+B%</th>
+    <th>PRO PICK%</th>
+    <th>PRO BAN%</th>
+    <th>PRO WIN%</th>
+  </tr>
+
+  <tr *ngFor="let item of stat">
+    <td>{{item.localized_name}}</td>
+    <td>{{item.pro_ban +item.pro_pick}}</td>
+    <td>{{item.pro_pick}}</td>
+    <td>{{item.pro_ban}}</td>
+    <td>{{(item.pro_win / item.pro_pick)*100}} %</td>
+  </tr>
+
+  <!--
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr> -->
+
+</table>

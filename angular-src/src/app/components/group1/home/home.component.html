@@ -1,6 +1,6 @@
 <div class="d-flex flex-column mb-5">
   <div class="m-3 d-flex justify-content-start" *ngIf="unique && status">
-    <div class="text-success">Online player : {{status}}</div>
+    <div class="text-success">Online players : {{status}}</div>
     <div class="ml-auto">Unique players in last month : {{unique}}</div>
   </div>
   <div class="pad">
@@ -8,7 +8,7 @@
   </div>
   <div *ngIf="item && hero">
     <input type="text" class="form-control"
-      placeholder="Search  for Heroes, Item, Match ID, Player ID"
+      placeholder="Search  for Heroes, Items, Match ID, Player ID"
       [(ngModel)]="key"
       (keyup.enter)="onSearch()">
   </div>
