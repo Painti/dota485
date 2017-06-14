@@ -7,20 +7,20 @@
   <div [collapse]="isCollapsed" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto navbar-left">
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
-        <a class="nav-link text-center" href dropdownToggle (click)="false">Hero <span class="caret"></span></a>
+        <a class="nav-link text-center" href dropdownToggle (click)="false">Heroes <span class="caret"></span></a>
         <ul *dropdownMenu class="dropdown-menu">
-          <li class="nav-item" ><a class="nav-link" [routerLink]="['/hero']">Hero Wiki</a></li>
-          <li class="nav-item" ><a class="nav-link" [routerLink]="['/hero']">Hero Stat</a></li>
+          <li class="nav-item" ><a class="nav-link" [routerLink]="['/hero']">Heroes Wiki</a></li>
+          <li class="nav-item" ><a class="nav-link" [routerLink]="['/hero']">Heroes Stat</a></li>
         </ul>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link text-center" [routerLink]="['/item']">Item</a>
+        <a class="nav-link text-center" [routerLink]="['/item']">Items</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link text-center" [routerLink]="['/ranking']">Ranking</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link text-center" [routerLink]="['/match']">Match</a>
+        <a class="nav-link text-center" [routerLink]="['/match']">Matches</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a class="nav-link text-center" [routerLink]="['/quiz']">Quiz</a>
