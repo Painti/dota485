@@ -12,6 +12,8 @@ import { Subscription }   from 'rxjs/Subscription';
 export class OverviewPlayerComponent implements OnInit {
 
   user:Object ;
+  hero: Array<Object>;
+  hero1: Array<Object>;
   match: Array<Object>;
   score: Object;
   peer: Array<Object>;
@@ -52,6 +54,9 @@ export class OverviewPlayerComponent implements OnInit {
   progress_MP:Array<Object> ;
   progress_MP_BG:Array<Object> ;
   subscription: Subscription ;
+  progress_MP_hero: Array<Object>;
+  progress_winrate_hero: Array<Object>;
+
 
   constructor(
     private authService: AuthService,
@@ -239,6 +244,48 @@ export class OverviewPlayerComponent implements OnInit {
         console.log(err);
         return false;
       });
+
+      var max_MP = 0;
+      var max_winrate = 0;
+
+      this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
+      //this.hero = data ;
+      this.hero1= [];
+      for(let j = 0;j < 5; j++){
+        this.hero1.push(data[j]);
+        var win_rate_hero1 = data[j]['win'] / data[j]['games'] *100 ;
+      if( data[j]['games'] == 0 ){
+          win_rate_hero1 = 0 ;
+        }
+        this.hero1[j]['win_rate'] = win_rate_hero1.toFixed(2);
+        //
+        // if (this.hero1['games'][j] > max_MP){
+        //   max_MP= this.hero['games'][j];
+        // }
+        // if (win_rate_hero1 > max_winrate){
+        //   max_MP= win_rate_hero1;
+        // }
+      }
+
+      // for(let i = 0 ; i < 5 ; i++){
+      //   this.progress_MP_hero[i] = this.hero1[i]['games'] * 100 / max_MP ;
+      //   this.progress_winrate_hero[i] = this.hero1[i]['win_rate'] * 100 / max_winrate ;
+      //   this.progress_MP_hero[i] = this.progress_MP_hero[i] + '%' ;
+      //   this.progress_winrate_hero[i] = this.progress_winrate_hero[i] + '%' ;
+      // }
+
+      // for(let i = 0 ; i < data.length  ;i++){
+      //   var win_rate = data[i]['win'] / data[i]['games'] *100 ;
+      // if( data[i]['games'] == 0 ){
+      //     win_rate = 0 ;
+      //   }
+      //   this.hero[i]['win_rate'] = win_rate.toFixed(2);
+      // }
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
 
   }
 
