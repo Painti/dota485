@@ -19,8 +19,8 @@ td, th {
   margin-bottom: 10px;
 }
 
-.p-1{
-  cursor:pointer;
+img:hover{
+  opacity: 0.5;
 }
 
 .bottom{

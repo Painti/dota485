@@ -132,7 +132,7 @@ export class OverviewPlayerComponent implements OnInit {
             this.best_tw_damage_id = i ;
           }
         }
-        win = win / 20 * 100;
+        win = win / data.length * 100;
         this.kills_avr /= data.length;
         this.deaths_avr /= data.length ;
         this.assists_avr /= data.length ;
