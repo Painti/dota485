@@ -163,14 +163,14 @@
             <td class = "nowrap">
               <span>{{peer[p].with_games}}</span>
               <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar"
+                <div class="progress-bar {{getBgColor(progress_MP_BG[p])}}" role="progressbar"
                   [style.width]="progress_MP[p]"></div>
                 </div>
             </td>
             <td class = "nowrap">
                 <span>{{percentage_win[p]}}%</span>
                 <div class="progress">
-                  <div class="progress-bar bg-success" role="progressbar"
+                  <div class="progress-bar {{getBgColor(getPercentageWinForBg('Win',peer[p].win,peer[p].with_games))}}" role="progressbar"
                     [style.width]="getPercentageWin('Win',peer[p].win,peer[p].with_games)"></div>
                   </div>
             </td>
