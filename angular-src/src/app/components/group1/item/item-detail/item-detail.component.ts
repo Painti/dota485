@@ -78,7 +78,6 @@ itemup:Array<string>;
 
   getDesc(desc:string){
     let des = desc.replace(/<br [/]>/g, " ");
-    
     return des.replace(/[+%]/g, "");
   }
 
