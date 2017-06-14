@@ -3,7 +3,9 @@
 <div style="width:100%" >
   <table class="table-match" cellpadding="0" cellspacing="0" border="0">
     <tr>
-      <th> PLAYER </th>
+      <th><div class = "hoverHelp" tooltip = "Name of player">
+        PLAYER
+      </div></th>
       <th><div class = "hoverHelp" tooltip = "Number of games with this player on the team">
          WITH
       </div></th>
@@ -23,8 +25,8 @@
         XPM WITH
       </div></th>
     </tr>
-    <tbody *ngIf = "peer" >
-      <tr *ngFor = "let p of peer ; let i = index">
+    <tbody *ngIf = "peer bestGpm" >
+      <tr *ngFor = "let p of peer ; let i = index" >
         <td class = "d-flex row-column">
           <div class = "pt-1">
             <img class = "Image" [src] = "p.avatar"/>
@@ -34,23 +36,47 @@
             <span class = "pl-3">{{getTimeAgo(p.last_played)}}</span>
           </div>
           </td>
-          <td>
+          <td class = "nowrap">
             <span>{{p.with_games}}</span>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar"
+                [style.width]="getPercent('with_games' , p.with_games)"></div>
+            </div>
           </td>
           <td>
             <span>{{p.win_percentage}}%</span>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar"
+                [style.width]="getPercentageWin(p.win_percentage)"></div>
+              </div>
           </td>
           <td>
             <span>{{p.against_win}}</span>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar"
+                [style.width]="getPercent('against_games' , p.against_games)"></div>
+              </div>
           </td>
           <td>
             <span>{{p.win_against_percentage}}%</span>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar"
+                [style.width]="getPercentageWin(p.win_against_percentage)"></div>
+              </div>
           </td>
           <td>
             <span>{{p.avr_gpm}}</span>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar"
+                [style.width]="getPercent('avr_gpm' , p.avr_gpm)"></div>
+              </div>
           </td>
           <td>
             <span>{{p.avr_xpm}}</span>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar"
+                [style.width]="getPercent('avr_xpm' , p.avr_xpm)"></div>
+              </div>
           </td>
       </tr>
     </tbody>

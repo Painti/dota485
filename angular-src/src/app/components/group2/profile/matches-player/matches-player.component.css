@@ -33,3 +33,15 @@
   opacity: 0.8;
   cursor: pointer;
 }
+
+.progress {
+  height: 3px;
+  margin-top: 7px;
+  background-color: #444;
+  transition: 5s linear;
+  transition-property: width;
+}
+
+.toolhelpHover:hover{
+  cursor:help ;
+}

@@ -12,3 +12,11 @@
 .hoverHelp:hover{
   cursor:help ;
 }
+
+.progress {
+  height: 3px;
+  margin-top: 7px;
+  background-color: #444;
+  transition: 5s linear;
+  transition-property: width;
+}

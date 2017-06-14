@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/group2/auth.service';
 import { PassJsonService } from '../../../../services/group2/pass-json.service' ;
 import { Subscription }   from 'rxjs/Subscription';
+// import { SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-overview-player',
@@ -46,6 +47,9 @@ export class OverviewPlayerComponent implements OnInit {
   best_heal_id:any ;
   best_tw_damage:any ;
   best_tw_damage_id:any ;
+  player_size:Array<Object> ;
+  percentage_win:Array<Object> ;
+  progress_MP:Array<Object> ;
   subscription: Subscription ;
 
   constructor(
@@ -62,9 +66,17 @@ export class OverviewPlayerComponent implements OnInit {
         return false;
     });
 
+    this.subscription = this.passJsonService.getPeer$.subscribe(peer => {
+      this.peer = peer;
+    },
+      err => {
+        console.log(err);
+        return false;
+    });
 
-      this.subscription = this.passJsonService.getRecentMatch$.subscribe(data => {
-        this.match = data ;
+
+      this.subscription = this.passJsonService.getRecentMatch$.subscribe(match => {
+        this.match = match ;
         this.kills_avr = 0 ; this.deaths_avr = 0 ;this.assists_avr = 0 ;
         this.gold_avr = 0;this.xp_avr = 0 ; this.lh_avr = 0;
         this.damage_avr = 0 ; this.heal_avr = 0;this.tw_damage_avr = 0 ;
@@ -74,9 +86,12 @@ export class OverviewPlayerComponent implements OnInit {
 
         this.wl_recentMatch = [] ;
         this.hero_name = [] ;
+        this.player_size = [] ;
+        this.percentage_win = [] ;
+        this.progress_MP = [] ;
         var win = 0 ;var tw_damage = 0;var heal = 0;var damage = 0 ;
 
-        for(let i = 0 ; i < data.length  ;i++){
+        for(let i = 0 ; i < this.match.length  ;i++){
           this.kills_avr += this.match[i]['kills'] ;
           this.deaths_avr += this.match[i]['deaths'] ;
           this.assists_avr += this.match[i]['assists'] ;
@@ -132,32 +147,32 @@ export class OverviewPlayerComponent implements OnInit {
             this.best_tw_damage_id = i ;
           }
         }
-        win = win / 20 * 100;
-        this.kills_avr /= data.length;
-        this.deaths_avr /= data.length ;
-        this.assists_avr /= data.length ;
-        this.gold_avr /= data.length ;
-        this.xp_avr /= data.length ;
-        this.lh_avr /= data.length ;
-        this.heal_avr /= data.length ;
+        win = win / this.match.length * 100;
+        this.kills_avr /= this.match.length;
+        this.deaths_avr /= this.match.length ;
+        this.assists_avr /= this.match.length ;
+        this.gold_avr /= this.match.length ;
+        this.xp_avr /= this.match.length ;
+        this.lh_avr /= this.match.length ;
+        this.heal_avr /= this.match.length ;
 
         if(this.damage_avr >= 1000){
-          this.damage_avr /= data.length * 1000 ;
+          this.damage_avr /= this.match.length * 1000 ;
           this.damage_avr = this.damage_avr.toFixed(1) ;
           this.damage_avr = this.damage_avr + "K" ;
         }
         else{
-          this.damage_avr /= data.length ;
+          this.damage_avr /= this.match.length ;
           this.damage_avr = this.damage_avr.toFixed(0) ;
         }
 
         if(this.tw_damage_avr >= 1000){
-            this.tw_damage_avr /= data.length * 1000 ;
+            this.tw_damage_avr /= this.match.length * 1000 ;
             this.tw_damage_avr = this.tw_damage_avr.toFixed(1) ;
             this.tw_damage_avr = this.tw_damage_avr + "K" ;
         }
         else {
-          this.tw_damage_avr /= data.length ;
+          this.tw_damage_avr /= this.match.length ;
           this.tw_damage_avr = this.damage_avr.toFixed(0) ;
         }
 
@@ -177,7 +192,7 @@ export class OverviewPlayerComponent implements OnInit {
         }else this.best_tw_damage = tw_damage ;
 
 
-        if(data.length == 0){
+        if(this.match.length == 0){
           this.kills_avr = 0 ;
           this.deaths_avr = 0 ;
           this.assists_avr = 0 ;
@@ -197,6 +212,24 @@ export class OverviewPlayerComponent implements OnInit {
           this.lh_avr = this.lh_avr.toFixed(0) ;
           this.heal_avr = this.heal_avr.toFixed(0) ;
           this.win_rate = win.toFixed(0) ;
+        }
+        let total = 0 ;
+        for(let i = 0 ; i < this.peer.length ; i++){
+          if(i < 5){
+            this.player_size.push(i) ;
+            var percent = this.peer[i]['win'] / this.peer[i]['with_games'] *100 ;
+            this.percentage_win.push(percent.toFixed(2)) ;
+            if(total < this.peer[i]['with_games']){
+              total += this.peer[i]['with_games'] ;
+            }
+          }
+          else break ;
+        }
+        for(let i = 0 ; i < this.peer.length ; i++){
+          if(i < 5){
+          this.progress_MP[i] = this.peer[i]['with_games'] * 100 / total ;
+          this.progress_MP[i] = this.progress_MP[i] + '%' ;
+          }else break ;
         }
       },
       err => {
@@ -262,6 +295,35 @@ export class OverviewPlayerComponent implements OnInit {
     } else {
       return Math.round(elapsed / msPerYear) + ' years ago';
     }
+  }
+
+  getWidthByKDA(type, k: number, d: number, a: number) {
+    let total: number = k + d + a;
+    if (total == 0) {
+      return '0%';
+    }
+    k = Math.round(k * 100 / total);
+    d = Math.round(d * 100 / total);
+    a = 100 - k - d;
+    if (type == 'K') {
+      return k + '%';
+    } else if (type == 'D') {
+      return d + '%';
+    } else if (type == 'A') {
+      return a + '%';
+    }
+    return '0%';
+  }
+
+  getPercentageWin(type, win: number, total: number) {
+    if (total == 0) {
+      return '0%';
+    }
+    win = Math.round(win * 100 / total);
+    if (type == 'Win') {
+      return win + '%';
+    }
+    return '0%';
   }
 
 }
