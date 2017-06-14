@@ -1,8 +1,11 @@
 <div *ngIf="user">
-  <div class="row">
-  <h2>{{user.account_id}}</h2>
-  </div>
-  <div class="row">
+  <h2><span>Display Name : </span>{{user.displayName}}</h2>
+  <h2><span>Steam ID : </span>{{user.id}}</h2>
+  <h2><span>Account ID : </span>{{user.account_id}}</h2>
+  <button class="btn btn-secondary" (click)="gotoSteam(user.id)">
+    Steam Profile
+  </button>
+  <div class="row mt-4 ml-1">
     <span class="mr-2"><i class="fa fa-facebook-square fa-2x"></i></span>
     <button *ngIf="!user.facebook" class="btn btn-sm btn-primary" (click)="onClickLink()">Link Facebook</button>
     <button *ngIf="user.facebook" class="btn btn-success btn-sm disabled">Linked</button>

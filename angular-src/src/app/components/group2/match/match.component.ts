@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
 import { FilterPipe } from '../../../pipes/filter.pipe'
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-match',
@@ -9,7 +10,11 @@ import { FilterPipe } from '../../../pipes/filter.pipe'
 })
 export class MatchComponent implements OnInit {
 
-  constructor(private api: GetApiService) { }
+  constructor(
+    private api: GetApiService,
+    private slimLoadingBarService: SlimLoadingBarService
+  ) { }
+
   pro: Array<Object>;
   high: Array<Object>;
   low: Array<Object>;
@@ -21,8 +26,10 @@ export class MatchComponent implements OnInit {
   state:number;
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.api.getOpendata('proMatches').subscribe(data => {
       this.pro = data;
+      this.slimLoadingBarService.complete();
     },
       err => {
         console.log(err);
@@ -31,6 +38,7 @@ export class MatchComponent implements OnInit {
 
     this.api.getOpendata('publicMatches').subscribe(data => {
       this.high = data;
+      this.slimLoadingBarService.complete();
     },
       err => {
         console.log(err);
@@ -39,6 +47,7 @@ export class MatchComponent implements OnInit {
 
     this.api.getOpendata('publicMatches?low=true').subscribe(data => {
       this.low = data;
+      this.slimLoadingBarService.complete();
     },
       err => {
         console.log(err);
