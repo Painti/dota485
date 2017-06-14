@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { FilterPipe } from '../../../../pipes/filter.pipe';
 
 @Component({
   selector: 'app-herostat',
@@ -15,12 +16,22 @@ export class HerostatComponent implements OnInit {
     private router:Router
   ) { }
   stat:Array<Object>;
-
   sum:number;
+  arrfilter: Array<String>;
+  order: Object = { pro_pb: String, pro_p: String, pro_b: String, pro_w: String };
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.api.getHeroesStat().subscribe(data => {
         this.stat = data;
+        for(let i = 0; i < this.stat.length; i++){
+          for(let j = 0; j < 40; j++){
+            if(this.stat[i][j]===undefined){
+                this.stat[i][j]=0;
+            }
+          }
+
+        }
+
         this.sum = 0;
         for (let i = 0; i < this.stat.length; i++) {
           if (this.stat[i]['pro_pick']===undefined) {
@@ -29,13 +40,21 @@ export class HerostatComponent implements OnInit {
           this.sum += this.stat[i]['pro_pick'];
         }
         this.sum = this.sum/10;
-
       },
         err => {
           console.log(err);
           return false;
         });
     })
+  }
+  initOrder() {
+    this.order = {
+      'pro_pb': 'desc',
+      'pro_p': '',
+      'pro_b': '',
+      'pro_w': ''
+    };
+    this.arrfilter = ['-pro_pb'];
   }
   getImage(hName) {
       return "http://cdn.dota2.com/apps/dota2/images/heroes/" + this.getHeroName(hName) + "_sb.png"
@@ -56,5 +75,23 @@ export class HerostatComponent implements OnInit {
   }
   gotodetial(name) {
     this.router.navigate(['/herostat', name]);
+  }
+
+  switchAsc(prop: string) {
+    let x = this.order[prop];
+    this.order['pro_pb'] = '';
+    this.order['pro_p'] = '';
+    this.order['pro_b'] = '';
+    this.order['pro_w'] = '';
+    if (x == 'asc') {
+      this.order[prop] = 'desc';
+      this.arrfilter = ['-' + prop];
+    } else if (x == 'desc') {
+      this.order[prop] = 'asc';
+      this.arrfilter = ['+' + prop];
+    } else {
+      this.order[prop] = 'asc';
+      this.arrfilter = ['+' + prop];
+    }
   }
 }
