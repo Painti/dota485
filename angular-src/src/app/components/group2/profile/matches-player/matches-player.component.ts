@@ -133,4 +133,59 @@ export class MatchesPlayerComponent implements OnInit {
     return name.charAt(0).toUpperCase()+name.slice(1);
   }
 
+  getWidthByKDA(type, k: number, d: number, a: number) {
+    let total: number = k + d + a;
+    if (total == 0) {
+      return '0%';
+    }
+    k = Math.round(k * 100 / total);
+    d = Math.round(d * 100 / total);
+    a = 100 - k - d;
+    if (type == 'K') {
+      return k + '%';
+    } else if (type == 'D') {
+      return d + '%';
+    } else if (type == 'A') {
+      return a + '%';
+    }
+    return '0%';
+  }
+
+  getTimeAgo(previous: number) {
+    let msPerMinute = 60 * 1000;
+    let msPerHour = msPerMinute * 60;
+    let msPerDay = msPerHour * 24;
+    let msPerMonth = msPerDay * 30;
+    let msPerYear = msPerDay * 365;
+
+    let current = Date.now();
+    let elapsed = current - previous * 1000;
+
+    if (elapsed < msPerMinute) {
+      return Math.round(elapsed / 1000) + ' seconds ago';
+    } else if (elapsed < msPerHour) {
+      return Math.round(elapsed / msPerMinute) + ' minutes ago';
+    } else if (elapsed < msPerDay) {
+      return Math.round(elapsed / msPerHour) + ' hours ago';
+    } else if (elapsed < msPerMonth) {
+      return Math.round(elapsed / msPerDay) + ' days ago';
+    } else if (elapsed < msPerYear) {
+      return Math.round(elapsed / msPerMonth) + ' months ago';
+    } else {
+      return Math.round(elapsed / msPerYear) + ' years ago';
+    }
+  }
+
+  getTime(time: number) {
+    let min = Math.floor(time / 60);
+    let sec = time % 60;
+    let sec_str: String;
+    if (sec < 10) {
+      sec_str = '0' + sec;
+    } else {
+      sec_str = '' + sec;
+    }
+    return min + ':' + sec_str;
+  }
+
 }

@@ -1,73 +1,185 @@
-<div class = "py-4">
-  <span style="font-size: 24px;">Averages/Maximums</span>
-  <span class = "gray" style="font-size: 12px  ;">in last 20 matches</span>
+<div class="py-4">
+  <div class = "pb-3">
+  <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+  <span class = "pl-2"style="font-size: 24px;">Averages/Maximums</span>
+  <span class="gray" style="font-size: 12px  ;">in last 20 matches</span>
 </div>
 
-  <div class="d-flex flex-wrap pb-2">
-    <div class = "pr-2 gray"*ngIf = "win_rate" style="font-size: 14px"><span>Winrate</span><p class = "font25 white">{{win_rate}} %</p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray" *ngIf = "kills_avr" style="font-size: 14px"><span>KILLS</span><p class = "font25 green">{{kills_avr}}<span class = "pl-1 font12 gray">{{best_kill}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_kill_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray"  *ngIf = "deaths_avr" style="font-size: 14px"><span>DEATHS</span><p class = "font25 red">{{deaths_avr}}<span class = "pl-1 font12 gray">{{best_deaths}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_deaths_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray" *ngIf = "assists_avr" style="font-size: 14px"><span>ASSISTS</span><p class = "font25 white">{{assists_avr}}<span class = "pl-1 font12 gray">{{best_assits}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_assits_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray" *ngIf = "gold_avr" style="font-size: 14px"><span>GOLD PER MIN</span><p class = "font25 yellow">{{gold_avr}}<span class = "pl-1 font12 gray">{{best_gpm}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_gpm_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray" *ngIf = "xp_avr" style="font-size: 14px"><span>XP PER MIN</span><p class = "font25 white">{{xp_avr}}<span class = "pl-1 font12 gray">{{best_xpm}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_xpm_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray" *ngIf = "lh_avr" style="font-size: 14px"><span>LAST HITS</span><p class = "font25 white">{{lh_avr}}<span class = "pl-1 font12 gray">{{best_lh}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_lh_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray" *ngIf = "damage_avr" style="font-size: 14px"><span>HERO DAMAGE</span><p class = "font25 white">{{damage_avr}}<span class = "pl-1 font12 gray">{{best_damage}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_damage_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray" *ngIf = "heal_avr" style="font-size: 14px"><span>HERO HEALING</span><p class = "font25 white">{{heal_avr}}<span class = "pl-1 font12 gray">{{best_heal}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_heal_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <div class = "pr-2 gray" *ngIf = "tw_damage_avr" style="font-size: 14px"><span>TOWER DAMAGE</span><p class = "font25 white">{{tw_damage_avr}}<span class = "pl-1 font12 gray">{{best_tw_damage}}</span><img class = "pl-1 icon" [src] = "getImageIcon(match[best_tw_damage_id].heroes_name)"/></p></div>
-    &nbsp;&nbsp;&nbsp;&nbsp;
+<div class="d-flex flex-wrap pb-2">
+  <div class="pr-2 gray" *ngIf="win_rate" style="font-size: 14px"><span>Winrate</span>
+    <p class="font25 white">{{win_rate}} %</p>
   </div>
-
-  <div class = "pb-3">
-    <span style="font-size: 24px;">Recent Matches</span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="kills_avr" style="font-size: 14px"><span>KILLS</span>
+    <p class="font25 green">{{kills_avr}}<span class="pl-1 font12 gray">{{best_kill}}</span>
+      <a [routerLink]="['/match/'+match[best_kill_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_kill_id].heroes_name)" />
+    </a>
+  </p>
   </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="deaths_avr" style="font-size: 14px"><span>DEATHS</span>
+    <p class="font25 red">{{deaths_avr}}<span class="pl-1 font12 gray">{{best_deaths}}</span>
+      <a [routerLink]="['/match/'+match[best_deaths_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_deaths_id].heroes_name)" />
+      </a>
+      </p>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="assists_avr" style="font-size: 14px"><span>ASSISTS</span>
+    <p class="font25 white">{{assists_avr}}<span class="pl-1 font12 gray">{{best_assits}}</span>
+      <a [routerLink]="['/match/'+match[best_assits_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_assits_id].heroes_name)" />
+    </a>
+    </p>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="gold_avr" style="font-size: 14px"><span>GOLD PER MIN</span>
+    <p class="font25 yellow">{{gold_avr}}<span class="pl-1 font12 gray">{{best_gpm}}</span>
+      <a [routerLink]="['/match/'+match[best_gpm_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_gpm_id].heroes_name)" />
+    </a>
+    </p>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="xp_avr" style="font-size: 14px"><span>XP PER MIN</span>
+    <p class="font25 white">{{xp_avr}}<span class="pl-1 font12 gray">{{best_xpm}}</span>
+      <a [routerLink]="['/match/'+match[best_xpm_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_xpm_id].heroes_name)" />
+    </a>
+    </p>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="lh_avr" style="font-size: 14px"><span>LAST HITS</span>
+    <p class="font25 white">{{lh_avr}}<span class="pl-1 font12 gray">{{best_lh}}</span>
+      <a [routerLink]="['/match/'+match[best_lh_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_lh_id].heroes_name)" />
+    </a>
+    </p>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="damage_avr" style="font-size: 14px"><span>HERO DAMAGE</span>
+    <p class="font25 white">{{damage_avr}}<span class="pl-1 font12 gray">{{best_damage}}</span>
+      <a [routerLink]="['/match/'+match[best_damage_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_damage_id].heroes_name)" />
+    </a>
+    </p>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="heal_avr" style="font-size: 14px"><span>HERO HEALING</span>
+    <p class="font25 white">{{heal_avr}}<span class="pl-1 font12 gray">{{best_heal}}</span>
+      <a [routerLink]="['/match/'+match[best_heal_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_heal_id].heroes_name)" />
+    </a>
+    </p>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div class="pr-2 gray" *ngIf="tw_damage_avr" style="font-size: 14px"><span>TOWER DAMAGE</span>
+    <p class="font25 white">{{tw_damage_avr}}<span class="pl-1 font12 gray">{{best_tw_damage}}</span>
+      <a [routerLink]="['/match/'+match[best_tw_damage_id].match_id]">
+      <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_tw_damage_id].heroes_name)" />
+    </a>
+    </p>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+</div>
 
-<div style="width:100%" >
-  <table class="table-match" cellpadding="0" cellspacing="0" border="0">
-    <tr>
-      <th> HERO </th>
-      <th> GAME MODE</th>
-      <th> ID </th>
-      <th> RESULT  </th>
-      <th> DURATION </th>
-      <th> K  </th>
-      <th> D  </th>
-      <th> A  </th>
-    </tr>
-    <tbody>
-      <tr *ngFor = "let m of match ; let i = index">
-        <td class="d-flex flex-nowrap">
-          <div class = "pt-1">
-          <a [routerLink]="['/hero/'+m.heroes_name]"><img class = "hoverClickImg pf_hero" [src] = "getImage(m.heroes_name)" alt="{{user.displayName}}" [tooltip] = "getName(m.heroes_name)"></a>
-        </div>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="d-flex flex-column">
-        <a [routerLink]="['/hero/'+m.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);" *ngIf = "hero_name">{{hero_name[i]}}</span></a>
-        <span >{{m.player_team}}</span>
-      </div></td>
-      <td>{{m.game_mode}}</td>
-        <td>
-          <div class = "hoverClick" style="color: rgb(102, 187, 255);">
-          <a [routerLink]="['/match/'+m.match_id]">{{m.match_id}}</a>
-        </div>
-      </td>
-        <td *ngIf = "wl_recentMatch" [className] = "getColor(wl_recentMatch[i])" >{{wl_recentMatch[i]}}</td>
-        <td><div class = "d-flex flex-column">
-          <span class = "pr-5">{{getTime(m.duration)}}</span>
-          <span>{{getTimeAgo(m.start_time)}}</span>
-        </div></td>
-        <td>{{m.kills}}</td>
-        <td>{{m.deaths}}</td>
-        <td>{{m.assists}}</td>
+
+
+<div class = "d-flex row-column flex-wrap" >
+  <div>
+    <div class = "pb-3">
+      <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+    <span class = "pl-2"style="font-size: 24px;">Recent Matches</span>
+  </div>
+    <table class="table-match" cellpadding="0" cellspacing="0" border="0" style= "width:auto">
+      <tr>
+        <th><span class = "toolhelpHover" tooltip="The Hero played by player">HERO</span>  </th>
+        <th><span class = "toolhelpHover" tooltip="The Game Mode of the match">GAME MODE</span> </th>
+        <th><span class = "toolhelpHover" tooltip="The ID of the match">ID</span>  </th>
+        <th><span class = "toolhelpHover" tooltip="Whether the player won or lost">RESULT</span>  </th>
+        <th><span class = "toolhelpHover" tooltip="The length of the match">DURATION</span></th>
+        <th><span class = "toolhelpHover" tooltip="Kills/Deaths/Assists">K / D / A</span></th>
       </tr>
-    </tbody>
-  </table>
+      <tbody>
+        <tr *ngFor="let m of match ; let i = index">
+          <td class="d-flex flex-nowrap">
+            <div class="pt-1">
+              <a [routerLink]="['/hero/'+m.heroes_name]"><img class = "hoverClickImg pf_hero" [src] = "getImage(m.heroes_name)" alt="{{user.displayName}}" [tooltip] = "getName(m.heroes_name)"></a>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="d-flex flex-column">
+              <a [routerLink]="['/hero/'+m.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);" *ngIf = "hero_name">{{hero_name[i]}}</span></a>
+              <span>{{m.player_team}}</span>
+            </div>
+          </td>
+          <td>{{m.game_mode}}</td>
+          <td>
+            <div style="color: rgb(102, 187, 255);">
+              <a [routerLink]="['/match/'+m.match_id]">{{m.match_id}}</a>
+            </div>
+          </td>
+          <td *ngIf="wl_recentMatch" [className]="getColor(wl_recentMatch[i])">{{wl_recentMatch[i]}}</td>
+          <td>
+            <div class="d-flex flex-column">
+              <span class="pr-5">{{getTime(m.duration)}}</span>
+              <span>{{getTimeAgo(m.start_time)}}</span>
+            </div>
+          </td>
+          <td><div class = "nowrap">
+            <span>{{m.kills}} / {{m.deaths}} / {{m.assists}}</span>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar"
+                [style.width]="getWidthByKDA('K',m.kills,m.deaths,m.assists)"></div>
+              <div class="progress-bar bg-danger" role="progressbar"
+                [style.width]="getWidthByKDA('D',m.kills,m.deaths,m.assists)"></div>
+              <div class="progress-bar" role="progressbar"
+                [style.width]="getWidthByKDA('A',m.kills,m.deaths,m.assists)"></div>
+            </div>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class = "pl-4 d-flex flex-column" *ngIf = "peer">
+    <div>
+      <div class = "pb-3">
+        <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+        <span class = "pl-2" style="font-size: 24px;">Players Played With</span>
+      </div>
+      <table class="table-match" cellpadding="0" cellspacing="0" border="0" >
+        <tr>
+          <th><span class = "toolhelpHover" tooltip = "Name of player">PLAYER</span></th>
+          <th><span class = "toolhelpHover" tooltip = "Match played with player">MP</span></th>
+          <th><span class = "toolhelpHover" tooltip = "Win percentage with this player">WIN WITH %</span></th>
+        </tr>
+        <tr *ngFor = "let p of player_size ; let i = index">
+          <td class = "d-flex row-column">
+            <div class = "pt-1">
+              <img class = "Image" [src] = "peer[p].avatar"/>
+            </div>
+            <div class = "d-flex flex-column">
+              <a [routerLink]="['/profile/'+ peer[p].account_id]"><span style = "font-size:15px ;color: rgb(102, 187, 255);" class = "pl-3 hoverClick">{{peer[p].personaname}}</span></a>
+              <span class = "pl-3">{{getTimeAgo(peer[p].last_played)}}</span>
+            </div>
+            </td>
+            <td class = "nowrap">
+              <span>{{peer[p].with_games}}</span>
+              <div class="progress">
+                <div class="progress-bar {{getBgColor(progress_MP_BG[p])}}" role="progressbar"
+                  [style.width]="progress_MP[p]"></div>
+                </div>
+            </td>
+            <td class = "nowrap">
+                <span>{{percentage_win[p]}}%</span>
+                <div class="progress">
+                  <div class="progress-bar {{getBgColor(getPercentageWinForBg('Win',peer[p].win,peer[p].with_games))}}" role="progressbar"
+                    [style.width]="getPercentageWin('Win',peer[p].win,peer[p].with_games)"></div>
+                  </div>
+            </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
