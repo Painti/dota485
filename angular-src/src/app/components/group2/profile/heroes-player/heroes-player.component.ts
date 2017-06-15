@@ -127,6 +127,4 @@ export class HeroesPlayerComponent implements OnInit {
   getValueWithPercentage(value){
     return value + '%' ;
   }
-
-
 }
