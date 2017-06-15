@@ -30,6 +30,7 @@
         <th style="color:rgb(236, 127, 0)">COMPONENTS</th>
         <td>
           <div class="d-flex flex-row">
+            <div  style="color:rgb(236, 127, 0)" *ngIf="itemcom==''">-</div>
             <div *ngFor = "let cmp of detail.components">
               <span [tooltip]="getNameComponent(cmp)">
                 <img class="p-1" (click)="itemDetail(cmp)" [src]= "getComponents(cmp)" alt="">
@@ -50,6 +51,7 @@
         <th style="color:rgba(245, 80, 153, 1)">UPGRADE</th>
         <td>
           <div class="d-flex flex-row">
+            <div style="color:rgba(245, 80, 153, 1)" *ngIf="itemup==''">-</div>
             <div *ngFor="let upgrade of itemup">
               <div *ngIf="watchUpgrade(upgrade)=='NO'">
                 <span [tooltip]="getNameComponent(upgrade)">
@@ -58,8 +60,8 @@
               </div>
 
               <div *ngIf="watchUpgrade(upgrade)=='YES'">
-                <span [tooltip]="getNameComponent(upgrade)">
-                  <img class="p-1" [src]="getComponents(upgrade)" alt="">
+                <span>
+                  <img class="p-2" [src]="getComponents(upgrade)" alt="">
                 </span>
               </div>
             </div>
