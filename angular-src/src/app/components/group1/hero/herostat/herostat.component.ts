@@ -59,11 +59,6 @@ export class HerostatComponent implements OnInit {
     hName = hName.replace("npc_dota_hero_", "");
     return hName;
   }
-  getHeroRealName(hName) {
-    hName = hName.replace("npc_dota_hero_", "");
-    hName = hName.replace("_"," ");
-    return hName.charAt(0).toUpperCase()+hName.slice(1);
-  }
   getClass(num) {
     num *= 100;
     if (num >= 70) {
@@ -81,7 +76,7 @@ export class HerostatComponent implements OnInit {
   initOrder() {
     this.order = {
       'name': 'desc',
-      'pro_pibi': '',
+      'pro_pb': '',
       'pro_pick': '',
       'pro_ban': '',
       'pro_win': '',
@@ -92,7 +87,7 @@ export class HerostatComponent implements OnInit {
   switchAsc(prop: string) {
     let x = this.order[prop];
     this.order['name'] = '';
-    this.order['pro_pibi'] = '';
+    this.order['pro_pb'] = '';
     this.order['pro_pick'] = '';
     this.order['pro_ban'] = '';
     this.order['pro_win'] = '';
