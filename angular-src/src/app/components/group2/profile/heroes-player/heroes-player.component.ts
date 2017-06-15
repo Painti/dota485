@@ -15,6 +15,8 @@ export class HeroesPlayerComponent implements OnInit {
 
   constructor(private passJsonService:PassJsonService) {}
 
+
+
   ngOnInit() {
     this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
     this.hero = data ;
@@ -24,7 +26,7 @@ export class HeroesPlayerComponent implements OnInit {
     let total_against_game = 0;
 
     for(let j = 0;j < data.length; j++){
-      if(j < 15){
+      //if(this.data[j]['last_played'] )
         this.hero1.push(data[j]);
         if(total_game < data[j]['games']){
           total_game = data[j]['games'] ;
@@ -34,11 +36,9 @@ export class HeroesPlayerComponent implements OnInit {
           win_rate_hero = 0 ;
         }
         this.hero1[j]['win_rate'] = win_rate_hero.toFixed(2);
-      }else break ;
     }
 
     for(let j = 0;j < data.length; j++){
-      if(j < 15){
         this.hero1.push(data[j]);
         if(total_with_game < data[j]['with_games']){
           total_with_game = data[j]['with_games'] ;
@@ -48,11 +48,9 @@ export class HeroesPlayerComponent implements OnInit {
           with_win_rate_hero = 0 ;
         }
         this.hero1[j]['with_win_rate'] = with_win_rate_hero.toFixed(2);
-      }else break ;
     }
 
     for(let j = 0;j < data.length; j++){
-      if(j < 15){
         this.hero1.push(data[j]);
         if(total_against_game < data[j]['against_games']){
           total_against_game = data[j]['against_games'] ;
@@ -62,47 +60,22 @@ export class HeroesPlayerComponent implements OnInit {
           against_win_rate_hero1 = 0 ;
         }
         this.hero1[j]['against_win_rate'] = against_win_rate_hero1.toFixed(2);
-      }else break ;
     }
 
     for(let i = 0;i < data.length; i++){
-      if(i < 15){
         let game = data[i]['games'] * 100 / total_game ;
         this.hero1[i]['gamePercentage'] = game ;
-      }else break ;
     }
 
     for(let i = 0;i < data.length; i++){
-      if(i < 15){
         let with_games = data[i]['with_games'] * 100 / total_with_game ;
         this.hero1[i]['withPercentage'] = with_games ;
-      }else break ;
     }
 
     for(let i = 0;i < data.length; i++){
-      if(i < 15){
         let against = data[i]['against_games'] * 100 / total_against_game ;
         this.hero1[i]['againstPercentage'] = against ;
-      }else break ;
     }
-
-
-
-    // for(let i = 0 ; i < data.length  ;i++){
-    //   var win_rate = data[i]['win'] / data[i]['games'] *100 ;
-    //   var with_win_rate = data[i]['with_win'] / data[i]['with_games'] *100 ;
-    //   var against_win_rate = data[i]['against_win'] / data[i]['against_games'] *100 ;
-    //   if( data[i]['against_games'] == 0 ){
-    //     against_win_rate = 0 ;
-    //   } else if( data[i]['with_games'] == 0 ){
-    //     with_win_rate = 0 ;
-    //   } else if( data[i]['games'] == 0 ){
-    //     win_rate = 0 ;
-    //   }
-    //   this.hero[i]['win_rate'] = win_rate.toFixed(2);
-    //   this.hero[i]['with_win_rate'] = with_win_rate.toFixed(2);
-    //   this.hero[i]['against_win_rate'] = against_win_rate.toFixed(2);
-    // }
   },
   err => {
     console.log(err);
