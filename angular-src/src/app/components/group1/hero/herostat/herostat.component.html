@@ -20,20 +20,16 @@
       <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_ban == 'desc'"></i>
     </span></th>
     <th>
-      <span tooltip="Win rate" class="sort" (click)="switchAsc('pro_win')">PRO WIN%
-      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_win == 'asc'"></i>
-      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_win == 'desc'"></i>
+      <span tooltip="Win rate" class="sort" (click)="switchAsc('pro_w')">PRO WIN%
+      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_w == 'asc'"></i>
+      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_w == 'desc'"></i>
       </span></th>
   </tr>
 
 
   <tr *ngFor="let item of stat  | filter : arrfilter; let i = index">
     <td>
-<<<<<<< HEAD
       <img style="cursor:pointer" (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
-=======
-      <img (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
->>>>>>> fed7cc49810901ff1e5cb7d590d6825cd25e4066
       <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{getHeroRealName(item?.name)}}</span></td>
 
     <td>{{((item.pro_pb)/sum)*100 | number : '1.2-2'}}%
@@ -60,11 +56,11 @@
       </div>
     </td>
 
-    <td>{{(item.pro_win)*100 | number : '1.2-2'}}%
+    <td>{{(item.pro_w)*100 | number : '1.2-2'}}% ({{item.pro_win}}/{{item.pro_pick}})
       <div class="progress">
         <div class="progress-bar" role="progressbar"
-          [ngClass]="getClass(item.pro_win)"
-          [style.width]="(item.pro_win)*100 +'%'"></div>
+          [ngClass]="getClass(item.pro_w)"
+          [style.width]="(item.pro_w)*100 +'%'"></div>
       </div>
     </td>
 
