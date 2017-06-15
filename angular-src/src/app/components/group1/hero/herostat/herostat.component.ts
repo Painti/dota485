@@ -16,28 +16,48 @@ export class HerostatComponent implements OnInit {
     private router:Router
   ) { }
   stat:Array<Object>;
-  sum:number;
+  stat2:Array<number>;
+  order: Object = { name:String, pb: String };
   arrfilter: Array<String>;
-  order: Object = { pro_pb: String, pro_p: String, pro_b: String, pro_w: String };
+
+  sum:number;
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.api.getHeroesStat().subscribe(data => {
         this.stat = data;
-        for(let i = 0; i < this.stat.length; i++){
-          for(let j = 0; j < 40; j++){
-            if(this.stat[i][j]===undefined){
-                this.stat[i][j]=0;
-            }
-          }
-
-        }
-
+        this.stat2 = [];
         this.sum = 0;
         for (let i = 0; i < this.stat.length; i++) {
+          if (this.stat[i]['pro_win']===undefined) {
+            this.stat[i]['pro_win']=0;
+          }
+          else if(this.stat[i]['pro_win']!==undefined){
+            this.sum += this.stat[i]['pro_win'];
+          }
+
+          if (this.stat[i]['pro_ban']===undefined) {
+            this.stat[i]['pro_ban']=0;
+          }
+          else if(this.stat[i]['pro_ban']!==undefined){
+            this.sum += this.stat[i]['pro_ban'];
+          }
+
           if (this.stat[i]['pro_pick']===undefined) {
             this.stat[i]['pro_pick']=0;
           }
-          this.sum += this.stat[i]['pro_pick'];
+          else if(this.stat[i]['pro_pick']!==undefined){
+            this.sum += this.stat[i]['pro_pick'];
+          }
+          if (this.stat[i]['pro_pick']+this.stat[i]['pro_ban']===undefined) {
+            this.stat[i]['pro_pick']+this.stat[i]['pro_ban']==0;
+            this.stat2.push(this.stat[i]['pro_pick']+this.stat[i]['pro_ban'])
+          }
+          else if(this.stat[i]['pro_pick']+this.stat[i]['pro_ban']!==undefined){
+            this.sum += this.stat[i]['pro_pick']+this.stat[i]['pro_ban'];
+            this.stat2.push(this.stat[i]['pro_pick']+this.stat[i]['pro_ban'])
+          }
+          //console.log(this.stat2[i]);
         }
         this.sum = this.sum/10;
       },
@@ -46,15 +66,8 @@ export class HerostatComponent implements OnInit {
           return false;
         });
     })
-  }
-  initOrder() {
-    this.order = {
-      'pro_pb': 'desc',
-      'pro_p': '',
-      'pro_b': '',
-      'pro_w': ''
-    };
-    this.arrfilter = ['-pro_pb'];
+
+    this.initOrder();
   }
   getImage(hName) {
       return "http://cdn.dota2.com/apps/dota2/images/heroes/" + this.getHeroName(hName) + "_sb.png"
@@ -74,15 +87,27 @@ export class HerostatComponent implements OnInit {
     }
   }
   gotodetial(name) {
-    this.router.navigate(['/herostat', name]);
+    this.router.navigate(['/hero', name]);
+  }
+
+  initOrder() {
+    this.order = {
+      'name': 'desc',
+      'pro_pb': '',
+      'pro_pick': '',
+      'pro_ban': '',
+      'pro_win': ''
+    };
+    this.arrfilter = ['-name'];
   }
 
   switchAsc(prop: string) {
     let x = this.order[prop];
+    this.order['name'] = '';
     this.order['pro_pb'] = '';
-    this.order['pro_p'] = '';
-    this.order['pro_b'] = '';
-    this.order['pro_w'] = '';
+    this.order['pro_pick'] = '';
+    this.order['pro_ban'] = '';
+    this.order['pro_win'] = '';
     if (x == 'asc') {
       this.order[prop] = 'desc';
       this.arrfilter = ['-' + prop];
