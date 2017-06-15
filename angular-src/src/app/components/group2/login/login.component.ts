@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
       this.msg = '';
       if(data.success){
         this.authService.storeUserData(data.token, data.user);
-        window.location.href = '/profile';
+        window.location.href = '/profile/setting';
       } else {
         this.msg = 'Redirecting to steam';
         window.location.href = 'http://'+this.config.hostname+':'+this.config.port+'/auth/steam';
