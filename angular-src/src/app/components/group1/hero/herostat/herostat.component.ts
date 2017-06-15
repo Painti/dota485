@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FilterPipe } from '../../../../pipes/filter.pipe';
-
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 @Component({
   selector: 'app-herostat',
   templateUrl: './herostat.component.html',
@@ -13,7 +13,8 @@ export class HerostatComponent implements OnInit {
   constructor(
     private api: GetApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private slimLoadingBarService: SlimLoadingBarService
   ) { }
   stat: Array<Object>;
   stat2: Array<number>;
@@ -23,6 +24,7 @@ export class HerostatComponent implements OnInit {
   sum: number;
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.route.params.subscribe(params => {
       this.api.getHeroesStat().subscribe(data => {
         this.stat = data;
@@ -43,6 +45,7 @@ export class HerostatComponent implements OnInit {
           }
         }
         this.sum = this.sum / 10;
+        this.slimLoadingBarService.complete();
       },
         err => {
           console.log(err);
@@ -61,8 +64,10 @@ export class HerostatComponent implements OnInit {
   }
   getHeroRealName(hName) {
     hName = hName.replace("npc_dota_hero_", "");
-    hName = hName.replace("_"," ");
-    return hName.charAt(0).toUpperCase()+hName.slice(1);
+    var find = '_';
+    var re = new RegExp(find, 'g');
+    let s = hName.replace(re, ' ');
+    return s.charAt(0).toUpperCase()+s.slice(1);
   }
   getClass(num) {
     num *= 100;

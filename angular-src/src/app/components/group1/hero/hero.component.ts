@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
@@ -12,12 +12,16 @@ export class HeroComponent implements OnInit {
   constructor(
     private api: GetApiService,
     private route: ActivatedRoute,
-    private router:Router) { }
+    private router:Router,
+    private slimLoadingBarService: SlimLoadingBarService
+  ) { }
   heros: Object
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.api.getHeroesList().subscribe(data => {
       this.heros = data["herodata"];
+      this.slimLoadingBarService.complete();
     },
       err => {
         console.log(err);
@@ -33,7 +37,9 @@ export class HeroComponent implements OnInit {
     this.router.navigate(['/hero', name]);
   }
   getName(name){
-    name = name.replace("_"," ");
-    return name.charAt(0).toUpperCase()+name.slice(1);
+    var find = '_';
+    var re = new RegExp(find, 'g');
+    let s = name.replace(re, ' ');
+    return s.charAt(0).toUpperCase()+s.slice(1);
   }
 }
