@@ -4,7 +4,7 @@
 </div>
 
 <div *ngIf = "hero" style="width:100%" >
-<table class="table-match" cellpadding="0" cellspacing="0" border="0">
+<table class="table-match" cellpadding="0" cellspacing="0" border="0" *ngIf = hero1>
   <tr>
     <th><div class = "hoverHelp"tooltip="The Hero played by player">
       HERO
@@ -39,12 +39,48 @@
     <a [routerLink]="['/herostat/'+h.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);">{{getName(h.heroes_name)}}</span></a>
       <span>{{getTimeAgo(h.last_played)}}</span>
     </div></td>
-    <td>{{h.games}}</td>
-    <td>{{h.win_rate}}</td>
-    <td>{{h.with_games}}</td>
-    <td>{{h.with_win_rate}}</td>
-    <td>{{h.against_games}}</td>
-    <td>{{h.against_win_rate}}</td>
+    <td class = "nowrap">
+      <span>{{h.games}}</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.gamePercentage)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.gamePercentage)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.win_rate}}%</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.win_rate)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.win_rate)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.with_games}}</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.withPercentage)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.withPercentage)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.with_win_rate}}%</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.with_win_rate)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.with_win_rate)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.against_games}}</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.againstPercentage)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.againstPercentage)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.against_win_rate}}}%</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.against_win_rate)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.against_win_rate)"></div>
+        </div>
+    </td>
     </tr>
   </tbody>
 </table>

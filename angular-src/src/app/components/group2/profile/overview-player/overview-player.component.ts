@@ -54,8 +54,7 @@ export class OverviewPlayerComponent implements OnInit {
   progress_MP:Array<Object> ;
   progress_MP_BG:Array<Object> ;
   subscription: Subscription ;
-  progress_MP_hero: Array<Object>;
-  progress_winrate_hero: Array<Object>;
+
 
 
   constructor(
@@ -245,11 +244,8 @@ export class OverviewPlayerComponent implements OnInit {
         return false;
       });
 
-      var max_MP = 0;
-      var max_winrate = 0;
 
       this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
-      this.hero = data ;
       this.hero1= [];
       let total = 0;
       for(let j = 0;j < data.length; j++){
@@ -258,11 +254,11 @@ export class OverviewPlayerComponent implements OnInit {
           if(total < data[j]['games']){
             total = data[j]['games'] ;
           }
-          var win_rate_hero1 = data[j]['win'] / data[j]['games'] *100 ;
+          var win_rate_hero = data[j]['win'] / data[j]['games'] *100 ;
         if( data[j]['games'] == 0 ){
-            win_rate_hero1 = 0 ;
+            win_rate_hero = 0 ;
           }
-          this.hero1[j]['win_rate'] = win_rate_hero1.toFixed(2);
+          this.hero1[j]['win_rate'] = win_rate_hero.toFixed(2);
         }else break ;
       }
 
