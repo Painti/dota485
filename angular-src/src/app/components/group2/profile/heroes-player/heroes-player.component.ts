@@ -16,8 +16,7 @@ export class HeroesPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
-;
-    this.hero= [];
+    this.hero = [];
     let total_game = 0;
     let total_with_game = 0;
     let total_against_game = 0;
@@ -35,9 +34,7 @@ export class HeroesPlayerComponent implements OnInit {
     }
 
     for(let j = 0;j < data.length; j++){
-
         this.hero.push(data[j]);
-
         if(total_with_game < data[j]['with_games']){
           total_with_game = data[j]['with_games'] ;
         }
@@ -114,7 +111,7 @@ export class HeroesPlayerComponent implements OnInit {
       } else {
         return Math.round(elapsed / msPerYear) + ' years ago';
       }
-    }  
+    }
   }
 
   getBgColor(value){
