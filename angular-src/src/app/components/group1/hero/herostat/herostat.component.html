@@ -1,6 +1,6 @@
 <table class="table-match" style="width:100%">
   <h1>Heroes Stat</h1>
-  <p>{{sum}} Matchs in 30 Days</p>
+  <p><i style="color:WHITE"class="fa fa-bar-chart" aria-hidden="true"></i> {{sum}} Matchs in 30 Days</p>
   <tr>
     <th><span tooltip="Hero name" class="sort" (click)="switchAsc('name')">HERO
       <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.name == 'asc'"></i>
@@ -32,7 +32,7 @@
       <img style="cursor:pointer" (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
       <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{getHeroRealName(item?.name)}}</span></td>
 
-    <td>{{((item.pro_pb)/sum)*100 | number : '1.2-2'}}%
+    <td>{{((item.pro_pb)/sum)*100 | number : '1.2-2'}}% ({{item.pro_pick + item.pro_ban}})
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass(((item?.pro_ban +item?.pro_pick)/sum))"
@@ -40,14 +40,14 @@
       </div>
     </td>
 
-    <td>{{getSum(item?.pro_pick,sum) | number : '1.2-2'}}%
+    <td>{{getSum(item?.pro_pick,sum) | number : '1.2-2'}}% ({{item.pro_pick}})
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass((item?.pro_pick /  sum))"
           [style.width]="(item?.pro_pick /  sum)*100+'%'"></div>
       </div>
     </td>
-    <td>{{getSum(item?.pro_ban,sum) | number : '1.2-2'}}%
+    <td>{{getSum(item?.pro_ban,sum) | number : '1.2-2'}}% ({{item.pro_ban}})
 
       <div class="progress">
         <div class="progress-bar" role="progressbar"
@@ -56,7 +56,7 @@
       </div>
     </td>
 
-    <td>{{(item.pro_w)*100 | number : '1.2-2'}}% ({{item.pro_win}}/{{item.pro_pick}})
+    <td>{{(item.pro_w)*100 | number : '1.2-2'}}% ({{item.pro_win}})
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass(item.pro_w)"

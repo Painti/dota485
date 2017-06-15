@@ -120,6 +120,7 @@ export class HerostatComponent implements OnInit {
       this.arrfilter = ['+' + prop];
     }
   }
+
   getSum(x, y) {
     x = parseInt(x);
     y = parseInt(y);

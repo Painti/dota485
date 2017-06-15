@@ -11,12 +11,14 @@ export class HeroesPlayerComponent implements OnInit {
 
   subscription: Subscription ;
   hero: Array<Object>;
+  show_hero: Array<Object>;
 
   constructor(private passJsonService:PassJsonService) {}
 
   ngOnInit() {
     this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
     this.hero = [];
+    this.show_hero = [];
     let total_game = 0;
     let total_with_game = 0;
     let total_against_game = 0;
@@ -70,6 +72,10 @@ export class HeroesPlayerComponent implements OnInit {
     for(let i = 0;i < data.length; i++){
         let against = data[i]['against_games'] * 100 / total_against_game ;
         this.hero[i]['againstPercentage'] = against ;
+    }
+
+    for(let k = 0;k < 20; k++){
+      this.show_hero.push(this.hero[k]);
     }
   },
   err => {
