@@ -11,21 +11,19 @@ export class HeroesPlayerComponent implements OnInit {
 
   subscription: Subscription ;
   hero: Array<Object>;
-  hero1: Array<Object>;
 
   constructor(private passJsonService:PassJsonService) {}
 
   ngOnInit() {
     this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
-    this.hero = data ;
-    this.hero1= [];
+;
+    this.hero= [];
     let total_game = 0;
     let total_with_game = 0;
     let total_against_game = 0;
 
     for(let j = 0;j < data.length; j++){
-      if(j < 15){
-        this.hero1.push(data[j]);
+        this.hero.push(data[j]);
         if(total_game < data[j]['games']){
           total_game = data[j]['games'] ;
         }
@@ -33,13 +31,13 @@ export class HeroesPlayerComponent implements OnInit {
       if( data[j]['games'] == 0 ){
           win_rate_hero = 0 ;
         }
-        this.hero1[j]['win_rate'] = win_rate_hero.toFixed(2);
-      }else break ;
+        this.hero[j]['win_rate'] = win_rate_hero.toFixed(2);
     }
 
     for(let j = 0;j < data.length; j++){
-      if(j < 15){
-        this.hero1.push(data[j]);
+
+        this.hero.push(data[j]);
+
         if(total_with_game < data[j]['with_games']){
           total_with_game = data[j]['with_games'] ;
         }
@@ -47,62 +45,35 @@ export class HeroesPlayerComponent implements OnInit {
       if( data[j]['with_games'] == 0 ){
           with_win_rate_hero = 0 ;
         }
-        this.hero1[j]['with_win_rate'] = with_win_rate_hero.toFixed(2);
-      }else break ;
+        this.hero[j]['with_win_rate'] = with_win_rate_hero.toFixed(2);
     }
 
     for(let j = 0;j < data.length; j++){
-      if(j < 15){
-        this.hero1.push(data[j]);
+        this.hero.push(data[j]);
         if(total_against_game < data[j]['against_games']){
           total_against_game = data[j]['against_games'] ;
         }
-        var against_win_rate_hero1 = data[j]['against_win'] / data[j]['against_games'] *100 ;
+        var against_win_rate_hero = data[j]['against_win'] / data[j]['against_games'] *100 ;
       if( data[j]['against_games'] == 0 ){
-          against_win_rate_hero1 = 0 ;
+          against_win_rate_hero = 0 ;
         }
-        this.hero1[j]['against_win_rate'] = against_win_rate_hero1.toFixed(2);
-      }else break ;
+        this.hero[j]['against_win_rate'] = against_win_rate_hero.toFixed(2);
     }
 
     for(let i = 0;i < data.length; i++){
-      if(i < 15){
         let game = data[i]['games'] * 100 / total_game ;
-        this.hero1[i]['gamePercentage'] = game ;
-      }else break ;
+        this.hero[i]['gamePercentage'] = game ;
     }
 
     for(let i = 0;i < data.length; i++){
-      if(i < 15){
         let with_games = data[i]['with_games'] * 100 / total_with_game ;
-        this.hero1[i]['withPercentage'] = with_games ;
-      }else break ;
+        this.hero[i]['withPercentage'] = with_games ;
     }
 
     for(let i = 0;i < data.length; i++){
-      if(i < 15){
         let against = data[i]['against_games'] * 100 / total_against_game ;
-        this.hero1[i]['againstPercentage'] = against ;
-      }else break ;
+        this.hero[i]['againstPercentage'] = against ;
     }
-
-
-
-    // for(let i = 0 ; i < data.length  ;i++){
-    //   var win_rate = data[i]['win'] / data[i]['games'] *100 ;
-    //   var with_win_rate = data[i]['with_win'] / data[i]['with_games'] *100 ;
-    //   var against_win_rate = data[i]['against_win'] / data[i]['against_games'] *100 ;
-    //   if( data[i]['against_games'] == 0 ){
-    //     against_win_rate = 0 ;
-    //   } else if( data[i]['with_games'] == 0 ){
-    //     with_win_rate = 0 ;
-    //   } else if( data[i]['games'] == 0 ){
-    //     win_rate = 0 ;
-    //   }
-    //   this.hero[i]['win_rate'] = win_rate.toFixed(2);
-    //   this.hero[i]['with_win_rate'] = with_win_rate.toFixed(2);
-    //   this.hero[i]['against_win_rate'] = against_win_rate.toFixed(2);
-    // }
   },
   err => {
     console.log(err);
@@ -129,19 +100,21 @@ export class HeroesPlayerComponent implements OnInit {
     let current = Date.now();
     let elapsed = current - previous * 1000;
 
-    if (elapsed < msPerMinute) {
-      return Math.round(elapsed / 1000) + ' seconds ago';
-    } else if (elapsed < msPerHour) {
-      return Math.round(elapsed / msPerMinute) + ' minutes ago';
-    } else if (elapsed < msPerDay) {
-      return Math.round(elapsed / msPerHour) + ' hours ago';
-    } else if (elapsed < msPerMonth) {
-      return Math.round(elapsed / msPerDay) + ' days ago';
-    } else if (elapsed < msPerYear) {
-      return Math.round(elapsed / msPerMonth) + ' months ago';
-    } else {
-      return Math.round(elapsed / msPerYear) + ' years ago';
-    }
+    if(previous != 0){
+      if (elapsed < msPerMinute) {
+        return Math.round(elapsed / 1000) + ' seconds ago';
+      } else if (elapsed < msPerHour) {
+        return Math.round(elapsed / msPerMinute) + ' minutes ago';
+      } else if (elapsed < msPerDay) {
+        return Math.round(elapsed / msPerHour) + ' hours ago';
+      } else if (elapsed < msPerMonth) {
+        return Math.round(elapsed / msPerDay) + ' days ago';
+      } else if (elapsed < msPerYear) {
+        return Math.round(elapsed / msPerMonth) + ' months ago';
+      } else {
+        return Math.round(elapsed / msPerYear) + ' years ago';
+      }
+    }  
   }
 
   getBgColor(value){

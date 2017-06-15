@@ -9,32 +9,29 @@
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
         <a class="nav-link text-center" href dropdownToggle (click)="false">Heroes <i class="fa fa-caret-down" aria-hidden="true"></i></a>
         <ul *dropdownMenu class="dropdown-menu">
-
-          <li class="nav-item" ><a class="nav-link" [routerLink]="['/hero']">Heroes Wiki</a></li>
-          <li class="nav-item" ><a class="nav-link" [routerLink]="['/herostat']">Heroes Stat</a></li>
-
-
+          <li class="nav-item"><a class="nav-link text-center" [routerLink]="['/hero']">Heroes Wiki</a></li>
+          <li class="nav-item"><a class="nav-link text-center" [routerLink]="['/herostat']">Heroes Stat</a></li>
         </ul>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="isCollapsed = true">
         <a class="nav-link text-center" [routerLink]="['/item']">Items</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="isCollapsed = true">
         <a class="nav-link text-center" [routerLink]="['/ranking']">Ranking</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="isCollapsed = true">
         <a class="nav-link text-center" [routerLink]="['/match']">Matches</a>
       </li>
     </ul>
     <hr class="hidden-md-up" style="border-top: 1px solid #fff; width: 100%;">
-    <ul class="navbar-nav navbar-right">
+    <ul class="navbar-nav navbar-right" (click)="isCollapsed = true">
       <li class="nav-item" *ngIf="!authService.loggedIn()">
         <a class="navbar-brand text-center" [routerLink]="['/login']"><img src="assets/images/sits.png" alt="Steam LogIn" width="80px" height="30px"></a>
       </li>
       <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="veiw profile" placement="bottom">
         <a class="nav-link text-center" [routerLink]="['/profile/'+id]"><i class="fa fa-user-circle fa-lg"></i><span *ngIf="name"> {{name}}</span></a>
       </li>
-      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="setting" placement="bottom" (mouseenter)="mouseOvered=true" (mouseleave) ="mouseOvered=false">
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" tooltip="setting" placement="bottom" (mouseenter)="mouseOvered=true" (mouseleave)="mouseOvered=false">
         <a class="nav-link text-center" [routerLink]="['/profile/setting']"><i [class.fa-spin]="mouseOvered" class="fa fa-cog fa-lg"></i><span class="hidden-md-up"> Setting</span></a>
       </li>
       <li class="nav-item" *ngIf="authService.loggedIn()" tooltip="Log out" placement="bottom">

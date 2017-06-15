@@ -4,7 +4,7 @@
 </div>
 
 <div *ngIf = "hero" style="width:100%" >
-<table class="table-match" cellpadding="0" cellspacing="0" border="0" *ngIf = hero1>
+<table class="table-match" cellpadding="0" cellspacing="0" border="0">
   <tr>
     <th><div class = "hoverHelp"tooltip="The Hero played by player">
       HERO
@@ -75,7 +75,7 @@
         </div>
     </td>
     <td class = "nowrap">
-      <span>{{h.against_win_rate}}}%</span>
+      <span>{{h.against_win_rate}}%</span>
       <div class="progress">
         <div class="progress-bar {{getBgColor(h.against_win_rate)}}" role="progressbar"
           [style.width]="getValueWithPercentage(h.against_win_rate)"></div>
