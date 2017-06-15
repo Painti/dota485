@@ -13,7 +13,6 @@ export class OverviewPlayerComponent implements OnInit {
 
   user:Object ;
   hero: Array<Object>;
-  hero1: Array<Object>;
   match: Array<Object>;
   score: Object;
   peer: Array<Object>;
@@ -54,8 +53,7 @@ export class OverviewPlayerComponent implements OnInit {
   progress_MP:Array<Object> ;
   progress_MP_BG:Array<Object> ;
   subscription: Subscription ;
-  progress_MP_hero: Array<Object>;
-  progress_winrate_hero: Array<Object>;
+
 
 
   constructor(
@@ -250,31 +248,28 @@ export class OverviewPlayerComponent implements OnInit {
 
 
 
-      var max_MP = 0;
-      var max_winrate = 0;
 
       this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
-      this.hero = data ;
-      this.hero1= [];
+      this.hero = [];
       let total = 0;
       for(let j = 0;j < data.length; j++){
         if(j < 5){
-          this.hero1.push(data[j]);
+          this.hero.push(data[j]);
           if(total < data[j]['games']){
             total = data[j]['games'] ;
           }
-          var win_rate_hero1 = data[j]['win'] / data[j]['games'] *100 ;
+          var win_rate_hero = data[j]['win'] / data[j]['games'] *100 ;
         if( data[j]['games'] == 0 ){
-            win_rate_hero1 = 0 ;
+            win_rate_hero = 0 ;
           }
-          this.hero1[j]['win_rate'] = win_rate_hero1.toFixed(2);
+          this.hero[j]['win_rate'] = win_rate_hero.toFixed(2);
         }else break ;
       }
 
       for(let i = 0;i < data.length; i++){
         if(i < 5){
           let game = data[i]['games'] * 100 / total ;
-          this.hero1[i]['gamePercentage'] = game ;
+          this.hero[i]['gamePercentage'] = game ;
         }else break ;
       }
 

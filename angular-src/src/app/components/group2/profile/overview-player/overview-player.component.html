@@ -193,8 +193,7 @@
           <th><span class = "toolhelpHover" tooltip = "Match played with hero">MP</span></th>
           <th><span class = "toolhelpHover" tooltip = "Win percentage with this hero">WIN %</span></th>
         </tr>
-        <tr *ngFor = "let h of hero1 ; let i = index">
-
+        <tr *ngFor = "let h of hero ; let i = index">
           <td class="d-flex flex-nowrap">
             <div class = "pt-2">
             <a [routerLink]="['/herostat/'+h.heroes_name]"><img class = "hoverClickImg pf_hero" [src] = "getImage(h.heroes_name)" [tooltip] = "getName(h.heroes_name)"></a>

@@ -2,130 +2,136 @@
 
 <nav>
   <ul>
-      <li [className]="tabs[0]" (click)="onTab(0)">Tournament</li>
-      <li [className]="tabs[1]" (click)="onTab(1)">High MMR</li>
-      <li [className]="tabs[2]" (click)="onTab(2)">Low MMR</li>
+    <li [className]="tabs[0]" (click)="onTab(0)">Tournament</li>
+    <li [className]="tabs[1]" (click)="onTab(1)">High MMR</li>
+    <li [className]="tabs[2]" (click)="onTab(2)">Low MMR</li>
   </ul>
 </nav>
 
 <div *ngIf="canShow(pro, 0)">
-  <table class="table-match" cellpadding="0" cellspacing="0" border="0">
-    <thead>
-      <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
-        <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('league_name')">league <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.league_name == 'asc'"></i><i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.league_name == 'desc'"></i></span></th>
-        <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
-        <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of pro | filter : arrfilter; let i = index ">
-        <td>
-          <div>
-            <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
-            <span>{{getTimeAgo(item?.start_time)}}</span>
-          </div>
-        </td>
-        <td>{{getTime(item?.duration)}}</td>
-        <td>{{item?.league_name}}</td>
-        <td>
-          <div>
-            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
-            <div>{{getTeamName(item?.radiant_name)}}</div>
-          </div>
-        </td>
-        <td>
-          <div>
-            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
-            <div>{{getTeamName(item?.dire_name)}}</div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-outlet mb-3">
+    <table class="table-match" cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
+          <th>duration</th>
+          <th><span class="sort" (click)="switchAsc('league_name')">league <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.league_name == 'asc'"></i><i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.league_name == 'desc'"></i></span></th>
+          <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
+          <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pro | filter : arrfilter; let i = index ">
+          <td>
+            <div>
+              <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
+              <span>{{getTimeAgo(item?.start_time)}}</span>
+            </div>
+          </td>
+          <td>{{getTime(item?.duration)}}</td>
+          <td>{{item?.league_name}}</td>
+          <td>
+            <div>
+              <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+              <div>{{getTeamName(item?.radiant_name)}}</div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+              <div>{{getTeamName(item?.dire_name)}}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div *ngIf="canShow(high, 1)">
-  <table class="table-match" cellpadding="0" cellspacing="0" border="0">
-    <thead>
-      <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
-        <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.avg_mmr == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.avg_mmr == 'desc'"></i></span></th>
-        <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
+  <div class="table-outlet mb-3">
+    <table class="table-match" cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
+          <th>duration</th>
+          <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.avg_mmr == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.avg_mmr == 'desc'"></i></span></th>
+          <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
           <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of high | filter : arrfilter; let i = index ">
-        <td>
-          <div>
-            <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
-            <span>{{getTimeAgo(item?.start_time)}}</span>
-          </div>
-        </td>
-        <td>{{getTime(item?.duration)}}</td>
-        <td>{{item?.avg_mmr}}</td>
-        <td>
-          <div>
-            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
-            <div class="set-heroes">
-              <img *ngFor="let hero of item?.radiant_team" [src]="getImageHero(hero)" alt="">
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of high | filter : arrfilter; let i = index ">
+          <td>
+            <div>
+              <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
+              <span>{{getTimeAgo(item?.start_time)}}</span>
             </div>
-          </div>
-        </td>
-        <td>
-          <div>
-            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
-            <div class="set-heroes">
-              <img *ngFor="let hero of item?.dire_team" [src]="getImageHero(hero)" alt="">
+          </td>
+          <td>{{getTime(item?.duration)}}</td>
+          <td>{{item?.avg_mmr}}</td>
+          <td>
+            <div>
+              <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+              <div class="set-heroes">
+                <img *ngFor="let hero of item?.radiant_team" [src]="getImageHero(hero)" alt="">
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          </td>
+          <td>
+            <div>
+              <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+              <div class="set-heroes">
+                <img *ngFor="let hero of item?.dire_team" [src]="getImageHero(hero)" alt="">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div *ngIf="canShow(low, 2)">
-  <table class="table-match" cellpadding="0" cellspacing="0" border="0">
-    <thead>
-      <tr>
-        <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
-        <th>duration</th>
-        <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.avg_mmr == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.avg_mmr == 'desc'"></i></span></th>
-        <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
-        <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of low | filter : arrfilter; let i = index ">
-        <td>
-          <div>
-            <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
-            <span>{{getTimeAgo(item?.start_time)}}</span>
-          </div>
-        </td>
-        <td>{{getTime(item?.duration)}}</td>
-        <td>{{item?.avg_mmr}}</td>
-        <td>
-          <div>
-            <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
-            <div class="set-heroes">
-              <img *ngFor="let hero of item?.radiant_team" [src]="getImageHero(hero)" alt="">
+  <div class="table-outlet mb-3">
+    <table class="table-match" cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th><span class="sort" (click)="switchAsc('match_id')">match id <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.match_id == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.match_id == 'desc'"></i></span></th>
+          <th>duration</th>
+          <th><span class="sort" (click)="switchAsc('avg_mmr')">Average MMR <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.avg_mmr == 'asc'"></i><i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.avg_mmr == 'desc'"></i></span></th>
+          <th><img src="assets/images/coin-radiant.png" class="brightness1" alt="Logo" width="20px" /> radiant</th>
+          <th><img src="assets/images/coin-dire.png" class="brightness2" alt="Logo" width="20px" /> dire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of low | filter : arrfilter; let i = index ">
+          <td>
+            <div>
+              <a [routerLink]="['/match/'+item.match_id]">{{item?.match_id}}</a>
+              <span>{{getTimeAgo(item?.start_time)}}</span>
             </div>
-          </div>
-        </td>
-        <td>
-          <div>
-            <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
-            <div class="set-heroes">
-              <img *ngFor="let hero of item?.dire_team" [src]="getImageHero(hero)" alt="">
+          </td>
+          <td>{{getTime(item?.duration)}}</td>
+          <td>{{item?.avg_mmr}}</td>
+          <td>
+            <div>
+              <img [class.hide]="!item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+              <div class="set-heroes">
+                <img *ngFor="let hero of item?.radiant_team" [src]="getImageHero(hero)" alt="">
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          </td>
+          <td>
+            <div>
+              <img [class.hide]="item.radiant_win" class="brightness2" src="assets/images/crown.png" alt="crown" width="30" height="20">
+              <div class="set-heroes">
+                <img *ngFor="let hero of item?.dire_team" [src]="getImageHero(hero)" alt="">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
