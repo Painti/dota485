@@ -17,7 +17,7 @@ export class HerostatComponent implements OnInit {
   ) { }
   stat: Array<Object>;
   stat2: Array<number>;
-  order: Object = { name: String, pro_win: String, pro_pick: String, pro_ban: String, pro_pb: String };
+  order: Object = { name: String, pro_pb: String, pro_win: String, pro_pick: String, pro_ban: String };
   arrfilter: Array<String>;
 
   sum: number;
@@ -41,6 +41,8 @@ export class HerostatComponent implements OnInit {
           else if (this.stat[i]['pro_pick'] !== undefined) {
             this.sum += this.stat[i]['pro_pick'];
           }
+
+          this.stat[i]['pro_pb'] = this.stat[i]['pro_pick'] + this.stat[i]['pro_ban'];
         }
         this.sum = this.sum / 10;
       },
@@ -81,7 +83,7 @@ export class HerostatComponent implements OnInit {
       'pro_ban': '',
       'pro_win': '',
     };
-    this.arrfilter = ['-name'];
+    this.arrfilter = ['+name'];
   }
 
   switchAsc(prop: string) {
