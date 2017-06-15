@@ -62,6 +62,7 @@ export class OverviewPlayerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.subscription = this.passJsonService.getPlayer$.subscribe(player => {
       this.user = player;
     },
@@ -246,38 +247,35 @@ export class OverviewPlayerComponent implements OnInit {
         return false;
     });
 
+    this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
+    this.hero = [];
+    let total = 0;
+    for(let j = 0;j < data.length; j++){
+      if(j < 5){
+        this.hero.push(data[j]);
+        if(total < data[j]['games']){
+          total = data[j]['games'] ;
+        }
+        var win_rate_hero = data[j]['win'] / data[j]['games'] *100 ;
+      if( data[j]['games'] == 0 ){
+          win_rate_hero = 0 ;
+        }
+        this.hero[j]['win_rate'] = win_rate_hero.toFixed(2);
+      }else break ;
+    }
 
+    for(let i = 0;i < data.length; i++){
+      if(i < 5){
+        let game = data[i]['games'] * 100 / total ;
+        this.hero[i]['gamePercentage'] = game ;
+      }else break ;
+    }
 
-
-      this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
-      this.hero = [];
-      let total = 0;
-      for(let j = 0;j < data.length; j++){
-        if(j < 5){
-          this.hero.push(data[j]);
-          if(total < data[j]['games']){
-            total = data[j]['games'] ;
-          }
-          var win_rate_hero = data[j]['win'] / data[j]['games'] *100 ;
-        if( data[j]['games'] == 0 ){
-            win_rate_hero = 0 ;
-          }
-          this.hero[j]['win_rate'] = win_rate_hero.toFixed(2);
-        }else break ;
-      }
-
-      for(let i = 0;i < data.length; i++){
-        if(i < 5){
-          let game = data[i]['games'] * 100 / total ;
-          this.hero[i]['gamePercentage'] = game ;
-        }else break ;
-      }
-
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
+  },
+  err => {
+    console.log(err);
+    return false;
+  });
 
   }
 
