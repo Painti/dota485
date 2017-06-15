@@ -43,6 +43,7 @@ export class HerostatComponent implements OnInit {
           else if (this.stat[i]['pro_pick'] !== undefined) {
             this.sum += this.stat[i]['pro_pick'];
           }
+          this.stat[i]['pro_pb'] = this.stat[i]['pro_pick']+this.stat[i]['pro_ban'] ;
         }
         this.sum = this.sum / 10;
         this.slimLoadingBarService.complete();
