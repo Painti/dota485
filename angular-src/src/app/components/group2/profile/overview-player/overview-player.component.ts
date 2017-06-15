@@ -206,15 +206,31 @@ export class OverviewPlayerComponent implements OnInit {
           this.tw_damage_avr = 0 ;
           this.win_rate = 0 ;
         }else{
-          this.kills_avr = this.kills_avr.toFixed(0) ;
-          this.deaths_avr = this.deaths_avr.toFixed(0) ;
-          this.assists_avr = this.assists_avr.toFixed(0) ;
-          this.gold_avr = this.gold_avr.toFixed(0) ;
-          this.xp_avr = this.xp_avr.toFixed(0) ;
-          this.lh_avr = this.lh_avr.toFixed(0) ;
-          this.heal_avr = this.heal_avr.toFixed(0) ;
-          this.win_rate = win.toFixed(0) ;
+          if(this.kills_avr != 0)this.kills_avr = this.kills_avr.toFixed(0) ;
+          else this.kills_avr = null ;
+
+          if(this.deaths_avr != 0)this.deaths_avr = this.deaths_avr.toFixed(0) ;
+          else this.deaths_avr = null ;
+
+          if(this.assists_avr != 0)this.assists_avr = this.assists_avr.toFixed(0) ;
+          else this.assists_avr = null ;
+
+          if(this.gold_avr != 0)this.gold_avr = this.gold_avr.toFixed(0) ;
+          else this.gold_avr = null ;
+
+          if(this.xp_avr != 0)this.xp_avr = this.xp_avr.toFixed(0) ;
+          else this.xp_avr = null ;
+
+          if(this.lh_avr != 0)this.lh_avr = this.lh_avr.toFixed(0) ;
+          else this.lh_avr = null ;
+
+          if(this.heal_avr != 0)this.heal_avr = this.heal_avr.toFixed(0) ;
+          else this.heal_avr = null ;
+
+          if(this.win_rate != 0)this.win_rate = win.toFixed(0) ;
+          else this.win_rate = null ;
         }
+
         let total = 0 ;
         for(let i = 0 ; i < this.peer.length ; i++){
           if(i < 5){
