@@ -43,4 +43,8 @@ export class ProfileSettingComponent implements OnInit {
     window.location.href = "http://localhost:3000/auth/facebook";
   }
 
+  gotoSteam(id){
+    window.location.href = "http://steamcommunity.com/profiles/"+id;
+  }
+
 }

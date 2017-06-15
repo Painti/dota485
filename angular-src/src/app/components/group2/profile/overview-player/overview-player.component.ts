@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/group2/auth.service';
 import { PassJsonService } from '../../../../services/group2/pass-json.service' ;
 import { Subscription }   from 'rxjs/Subscription';
-import { SlimLoadingBarService} from 'ng2-slim-loading-bar';
+// import { SlimLoadingBarService} from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-overview-player',
@@ -12,6 +12,8 @@ import { SlimLoadingBarService} from 'ng2-slim-loading-bar';
 export class OverviewPlayerComponent implements OnInit {
 
   user:Object ;
+  hero: Array<Object>;
+  hero1: Array<Object>;
   match: Array<Object>;
   score: Object;
   peer: Array<Object>;
@@ -50,7 +52,11 @@ export class OverviewPlayerComponent implements OnInit {
   player_size:Array<Object> ;
   percentage_win:Array<Object> ;
   progress_MP:Array<Object> ;
+  progress_MP_BG:Array<Object> ;
   subscription: Subscription ;
+  progress_MP_hero: Array<Object>;
+  progress_winrate_hero: Array<Object>;
+
 
   constructor(
     private authService: AuthService,
@@ -89,6 +95,7 @@ export class OverviewPlayerComponent implements OnInit {
         this.player_size = [] ;
         this.percentage_win = [] ;
         this.progress_MP = [] ;
+        this.progress_MP_BG = [] ;
         var win = 0 ;var tw_damage = 0;var heal = 0;var damage = 0 ;
 
         for(let i = 0 ; i < this.match.length  ;i++){
@@ -228,6 +235,7 @@ export class OverviewPlayerComponent implements OnInit {
         for(let i = 0 ; i < this.peer.length ; i++){
           if(i < 5){
           this.progress_MP[i] = this.peer[i]['with_games'] * 100 / total ;
+          this.progress_MP_BG[i] = this.peer[i]['with_games'] * 100 / total ;
           this.progress_MP[i] = this.progress_MP[i] + '%' ;
           }else break ;
         }
@@ -236,6 +244,48 @@ export class OverviewPlayerComponent implements OnInit {
         console.log(err);
         return false;
       });
+
+      var max_MP = 0;
+      var max_winrate = 0;
+
+      this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
+      //this.hero = data ;
+      this.hero1= [];
+      for(let j = 0;j < 5; j++){
+        this.hero1.push(data[j]);
+        var win_rate_hero1 = data[j]['win'] / data[j]['games'] *100 ;
+      if( data[j]['games'] == 0 ){
+          win_rate_hero1 = 0 ;
+        }
+        this.hero1[j]['win_rate'] = win_rate_hero1.toFixed(2);
+        //
+        // if (this.hero1['games'][j] > max_MP){
+        //   max_MP= this.hero['games'][j];
+        // }
+        // if (win_rate_hero1 > max_winrate){
+        //   max_MP= win_rate_hero1;
+        // }
+      }
+
+      // for(let i = 0 ; i < 5 ; i++){
+      //   this.progress_MP_hero[i] = this.hero1[i]['games'] * 100 / max_MP ;
+      //   this.progress_winrate_hero[i] = this.hero1[i]['win_rate'] * 100 / max_winrate ;
+      //   this.progress_MP_hero[i] = this.progress_MP_hero[i] + '%' ;
+      //   this.progress_winrate_hero[i] = this.progress_winrate_hero[i] + '%' ;
+      // }
+
+      // for(let i = 0 ; i < data.length  ;i++){
+      //   var win_rate = data[i]['win'] / data[i]['games'] *100 ;
+      // if( data[i]['games'] == 0 ){
+      //     win_rate = 0 ;
+      //   }
+      //   this.hero[i]['win_rate'] = win_rate.toFixed(2);
+      // }
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
 
   }
 
@@ -326,4 +376,24 @@ export class OverviewPlayerComponent implements OnInit {
     return '0%';
   }
 
+  getPercentageWinForBg(type, win: number, total: number) {
+    if (total == 0) {
+      return 0;
+    }
+    win = Math.round(win * 100 / total);
+    if (type == 'Win') {
+      return win ;
+    }
+    return 0;
+  }
+
+  getBgColor(value){
+    if(value < 35){
+      return "bg-danger" ;
+    }else if(value >= 35 && value <= 70){
+      return "bg-warning" ;
+    }else{
+      return "bg-success" ;
+    }
+  }
 }

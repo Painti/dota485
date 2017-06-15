@@ -103,11 +103,36 @@ export class PeersPlayerComponent implements OnInit {
       return  game + '%' ;
     }else if(type == "avr_gpm"){
       let game = value * 100 / this.bestGpm ;
-      console.log(game)
       return  game + '%' ;
     }else if(type == "avr_xpm"){
       let game = value * 100 / this.bestXpm ;
       return  game + '%' ;
+    }
+  }
+
+  getPercentForBg(type , value:number){
+    if(type == "with_games"){
+      let game = value * 100 / this.bestWith ;
+      return  game ;
+    }else if(type == "against_games"){
+      let game = value * 100 / this.bestAgainst ;
+      return  game ;
+    }else if(type == "avr_gpm"){
+      let game = value * 100 / this.bestGpm ;
+      return  game ;
+    }else if(type == "avr_xpm"){
+      let game = value * 100 / this.bestXpm ;
+      return  game ;
+    }
+  }
+
+  getBgColor(value){
+    if(value < 35){
+      return "bg-danger" ;
+    }else if(value >= 35 && value <= 70){
+      return "bg-warning" ;
+    }else{
+      return "bg-success" ;
     }
   }
 

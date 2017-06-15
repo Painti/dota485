@@ -2,90 +2,70 @@ import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../../services/get-api.service';
 import { CommunicateService } from '../../../../services/group2/communicate.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-match-detail',
   templateUrl: './match-detail.component.html',
   styleUrls: ['./match-detail.component.css']
 })
-export class MatchDetailComponent implements OnInit{
+export class MatchDetailComponent implements OnInit {
 
   constructor(
     private api: GetApiService,
     private route: ActivatedRoute,
-    private communicate: CommunicateService
-  ) {}
-
-  match:Object;
-  id:string;
-  state:any;
-  player_size:Array<Number>;
+    private communicate: CommunicateService,
+    private slimLoadingBarService: SlimLoadingBarService
+  ) { }
+  
+  match: Object;
+  id: string;
+  player_size: Array<Number>;
 
   ngOnInit() {
-    this.state = {o: {state: 0}};
-    this.player_size = [0,1,2,3,4];
+    this.slimLoadingBarService.start();
+    this.player_size = [0, 1, 2, 3, 4];
     this.route.params.subscribe(params => {
       this.id = params['match_id'];
-      this.api.postRequestMatch(this.id).subscribe(data => {
-        let job_id = null;
-        if(data.err == null){
-          job_id = data.job.jobId;
-          this.api.getRequestMatch(job_id, this.state).subscribe(data1 => {
-            this.state.o = data1;
-          });
-        }
-      },
-      err => {
-        console.log(err);
-        return false;
-      });
-    });
-  }
-
-  getProgress(obj: Object){
-    if(obj['state'] == 'failed' || obj['state'] == 'completed'){
-      obj['progress'] = 100;
-      obj['state'] = '1';
-      this.api.getOpendata('/matches/'+this.id).subscribe(data => {
+      this.api.getOpendata('/matches/' + this.id).subscribe(data => {
         this.match = data;
-        let i:any;
-        this.match['team_gpm'] = [0,0];
-        this.match['team_exp'] = [0,0];
-        let x:number = 0;
-        let sumMMR:number = 0;
+        let i: any;
+        this.match['team_gpm'] = [0, 0];
+        this.match['team_exp'] = [0, 0];
+        let x: number = 0;
+        let sumMMR: number = 0;
         for (i in this.match['players']) {
-          this.match['team_gpm'][Math.floor(i/5)] += this.match['players'][i]['gold_per_min'];
-          this.match['team_exp'][Math.floor(i/5)] += this.match['players'][i]['xp_per_min'];
-          if(this.match['players'][i]['solo_competitive_rank'] != null){
+          this.match['team_gpm'][Math.floor(i / 5)] += this.match['players'][i]['gold_per_min'];
+          this.match['team_exp'][Math.floor(i / 5)] += this.match['players'][i]['xp_per_min'];
+          if (this.match['players'][i]['solo_competitive_rank'] != null) {
             sumMMR += parseInt(this.match['players'][i]['solo_competitive_rank']);
             x += 1;
           }
         }
-        this.match['avg_mmr'] = Math.round(sumMMR/x);
-
+        this.match['avg_mmr'] = Math.round(sumMMR / x);
         this.communicate.emitMatch(this.match);
+        this.slimLoadingBarService.complete();
       });
-    }
-    return obj['progress'];
+    });
   }
 
-  emit(){
+  emit() {
     this.communicate.emitMatch(this.match);
   }
 
-  getTeamName(name:any){
-    if(!name){
+  getTeamName(name: any) {
+    if (!name) {
       return '(anonymous)';
     }
     return name;
   }
 
-  getImageHero(name){
-    return 'http://cdn.dota2.com/apps/dota2/images/heroes/'+name+'_sb.png';
+  getImageHero(name) {
+    return 'http://cdn.dota2.com/apps/dota2/images/heroes/' + name + '_sb.png';
   }
 
-  getBackgroundImage(bool){
-    return "assets/group2/images/background"+bool+".JPG";
+  getBackgroundImage(bool) {
+    return "assets/group2/images/background" + bool + ".JPG";
   }
 
   getTime(time: number) {

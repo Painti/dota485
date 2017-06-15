@@ -76,8 +76,9 @@ itemup:Array<string>;
     return "http://cdn.dota2.com/apps/dota2/images/items/"+this.name+"_lg.png";
   }
 
-  getDesc(desc){
-    return desc.replace(/<br [/]>/g, " ");
+  getDesc(desc:string){
+    let des = desc.replace(/<br [/]>/g, " ");
+    return des.replace(/[+%]/g, "");
   }
 
   getNameComponent(name){
