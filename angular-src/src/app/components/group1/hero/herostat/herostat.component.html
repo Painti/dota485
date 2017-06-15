@@ -32,12 +32,11 @@
       <img style="cursor:pointer" (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
       <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{getHeroRealName(item?.name)}}</span></td>
 
-
-    <td>{{((item['pro_pb'])/sum)*100 | number : '1.2-2'}}%
+    <td>{{((item.pro_pb)/sum)*100 | number : '1.2-2'}}%
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass(((item?.pro_ban +item?.pro_pick)/sum))"
-          [style.width]="((item?.pro_ban +item?.pro_pick)/sum)*100+'%'"></div>
+          [style.width]="((item.pro_pb)/sum)*100+'%'"></div>
       </div>
     </td>
 
@@ -57,11 +56,11 @@
       </div>
     </td>
 
-    <td>{{getSum(item?.pro_win,item?.pro_pick) | number : '1.2-2'}}%
+    <td>{{(item.pro_win)*100 | number : '1.2-2'}}%
       <div class="progress">
         <div class="progress-bar" role="progressbar"
-          [ngClass]="getClass((item?.pro_win / item?.pro_pick))"
-          [style.width]="(item?.pro_win / item?.pro_pick)*100 +'%'"></div>
+          [ngClass]="getClass(item.pro_win)"
+          [style.width]="(item.pro_win)*100 +'%'"></div>
       </div>
     </td>
 
