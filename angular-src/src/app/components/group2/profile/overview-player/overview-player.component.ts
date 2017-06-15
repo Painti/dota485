@@ -74,14 +74,10 @@ export class OverviewPlayerComponent implements OnInit {
 
     this.subscription = this.passJsonService.getPeer$.subscribe(peer => {
       this.peer = peer;
-    },
-      err => {
-        console.log(err);
-        return false;
-    });
 
-
+      if(this.peer.length != 0){
       this.subscription = this.passJsonService.getRecentMatch$.subscribe(match => {
+
         this.match = match ;
         this.kills_avr = 0 ; this.deaths_avr = 0 ;this.assists_avr = 0 ;
         this.gold_avr = 0;this.xp_avr = 0 ; this.lh_avr = 0;
@@ -110,7 +106,7 @@ export class OverviewPlayerComponent implements OnInit {
           this.tw_damage_avr += this.match[i]['tower_damage'] ;
           if(this.match[i]['player_slot'] < 5 && this.match[i]['radiant_win'] == false ||
             this.match[i]['player_slot'] > 5 && this.match[i]['radiant_win'] == true){
-            this.wl_recentMatch.push("lose") ;
+            this.wl_recentMatch.push("Lose") ;
           }else {this.wl_recentMatch.push("Win"); win++ ;}
           this.match[i]['cut_name'] = this.match[i]['heroes_name'].replace('_',' ') ;
           if(this.match[i]['player_slot'] <= 5){
@@ -239,11 +235,20 @@ export class OverviewPlayerComponent implements OnInit {
           this.progress_MP[i] = this.progress_MP[i] + '%' ;
           }else break ;
         }
+
       },
       err => {
         console.log(err);
         return false;
       });
+      }
+    },
+      err => {
+        console.log(err);
+        return false;
+    });
+
+
 
       var max_MP = 0;
       var max_winrate = 0;

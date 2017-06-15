@@ -52,19 +52,20 @@ export class ProfileComponent implements OnInit {
 
 
       this.authService.getRecentMatch(params['id']).subscribe(data => {
-        this.match = data ;
-        this.wl_recentMatch = [] ;
-        this.passJsonService.emitRecentMatch(this.match) ;
-        for(let i = 0 ; i < data.length  ;i++){
-
-          if(this.match[i]['player_slot'] < 5 && this.match[i]['radiant_win'] == false ||
-            this.match[i]['player_slot'] > 5 && this.match[i]['radiant_win'] == true){
-            this.wl_recentMatch.push("lose") ;
-          }else this.wl_recentMatch.push("Win")  ;
-          this.match[i]['cut_name'] = this.match[i]['heroes_name'].replace('_',' ') ;
-          if(this.match[i]['player_slot'] <= 5){
-            this.match[i]['player_team'] = "Radiant" ;
-          }else this.match[i]['player_team'] = "Dire" ;
+        this.passJsonService.emitRecentMatch(data) ;
+        if(data.length != 0){
+          this.match = data ;
+          this.wl_recentMatch = [] ;
+            for(let i = 0 ; i < data.length  ;i++){
+              if(this.match[i]['player_slot'] < 5 && this.match[i]['radiant_win'] == false ||
+                this.match[i]['player_slot'] > 5 && this.match[i]['radiant_win'] == true){
+                this.wl_recentMatch.push("Lose") ;
+              }else this.wl_recentMatch.push("Win")  ;
+              this.match[i]['cut_name'] = this.match[i]['heroes_name'].replace('_',' ') ;
+              if(this.match[i]['player_slot'] <= 5){
+                this.match[i]['player_team'] = "Radiant" ;
+              }else this.match[i]['player_team'] = "Dire" ;
+          }
         }
 
       },
@@ -76,9 +77,14 @@ export class ProfileComponent implements OnInit {
       this.authService.getWinAndLose(params['id']).subscribe(data => {
         this.score = data ;
         this.passJsonService.emitWl(this.score) ;
-        this.win_rate = (this.score['win'] / (this.score['win'] + this.score['lose'])) * 100 ;
-        var st_win_rate = JSON.stringify(this.win_rate);
-        this.win_rate = parseFloat(st_win_rate).toFixed(1) ;
+        if(this.score['win'] != 0){
+          this.win_rate = (this.score['win'] / (this.score['win'] + this.score['lose'])) * 100 ;
+          var st_win_rate = JSON.stringify(this.win_rate);
+          this.win_rate = parseFloat(st_win_rate).toFixed(1) ;
+        }else{
+          this.win_rate = 0 ;
+        }
+
       },
       err => {
         console.log(err);

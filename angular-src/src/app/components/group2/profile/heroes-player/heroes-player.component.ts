@@ -18,6 +18,7 @@ export class HeroesPlayerComponent implements OnInit {
     this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
     this.hero = data ;
     for(let i = 0 ; i < data.length  ;i++){
+
       var win_rate = data[i]['win'] / data[i]['games'] *100 ;
       var with_win_rate = data[i]['with_win'] / data[i]['with_games'] *100 ;
       var against_win_rate = data[i]['against_win'] / data[i]['against_games'] *100 ;
@@ -28,9 +29,17 @@ export class HeroesPlayerComponent implements OnInit {
       } else if( data[i]['games'] == 0 ){
         win_rate = 0 ;
       }
-      this.hero[i]['win_rate'] = win_rate.toFixed(2);
-      this.hero[i]['with_win_rate'] = with_win_rate.toFixed(2);
-      this.hero[i]['against_win_rate'] = against_win_rate.toFixed(2);
+      if(data[i]['games'] == 0){
+        this.hero[i]['win_rate'] = 0 ;
+        this.hero[i]['with_win_rate'] = 0 ;
+      }else{
+        this.hero[i]['win_rate'] = win_rate.toFixed(2);
+        this.hero[i]['with_win_rate'] = with_win_rate.toFixed(2);
+      }
+      if(data[i]['against_games'] == 0)this.hero[i]['against_win_rate'] = 0;
+      else this.hero[i]['against_win_rate'] = against_win_rate.toFixed(2);
+
+
     }
   },
   err => {
