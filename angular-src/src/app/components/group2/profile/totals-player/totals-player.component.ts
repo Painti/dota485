@@ -47,7 +47,7 @@ export class TotalsPlayerComponent implements OnInit {
         console.log(err);
         return false;
     });
-    
+
         this.subscription = this.passJsonService.getTotal$.subscribe(data => {
           this.total_kill = data[0]['sum'] ;
           this.total_death = data[1]['sum'] ;
@@ -81,6 +81,16 @@ export class TotalsPlayerComponent implements OnInit {
   toLocalNum(num){
     if(num != null)
     return num.toLocaleString() ;
+  }
+
+  getValue(num){
+    if(num > 1000000){
+      num /= 1000000 ;
+      return num.toFixed(1) +'M' ;
+    }else if(num > 1000){
+      num /= 1000 ;
+      return num.toFixed(1) +'K';
+    }else return num ;
   }
 
 }

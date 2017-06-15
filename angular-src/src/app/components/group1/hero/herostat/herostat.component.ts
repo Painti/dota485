@@ -13,67 +13,84 @@ export class HerostatComponent implements OnInit {
   constructor(
     private api: GetApiService,
     private route: ActivatedRoute,
-    private router:Router
+    private router: Router
   ) { }
-  stat:Array<Object>;
-  sum:number;
+  stat: Array<Object>;
+  stat2: Array<number>;
+  order: Object = { name: String, pro_win: String, pro_pick: String, pro_ban: String, pro_pb: String };
   arrfilter: Array<String>;
-  order: Object = { pro_pb: String, pro_p: String, pro_b: String, pro_w: String };
+
+  sum: number;
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.api.getHeroesStat().subscribe(data => {
         this.stat = data;
         this.sum = 0;
         for (let i = 0; i < this.stat.length; i++) {
-          if (this.stat[i]['pro_pick']===undefined) {
-            this.stat[i]['pro_pick']=0;
+          if (this.stat[i]['pro_win'] === undefined) {
+            this.stat[i]['pro_win'] = 0;
           }
-          this.sum += this.stat[i]['pro_pick'];
+          if (this.stat[i]['pro_ban'] === undefined) {
+            this.stat[i]['pro_ban'] = 0;
+          }
+
+          if (this.stat[i]['pro_pick'] === undefined) {
+            this.stat[i]['pro_pick'] = 0;
+          }
+          else if (this.stat[i]['pro_pick'] !== undefined) {
+            this.sum += this.stat[i]['pro_pick'];
+          }
         }
-        this.sum = this.sum/10;
+        this.sum = this.sum / 10;
       },
         err => {
           console.log(err);
           return false;
         });
     })
-  }
-  initOrder() {
-    this.order = {
-      'pro_pb': 'desc',
-      'pro_p': '',
-      'pro_b': '',
-      'pro_w': ''
-    };
-    this.arrfilter = ['-pro_pb'];
+
+    this.initOrder();
   }
   getImage(hName) {
-      return "http://cdn.dota2.com/apps/dota2/images/heroes/" + this.getHeroName(hName) + "_sb.png"
+    return "http://cdn.dota2.com/apps/dota2/images/heroes/" + this.getHeroName(hName) + "_sb.png"
   }
-  getHeroName(hName){
-    hName = hName.replace("npc_dota_hero_","");
+  getHeroName(hName) {
+    hName = hName.replace("npc_dota_hero_", "");
     return hName;
   }
-  getClass(num){
+  getClass(num) {
     num *= 100;
-    if(num >= 70){
+    if (num >= 70) {
       return 'bg-success';
-    } else if(num >= 40){
+    } else if (num >= 40) {
       return 'bg-warning';
     } else {
       return 'bg-danger';
     }
   }
-  gotodetial(name) {
-    this.router.navigate(['/herostat', name]);
+  gotodetial(hename) {
+    this.router.navigate(['/herostat', hename]);
+  }
+
+  initOrder() {
+    this.order = {
+      'name': 'desc',
+      'pro_pb': '',
+      'pro_pick': '',
+      'pro_ban': '',
+      'pro_win': '',
+    };
+    this.arrfilter = ['-name'];
   }
 
   switchAsc(prop: string) {
     let x = this.order[prop];
+    this.order['name'] = '';
     this.order['pro_pb'] = '';
-    this.order['pro_p'] = '';
-    this.order['pro_b'] = '';
-    this.order['pro_w'] = '';
+    this.order['pro_pick'] = '';
+    this.order['pro_ban'] = '';
+    this.order['pro_win'] = '';
     if (x == 'asc') {
       this.order[prop] = 'desc';
       this.arrfilter = ['-' + prop];
@@ -85,4 +102,13 @@ export class HerostatComponent implements OnInit {
       this.arrfilter = ['+' + prop];
     }
   }
+  getSum(x, y) {
+    x = parseInt(x);
+    y = parseInt(y);
+    var c = x / y;
+    c = c * 100;
+
+    return c;
+  }
+
 }

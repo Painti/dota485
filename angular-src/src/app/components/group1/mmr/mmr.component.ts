@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-mmr',
@@ -12,7 +12,8 @@ export class MmrComponent implements OnInit {
 
   constructor(
     private api: GetApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private slimLoadingBarService: SlimLoadingBarService
   ) { }
     rankingEU:Object
     rankingA:Object
@@ -21,8 +22,10 @@ export class MmrComponent implements OnInit {
     tabs: Array<String>;
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.api.getMMRData('americas').subscribe( data => {
       this.rankingA = data;
+      this.slimLoadingBarService.complete();
     },
      err => {
        console.log(err);
@@ -31,6 +34,7 @@ export class MmrComponent implements OnInit {
 
      this.api.getMMRData('europe').subscribe( data => {
        this.rankingEU = data;
+       this.slimLoadingBarService.complete();
      },
       err => {
         console.log(err);
@@ -39,6 +43,7 @@ export class MmrComponent implements OnInit {
 
       this.api.getMMRData('se_asia').subscribe( data => {
         this.rankingSE = data;
+        this.slimLoadingBarService.complete();
       },
        err => {
          console.log(err);
@@ -47,6 +52,7 @@ export class MmrComponent implements OnInit {
 
        this.api.getMMRData('china').subscribe( data => {
          this.rankingCH = data;
+         this.slimLoadingBarService.complete();
        },
         err => {
           console.log(err);

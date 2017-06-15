@@ -1,63 +1,67 @@
 <table class="table-match" style="width:100%">
-  <thead>
+  <h1>Heroes Stat</h1>
   <tr>
-    <th>HERO</th>
+    <th><span class="sort" (click)="switchAsc('name')">HERO
+      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.name == 'asc'"></i>
+      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.name == 'desc'"></i>
+    </span></th>
     <th><span class="sort" (click)="switchAsc('pro_pb')">PRO P+B%
-      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_pb == 'asc'"></i>
-      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_pb == 'desc'"></i></span></th>
-
-    <th><span class="sort" (click)="switchAsc('pro_p')">PRO PICK%
-      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_p == 'asc'"></i>
-      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_p == 'desc'"></i></span></th>
-
-    <th><span class="sort" (click)="switchAsc('pro_b')">PRO BAN%
-      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_b == 'asc'"></i>
-      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_b == 'desc'"></i></span></th>
-
-    <th><span class="sort" (click)="switchAsc('pro_w')">PRO WIN%
-      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_w == 'asc'"></i>
-      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_w == 'desc'"></i></span></th>
+      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.pro_pb == 'asc'"></i>
+      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.pro_pb == 'desc'"></i>
+    </span></th>
+    <th><span class="sort" (click)="switchAsc('pro_pick')">PRO PICK%
+      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.pro_pick == 'asc'"></i>
+      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.pro_pick == 'desc'"></i>
+    </span></th>
+    <th>
+      <span class="sort" (click)="switchAsc('pro_ban')">PRO BAN%
+      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.pro_ban == 'asc'"></i>
+      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.pro_ban == 'desc'"></i>
+    </span></th>
+    <th>
+      <span class="sort" (click)="switchAsc('pro_win')">PRO WIN%
+      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.pro_win == 'asc'"></i>
+      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.pro_win == 'desc'"></i>
+      </span></th>
   </tr>
-  </thead>
 
-    <tbody>
 
   <tr *ngFor="let item of stat  | filter : arrfilter; let i = index">
     <td>
       <img (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
       <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{item?.localized_name}}</span></td>
 
-    <td>{{((item?.pro_ban +item?.pro_pick)/sum)*100 | number : '1.2-2'}}%
+    <td>{{((item?.pro_ban+item?.pro_pick)/sum)*100 | number : '1.2-2'}}%
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass(((item?.pro_ban +item?.pro_pick)/sum))"
-          [style.width]="((item?.pro_ban +item.pro_pick)/sum)*100+'%'"></div>
+          [style.width]="((item?.pro_ban +item?.pro_pick)/sum)*100+'%'"></div>
       </div>
     </td>
 
-    <td>{{(item?.pro_pick /  sum)*100 | number : '1.2-2'}}%
+    <td>{{getSum(item?.pro_pick,sum) | number : '1.2-2'}}%
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass((item?.pro_pick /  sum))"
           [style.width]="(item?.pro_pick /  sum)*100+'%'"></div>
       </div>
     </td>
-    <td>{{(item?.pro_ban /  sum)*100 | number : '1.2-2'}}%
+    <td>{{getSum(item?.pro_ban,sum) | number : '1.2-2'}}%
+
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass((item?.pro_ban /  sum))"
           [style.width]="(item?.pro_ban /  sum)*100  +'%'"></div>
       </div>
     </td>
-    <td>{{(item?.pro_win / item?.pro_pick)*100 | number : '1.2-2'}}%
+
+    <td>{{getSum(item?.pro_win,item?.pro_pick) | number : '1.2-2'}}%
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass((item?.pro_win / item?.pro_pick))"
           [style.width]="(item?.pro_win / item?.pro_pick)*100 +'%'"></div>
       </div>
-
     </td>
-  </tr>
-</tbody>
+
 
 </table>

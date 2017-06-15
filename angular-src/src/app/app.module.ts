@@ -63,18 +63,19 @@ import { TotalsPlayerComponent } from './components/group2/profile/totals-player
 import { FarmTableComponent } from './components/group2/match/match-detail/farm/farm-table/farm-table.component';
 
 import { CeiboShare } from 'ng2-social-share';
-import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { HerostatComponent } from './components/group1/hero/herostat/herostat.component';
+import { HerostatdetailComponent } from './components/group1/hero/herostat/herostatdetail/herostatdetail.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'hero', component: HeroComponent },
   { path: 'herostat', component: HerostatComponent },
+  { path: 'herostat/:hero_name', component: HerostatdetailComponent },
   { path: 'hero/:hero_name', component: HeroDetailComponent },
   { path: 'item', component: ItemComponent },
   { path: 'item/:item_name', component: ItemDetailComponent },
   { path: 'ranking', component: MmrComponent },
-  { path: 'quiz', component: QuizComponent }  ,
   { path: 'login', component: LoginComponent , canActivate: [LoginGuard]},
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
 
@@ -143,7 +144,8 @@ const appRoutes: Routes = [
     FarmTableComponent,
     CeiboShare,
     HerostatComponent,
-    HerostatComponent
+    HerostatComponent,
+    HerostatdetailComponent
   ],
   imports: [
     BrowserModule,
@@ -158,7 +160,8 @@ const appRoutes: Routes = [
     ChartModule,
     PopoverModule.forRoot(),
     ButtonsModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    SlimLoadingBarModule.forRoot()
   ],
   providers: [
     ConfigService,

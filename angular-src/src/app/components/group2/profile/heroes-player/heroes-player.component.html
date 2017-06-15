@@ -1,5 +1,5 @@
 <div class = "py-3">
-  <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+  <i class="fa fa-superpowers fa-2x" style="color:#FF8C00" aria-hidden="true"></i>
   <span class = "pl-2" style="font-size: 24px;">Heroes Played</span>
 </div>
 
@@ -18,11 +18,12 @@
     <tr *ngFor = "let h of hero ; let i = index">
       <td class="d-flex flex-nowrap">
         <div class = "pt-2">
-        <a [routerLink]="['/hero/'+h.heroes_name]"><img class = "hoverClickImg pf_hero" [src] = "getImage(h.heroes_name)" [tooltip] = "getName(h.heroes_name)"></a>
+        <a [routerLink]="['/herostat/'+h.heroes_name]"><img class = "hoverClickImg pf_hero" [src] = "getImage(h.heroes_name)" [tooltip] = "getName(h.heroes_name)"></a>
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
     <div class="d-flex flex-column">
-    <a [routerLink]="['/hero/'+h.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);">{{h.heroes_name}}</span></a>
+    <a [routerLink]="['/herostat/'+h.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);">{{h.heroes_name}}</span></a>
+      <span>{{getTimeAgo(h.last_played)}}</span>
     </div></td>
     <td>{{h.games}}</td>
     <td>{{h.win_rate}}</td>

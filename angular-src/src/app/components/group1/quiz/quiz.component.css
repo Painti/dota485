@@ -1,3 +1,9 @@
 .enabled{
   border: 3px solid #f00;
 }
+
+.bor{
+  border: 2px solid #900b0b;
+  border-radius: 20px;
+  background-color: #1a1a1a;
+}
