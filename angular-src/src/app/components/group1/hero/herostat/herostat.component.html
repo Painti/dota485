@@ -29,11 +29,7 @@
 
   <tr *ngFor="let item of stat  | filter : arrfilter; let i = index">
     <td>
-<<<<<<< HEAD
       <img style="cursor:pointer" (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
-=======
-      <img (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
->>>>>>> fed7cc49810901ff1e5cb7d590d6825cd25e4066
       <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{getHeroRealName(item?.name)}}</span></td>
 
     <td>{{((item.pro_pb)/sum)*100 | number : '1.2-2'}}%
