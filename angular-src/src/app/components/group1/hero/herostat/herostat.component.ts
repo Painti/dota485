@@ -23,15 +23,6 @@ export class HerostatComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.api.getHeroesStat().subscribe(data => {
         this.stat = data;
-        for(let i = 0; i < this.stat.length; i++){
-          for(let j = 0; j < 40; j++){
-            if(this.stat[i][j]===undefined){
-                this.stat[i][j]=0;
-            }
-          }
-
-        }
-
         this.sum = 0;
         for (let i = 0; i < this.stat.length; i++) {
           if (this.stat[i]['pro_pick']===undefined) {
