@@ -17,3 +17,7 @@ span{
 img:hover{
   opacity: 0.5;
 }
+
+.table-match{
+  table-layout: fixed;
+}
