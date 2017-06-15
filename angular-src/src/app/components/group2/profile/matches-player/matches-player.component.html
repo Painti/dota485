@@ -5,13 +5,12 @@
 <div style="width:100%" >
 <table class="table-match" cellpadding="0" cellspacing="0" border="0">
   <tr>
-    <th> HERO </th>
-    <th> GAME MODE</th>
-    <th> ID </th>
-    <th> RESULT  </th>
-    <th> K  </th>
-    <th> D  </th>
-    <th> A  </th>
+    <th><span class = "toolhelpHover" tooltip="The Hero played by player">HERO</span>  </th>
+    <th><span class = "toolhelpHover" tooltip="The Game Mode of the match">GAME MODE</span> </th>
+    <th><span class = "toolhelpHover" tooltip="The ID of the match">ID</span>  </th>
+    <th><span class = "toolhelpHover" tooltip="Whether the player won or lost">RESULT</span>  </th>
+    <th><span class = "toolhelpHover" tooltip="The length of the match">DURATION</span></th>
+    <th><span class = "toolhelpHover" tooltip="Kills/Deaths/Assists">K / D / A</span></th>
   </tr>
   <tbody>
     <tr *ngFor = "let m of match ; let i = index">
@@ -21,7 +20,7 @@
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
     <div class="d-flex flex-column">
-    <a [routerLink]="['/hero/'+m.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);" *ngIf = "hero_name">{{hero_name[i]}}</span></a>
+    <a [routerLink]="['/hero/'+m.heroes_name]"><span class = "pl-1 hoverClick" style="color: rgb(102, 187, 255);" *ngIf = "hero_name">{{hero_name[i]}}</span></a>
       <span class = "p-1">{{m.player_team}}</span>
     </div></td>
     <td>{{m.game_mode}}</td>
@@ -31,9 +30,23 @@
       </div>
     </td>
       <td *ngIf = "wl_recentMatch" [className] = "getColor(wl_recentMatch[i])" >{{wl_recentMatch[i]}}</td>
-      <td>{{m.kills}}</td>
-      <td>{{m.deaths}}</td>
-      <td>{{m.assists}}</td>
+      <td>
+        <div class="d-flex flex-column">
+          <span class="pr-5">{{getTime(m.duration)}}</span>
+          <span>{{getTimeAgo(m.start_time)}}</span>
+        </div>
+      </td>
+      <td><div class = "nowrap">
+        <span>{{m.kills}} / {{m.deaths}} / {{m.assists}}</span>
+        <div class="progress">
+          <div class="progress-bar bg-success" role="progressbar"
+            [style.width]="getWidthByKDA('K',m.kills,m.deaths,m.assists)"></div>
+          <div class="progress-bar bg-danger" role="progressbar"
+            [style.width]="getWidthByKDA('D',m.kills,m.deaths,m.assists)"></div>
+          <div class="progress-bar" role="progressbar"
+            [style.width]="getWidthByKDA('A',m.kills,m.deaths,m.assists)"></div>
+        </div>
+      </div></td>
     </tr>
   </tbody>
 </table>

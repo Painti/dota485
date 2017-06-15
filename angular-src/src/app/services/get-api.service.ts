@@ -66,6 +66,11 @@ export class GetApiService {
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes/herostat')
       .map(res => res.json());
   }
+
+  getHeroesStatBenchmarks(hero_name){
+    return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes/herostat/'+ hero_name)
+      .map(res => res.json());
+  }
   getHeroes(){
     return this.http.get('http://'+this.config.hostname+':'+this.config.port+'/data/heroes/')
       .map(res => res.json());

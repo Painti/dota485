@@ -2,7 +2,7 @@ import { Component, OnInit ,ViewChild } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForObjectPipe } from '../../../pipes/ng-for-object.pipe';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-quiz',
@@ -16,7 +16,6 @@ export class QuizComponent implements OnInit {
   private route: ActivatedRoute
   ) { }
   itemlist:Object
-  itemall:any
   itemComponent:any
   itemNoComp:any
   componentOfitem:any
@@ -25,31 +24,16 @@ export class QuizComponent implements OnInit {
   z:number;
   listChoice:any;
   binaryCheck:Array<boolean>
-  show:boolean
+  hidden:boolean
+  showAns:boolean
   result:String
+  arrComp:Array<Object>
 
-
-
-
-  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
-  public isModalShown:boolean = false;
-
-  public showModal():void {
-    this.isModalShown = true;
-  }
-
-  public hideModal():void {
-    this.autoShownModal.hide();
-  }
-
-  public onHidden():void {
-    this.isModalShown = false;
-  }
 
   ngOnInit() {
-    this.show = false
+    this.hidden = true
+    this.showAns = false
     this.binaryCheck = []
-    this.itemall =[]
     this.listChoice = []
     this.itemNoComp = []
     this.componentOfitem =[]
@@ -61,7 +45,6 @@ export class QuizComponent implements OnInit {
       for (let key in data.itemdata) {
         if(key.search("river_painter")==-1&&key.search("dagon")==-1&&key.search("necronomicon")==-1
         &&key.search("travel_boots_2")==-1){
-          this.itemall.push(data.itemdata[key])
           if(data.itemdata[key].components!=null){
             this.itemComponent.push(data.itemdata[key])
           }else{
@@ -76,21 +59,21 @@ export class QuizComponent implements OnInit {
       this.x = Math.floor((Math.random() * this.itemComponent.length) )
       this.y = Math.floor((Math.random() * this.itemNoComp.length) )
       this.z = Math.floor((Math.random() * this.itemNoComp.length) )
-      this.listChoice = this.itemComponent[this.x].components
+      this.listChoice = this.itemComponent[this.x].components.slice(0)
       this.listChoice.push(this.itemNoComp[this.y])
       this.listChoice.push(this.itemNoComp[this.z])
       this.shuffle(this.listChoice)
       this.listChoice.push('recipe')
-      for (let key in this.listChoice) {
+      for (let key of this.listChoice) {
           this.binaryCheck.push(false)
       }
-      this.binaryCheck.push(false)
+      this.arrComp = this.itemComponent[this.x].components.slice(0)
     },
      err => {
        console.log(err);
        return false;
      });
-     this.showModal();
+
 
   }
 
@@ -126,9 +109,14 @@ export class QuizComponent implements OnInit {
   haveRecipe(){
     let costStart = this.itemComponent[this.x].cost;
     let sum = 0
-    for (let key in this.itemComponent[this.x].components) {
-        sum += this.itemall[key].cost
+    for (let key of this.itemComponent[this.x].components) {
+
+        if(this.itemlist[key].cost!==undefined){
+        sum += this.itemlist[key].cost
+        }
     }
+    console.log(this.itemComponent[this.x])
+
     if(sum<costStart){
       return true
     }else{
@@ -138,25 +126,27 @@ export class QuizComponent implements OnInit {
   }
 
   onSubmit(){
-    this.show = true
+    this.hidden = false
     let arr = []
     for (let i = 0; i < this.listChoice.length; i++) {
         if(this.binaryCheck[i]){
           arr.push(this.listChoice[i])
         }
     }
-    if(this.binaryCheck[this.binaryCheck.length-1]){
-      arr.push('zzzzz')
-    }
-    let arrComp = this.itemComponent[this.x].components.sort()
+
+    // let arrComp = this.itemComponent[this.x].components.slice(0)
+    this.arrComp.sort()
     if(this.haveRecipe()){
-      arrComp.push('zzzzz')
+      this.arrComp.push('recipe')
     }
     arr.sort()
+    console.log(arr)
+    console.log(this.arrComp)
     this.result = 'Correct'
-    for (let i = 0; i < arrComp.length; i++) {
-        if(arrComp[i]!=arr[i]){
+    for (let i = 0; i < this.arrComp.length; i++) {
+        if(this.arrComp[i]!=arr[i]){
           this.result = 'Incorrect'
+          this.showAns = true
         }
     }
 
@@ -164,6 +154,14 @@ export class QuizComponent implements OnInit {
 
   getComponents(name){
   return "http://cdn.dota2.com/apps/dota2/images/items/"+name+"_lg.png"
+  }
+
+  isTrue(result){
+    if(result=="Correct"){
+      return "text-success"
+    }else{
+      return "text-danger"
+    }
   }
 
 

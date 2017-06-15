@@ -1,4 +1,4 @@
-<table style="width:100%">
+<table class="table-match" style="width:100%">
   <tr>
     <th>HERO</th>
     <th>PRO P+B%</th>
@@ -8,11 +8,40 @@
   </tr>
 
   <tr *ngFor="let item of stat">
-    <td>{{item.localized_name}}</td>
-    <td>{{item.pro_ban +item.pro_pick}}</td>
-    <td>{{item.pro_pick}}</td>
-    <td>{{item.pro_ban}}</td>
-    <td>{{(item.pro_win / item.pro_pick)*100}} %</td>
+    <td><img (click)="gotodetial(getHeroName(item.name))" [src]="getImage(item.name)" alt="">
+
+      <span (click)="gotodetial(getHeroName(item.name))" style="padding-left: 10px" >{{item.localized_name}}</span></td>
+
+    <td>{{((item.pro_ban +item.pro_pick)/sum)*100 | number : '1.2-2'}}%
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"
+          [ngClass]="getClass(((item.pro_ban +item.pro_pick)/sum))"
+          [style.width]="((item.pro_ban +item.pro_pick)/sum)*100+'%'"></div>
+      </div>
+    </td>
+
+    <td>{{(item.pro_pick /  sum)*100 | number : '1.2-2'}}%
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"
+          [ngClass]="getClass((item.pro_pick /  sum))"
+          [style.width]="(item.pro_pick /  sum)*100+'%'"></div>
+      </div>
+    </td>
+    <td>{{(item.pro_ban /  sum)*100 | number : '1.2-2'}}%
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"
+          [ngClass]="getClass((item.pro_ban /  sum))"
+          [style.width]="(item.pro_ban /  sum)*100  +'%'"></div>
+      </div>
+    </td>
+    <td>{{(item.pro_win / item.pro_pick)*100 | number : '1.2-2'}}%
+      <div class="progress">
+        <div class="progress-bar" role="progressbar"
+          [ngClass]="getClass((item.pro_win / item.pro_pick))"
+          [style.width]="(item.pro_win / item.pro_pick)*100 +'%'"></div>
+      </div>
+
+    </td>
   </tr>
 
   <!--

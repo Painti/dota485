@@ -26,7 +26,7 @@
       <div class="card mb-3 mr-3" *ngFor="let item of s_item">
         <img class="card-img" [src]="getImageItemLg(item.prop)" alt="Card image cap">
         <div class="card-img-overlay">
-          <h6 class="card-title">{{item.dname}}</h6>
+          <h6 class="card-title" (click)="itemDetail(item.prop)">{{item.dname}}</h6>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
       <div class="card mb-3 mr-3" *ngFor="let item of s_hero">
         <img class="card-img" [src]="getImageHero(item.prop)" alt="Card image cap">
         <div class="card-img-overlay">
-          <h6 class="card-title">{{item.dname}}</h6>
+          <h6 class="card-title" (click)="gotodetial(item.prop)">{{item.dname}}</h6>
         </div>
       </div>
     </div>

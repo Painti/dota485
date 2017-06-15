@@ -22,8 +22,8 @@
         <div *ngFor = "let entry of item.itemdata | keys">
             <span *ngIf ="basicNotUse(entry.key)=='YES'">
                 <span *ngIf="entry.value.qual == 'component' || entry.value.qual == 'consumable' || entry.key=='cheese' || entry.key=='aegis'">
-                  <span [tooltip]="entry.value.dname" placement="right">
-                    <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+                  <span [tooltip]="entry.value.dname">
+                    <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="" style="width:81px; height:60px;">
                   </span>
                 </span>
             </span>
@@ -34,8 +34,8 @@
         <div *ngFor = "let entry of item.itemdata | keys">
             <span  *ngIf="entry.value.qual !== 'component' && entry.value.qual !== 'secret_shop' && entry.value.qual !== 'consumable' && entry.key!=='cheese' && entry.key!=='aegis'">
               <span *ngIf="upgradeNotUse(entry.key)=='YES'">
-                <span [tooltip]="entry.value.dname" placement="right">
-                  <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+                <span [tooltip]="entry.value.dname">
+                  <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="" style="width:81px; height:60px;">
                 </span>
               </span>
             </span>
@@ -46,8 +46,8 @@
       <div class="float-sm-left">
         <div *ngFor = "let entry of item.itemdata | keys">
             <span *ngIf="entry.value.qual == 'secret_shop'">
-              <span [tooltip]="entry.value.dname" placement="right">
-                <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="">
+              <span [tooltip]="entry.value.dname">
+                <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="" style="width:81px; height:60px;">
               </span>
             </span>
         </div>

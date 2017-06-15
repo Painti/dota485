@@ -1,3 +1,44 @@
-<p>
-  herostatdetail works!
-</p>
+<div *ngIf = "heroesStat">
+  <h2 style="text-align: center">{{getunderscoreoff(id)}}</h2>
+<div class="d-flex justify-content-center">
+  <img class="margin" src="{{getImage(character.img)}}" style="border: 1px solid #cccccc" alt="">
+</div>
+<div>
+  <h5>Benchmarks <img src="{{getImage(character.icon)}}"></h5>
+</div>
+
+<table class="table-match" style="width:100%">
+  <tr>
+    <th> </th>
+    <th>10%</th>
+    <th>20%</th>
+    <th>30%</th>
+    <th>40%</th>
+    <th>50%</th>
+    <th>60%</th>
+    <th>70%</th>
+    <th>80%</th>
+    <th>90%</th>
+    <th>95%</th>
+    <th>99%</th>
+
+  </tr>
+  <tr *ngFor="let item of result | keys ;let i = index">
+    <th>{{getValueName(item.key)}}</th>
+    <td>{{getTwoPoint(item.value[0].value)}}</td>
+    <td>{{getTwoPoint(item.value[1].value)}}</td>
+    <td>{{getTwoPoint(item.value[2].value)}}</td>
+    <td>{{getTwoPoint(item.value[3].value)}}</td>
+    <td>{{getTwoPoint(item.value[4].value)}}</td>
+    <td>{{getTwoPoint(item.value[5].value)}}</td>
+    <td>{{getTwoPoint(item.value[6].value)}}</td>
+    <td>{{getTwoPoint(item.value[7].value)}}</td>
+    <td>{{getTwoPoint(item.value[8].value)}}</td>
+    <td>{{getTwoPoint(item.value[9].value)}}</td>
+    <td>{{getTwoPoint(item.value[10].value)}}</td>
+  </tr>
+
+
+</table>
+
+</div>
