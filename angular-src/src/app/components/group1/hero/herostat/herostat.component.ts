@@ -76,7 +76,7 @@ export class HerostatComponent implements OnInit {
   initOrder() {
     this.order = {
       'name': 'desc',
-      'pro_pb': '',
+      'pro_pibi': '',
       'pro_pick': '',
       'pro_ban': '',
       'pro_win': '',
@@ -87,7 +87,7 @@ export class HerostatComponent implements OnInit {
   switchAsc(prop: string) {
     let x = this.order[prop];
     this.order['name'] = '';
-    this.order['pro_pb'] = '';
+    this.order['pro_pibi'] = '';
     this.order['pro_pick'] = '';
     this.order['pro_ban'] = '';
     this.order['pro_win'] = '';
