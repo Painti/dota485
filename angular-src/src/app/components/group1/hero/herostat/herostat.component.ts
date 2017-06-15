@@ -59,6 +59,11 @@ export class HerostatComponent implements OnInit {
     hName = hName.replace("npc_dota_hero_", "");
     return hName;
   }
+  getHeroRealName(hName) {
+    hName = hName.replace("npc_dota_hero_", "");
+    hName = hName.replace("_"," ");
+    return hName.charAt(0).toUpperCase()+hName.slice(1);
+  }
   getClass(num) {
     num *= 100;
     if (num >= 70) {
