@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var config = require('./../../config/steam');
 var request = require('request');
+var server = require('../../config/server');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -34,6 +35,46 @@ router.get('/herostat', function(req, res, next) {
       next(err);
     }
   });
+});
+
+router.get('/herostat/:hero_name', function(req, res, next) {
+  let listheroes_url = 'http://' + server.hostname + ':' + server.port + '/data/opendota/heroes';
+
+  request(listheroes_url, function(err, response, listheroes) {
+    if (!err && response.statusCode < 400) {
+      listheroes = JSON.parse(listheroes);
+      let temp = 0;
+      let hName ="npc_dota_hero_"+req.params.hero_name;
+      for (var i = 0; i < listheroes.length; i++) {
+          if(listheroes[i]!=null){
+          if(hName == listheroes[i].name){
+            temp = listheroes[i].id;
+            break;
+          }
+        }
+      }
+
+      url = 'https://api.opendota.com/api/benchmarks?hero_id='+temp;
+      request(url, function(err, response, body) {
+     if (!err && response.statusCode < 400) {
+       res.json(JSON.parse(body));
+     }
+     else {
+       if (response) {
+         console.log(response.statusCode);
+       }
+       next(err);
+     }
+     });
+    } else {
+      if (response) {
+        console.log(response.statusCode);
+      }
+      next(err);
+    }
+  });
+
+
 });
 
 router.get('/detail', function(req, res, next) {

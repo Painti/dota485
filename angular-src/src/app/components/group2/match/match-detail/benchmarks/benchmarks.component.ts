@@ -12,16 +12,17 @@ export class BenchmarksComponent implements OnInit {
 
   constructor(
     private communicate: CommunicateService,
-    private slimLoadingBarservice: SlimLoadingBarService) { }
+    private slimLoadingBarService: SlimLoadingBarService
+  ) { }
 
   match: Object;
   subscription: Subscription;
 
   ngOnInit() {
-    this.slimLoadingBarservice.start();
+    this.slimLoadingBarService.start();
     this.subscription = this.communicate.getMatch$.subscribe(match => {
       this.match = match;
-      this.slimLoadingBarservice.complete();
+      this.slimLoadingBarService.complete();
     });
   }
 

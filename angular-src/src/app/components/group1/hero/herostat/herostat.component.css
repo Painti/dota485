@@ -5,3 +5,15 @@
   transition: 5s linear;
   transition-property: width;
 }
+
+h1{
+  margin-bottom: 30px;
+}
+
+span{
+  cursor:pointer
+}
+
+img:hover{
+  opacity: 0.5;
+}
