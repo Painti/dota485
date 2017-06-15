@@ -89,7 +89,7 @@ export class HerostatComponent implements OnInit {
   initOrder() {
     this.order = {
       'name': 'desc',
-      'pro_pb': '',
+      'pro_pibi': '',
       'pro_pick': '',
       'pro_ban': '',
       'pro_win': '',
