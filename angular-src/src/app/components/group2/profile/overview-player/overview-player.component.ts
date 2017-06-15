@@ -62,6 +62,7 @@ export class OverviewPlayerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.subscription = this.passJsonService.getPlayer$.subscribe(player => {
       this.user = player;
     },
@@ -205,15 +206,31 @@ export class OverviewPlayerComponent implements OnInit {
           this.tw_damage_avr = 0 ;
           this.win_rate = 0 ;
         }else{
-          this.kills_avr = this.kills_avr.toFixed(0) ;
-          this.deaths_avr = this.deaths_avr.toFixed(0) ;
-          this.assists_avr = this.assists_avr.toFixed(0) ;
-          this.gold_avr = this.gold_avr.toFixed(0) ;
-          this.xp_avr = this.xp_avr.toFixed(0) ;
-          this.lh_avr = this.lh_avr.toFixed(0) ;
-          this.heal_avr = this.heal_avr.toFixed(0) ;
-          this.win_rate = win.toFixed(0) ;
+          if(this.kills_avr != 0)this.kills_avr = this.kills_avr.toFixed(0) ;
+          else this.kills_avr = null ;
+
+          if(this.deaths_avr != 0)this.deaths_avr = this.deaths_avr.toFixed(0) ;
+          else this.deaths_avr = null ;
+
+          if(this.assists_avr != 0)this.assists_avr = this.assists_avr.toFixed(0) ;
+          else this.assists_avr = null ;
+
+          if(this.gold_avr != 0)this.gold_avr = this.gold_avr.toFixed(0) ;
+          else this.gold_avr = null ;
+
+          if(this.xp_avr != 0)this.xp_avr = this.xp_avr.toFixed(0) ;
+          else this.xp_avr = null ;
+
+          if(this.lh_avr != 0)this.lh_avr = this.lh_avr.toFixed(0) ;
+          else this.lh_avr = null ;
+
+          if(this.heal_avr != 0)this.heal_avr = this.heal_avr.toFixed(0) ;
+          else this.heal_avr = null ;
+
+          if(this.win_rate != 0)this.win_rate = win.toFixed(0) ;
+          else this.win_rate = null ;
         }
+
         let total = 0 ;
         for(let i = 0 ; i < this.peer.length ; i++){
           if(i < 5){
@@ -246,38 +263,35 @@ export class OverviewPlayerComponent implements OnInit {
         return false;
     });
 
+    this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
+    this.hero = [];
+    let total = 0;
+    for(let j = 0;j < data.length; j++){
+      if(j < 5){
+        this.hero.push(data[j]);
+        if(total < data[j]['games']){
+          total = data[j]['games'] ;
+        }
+        var win_rate_hero = data[j]['win'] / data[j]['games'] *100 ;
+      if( data[j]['games'] == 0 ){
+          win_rate_hero = 0 ;
+        }
+        this.hero[j]['win_rate'] = win_rate_hero.toFixed(2);
+      }else break ;
+    }
 
+    for(let i = 0;i < data.length; i++){
+      if(i < 5){
+        let game = data[i]['games'] * 100 / total ;
+        this.hero[i]['gamePercentage'] = game ;
+      }else break ;
+    }
 
-
-      this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
-      this.hero = [];
-      let total = 0;
-      for(let j = 0;j < data.length; j++){
-        if(j < 5){
-          this.hero.push(data[j]);
-          if(total < data[j]['games']){
-            total = data[j]['games'] ;
-          }
-          var win_rate_hero = data[j]['win'] / data[j]['games'] *100 ;
-        if( data[j]['games'] == 0 ){
-            win_rate_hero = 0 ;
-          }
-          this.hero[j]['win_rate'] = win_rate_hero.toFixed(2);
-        }else break ;
-      }
-
-      for(let i = 0;i < data.length; i++){
-        if(i < 5){
-          let game = data[i]['games'] * 100 / total ;
-          this.hero[i]['gamePercentage'] = game ;
-        }else break ;
-      }
-
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
+  },
+  err => {
+    console.log(err);
+    return false;
+  });
 
   }
 
