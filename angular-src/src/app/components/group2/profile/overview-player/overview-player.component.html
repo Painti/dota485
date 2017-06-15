@@ -1,6 +1,6 @@
 <div class="py-4">
   <div class = "pb-3">
-  <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+  <i class="fa fa-superpowers fa-2x " style = "color:#FF8C00" aria-hidden="true"></i>
   <span class = "pl-2"style="font-size: 24px;">Averages/Maximums</span>
   <span class="gray" style="font-size: 12px  ;">in last 20 matches</span>
 </div>
@@ -10,7 +10,7 @@
     <p class="font25 white">{{win_rate}} %</p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="kills_avr" style="font-size: 14px"><span>KILLS</span>
+  <div class="pr-1 gray" *ngIf="kills_avr" style="font-size: 14px"><span>KILLS</span>
     <p class="font25 green">{{kills_avr}}<span class="pl-1 font12 gray">{{best_kill}}</span>
       <a [routerLink]="['/match/'+match[best_kill_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_kill_id].heroes_name)" />
@@ -18,7 +18,7 @@
   </p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="deaths_avr" style="font-size: 14px"><span>DEATHS</span>
+  <div class="pr-1 gray" *ngIf="deaths_avr" style="font-size: 14px"><span>DEATHS</span>
     <p class="font25 red">{{deaths_avr}}<span class="pl-1 font12 gray">{{best_deaths}}</span>
       <a [routerLink]="['/match/'+match[best_deaths_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_deaths_id].heroes_name)" />
@@ -26,7 +26,7 @@
       </p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="assists_avr" style="font-size: 14px"><span>ASSISTS</span>
+  <div class="pr-1 gray" *ngIf="assists_avr" style="font-size: 14px"><span>ASSISTS</span>
     <p class="font25 white">{{assists_avr}}<span class="pl-1 font12 gray">{{best_assits}}</span>
       <a [routerLink]="['/match/'+match[best_assits_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_assits_id].heroes_name)" />
@@ -34,7 +34,7 @@
     </p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="gold_avr" style="font-size: 14px"><span>GOLD PER MIN</span>
+  <div class="pr-1 gray" *ngIf="gold_avr" style="font-size: 14px"><span>GOLD PER MIN</span>
     <p class="font25 yellow">{{gold_avr}}<span class="pl-1 font12 gray">{{best_gpm}}</span>
       <a [routerLink]="['/match/'+match[best_gpm_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_gpm_id].heroes_name)" />
@@ -42,7 +42,7 @@
     </p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="xp_avr" style="font-size: 14px"><span>XP PER MIN</span>
+  <div class="pr-1 gray" *ngIf="xp_avr" style="font-size: 14px"><span>XP PER MIN</span>
     <p class="font25 white">{{xp_avr}}<span class="pl-1 font12 gray">{{best_xpm}}</span>
       <a [routerLink]="['/match/'+match[best_xpm_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_xpm_id].heroes_name)" />
@@ -50,7 +50,7 @@
     </p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="lh_avr" style="font-size: 14px"><span>LAST HITS</span>
+  <div class="pr-1 gray" *ngIf="lh_avr" style="font-size: 14px"><span>LAST HITS</span>
     <p class="font25 white">{{lh_avr}}<span class="pl-1 font12 gray">{{best_lh}}</span>
       <a [routerLink]="['/match/'+match[best_lh_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_lh_id].heroes_name)" />
@@ -58,7 +58,7 @@
     </p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="damage_avr" style="font-size: 14px"><span>HERO DAMAGE</span>
+  <div class="pr-1 gray" *ngIf="damage_avr" style="font-size: 14px"><span>HERO DAMAGE</span>
     <p class="font25 white">{{damage_avr}}<span class="pl-1 font12 gray">{{best_damage}}</span>
       <a [routerLink]="['/match/'+match[best_damage_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_damage_id].heroes_name)" />
@@ -66,7 +66,7 @@
     </p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="heal_avr" style="font-size: 14px"><span>HERO HEALING</span>
+  <div class="pr-1 gray" *ngIf="heal_avr" style="font-size: 14px"><span>HERO HEALING</span>
     <p class="font25 white">{{heal_avr}}<span class="pl-1 font12 gray">{{best_heal}}</span>
       <a [routerLink]="['/match/'+match[best_heal_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_heal_id].heroes_name)" />
@@ -74,7 +74,7 @@
     </p>
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <div class="pr-2 gray" *ngIf="tw_damage_avr" style="font-size: 14px"><span>TOWER DAMAGE</span>
+  <div class="gray" *ngIf="tw_damage_avr" style="font-size: 14px"><span>TOWER DAMAGE</span>
     <p class="font25 white">{{tw_damage_avr}}<span class="pl-1 font12 gray">{{best_tw_damage}}</span>
       <a [routerLink]="['/match/'+match[best_tw_damage_id].match_id]">
       <img class="pl-1 icon hoverClickImg" [src]="getImageIcon(match[best_tw_damage_id].heroes_name)" />
@@ -89,7 +89,7 @@
 <div class = "d-flex row-column flex-wrap" >
   <div>
     <div class = "pb-3">
-      <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-superpowers fa-2x" style = "color:#FF8C00" aria-hidden="true"></i>
     <span class = "pl-2"style="font-size: 24px;">Recent Matches</span>
   </div>
     <table class="table-match" cellpadding="0" cellspacing="0" border="0" style= "width:auto">
@@ -145,8 +145,8 @@
   <div class = "pl-4 d-flex flex-column" *ngIf = "peer">
     <div>
       <div class = "pb-3">
-        <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
-        <span class = "pl-2" style="font-size: 24px;">Players Played With</span>
+        <i class="fa fa-superpowers fa-2x" style="color:#FF8C00" aria-hidden="true"></i>
+        <span class = "pl-2" style="font-size: 24px; ">Players Played With</span>
       </div>
       <table class="table-match" cellpadding="0" cellspacing="0" border="0" >
         <tr>

@@ -10,3 +10,12 @@
 .font24{
   font-size:24px;
 }
+
+.hoverHelp:hover{
+  cursor: help;
+}
+
+.line{
+  background-color: red;
+  border-top: 3px double black;
+}
