@@ -18,7 +18,7 @@ export class HerostatComponent implements OnInit {
   ) { }
   stat: Array<Object>;
   stat2: Array<number>;
-  order: Object = { name: String, pro_pb: String, pro_win: String, pro_pick: String, pro_ban: String };
+  order: Object = { name: String, pro_pb: String, pro_w: String, pro_pick: String, pro_ban: String };
   arrfilter: Array<String>;
 
   sum: number;
@@ -43,9 +43,12 @@ export class HerostatComponent implements OnInit {
           else if (this.stat[i]['pro_pick'] !== undefined) {
             this.sum += this.stat[i]['pro_pick'];
           }
-
+          let pick =  this.stat[i]['pro_pick'];
+          if(pick == 0){
+            pick = 1;
+          }
           this.stat[i]['pro_pb'] = this.stat[i]['pro_pick'] + this.stat[i]['pro_ban'];
-          this.stat[i]['pro_win'] = this.stat[i]['pro_win'] / this.stat[i]['pro_pick'];
+          this.stat[i]['pro_w'] = this.stat[i]['pro_win'] / pick;
         }
         this.sum = this.sum / 10;
         this.slimLoadingBarService.complete();
@@ -65,6 +68,7 @@ export class HerostatComponent implements OnInit {
     hName = hName.replace("npc_dota_hero_", "");
     return hName;
   }
+
   getHeroRealName(hName) {
     hName = hName.replace("npc_dota_hero_", "");
     var find = '_';
@@ -72,6 +76,7 @@ export class HerostatComponent implements OnInit {
     let s = hName.replace(re, ' ');
     return s.charAt(0).toUpperCase()+s.slice(1);
   }
+
   getClass(num) {
     num *= 100;
     if (num >= 70) {
@@ -92,7 +97,7 @@ export class HerostatComponent implements OnInit {
       'pro_pibi': '',
       'pro_pick': '',
       'pro_ban': '',
-      'pro_win': '',
+      'pro_w': '',
     };
     this.arrfilter = ['+name'];
   }
@@ -103,7 +108,7 @@ export class HerostatComponent implements OnInit {
     this.order['pro_pb'] = '';
     this.order['pro_pick'] = '';
     this.order['pro_ban'] = '';
-    this.order['pro_win'] = '';
+    this.order['pro_w'] = '';
     if (x == 'asc') {
       this.order[prop] = 'desc';
       this.arrfilter = ['-' + prop];
