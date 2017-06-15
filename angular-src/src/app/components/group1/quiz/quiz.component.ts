@@ -2,7 +2,7 @@ import { Component, OnInit ,ViewChild } from '@angular/core';
 import { GetApiService } from '../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForObjectPipe } from '../../../pipes/ng-for-object.pipe';
-
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-quiz',
@@ -13,7 +13,8 @@ export class QuizComponent implements OnInit {
 
   constructor(
   private api: GetApiService,
-  private route: ActivatedRoute
+  private route: ActivatedRoute,
+  private slimLoadingBarService: SlimLoadingBarService
   ) { }
   itemlist:Object
   itemComponent:any
@@ -31,6 +32,7 @@ export class QuizComponent implements OnInit {
 
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.hidden = true
     this.showAns = false
     this.binaryCheck = []
@@ -68,6 +70,7 @@ export class QuizComponent implements OnInit {
           this.binaryCheck.push(false)
       }
       this.arrComp = this.itemComponent[this.x].components.slice(0)
+      this.slimLoadingBarService.complete();
     },
      err => {
        console.log(err);
