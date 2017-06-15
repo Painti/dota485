@@ -249,38 +249,30 @@ export class OverviewPlayerComponent implements OnInit {
       var max_winrate = 0;
 
       this.subscription = this.passJsonService.getHeroes$.subscribe(data => {
-      //this.hero = data ;
+      this.hero = data ;
       this.hero1= [];
-      for(let j = 0;j < 5; j++){
-        this.hero1.push(data[j]);
-        var win_rate_hero1 = data[j]['win'] / data[j]['games'] *100 ;
-      if( data[j]['games'] == 0 ){
-          win_rate_hero1 = 0 ;
-        }
-        this.hero1[j]['win_rate'] = win_rate_hero1.toFixed(2);
-        //
-        // if (this.hero1['games'][j] > max_MP){
-        //   max_MP= this.hero['games'][j];
-        // }
-        // if (win_rate_hero1 > max_winrate){
-        //   max_MP= win_rate_hero1;
-        // }
+      let total = 0;
+      for(let j = 0;j < data.length; j++){
+        if(j < 5){
+          this.hero1.push(data[j]);
+          if(total < data[j]['games']){
+            total = data[j]['games'] ;
+          }
+          var win_rate_hero1 = data[j]['win'] / data[j]['games'] *100 ;
+        if( data[j]['games'] == 0 ){
+            win_rate_hero1 = 0 ;
+          }
+          this.hero1[j]['win_rate'] = win_rate_hero1.toFixed(2);
+        }else break ;
       }
 
-      // for(let i = 0 ; i < 5 ; i++){
-      //   this.progress_MP_hero[i] = this.hero1[i]['games'] * 100 / max_MP ;
-      //   this.progress_winrate_hero[i] = this.hero1[i]['win_rate'] * 100 / max_winrate ;
-      //   this.progress_MP_hero[i] = this.progress_MP_hero[i] + '%' ;
-      //   this.progress_winrate_hero[i] = this.progress_winrate_hero[i] + '%' ;
-      // }
+      for(let i = 0;i < data.length; i++){
+        if(i < 5){
+          let game = data[i]['games'] * 100 / total ;
+          this.hero1[i]['gamePercentage'] = game ;
+        }else break ;
+      }
 
-      // for(let i = 0 ; i < data.length  ;i++){
-      //   var win_rate = data[i]['win'] / data[i]['games'] *100 ;
-      // if( data[i]['games'] == 0 ){
-      //     win_rate = 0 ;
-      //   }
-      //   this.hero[i]['win_rate'] = win_rate.toFixed(2);
-      // }
     },
     err => {
       console.log(err);
@@ -395,5 +387,9 @@ export class OverviewPlayerComponent implements OnInit {
     }else{
       return "bg-success" ;
     }
+  }
+
+  getValueWithPercentage(value){
+    return value + '%' ;
   }
 }

@@ -86,7 +86,7 @@
 
 
 
-<div class = "d-flex flex-row" >
+<div class = "d-flex flex-row flex-wrap" >
   <div>
     <div class = "pb-3">
       <i class="fa fa-superpowers fa-2x" style = "color:#FF8C00" aria-hidden="true"></i>
@@ -183,7 +183,7 @@
     </div>
     <div>
       <div class = "pb-3">
-        <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+        <i class="fa fa-superpowers fa-2x" style="color:#FF8C00" aria-hidden="true"></i>
         <span class = "pl-2" style="font-size: 24px;">Hero Played</span>
       </div>
       <table class="table-match" cellpadding="0" cellspacing="0" border="0" *ngIf = hero1>
@@ -199,33 +199,23 @@
             <a [routerLink]="['/herostat/'+h.heroes_name]"><img class = "hoverClickImg pf_hero" [src] = "getImage(h.heroes_name)" [tooltip] = "getName(h.heroes_name)"></a>
           </div>
         <div class="d-flex flex-column">
-        <a [routerLink]="['/herostat/'+h.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);">{{h.heroes_name}}</span></a>
-          <span>{{getTimeAgo(h.last_played)}}</span>
+        <a [routerLink]="['/herostat/'+h.heroes_name]"><span class = "pl-3 hoverClick" style="color: rgb(102, 187, 255);">{{getName(h.heroes_name)}}</span></a>
+          <span class = "pl-3">{{getTimeAgo(h.last_played)}}</span>
         </div></td>
         <td class = "nowrap">
           <span>{{h.games}}</span>
-          <!-- <div class="progress">
-            <div class="progress-bar" role="progressbar"
-              [style.width]="progress_MP_hero[i]"></div>
-            </div> -->
+          <div class="progress">
+            <div class="progress-bar {{getBgColor(h.gamePercentage)}}" role="progressbar"
+              [style.width]="getValueWithPercentage(h.gamePercentage)"></div>
+            </div>
         </td>
-        <td>{{h.win_rate}}</td>
-
-        <!--
-            <td class = "nowrap">
-              <span>{{peer[p].with_games}}</span>
-              <div class="progress">
-                <div class="progress-bar {{getBgColor(progress_MP_BG[p])}}" role="progressbar"
-                  [style.width]="progress_MP[p]"></div>
-                </div>
-            </td>
-            <td class = "nowrap">
-                <span>{{percentage_win[p]}}%</span>
-                <div class="progress">
-                  <div class="progress-bar {{getBgColor(getPercentageWinForBg('Win',peer[p].win,peer[p].with_games))}}" role="progressbar"
-                    [style.width]="getPercentageWin('Win',peer[p].win,peer[p].with_games)"></div>
-                  </div>
-            </td> -->
+        <td class = "nowrap">
+          <span>{{h.win_rate}}%</span>
+          <div class="progress">
+            <div class="progress-bar {{getBgColor(h.win_rate)}}" role="progressbar"
+              [style.width]="getValueWithPercentage(h.win_rate)"></div>
+            </div>
+        </td>
         </tr>
       </table>
     </div>
