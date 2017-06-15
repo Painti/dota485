@@ -29,7 +29,7 @@
   <tr *ngFor="let item of stat  | filter : arrfilter; let i = index">
     <td>
       <img (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
-      <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{getHeroName(item?.name)}}</span></td>
+      <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{getHeroRealName(item?.name)}}</span></td>
 
     <td>{{((item?.pro_ban+item?.pro_pick)/sum)*100 | number : '1.2-2'}}%
       <div class="progress">

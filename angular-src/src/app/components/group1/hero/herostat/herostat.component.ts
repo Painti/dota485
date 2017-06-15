@@ -41,6 +41,7 @@ export class HerostatComponent implements OnInit {
           else if (this.stat[i]['pro_pick'] !== undefined) {
             this.sum += this.stat[i]['pro_pick'];
           }
+          this.stat[i]['pro_pb'] = this.stat[i]['pro_pick'] + this.stat[i]['pro_ban'] || 0;
         }
         this.sum = this.sum / 10;
       },
@@ -76,7 +77,7 @@ export class HerostatComponent implements OnInit {
   initOrder() {
     this.order = {
       'name': 'desc',
-      'pro_pb': '',
+      'pro_pibi': '',
       'pro_pick': '',
       'pro_ban': '',
       'pro_win': '',
