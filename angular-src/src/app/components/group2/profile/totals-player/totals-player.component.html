@@ -1,100 +1,103 @@
-<div class = "py-3">
-  <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+<div class = "py-4">
+  <i class="fa fa-superpowers fa-2x" style="color:#FF8C00" aria-hidden="true"></i>
   <span class = "pl-2 font20" >In All Matches</span>
 </div>
 
-<div class = "d-flex flex-row flex-wrap">
+<div class = "d-flex flex-row flex-wrap pb-3">
     <div class = "d-flex flex-column">
       <span class = "font14">KILLS</span>
-      <span class = "font24">{{toLocalNum(total_kill)}}</span>
+      <span tooltip = "{{toLocalNum(total_kill)}}"class = "font24 hoverHelp">{{getValue(total_kill)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">DEATHS</span>
-      <span class = "font24">{{toLocalNum(total_death)}}</span>
+      <span tooltip = "{{toLocalNum(total_death)}}" class = "font24 hoverHelp">{{getValue(total_death)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">ASSISTS</span>
-      <span class = "font24">{{toLocalNum(total_assists)}}</span>
+      <span tooltip = "{{toLocalNum(total_assists)}}" class = "font24 hoverHelp">{{getValue(total_assists)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">LAST HITS</span>
-      <span class = "font24">{{toLocalNum(total_lh)}}</span>
+      <span tooltip = "{{toLocalNum(total_lh)}}" class = "font24 hoverHelp">{{getValue(total_lh)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">DENIES</span>
-      <span class = "font24">{{toLocalNum(total_denide)}}</span>
+      <span tooltip = "{{toLocalNum(total_denide)}}" class = "font24 hoverHelp">{{getValue(total_denide)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">LEVEL</span>
-      <span class = "font24">{{toLocalNum(total_lv)}}</span>
+      <span tooltip = "{{toLocalNum(total_lv)}}" class = "font24 hoverHelp">{{getValue(total_lv)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">HERO DAMAGE</span>
-      <span class = "font24">{{toLocalNum(total_heroDamage)}}</span>
+      <span tooltip = "{{toLocalNum(total_heroDamage)}}" class = "font24 hoverHelp">{{getValue(total_heroDamage)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">TOWER DAMAGE</span>
-      <span class = "font24">{{toLocalNum(total_twDamage)}}</span>
+      <span tooltip = "{{toLocalNum(total_twDamage)}}" class = "font24 hoverHelp">{{getValue(total_twDamage)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">HERO HEALING</span>
-      <span class = "font24">{{toLocalNum(total_heroHeal)}}</span>
+      <span tooltip = "{{toLocalNum(total_heroHeal)}}" class = "font24 hoverHelp">{{getValue(total_heroHeal)}}</span>
     </div>
     <div class = "d-flex flex-column pl-4">
       <span class = "font14">GOLD PER MIN</span>
-      <span class = "font24">{{toLocalNum(total_gpm)}}</span>
+      <span tooltip = "{{toLocalNum(total_gpm)}}" class = "font24 hoverHelp">{{getValue(total_gpm)}}</span>
     </div>
-    <div class = "d-flex flex-column">
+    <div class = "d-flex flex-column pl-4">
       <span class = "font14">XP PER MIN</span>
-      <span class = "font24">{{toLocalNum(total_xpm)}}</span>
+      <span tooltip = "{{toLocalNum(total_xpm)}}" class = "font24 hoverHelp">{{getValue(total_xpm)}}</span>
     </div>
+
 </div>
 
+<hr class="line">
+
 <div class = "py-3">
-  <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+  <i class="fa fa-superpowers fa-2x" style="color:#FF8C00" aria-hidden="true"></i>
   <span class = "pl-2 font20">In Parsed Matches</span>
 </div>
 
 <div class = "d-flex flex-row flex-wrap">
   <div class = "d-flex flex-column">
     <span class = "font14">STUNS</span>
-    <span class = "font24">{{toLocalNum(total_stuns)}}</span>
+    <span tooltip = "{{toLocalNum(total_stuns)}}" class = "font24 hoverHelp">{{getValue(total_stuns)}}</span>
   </div>
   <div class = "d-flex flex-column pl-4">
     <span class = "font14">TOWER KILLS</span>
-    <span class = "font24">{{toLocalNum(total_twKill)}}</span>
+    <span tooltip = "{{toLocalNum(total_twKill)}}" class = "font24 hoverHelp">{{getValue(total_twKill)}}</span>
   </div>
   <div class = "d-flex flex-column pl-4">
     <span class = "font14">NEUTRAL KILLS</span>
-    <span class = "font24">{{toLocalNum(total_neKill)}}</span>
+    <span tooltip = "{{toLocalNum(total_neKill)}}" class = "font24 hoverHelp">{{getValue(total_neKill)}}</span>
   </div>
   <div class = "d-flex flex-column pl-4">
     <span class = "font14">COURIER KILLS</span>
-    <span class = "font24">{{toLocalNum(total_courKill)}}</span>
+    <span tooltip = "{{toLocalNum(total_courKill)}}" class = "font24 hoverHelp">{{getValue(total_courKill)}}</span>
   </div>
   <div class = "d-flex flex-column pl-4">
     <span class = "font14">TPS PURCHASED</span>
-    <span class = "font24">{{toLocalNum(total_tpsPus)}}</span>
+    <span tooltip = "{{toLocalNum(total_tpsPus)}}" class = "font24 hoverHelp">{{getValue(total_tpsPus)}}</span>
   </div>
   <div class = "d-flex flex-column pl-4">
     <span class = "font14">OBSERVERS PURCHASED</span>
-    <span class = "font24">{{toLocalNum(total_obsePus)}}</span>
+    <span tooltip = "{{toLocalNum(total_obsePus)}}" class = "font24 hoverHelp">{{getValue(total_obsePus)}}</span>
   </div>
   <div class = "d-flex flex-column pl-4">
     <span class = "font14">SENTRIES PURCHASED</span>
-    <span class = "font24">{{toLocalNum(total_senPus)}}</span>
+    <span tooltip = "{{toLocalNum(total_senPus)}}" class = "font24 hoverHelp">{{getValue(total_senPus)}}</span>
   </div>
   <div class = "d-flex flex-column pl-4">
     <span class = "font14">GEMS PURCHASED</span>
-    <span class = "font24">{{toLocalNum(total_gemPus)}}</span>
+    <span tooltip = "{{toLocalNum(total_gemPus)}}" class = "font24 hoverHelp">{{getValue(total_gemPus)}}</span>
   </div>
   <div class = "d-flex flex-column ">
     <span class = "font14">RAPIERS PURCHASED</span>
-    <span class = "font24">{{toLocalNum(total_rapiersPus)}}</span>
+    <span tooltip = "{{toLocalNum(total_rapiersPus)}}" class = "font24 hoverHelp">{{getValue(total_rapiersPus)}}</span>
   </div>
   <div class = "d-flex flex-column pl-4">
     <span class = "font14">MAP PINGS</span>
-    <span class = "font24">{{toLocalNum(total_mapPings)}}</span>
+    <span tooltip = "{{toLocalNum(total_mapPings)}}" class = "font24 hoverHelp">{{getValue(total_mapPings)}}</span>
   </div>
 </div>
 

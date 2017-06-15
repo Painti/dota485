@@ -1,0 +1,8 @@
+.hoverHelp{
+  cursor:help ;
+}
+
+.hoverClick:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}

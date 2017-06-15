@@ -1,18 +1,32 @@
 <div class = "py-3">
-  <i class="fa fa-superpowers fa-2x" aria-hidden="true"></i>
+  <i class="fa fa-superpowers fa-2x" style="color:#FF8C00" aria-hidden="true"></i>
   <span class = "pl-2" style="font-size: 24px;">Heroes Played</span>
 </div>
 
 <div *ngIf = "hero" style="width:100%" >
-<table class="table-match" cellpadding="0" cellspacing="0" border="0">
+<table class="table-match" cellpadding="0" cellspacing="0" border="0" *ngIf = hero1>
   <tr>
-    <th> HERO </th>
-    <th> MP</th>
-    <th> WIN% </th>
-    <th> WITH  </th>
-    <th> WIN WITH%  </th>
-    <th> AGAINST  </th>
-    <th> WIN AGAINST%  </th>
+    <th><div class = "hoverHelp"tooltip="The Hero played by player">
+      HERO
+    </div></th>
+    <th><div class = "hoverHelp"tooltip="Number of games played as this hero">
+      MP
+    </div></th>
+    <th><div class = "hoverHelp"tooltip="Win percentage as this hero">
+      WIN%
+    </div></th>
+    <th><div class = "hoverHelp"tooltip="Number of game with this hero on team">
+      WITH
+    </div></th>
+    <th><div class = "hoverHelp"tooltip="Win percentage with this hero">
+      WIN WITH%
+    </div></th>
+    <th><div class = "hoverHelp"tooltip="Number of games with this hero on the opposing team">
+      AGAINST
+    </div></th>
+    <th><div class = "hoverHelp"tooltip="Win percentage against this hero">
+      WIN AGAINST%
+    </div></th>
   </tr>
   <tbody>
     <tr *ngFor = "let h of hero ; let i = index">
@@ -22,15 +36,51 @@
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
     <div class="d-flex flex-column">
-    <a [routerLink]="['/herostat/'+h.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);">{{h.heroes_name}}</span></a>
+    <a [routerLink]="['/herostat/'+h.heroes_name]"><span class = "hoverClick" style="color: rgb(102, 187, 255);">{{getName(h.heroes_name)}}</span></a>
       <span>{{getTimeAgo(h.last_played)}}</span>
     </div></td>
-    <td>{{h.games}}</td>
-    <td>{{h.win_rate}}</td>
-    <td>{{h.with_games}}</td>
-    <td>{{h.with_win_rate}}</td>
-    <td>{{h.against_games}}</td>
-    <td>{{h.against_win_rate}}</td>
+    <td class = "nowrap">
+      <span>{{h.games}}</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.gamePercentage)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.gamePercentage)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.win_rate}}%</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.win_rate)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.win_rate)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.with_games}}</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.withPercentage)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.withPercentage)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.with_win_rate}}%</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.with_win_rate)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.with_win_rate)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.against_games}}</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.againstPercentage)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.againstPercentage)"></div>
+        </div>
+    </td>
+    <td class = "nowrap">
+      <span>{{h.against_win_rate}}}%</span>
+      <div class="progress">
+        <div class="progress-bar {{getBgColor(h.against_win_rate)}}" role="progressbar"
+          [style.width]="getValueWithPercentage(h.against_win_rate)"></div>
+        </div>
+    </td>
     </tr>
   </tbody>
 </table>
