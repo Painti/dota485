@@ -6,7 +6,12 @@
   cursor: pointer;
 }
 
-.table-match span:hover{
+.table-match th span:hover{
+  cursor: pointer;
+  color: #9d9d9d;
+}
+
+.table-match td:first-child span:hover{
   cursor: pointer;
   color: #9d9d9d;
 }
