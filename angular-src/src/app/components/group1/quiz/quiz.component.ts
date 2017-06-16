@@ -99,7 +99,7 @@ export class QuizComponent implements OnInit {
     }else{
       this.binaryCheck[num] = true
     }
-    console.log(this.binaryCheck)
+
   }
 
   shuffle(a) {
@@ -118,7 +118,7 @@ export class QuizComponent implements OnInit {
         sum += this.itemlist[key].cost
         }
     }
-    console.log(this.itemComponent[this.x])
+
 
     if(sum<costStart){
       return true
@@ -144,8 +144,7 @@ export class QuizComponent implements OnInit {
     }
     this.arrComp.sort()
     arr.sort()
-    console.log(arr)
-    console.log(this.arrComp)
+
     this.result = 'Correct'
     for (let i = 0; i < this.arrComp.length; i++) {
         if(this.arrComp[i]!=arr[i]){
