@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForObjectPipe } from '../../../../pipes/ng-for-object.pipe';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-item-detail',
@@ -13,7 +14,8 @@ export class ItemDetailComponent implements OnInit {
   constructor(
     private api: GetApiService,
     private route: ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private slimLoadingBarService: SlimLoadingBarService
   ) { }
 
 detail:Object;
@@ -28,6 +30,7 @@ itemup:Array<string>;
 itemcom:Array<string>;
 
     ngOnInit() {
+      this.slimLoadingBarService.start();
       this.route.params.subscribe(params => {
         this.name = params['item_name'];
         //console.log(this.name)
@@ -59,6 +62,7 @@ itemcom:Array<string>;
                 }
               }
             }
+            this.slimLoadingBarService.complete();
       },
         err => {
           console.log(err);
