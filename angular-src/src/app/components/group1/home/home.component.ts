@@ -3,6 +3,7 @@ import { GetApiService } from '../../../services/get-api.service';
 import { AuthService } from '../../../services/group2/auth.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForObjectPipe } from '../../../pipes/ng-for-object.pipe';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,9 @@ export class HomeComponent implements OnInit {
   constructor(private api: GetApiService,
     private auth: AuthService,
     private route: ActivatedRoute,
-    private router:Router) { }
+    private router:Router,
+    private slimLoadingBarService: SlimLoadingBarService
+  ) { }
 
   unique:any;
   status: any;
@@ -31,6 +34,7 @@ export class HomeComponent implements OnInit {
   match : any;
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.searching = false;
     this.show1 = false;
     this.show2 = false;
@@ -61,6 +65,7 @@ export class HomeComponent implements OnInit {
 
     this.api.getItem().subscribe(data =>{
       this.item = data.itemdata;
+      this.slimLoadingBarService.complete();
     },
     err => {
       console.log(err);
