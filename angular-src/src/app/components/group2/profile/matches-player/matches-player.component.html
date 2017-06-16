@@ -17,11 +17,11 @@
     <tr *ngFor = "let m of match ; let i = index">
       <td class="d-flex flex-nowrap">
         <div class = "pt-2">
-        <a [routerLink]="['/hero/'+m.heroes_name]"><img class = "hoverClickImg pf_hero" [src] = "getImage(m.heroes_name)" alt="{{user.displayName}}" [tooltip] = "getName(m.heroes_name)"></a>
+        <a [routerLink]="['/herostat/'+m.heroes_name]"><img class = "hoverClickImg pf_hero" [src] = "getImage(m.heroes_name)" alt="{{user.displayName}}" [tooltip] = "getName(m.heroes_name)"></a>
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;
     <div class="d-flex flex-column">
-    <a [routerLink]="['/hero/'+m.heroes_name]"><span class = "pl-1 hoverClick" style="color: rgb(102, 187, 255);" *ngIf = "hero_name">{{hero_name[i]}}</span></a>
+    <a [routerLink]="['/herostat/'+m.heroes_name]"><span class = "pl-1 hoverClick" style="color: rgb(102, 187, 255);" *ngIf = "hero_name">{{hero_name[i]}}</span></a>
       <span class = "p-1">{{m.player_team}}</span>
     </div></td>
     <td>{{m.game_mode}}</td>

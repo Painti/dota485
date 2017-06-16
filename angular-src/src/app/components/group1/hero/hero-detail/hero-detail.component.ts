@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
@@ -12,6 +12,7 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private api: GetApiService,
     private route: ActivatedRoute,
+    private slimLoadingBarService: SlimLoadingBarService
   ) { }
   heros:Object;
   herosDetail:Array<Object>;
@@ -20,6 +21,7 @@ export class HeroDetailComponent implements OnInit {
   id:string;
   state:any;
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.route.params.subscribe(params => {
         this.id = params['hero_name'];
         this.api.getHeroes().subscribe(data => {
@@ -40,6 +42,7 @@ export class HeroDetailComponent implements OnInit {
           });
           this.api.getHeroStat(this.id).subscribe(data => {
             this.herosstat = data;
+            this.slimLoadingBarService.complete();
           },
             err => {
               console.log(err);

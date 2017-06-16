@@ -1,16 +1,18 @@
-<div *ngIf="user">
-  <h2><span>Display Name : </span>{{user.displayName}}</h2>
-  <h2><span>Steam ID : </span>{{user.id}}</h2>
-  <h2><span>Account ID : </span>{{user.account_id}}</h2>
-  <button class="btn btn-secondary" (click)="gotoSteam(user.id)">
-    Steam Profile
-  </button>
-  <div class="row mt-4 ml-1">
-    <span class="mr-2"><i class="fa fa-facebook-square fa-2x"></i></span>
-    <button *ngIf="!user.facebook" class="btn btn-sm btn-primary" (click)="onClickLink()">Link Facebook</button>
-    <button *ngIf="user.facebook" class="btn btn-success btn-sm disabled">Linked</button>
-    <button *ngIf="user.facebook" ceiboShare [facebook]="{u: url}" class="btn btn-primary btn-sm ml-2">
-      Share Your Profile on Facebook
+<div class="mt-3 d-flex justify-content-center" *ngIf="user">
+  <div class="p-5 content">
+    <h2><span>Display Name : </span>{{user.displayName}}</h2>
+    <h2 class="pt-2"><span>Steam ID : </span>{{user.id}}</h2>
+    <h2 class="pt-2"><span>Account ID : </span>{{user.account_id}}</h2>
+    <button class="btn btn-secondary mt-2" (click)="gotoSteam(user.id)">
+      Steam Profile
     </button>
+    <div class="row mt-4 ml-1">
+      <span class="mr-2"><i class="fa fa-facebook-square fa-2x"></i></span>
+      <button *ngIf="!user.facebook" class="btn btn-sm btn-primary" (click)="onClickLink()">Link Facebook</button>
+      <button *ngIf="user.facebook" class="btn btn-success btn-sm disabled">Linked</button>
+      <button *ngIf="user.facebook" ceiboShare [facebook]="{u: url}" class="btn btn-primary btn-sm ml-2">
+        Share Your Profile on Facebook
+      </button>
+    </div>
   </div>
 </div>

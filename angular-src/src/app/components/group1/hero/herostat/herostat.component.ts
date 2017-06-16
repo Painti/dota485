@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetApiService } from '../../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FilterPipe } from '../../../../pipes/filter.pipe';
-
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 @Component({
   selector: 'app-herostat',
   templateUrl: './herostat.component.html',
@@ -13,16 +13,18 @@ export class HerostatComponent implements OnInit {
   constructor(
     private api: GetApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private slimLoadingBarService: SlimLoadingBarService
   ) { }
   stat: Array<Object>;
   stat2: Array<number>;
-  order: Object = { name: String, pro_win: String, pro_pick: String, pro_ban: String, pro_pb: String };
+  order: Object = { name: String, pro_pb: String, pro_w: String, pro_pick: String, pro_ban: String };
   arrfilter: Array<String>;
 
   sum: number;
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.route.params.subscribe(params => {
       this.api.getHeroesStat().subscribe(data => {
         this.stat = data;
@@ -41,8 +43,15 @@ export class HerostatComponent implements OnInit {
           else if (this.stat[i]['pro_pick'] !== undefined) {
             this.sum += this.stat[i]['pro_pick'];
           }
+          let pick =  this.stat[i]['pro_pick'];
+          if(pick == 0){
+            pick = 1;
+          }
+          this.stat[i]['pro_pb'] = this.stat[i]['pro_pick'] + this.stat[i]['pro_ban'];
+          this.stat[i]['pro_w'] = this.stat[i]['pro_win'] / pick;
         }
         this.sum = this.sum / 10;
+        this.slimLoadingBarService.complete();
       },
         err => {
           console.log(err);
@@ -59,6 +68,15 @@ export class HerostatComponent implements OnInit {
     hName = hName.replace("npc_dota_hero_", "");
     return hName;
   }
+
+  getHeroRealName(hName) {
+    hName = hName.replace("npc_dota_hero_", "");
+    var find = '_';
+    var re = new RegExp(find, 'g');
+    let s = hName.replace(re, ' ');
+    return s.charAt(0).toUpperCase()+s.slice(1);
+  }
+
   getClass(num) {
     num *= 100;
     if (num >= 70) {
@@ -76,12 +94,12 @@ export class HerostatComponent implements OnInit {
   initOrder() {
     this.order = {
       'name': 'desc',
-      'pro_pb': '',
+      'pro_pibi': '',
       'pro_pick': '',
       'pro_ban': '',
-      'pro_win': '',
+      'pro_w': '',
     };
-    this.arrfilter = ['-name'];
+    this.arrfilter = ['+name'];
   }
 
   switchAsc(prop: string) {
@@ -90,7 +108,7 @@ export class HerostatComponent implements OnInit {
     this.order['pro_pb'] = '';
     this.order['pro_pick'] = '';
     this.order['pro_ban'] = '';
-    this.order['pro_win'] = '';
+    this.order['pro_w'] = '';
     if (x == 'asc') {
       this.order[prop] = 'desc';
       this.arrfilter = ['-' + prop];
@@ -102,6 +120,7 @@ export class HerostatComponent implements OnInit {
       this.arrfilter = ['+' + prop];
     }
   }
+
   getSum(x, y) {
     x = parseInt(x);
     y = parseInt(y);

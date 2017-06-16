@@ -54,7 +54,7 @@ export class MatchComponent implements OnInit {
         return false;
       });
 
-    this.title = ['Tournament', 'Professional player', 'Noob player'];
+    this.title = ['Tournament', 'Professional player', 'Beginner player'];
     this.state = 0;
     this.tabs = ['active', '', ''];
     this.initOrder();

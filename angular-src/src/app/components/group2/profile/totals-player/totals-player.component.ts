@@ -60,7 +60,6 @@ export class TotalsPlayerComponent implements OnInit {
           this.total_heroDamage = data[11]['sum'] ;
           this.total_twDamage = data[12]['sum'] ;
           this.total_heroHeal = data[13]['sum'] ;
-          this.total_stuns = data[14]['sum'].toFixed(0) ;
           this.total_twKill = data[15]['sum'] ;
           this.total_neKill = data[16]['sum'] ;
           this.total_courKill = data[17]['sum'] ;
@@ -70,6 +69,8 @@ export class TotalsPlayerComponent implements OnInit {
           this.total_gemPus = data[21]['sum'] ;
           this.total_rapiersPus = data[22]['sum'] ;
           this.total_mapPings = data[23]['sum'] ;
+          if(data[14]['sum'] == 0)this.total_stuns = data[14]['sum']
+          else this.total_stuns = data[14]['sum'].toFixed(0) ;
       },
         err => {
           console.log(err);

@@ -1,52 +1,53 @@
 <table class="table-match" style="width:100%">
   <h1>Heroes Stat</h1>
+  <p><i style="color:WHITE"class="fa fa-bar-chart" aria-hidden="true"></i> {{sum}} Matchs in 30 Days</p>
   <tr>
-    <th><span class="sort" (click)="switchAsc('name')">HERO
+    <th><span tooltip="Hero name" class="sort" (click)="switchAsc('name')">HERO
       <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.name == 'asc'"></i>
       <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.name == 'desc'"></i>
     </span></th>
-    <th><span class="sort" (click)="switchAsc('pro_pb')">PRO P+B%
-      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.pro_pb == 'asc'"></i>
-      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.pro_pb == 'desc'"></i>
+    <th><span tooltip="Ban rate + Pick rate" class="sort" (click)="switchAsc('pro_pb')">PRO P+B%
+      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_pb == 'asc'"></i>
+      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_pb == 'desc'"></i>
     </span></th>
-    <th><span class="sort" (click)="switchAsc('pro_pick')">PRO PICK%
-      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.pro_pick == 'asc'"></i>
-      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.pro_pick == 'desc'"></i>
-    </span></th>
-    <th>
-      <span class="sort" (click)="switchAsc('pro_ban')">PRO BAN%
-      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.pro_ban == 'asc'"></i>
-      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.pro_ban == 'desc'"></i>
+    <th><span tooltip="Pick rate" class="sort" (click)="switchAsc('pro_pick')">PRO PICK%
+      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_pick == 'asc'"></i>
+      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_pick == 'desc'"></i>
     </span></th>
     <th>
-      <span class="sort" (click)="switchAsc('pro_win')">PRO WIN%
-      <i class="fa fa-sort-alpha-asc fa-lg" *ngIf="order.pro_win == 'asc'"></i>
-      <i class="fa fa-sort-alpha-desc fa-lg" *ngIf="order.pro_win == 'desc'"></i>
+      <span tooltip="Ban rate" class="sort" (click)="switchAsc('pro_ban')">PRO BAN%
+      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_ban == 'asc'"></i>
+      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_ban == 'desc'"></i>
+    </span></th>
+    <th>
+      <span tooltip="Win rate" class="sort" (click)="switchAsc('pro_w')">PRO WIN%
+      <i class="fa fa-sort-numeric-asc fa-lg" *ngIf="order.pro_w == 'asc'"></i>
+      <i class="fa fa-sort-numeric-desc fa-lg" *ngIf="order.pro_w == 'desc'"></i>
       </span></th>
   </tr>
 
 
   <tr *ngFor="let item of stat  | filter : arrfilter; let i = index">
     <td>
-      <img (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
-      <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{item?.localized_name}}</span></td>
+      <img style="cursor:pointer" (click)="gotodetial(getHeroName(item?.name))" [src]="getImage(item?.name)" alt="">
+      <span (click)="gotodetial(getHeroName(item?.name))" style="padding-left: 10px">{{getHeroRealName(item?.name)}}</span></td>
 
-    <td>{{((item?.pro_ban+item?.pro_pick)/sum)*100 | number : '1.2-2'}}%
+    <td>{{((item.pro_pb)/sum)*100 | number : '1.2-2'}}% ({{item.pro_pick + item.pro_ban}})
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass(((item?.pro_ban +item?.pro_pick)/sum))"
-          [style.width]="((item?.pro_ban +item?.pro_pick)/sum)*100+'%'"></div>
+          [style.width]="((item.pro_pb)/sum)*100+'%'"></div>
       </div>
     </td>
 
-    <td>{{getSum(item?.pro_pick,sum) | number : '1.2-2'}}%
+    <td>{{getSum(item?.pro_pick,sum) | number : '1.2-2'}}% ({{item.pro_pick}})
       <div class="progress">
         <div class="progress-bar" role="progressbar"
           [ngClass]="getClass((item?.pro_pick /  sum))"
           [style.width]="(item?.pro_pick /  sum)*100+'%'"></div>
       </div>
     </td>
-    <td>{{getSum(item?.pro_ban,sum) | number : '1.2-2'}}%
+    <td>{{getSum(item?.pro_ban,sum) | number : '1.2-2'}}% ({{item.pro_ban}})
 
       <div class="progress">
         <div class="progress-bar" role="progressbar"
@@ -55,11 +56,11 @@
       </div>
     </td>
 
-    <td>{{getSum(item?.pro_win,item?.pro_pick) | number : '1.2-2'}}%
+    <td>{{(item.pro_w)*100 | number : '1.2-2'}}% ({{item.pro_win}})
       <div class="progress">
         <div class="progress-bar" role="progressbar"
-          [ngClass]="getClass((item?.pro_win / item?.pro_pick))"
-          [style.width]="(item?.pro_win / item?.pro_pick)*100 +'%'"></div>
+          [ngClass]="getClass(item.pro_w)"
+          [style.width]="(item.pro_w)*100 +'%'"></div>
       </div>
     </td>
 
