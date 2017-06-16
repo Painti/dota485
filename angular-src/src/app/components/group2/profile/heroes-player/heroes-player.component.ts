@@ -120,6 +120,7 @@ export class HeroesPlayerComponent implements OnInit {
     }
   }
 
+  
   getBgColor(value){
     if(value < 35){
       return "bg-danger" ;
