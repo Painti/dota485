@@ -137,11 +137,12 @@ export class QuizComponent implements OnInit {
         }
     }
 
-    // let arrComp = this.itemComponent[this.x].components.slice(0)
-    this.arrComp.sort()
+
+
     if(this.haveRecipe()){
       this.arrComp.push('recipe')
     }
+    this.arrComp.sort()
     arr.sort()
     console.log(arr)
     console.log(this.arrComp)
@@ -152,6 +153,7 @@ export class QuizComponent implements OnInit {
           this.showAns = true
         }
     }
+    this.showAns = true
 
   }
 

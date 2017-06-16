@@ -2,11 +2,15 @@
 <div *ngIf="itemlist" class="d-flex justify-content-center">
   <div class="d-flex flex-column p-4 bor" >
     <div class="p-2"><h3 class="text-center">Quiz: Choose component of this item</h3></div>
-    <div class="p-2 d-flex justify-content-center"><img src="{{getComponents(randomItem().img)}}" alt=""></div>
+    <div class="p-2 d-flex justify-content-center">
+      <!-- Quiz -->
+      <img src="{{getComponents(randomItem().img)}}" alt="">
+    </div>
     <div class="p-2 text-center" style="color: #585858">____________________________________________________________________________ </div>
     <div class="p-2 d-flex justify-content-center">
       <span *ngFor = "let item of makeChoice() ; let i = index">
-              <img [ngClass]="{'enabled': binaryCheck[i]}" (click)="check(i)" src="{{getComponents(item)}}" style="width:80px; height:50px;">
+        <!-- Choice -->
+              <img [hidden] = "showAns" [ngClass]="{'enabled': binaryCheck[i]}" (click)="check(i)" src="{{getComponents(item)}}" style="width:80px; height:50px;">
       </span>
     </div>
     <div class="p-2 d-flex justify-content-center">

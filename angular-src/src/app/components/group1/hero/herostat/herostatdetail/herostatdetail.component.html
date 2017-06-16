@@ -24,7 +24,7 @@
 
   </tr>
   <tr *ngFor="let item of result | keys ;let i = index">
-    <th>{{getValueName(item.key)}}</th>
+    <th style="border-bottom:none">{{getValueName(item.key)}}</th>
     <td>{{getTwoPoint(item.value[0].value)}}</td>
     <td>{{getTwoPoint(item.value[1].value)}}</td>
     <td>{{getTwoPoint(item.value[2].value)}}</td>
