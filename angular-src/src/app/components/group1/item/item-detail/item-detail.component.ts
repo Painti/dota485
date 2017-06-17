@@ -85,6 +85,9 @@ itemcom:Array<string>;
   }
 
   getDesc(desc:string){
+    var find = '_';
+    var re = new RegExp(find, 'g');
+    desc = desc.replace(re, ' ');
     let des = desc.replace(/<br [/]>/g, " ");
     return des.replace(/[+%]/g, "");
   }
@@ -108,6 +111,7 @@ itemcom:Array<string>;
       return 'NO';
     }
   }
+
 
   watchUpgrade(name){
     if(name=='dagon_2' || name=='necronomicon_2' || name=='diffusal_blade_2' || name=='travel_boots_2'){

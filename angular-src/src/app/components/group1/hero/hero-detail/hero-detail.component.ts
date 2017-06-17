@@ -26,6 +26,8 @@ export class HeroDetailComponent implements OnInit {
         this.id = params['hero_name'];
         this.api.getHeroes().subscribe(data => {
           this.heros = data[this.id];
+          this.slimLoadingBarService.complete();
+
         },
           err => {
             console.log(err);
@@ -34,6 +36,7 @@ export class HeroDetailComponent implements OnInit {
           });
         this.api.getHeroesSkills(this.id).subscribe(data => {
           this.skills = data;
+          this.slimLoadingBarService.complete();
         },
           err => {
             console.log(err);
