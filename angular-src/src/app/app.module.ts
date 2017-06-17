@@ -93,7 +93,7 @@ const appRoutes: Routes = [
   },
   { path: 'profile/setting', component: ProfileSettingComponent, canActivate: [AuthGuard] },
   { path: 'profile/setting/link-facebook', component: LinkFacebookComponent, canActivate: [AuthGuard, LinkFacebookGuard] },
-  { path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard] ,
+  { path: 'profile/:id', component: ProfileComponent,
     children:[
       { path: '', component: OverviewPlayerComponent },
       { path: 'heroes', component: HeroesPlayerComponent },
