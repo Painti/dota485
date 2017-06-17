@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.route.params.subscribe(params => {
       this.id = params['id'] ;
       this.authService.getHero(params['id']).subscribe(data => {
