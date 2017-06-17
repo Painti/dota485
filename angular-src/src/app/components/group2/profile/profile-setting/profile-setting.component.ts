@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-profile-setting',
@@ -18,10 +19,12 @@ export class ProfileSettingComponent implements OnInit {
     private authService:AuthService,
     private router:Router,
     private route: ActivatedRoute,
-    private flashMessages: FlashMessagesService
+    private flashMessages: FlashMessagesService,
+    private slimLoadingBarService: SlimLoadingBarService
   ) { }
 
   ngOnInit() {
+    this.slimLoadingBarService.start();
     this.authService.getProfile().subscribe(data => {
       this.url = 'https://www.opendota.com/'+data.user.account_id;
       this.user = data.user;
@@ -32,6 +35,7 @@ export class ProfileSettingComponent implements OnInit {
           );
         }
       });
+      this.slimLoadingBarService.complete();
     },
     err => {
       console.log(err);

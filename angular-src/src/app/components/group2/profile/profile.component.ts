@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/group2/auth.service';
 import { PassJsonService } from '../../../services/group2/pass-json.service' ;
 import { GetApiService } from '../../../services/get-api.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 @Component({
   selector: 'app-profile',
@@ -26,7 +27,8 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     private getApiService: GetApiService,
     private route: ActivatedRoute,
-    private passJsonService:PassJsonService
+    private passJsonService:PassJsonService,
+    private slimLoadingBarService: SlimLoadingBarService
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class ProfileComponent implements OnInit {
       this.authService.getHero(params['id']).subscribe(data => {
         this.hero = data;
         this.passJsonService.emitHeroes(this.hero) ;
+        this.slimLoadingBarService.complete();
       },
         err => {
           console.log(err);
@@ -44,6 +47,7 @@ export class ProfileComponent implements OnInit {
         this.authService.getProfile_Player(params['id']).subscribe(data => {
           this.player = data ;
           this.passJsonService.emitPlayer(this.player) ;
+          this.slimLoadingBarService.complete();
         },
         err => {
           console.log(err);
@@ -67,7 +71,7 @@ export class ProfileComponent implements OnInit {
               }else this.match[i]['player_team'] = "Dire" ;
           }
         }
-
+        this.slimLoadingBarService.complete();
       },
       err => {
         console.log(err);
@@ -84,7 +88,7 @@ export class ProfileComponent implements OnInit {
         }else{
           this.win_rate = 0 ;
         }
-
+        this.slimLoadingBarService.complete();
       },
       err => {
         console.log(err);
@@ -94,6 +98,7 @@ export class ProfileComponent implements OnInit {
       this.authService.getPeer(params['id']).subscribe(data => {
         this.peer = data ;
         this.passJsonService.emitPeer(this.peer) ;
+        this.slimLoadingBarService.complete();
       },
       err => {
         console.log(err);
