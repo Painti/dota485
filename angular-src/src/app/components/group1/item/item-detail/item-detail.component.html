@@ -2,7 +2,9 @@
   <h1><div>{{detail.dname}}</div></h1>
   <img class="margin" [src]="getImage()" alt="" width="155" height="130">
   <div class="d-flex justify-content-center">
-    <table width="70%" text-align="center">
+    <div class="table-outlet">
+
+    <table class="mx-auto" width="70%" text-align="center">
       <tr>
         <th style="color:rgb(255, 184, 0)">PRICE</th>
         <td style="color:rgb(255, 184, 0)">{{detail.cost}}</td>
@@ -71,7 +73,10 @@
 
     </table>
   </div>
+  </div>
   <div class="bottom"></div>
 </div>
 
-<app-quiz></app-quiz>
+<div class="table-outlet">
+  <app-quiz></app-quiz>
+</div>
