@@ -2,7 +2,6 @@ b
 {
     text-align: center;
     text-transform: uppercase;
-    padding-left: 145px;
 }
 
 div.pad{
@@ -17,7 +16,12 @@ h1{
     padding-bottom: 20px;
 }
 
-
 img:hover{
   opacity: 0.5;
+}
+
+@media (min-width: 768px){
+  .pad{
+    padding-left: 1.5rem;
+  }
 }

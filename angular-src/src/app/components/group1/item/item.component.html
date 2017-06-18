@@ -1,61 +1,59 @@
 <h1>  Items </h1>
 
-<div *ngIf="item">
+<div *ngIf="item" class="d-flex flex-rows">
 
-  <div class="d-flex justify-content-between">
-    <div class="align-self-stretch" class="pad">
-      <b class="text-info">BASICS</b>
-    </div>
-
-    <div class="align-self-stretch" class="pad">
-      <b class="text-success">UPGRADES</b>
-    </div>
-
-    <div class="align-self-stretch" class="pad">
-      <b class="text-warning">SECRET SHOP</b>
-    </div>
-
-  </div>
-
-  <div class="d-flex justify-content-between">
+  <div class="d-flex flex-column">
     <div class="d-flex flex-wrap">
-        <div *ngFor = "let entry of item.itemdata | keys">
-            <span *ngIf ="basicNotUse(entry.key)=='YES'">
+      <div class="pad text-left"><b class="text-info">BASICS</b></div>
+    </div>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let entry of item.itemdata | keys">
+        <span *ngIf="basicNotUse(entry.key)=='YES'">
                 <span *ngIf="entry.value.qual == 'component' || entry.value.qual == 'consumable' || entry.key=='cheese' || entry.key=='aegis'">
                   <span [tooltip]="entry.value.dname">
                     <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="" style="width:81px; height:60px;">
                   </span>
-                </span>
-            </span>
-        </div>
+        </span>
+        </span>
+      </div>
     </div>
+  </div>
 
+  <div class="d-flex flex-column">
     <div class="d-flex flex-wrap">
-        <div *ngFor = "let entry of item.itemdata | keys">
-            <span  *ngIf="entry.value.qual !== 'component' && entry.value.qual !== 'secret_shop' && entry.value.qual !== 'consumable' && entry.key!=='cheese' && entry.key!=='aegis'">
+      <div class="pad text-left"><b class="text-success">UPGRADE</b></div>
+    </div>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let entry of item.itemdata | keys">
+        <span *ngIf="entry.value.qual !== 'component' && entry.value.qual !== 'secret_shop' && entry.value.qual !== 'consumable' && entry.key!=='cheese' && entry.key!=='aegis'">
               <span *ngIf="upgradeNotUse(entry.key)=='YES'">
                 <span [tooltip]="entry.value.dname">
                   <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="" style="width:81px; height:60px;">
                 </span>
-              </span>
-            </span>
-        </div>
+        </span>
+        </span>
+      </div>
     </div>
+  </div>
 
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-wrap">
+      <div class="pad text-left"><b class="text-warning">SECRET</b></div>
+    </div>
     <div class="d-flex flex-wrap">
       <div class="float-sm-left">
-        <div *ngFor = "let entry of item.itemdata | keys">
-            <span *ngIf="entry.value.qual == 'secret_shop'">
+        <div *ngFor="let entry of item.itemdata | keys">
+          <span *ngIf="entry.value.qual == 'secret_shop'">
               <span [tooltip]="entry.value.dname">
                 <img (click)="itemDetail(entry.key)" [src]="getImage(entry.key)" alt="" style="width:81px; height:60px;">
               </span>
-            </span>
+          </span>
         </div>
       </div>
     </div>
-
   </div>
-  <div  class="bottom">
 
-  </div>
+</div>
+<div class="bottom">
+
 </div>
